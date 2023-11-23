@@ -1,0 +1,135 @@
+* {
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('/public/images/stats-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'IM Fell DW Pica SC', serif;
+  min-height: 100vh;
+}
+
+.stats-container {
+  align-items: center;
+  background-image: url('/public/images/stats-bg.jpg');
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  height: 75px;
+  justify-content: space-around;
+  left: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.content-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 90px;
+  position: relative;
+  width: 100%;
+}
+
+.board {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.card {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #c7c7c7;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  height: 110px;
+  margin: 10px 20px;
+  padding: 10px;
+  transition: all 0.2s ease;
+  width: 100px;
+}
+
+.card:hover {
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card:active {
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card p {
+  font-size: 10px;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.card img {
+  height: 65px;
+  object-fit: contain;
+  width: 65px;
+}
+
+.toaster {
+  align-items: center;
+  top: 10px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: none;
+  justify-content: center;
+  left: calc(50% - 200px);
+  padding: 10px;
+  position: fixed;
+  width: 400px;
+}
+
+.toaster-error {
+  display: flex;
+  background: rgb(230, 2, 2);
+  border: 1px solid rgb(90, 2, 2);
+}
+
+.toaster-warning {
+  display: flex;
+  background: orange;
+  border: 1px solid rgb(200, 140, 0);
+}
+
+.toaster-success {
+  display: flex;
+  background: limegreen;
+  border: 1px solid rgb(50, 140, 50);
+}
+
+@media (max-width: 729px) {
+  .stats-container {
+    height: 75px;
+  }
+
+  .card {
+    height: 80px;
+    margin: 5px 10px;
+    padding: 5px;
+    width: 75px;
+  }
+  
+  .card p {
+    font-size: 8px;
+    margin: 0 0 5px;
+  }
+  
+  .card img {
+    height: 45px;
+    width: 45px;
+  }
+}

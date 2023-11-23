@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combine & Survive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./animations.css" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+  </head>
+
+  <body>
+    <div class="content-wrapper">
+      <div class="card person" draggable="true" id="card-1">
+        <p draggable="false">Person</p>
+        <img
+          alt="Person"
+          draggable="false"
+          src="/public/images/person.png"
+        />
+      </div>
+      <div id="initial-board" class="board"></div>
+      <div id="discoveries-board" class="board"></div>
+    </div>
+
+    <div id="toaster" class="toaster"></div>
+
+    <div id="stats" class="stats-container"></div>
+
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
