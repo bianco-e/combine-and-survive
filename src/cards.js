@@ -107,6 +107,8 @@ const cards = [
     id: 12,
     image: '/images/axeman.png',
     combinations: {
+      15: IDLE,
+      17: IDLE,
       26: [27, 28],
       16: [30]
     },
@@ -139,7 +141,8 @@ const cards = [
     image: '/images/water.png',
     combinations: {
       1: IDLE,
-      2: [24]
+      2: [24],
+      12: IDLE
     }
   },
   {
@@ -151,7 +154,8 @@ const cards = [
     singleUse: true,
     image: '/images/apple.png',
     combinations: {
-      1: [30]
+      1: [30],
+      12: [30]
     }
   },
   {
@@ -163,7 +167,8 @@ const cards = [
     singleUse: true,
     image: '/images/boiled-water.png',
     combinations: {
-      1: IDLE
+      1: IDLE,
+      12: IDLE
     }
   },
   {
