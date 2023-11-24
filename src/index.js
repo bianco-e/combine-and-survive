@@ -1,8 +1,8 @@
 import cardsData from './cards.js'
-import Stats from '../components/stats/index.js'
-import Toaster from '../components/toaster/index.js'
-import Card from '../components/card/index.js'
-import Modal from '../components/modal/index.js'
+import Stats from './components/stats/index.js'
+import Toaster from './components/toaster/index.js'
+import Card from './components/card/index.js'
+import Modal from './components/modal/index.js'
 
 window.addEventListener('load', () => {
   const person = document.querySelector('.person')
