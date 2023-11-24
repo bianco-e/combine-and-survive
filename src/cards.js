@@ -3,7 +3,7 @@ import { IDLE } from './utils.js'
 const cards = [
   {
     name: 'Person',
-    image: '/public/images/person.png',
+    image: '/images/person.png',
     id: 1,
     isPerson: true,
     combinations: {
@@ -17,7 +17,7 @@ const cards = [
   {
     name: 'Dirt',
     id: 2,
-    image: '/public/images/dirt.jpg',
+    image: '/images/dirt.jpg',
     isInitial: true,
     combinations: {
       1: [13],
@@ -28,7 +28,7 @@ const cards = [
   {
     name: 'Tree',
     id: 3,
-    image: '/public/images/tree.webp',
+    image: '/images/tree.webp',
     isInitial: true,
     combinations: {
       1: [8, 16],
@@ -39,7 +39,7 @@ const cards = [
   {
     name: 'River',
     id: 4,
-    image: '/public/images/river.png',
+    image: '/images/river.png',
     isInitial: true,
     combinations: {
       14: [15],
@@ -49,7 +49,7 @@ const cards = [
   {
     name: 'Mountain',
     id: 5,
-    image: '/public/images/mountain.png',
+    image: '/images/mountain.png',
     isInitial: true,
     combinations: {
       1: [7]
@@ -58,13 +58,13 @@ const cards = [
   {
     name: 'Log',
     id: 6,
-    image: '/public/images/log.webp',
+    image: '/images/log.webp',
     combinations: {}
   },
   {
     name: 'Rock',
     id: 7,
-    image: '/public/images/rock.png',
+    image: '/images/rock.png',
     combinations: {
       7: [10]
     }
@@ -72,7 +72,7 @@ const cards = [
   {
     name: 'Stick',
     id: 8,
-    image: '/public/images/stick.png',
+    image: '/images/stick.png',
     combinations: {
       8: [9],
       10: [11],
@@ -82,7 +82,7 @@ const cards = [
   {
     name: 'Campfire',
     id: 9,
-    image: '/public/images/campfire.png',
+    image: '/images/campfire.png',
     combinations: {
       15: [17],
       6: [18]
@@ -91,7 +91,7 @@ const cards = [
   {
     name: 'Sharpen Rock',
     id: 10,
-    image: '/public/images/sharpen-rock.jpeg',
+    image: '/images/sharpen-rock.jpeg',
     combinations: {
       8: [11]
     }
@@ -99,13 +99,13 @@ const cards = [
   {
     name: 'Axe',
     id: 11,
-    image: '/public/images/axe.png',
+    image: '/images/axe.png',
     combinations: {}
   },
   {
     name: 'Axeman',
     id: 12,
-    image: '/public/images/axeman.png',
+    image: '/images/axeman.png',
     combinations: {
       26: [27, 28],
       16: [30]
@@ -115,7 +115,7 @@ const cards = [
   {
     name: 'Clay',
     id: 13,
-    image: '/public/images/clay.jpeg',
+    image: '/images/clay.jpeg',
     combinations: {
       1: [14]
     }
@@ -123,7 +123,7 @@ const cards = [
   {
     name: 'Pottery',
     id: 14,
-    image: '/public/images/pottery.webp',
+    image: '/images/pottery.webp',
     combinations: {}
   },
   {
@@ -136,7 +136,7 @@ const cards = [
       thirst: 10
     },
     singleUse: true,
-    image: '/public/images/water.png',
+    image: '/images/water.png',
     combinations: {
       1: IDLE,
       2: [24]
@@ -149,7 +149,7 @@ const cards = [
       health: 10
     },
     singleUse: true,
-    image: '/public/images/apple.png',
+    image: '/images/apple.png',
     combinations: {
       1: [30]
     }
@@ -161,7 +161,7 @@ const cards = [
       thirst: 20
     },
     singleUse: true,
-    image: '/public/images/boiled-water.png',
+    image: '/images/boiled-water.png',
     combinations: {
       1: IDLE
     }
@@ -169,13 +169,13 @@ const cards = [
   {
     name: 'Charcoal',
     id: 18,
-    image: '/public/images/charcoal.png',
+    image: '/images/charcoal.png',
     combinations: {}
   },
   {
     name: 'Leaf',
     id: 19,
-    image: '/public/images/leaf.png',
+    image: '/images/leaf.png',
     combinations: {
       1: [20]
     }
@@ -183,7 +183,7 @@ const cards = [
   {
     name: 'Leaf Fibers',
     id: 20,
-    image: '/public/images/leaf-fibers.png',
+    image: '/images/leaf-fibers.png',
     combinations: {
       1: [21]
     }
@@ -191,7 +191,7 @@ const cards = [
   {
     name: 'Cordage',
     id: 21,
-    image: '/public/images/cordage.webp',
+    image: '/images/cordage.webp',
     combinations: {
       8: [22],
       27: [29]
@@ -200,7 +200,7 @@ const cards = [
   {
     name: 'Fishing Rod',
     id: 22,
-    image: '/public/images/fishing-rod.png',
+    image: '/images/fishing-rod.png',
     combinations: {}
   },
   {
@@ -210,7 +210,7 @@ const cards = [
       health: 20
     },
     singleUse: true,
-    image: '/public/images/fish.png',
+    image: '/images/fish.png',
     combinations: {
       1: IDLE
     }
@@ -218,7 +218,7 @@ const cards = [
   {
     name: 'Mud',
     id: 24,
-    image: '/public/images/mud.png',
+    image: '/images/mud.png',
     combinations: {
       1: [25]
     }
@@ -226,7 +226,7 @@ const cards = [
   {
     name: 'Adobe Brick',
     id: 25,
-    image: '/public/images/adobe-brick.jpg',
+    image: '/images/adobe-brick.jpg',
     combinations: {}
   },
   {
@@ -234,7 +234,7 @@ const cards = [
     id: 26,
     isAnimal: true,
     singleUse: true,
-    image: '/public/images/bull.webp',
+    image: '/images/bull.webp',
     combinations: {
       12: [27, 28]
     }
@@ -242,7 +242,7 @@ const cards = [
   {
     name: 'Leather',
     id: 27,
-    image: '/public/images/leather.png',
+    image: '/images/leather.png',
     combinations: {
       21: [29]
     }
@@ -250,19 +250,19 @@ const cards = [
   {
     name: 'Bone',
     id: 28,
-    image: '/public/images/bone.png',
+    image: '/images/bone.png',
     combinations: {}
   },
   {
     name: 'Clothes',
     id: 29,
-    image: '/public/images/clothes.png',
+    image: '/images/clothes.png',
     combinations: {}
   },
   {
     name: 'Seeds',
     id: 30,
-    image: '/public/images/seeds.webp',
+    image: '/images/seeds.webp',
     combinations: {
       2: [31]
     }
@@ -270,7 +270,7 @@ const cards = [
   {
     name: 'Plant',
     id: 31,
-    image: '/public/images/plant.png',
+    image: '/images/plant.png',
     combinations: {}
   }
 ]

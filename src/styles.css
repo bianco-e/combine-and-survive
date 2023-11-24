@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url('/public/images/modal-bg.jpg');
+  background-image: url('/images/modal-bg.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -34,7 +34,7 @@ button:hover {
 
 .stats-container {
   align-items: center;
-  background-image: url('/public/images/stats-bg.jpg');
+  background-image: url('/images/stats-bg.jpg');
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -132,7 +132,7 @@ button:hover {
 }
 
 .modal {
-  background-image: url('/public/images/bg.jpg');
+  background-image: url('/images/bg.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
