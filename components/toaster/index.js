@@ -5,6 +5,6 @@ export default class Toaster {
     toaster.classList.add(`toaster-${type}`)
     setTimeout(() => {
       toaster.classList.remove(`toaster-${type}`)
-    }, 1600)
+    }, 1700)
   }
 }

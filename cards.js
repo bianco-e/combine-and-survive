@@ -21,7 +21,8 @@ const cards = [
     isInitial: true,
     combinations: {
       1: [13],
-      15: [24]
+      15: [24],
+      30: [31]
     }
   },
   {
@@ -128,7 +129,12 @@ const cards = [
   {
     name: 'Water',
     id: 15,
-    increaseStats: ['thirst'],
+    decrease: {
+      health: 5
+    },
+    increase: {
+      thirst: 10
+    },
     singleUse: true,
     image: '/public/images/water.png',
     combinations: {
@@ -139,7 +145,9 @@ const cards = [
   {
     name: 'Apple',
     id: 16,
-    increaseStats: ['health'],
+    increase: {
+      health: 10
+    },
     singleUse: true,
     image: '/public/images/apple.png',
     combinations: {
@@ -149,7 +157,9 @@ const cards = [
   {
     name: 'Boiled Water',
     id: 17,
-    increaseStats: ['thirst'],
+    increase: {
+      thirst: 20
+    },
     singleUse: true,
     image: '/public/images/boiled-water.png',
     combinations: {
@@ -196,7 +206,9 @@ const cards = [
   {
     name: 'Fish',
     id: 23,
-    increaseStats: ['health'],
+    increase: {
+      health: 20
+    },
     singleUse: true,
     image: '/public/images/fish.png',
     combinations: {
@@ -251,6 +263,14 @@ const cards = [
     name: 'Seeds',
     id: 30,
     image: '/public/images/seeds.webp',
+    combinations: {
+      2: [31]
+    }
+  },
+  {
+    name: 'Plant',
+    id: 31,
+    image: '/public/images/plant.png',
     combinations: {}
   }
 ]

@@ -12,8 +12,11 @@ export default class Card {
   static applyEffects(dropzoneCard, draggedCard) {
     if (![dropzoneCard, draggedCard].some(card => card.isPerson)) return
     [dropzoneCard, draggedCard].forEach(card => {
-      if (card.increaseStats?.length) {
-        card.increaseStats.forEach(statToIncrease => Stats.increase(statToIncrease))
+      if (card.increase) {
+        Object.entries(card.increase).forEach(([stat, amount]) => Stats.increase(stat, amount))
+      }
+      if (card.decrease) {
+        Object.entries(card.decrease).forEach(([stat, amount]) => Stats.decrease(stat, amount))
       }
       if (card.singleUse) {
         this.remove(card.id, 'discoveries-board')

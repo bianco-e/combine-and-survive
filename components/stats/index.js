@@ -1,5 +1,6 @@
 import Gem from '../gem/index.js'
 import cardsData from '../../cards.js'
+import Modal from '../modal/index.js'
 
 const MAX_STAT = 100
 const MIN_STAT = 0
@@ -11,7 +12,7 @@ export default class Stats {
     const isDead = newAmount <= MIN_STAT
     Gem.updateFill(id, isDead ? MIN_STAT : newAmount)
     if (isDead) {
-      endGame('You could not survive') 
+      endGame(Modal.showLost) 
     }
   }
 
@@ -30,7 +31,7 @@ export default class Stats {
     const totalDiscoveriesEl = document.getElementById('total-discoveries')
     totalDiscoveriesEl.textContent = totalDiscoveries
     if (currentDiscoveries === totalDiscoveries) {
-      endGame('You won!')
+      endGame(Modal.showWon)
     }
   }
 
@@ -45,9 +46,8 @@ export default class Stats {
   }
 }
 
-//TODO: improve this
-function endGame(message) {
+function endGame(callback) {
   window.clearInterval(window.thirstIntervalId)
   window.clearInterval(window.animalIntervalId)
-  alert(message)
+  callback()
 }

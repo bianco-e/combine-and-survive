@@ -1,20 +1,27 @@
 # Combine & Survive
+## Strategy game
 
 ### Tech:
 * Vanilla JS
 * HTML
 * CSS
 
+### How to play:
+The goal is to reach the greatest number of discoveries by dragging and dropping cards
+- Only 2 cards can be combined at a time in this edition
+- Some cards can be combined themselves
+
+ENJOY!
+
 ### TODO:
-* Add game instructions
-* Add water functionality to reduce health - boiled water should not
-* Update readme
-* Improve style (Toaster)
-* Animation when user won/lost
-* Improve images size
 * Languages support
+* Deploy to Vercel
+* Add visual effect when health decreases
+* Update readme
+* Improve style (Toaster, Won/Lost modals)
+* Split CSS files
+* Optimize card images
 * Combine more than 2 cards
 
 ### POSSIBLE COMBINATIONS TO ADD:
 * Clothes on Person = Dressed Person
-* Seeds on Dirt = Plant

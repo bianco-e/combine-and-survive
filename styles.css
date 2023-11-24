@@ -1,16 +1,36 @@
 * {
   border-radius: 1px;
   box-sizing: border-box;
+  font-family: 'IM Fell DW Pica SC', serif;
 }
 
 body {
-  background-image: url('/public/images/stats-bg.jpg');
+  background-image: url('/public/images/modal-bg.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'IM Fell DW Pica SC', serif;
   min-height: 100vh;
 }
+
+button {
+  align-items: center;
+  background: rgb(20, 14, 0);
+  border: none;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
+  color: #efefef;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: 10px 15px;
+  transition: all 0.15 ease;
+}
+
+button:hover {
+  background: rgb(10, 7, 0);
+  box-shadow: 0 0 5px 1px rgb(200, 140, 0.15);
+}
+
 
 .stats-container {
   align-items: center;
@@ -50,11 +70,11 @@ body {
   align-items: center;
   background: #fff;
   border: 1px solid #c7c7c7;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.075);
   cursor: grab;
   display: flex;
   flex-direction: column;
-  height: 110px;
+  height: 105px;
   margin: 10px 20px;
   padding: 10px;
   transition: all 0.2s ease;
@@ -71,7 +91,7 @@ body {
 
 .card p {
   font-size: 10px;
-  margin: 0 0 10px;
+  margin: 0 0 7px;
   text-transform: uppercase;
 }
 
@@ -109,6 +129,44 @@ body {
   display: flex;
   background: limegreen;
   border: 1px solid rgb(50, 140, 50);
+}
+
+.modal {
+  background-image: url('/public/images/bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.25);
+  border: 0;
+  color: #efefef;
+  display: none;
+  flex-direction: column;
+  font-size: 18px;
+  left: 50%;
+  position: absolute;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal h2 {
+  margin: 0 0 10px;
+}
+
+.modal button {
+  margin-top: 15px;
+}
+
+.show {
+  display: flex;
+}
+
+.instructions-button {
+  border-radius: 100%;
+  height: 40px;
+  position: absolute;
+  top: -20px;
+  width: 40px;
 }
 
 @media (max-width: 729px) {
