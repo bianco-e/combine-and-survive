@@ -9,4 +9,5 @@ export function areArraysEqual(arr1, arr2) {
   return !sortedArr1.some((n, idx) => n !== sortedArr2[idx])
 }
 
+export const LANG = (navigator.language || navigator.userLanguage).split('-')[0] || 'en'
 export const IDLE = 'IDLE'

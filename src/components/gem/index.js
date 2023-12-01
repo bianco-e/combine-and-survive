@@ -1,4 +1,5 @@
-import { capitalize } from '../../utils.js'
+import i18n from '../../i18n.js'
+import { LANG, capitalize } from '../../utils.js'
 
 export default class Gem {
   static create(color, rootId, id) {
@@ -19,7 +20,7 @@ export default class Gem {
               
               <path d="M50,5 L90,30 L75,75 L50,95 L25,75 L10,30 Z" fill="url(#gem-${id})" clip-path="url(#gemClip)" />
           </svg>
-          <span style="position:absolute;top:30%;left:50%;transform:translateX(-40%);">${capitalize(id)}</span>
+          <span style="position:absolute;top:30%;left:50%;transform:translateX(-40%);">${capitalize(i18n[id][LANG])}</span>
           <span id="gem-${id}-offset" style="position:absolute;top:50%;left:50%;transform:translateX(-40%);">100%</span>
       </div>`
     gem.innerHTML = gemContent

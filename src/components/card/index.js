@@ -1,6 +1,7 @@
 import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
-import { areArraysEqual } from '../../utils.js'
+import i18n from '../../i18n.js'
+import { LANG, areArraysEqual } from '../../utils.js'
 import Stats from '../stats/index.js'
 import Toaster from '../toaster/index.js'
 
@@ -35,19 +36,22 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
-  static create({ id, name, image }, boardId) {
+  static create({ id, name, image, className }, boardId) {
     const newCardElement = document.createElement('div')
     newCardElement.setAttribute('id', `card-${id}`)
     newCardElement.setAttribute('draggable', 'true')
     newCardElement.classList.add('card', 'new-card')
     const newCardName = document.createElement('p')
-    newCardName.innerText = name
+    newCardName.innerText = name[LANG]
     newCardName.setAttribute('draggable', 'false')
     newCardElement.appendChild(newCardName)
     const newCardImg = document.createElement('img')
     newCardImg.setAttribute('src', image)
-    newCardImg.setAttribute('alt', name)
+    newCardImg.setAttribute('alt', name[LANG])
     newCardImg.setAttribute('draggable', 'false')
+    if (className) {
+      newCardElement.classList.add(className)
+    }
     newCardElement.appendChild(newCardImg)
 
     this.addListeners(newCardElement)
@@ -74,9 +78,9 @@ function updatePerson(newPerson) {
   const personCardElement = document.querySelector('.person')
   personCardElement.setAttribute('id', `card-${newPerson.id}`)
   const personName = personCardElement.querySelector('p')
-  personName.innerText = newPerson.name
+  personName.innerText = newPerson.name[LANG]
   const personImage = personCardElement.querySelector('img')
-  personImage.setAttribute('alt', newPerson.name)
+  personImage.setAttribute('alt', newPerson.name[LANG])
   personImage.setAttribute('src', newPerson.image)
 }
 
@@ -89,7 +93,7 @@ function warnNotPossibleCombination(dropzoneCardId, draggedCardId) {
     dropzoneCardElement.classList.remove('not-combination')
     draggedCardElement.classList.remove('not-combination')
   }, 850)
-  return Toaster.display('Combination not possible')
+  return Toaster.display(i18n.combinationNotPossible[LANG])
 }
 
 function onDrop(e, draggedId) {
@@ -111,9 +115,9 @@ function onDrop(e, draggedId) {
       newCard.isPerson ? updatePerson(newCard) : Card.create(newCard, 'discoveries-board')
       return acc
     }
-    return acc.concat(newCard.name)
+    return acc.concat(newCard.name[LANG])
   }, [])
   if (createdCards.length) {
-    Toaster.display(`You already have ${createdCards.join(', ')}`)
+    Toaster.display(`${i18n.alreadyCreatedCard[LANG]} ${createdCards.join(', ')}`)
   }
 }

@@ -1,7 +1,6 @@
-import { IDLE } from './utils'
+import { IDLE, LANG } from './utils'
 import cardsData from './cards.js'
-
-const WATER_MSG = 'Water straight from the river will quench your thirst but may harm you'
+import i18n from './i18n.js'
 
 const combinations = [
   { combo: [1, 2], result: [13], consumes: [], message: null, decrease: null, increase: null },
@@ -10,7 +9,7 @@ const combinations = [
     combo: [1, 4],
     result: IDLE,
     consumes: [],
-    message: { type: 'info', content: WATER_MSG },
+    message: { type: 'info', content: i18n.waterHarm[LANG] },
     decrease: { health: 5 },
     increase: { thirst: 5 }
   },
@@ -21,7 +20,7 @@ const combinations = [
     consumes: [],
     message: {
       type: 'success',
-      content: 'You are an Axeman now'
+      content: i18n.axemanMsg[LANG]
     },
     decrease: null,
     increase: null
@@ -31,7 +30,7 @@ const combinations = [
     combo: [1, 15],
     result: IDLE,
     consumes: [15],
-    message: { type: 'info', content: WATER_MSG },
+    message: { type: 'info', content: i18n.waterHarm[LANG] },
     decrease: { health: 5 },
     increase: { thirst: 10 }
   },
@@ -67,7 +66,7 @@ const combinations = [
     combo: [12, 4],
     result: IDLE,
     consumes: [],
-    message: { type: 'info', content: WATER_MSG },
+    message: { type: 'info', content: i18n.waterHarm[LANG] },
     decrease: { health: 5 },
     increase: { thirst: 5 }
   },
@@ -77,7 +76,7 @@ const combinations = [
     combo: [12, 15],
     result: IDLE,
     consumes: [15],
-    message: { type: 'info', content: WATER_MSG },
+    message: { type: 'info', content: i18n.waterHarm[LANG] },
     decrease: { health: 5 },
     increase: { thirst: 10 }
   },
@@ -92,9 +91,9 @@ const combinations = [
 
 export function seeCurrentCombinations() {
   return combinations.map(({ combo, result }) => {
-    const comboNames = combo.map(id => cardsData.find(card => card.id === id)?.name).join(' + ')
+    const comboNames = combo.map(id => cardsData.find(card => card.id === id)?.name[LANG]).join(' + ')
     const resultNames = Array.isArray(result)
-      ? result.map(id => cardsData.find(card => card.id === id)?.name).join(', ')
+      ? result.map(id => cardsData.find(card => card.id === id)?.name[LANG]).join(', ')
       : 'IDLE'
     return `${comboNames} = ${resultNames}`
   })

@@ -4,12 +4,13 @@ import Toaster from './components/toaster/index.js'
 import Card from './components/card/index.js'
 import Modal from './components/modal/index.js'
 import { polyfill } from 'mobile-drag-drop'
+import i18n from './i18n.js'
+import { LANG } from './utils.js'
 
 window.addEventListener('load', () => {
   polyfill()
-  const person = document.querySelector('.person')
   Stats.initiate()
-  Card.addListeners(person)
+  Card.create({ ...cardsData[0], className: 'person' }, 'person-board') //create Person
   const initialCards = cardsData.filter(card => card.isInitial)
   initialCards.forEach(card => addCard(card, 'initial-board'))
   Stats.updateDiscoveries()
@@ -26,7 +27,7 @@ function setInitialIntervals() {
   window.thirstIntervalId = setInterval(() => {
     const currentThirst = parseInt(document.getElementById('gem-thirst-offset').innerText)
     if (currentThirst <= 15) {
-      Toaster.display('You are about to die of thirst, drink something!', 'error')
+      Toaster.display(i18n.thirstDeath[LANG], 'error')
     }
     Stats.decrease('thirst', 5)
   }, 12000)
@@ -37,6 +38,6 @@ function setInitialIntervals() {
     const currentDiscoveries = document.querySelectorAll('#discoveries-board div.card').length
     if (Boolean(animalCardElement) || !currentDiscoveries) return
     addCard(animalCard, 'discoveries-board')
-    Toaster.display(`A wild ${animalCard.name} has just appeared`, 'success')
+    Toaster.display(i18n.wildBull[LANG], 'success')
   }, 25000)
 }

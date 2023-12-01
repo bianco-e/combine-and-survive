@@ -14,7 +14,6 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
-* Languages support
 * Add extra visual effect when health decreases
 * Highlight created card when it already exists
 * Update readme
@@ -26,9 +25,12 @@ ENJOY!
 * Leaf + Cordage = Basket
 * Fish + Fire = Grilled Fish
 * Boiled Water + Leaf = Herbal Tea
+* Bone + Vessel = Mortar
+* Seeds + Mortar = Flour
+* Flour + Water = Bread
 * Clothes + Person = Dressed Person
 
 ### IDEAS:
 * Person having an inventory for equipped items
 * Get recipes to learn
-* Get milestones/titles (i.e. Fisherman, Chef, Herbalist)
+* Get milestones/badges (i.e. Fisherman, Chef, Herbalist, N discoveries)

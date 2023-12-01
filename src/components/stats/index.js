@@ -1,6 +1,8 @@
 import Gem from '../gem/index.js'
 import cardsData from '../../cards.js'
 import Modal from '../modal/index.js'
+import i18n from '../../i18n.js'
+import { LANG } from '../../utils.js'
 
 const MAX_STAT = 100
 const MIN_STAT = 0
@@ -40,7 +42,7 @@ export default class Stats {
     const discoveriesContainer = document.createElement('span')
 
     Gem.create('#991212', 'stats', 'health')
-    discoveriesContainer.innerHTML = `DISCOVERIES: <span id="current-discoveries"></span>/<span id="total-discoveries"></span>`
+    discoveriesContainer.innerHTML = `${i18n.discoveries[LANG].toUpperCase()}: <span id="current-discoveries"></span>/<span id="total-discoveries"></span>`
     statsContainer.appendChild(discoveriesContainer)
     Gem.create('#00FFFF', 'stats', 'thirst')
   }
