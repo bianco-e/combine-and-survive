@@ -15,13 +15,20 @@ ENJOY!
 
 ### TODO:
 * Languages support
-* Deploy to Vercel
-* Add visual effect when health decreases
+* Add extra visual effect when health decreases
+* Highlight created card when it already exists
 * Update readme
-* Improve style (Toaster, Won/Lost modals)
 * Split CSS files
 * Optimize card images
 * Combine more than 2 cards
 
 ### POSSIBLE COMBINATIONS TO ADD:
-* Clothes on Person = Dressed Person
+* Leaf + Cordage = Basket
+* Fish + Fire = Grilled Fish
+* Boiled Water + Leaf = Herbal Tea
+* Clothes + Person = Dressed Person
+
+### IDEAS:
+* Person having an inventory for equipped items
+* Get recipes to learn
+* Get milestones/titles (i.e. Fisherman, Chef, Herbalist)

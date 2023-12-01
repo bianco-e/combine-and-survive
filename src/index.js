@@ -17,14 +17,14 @@ window.addEventListener('load', () => {
 
 function addCard(newCard, boardId) {
   Card.create(newCard, boardId)
-  Stats.updateDiscoveries(cardsData)
+  Stats.updateDiscoveries()
 }
 
 function setInitialIntervals() {
   window.thirstIntervalId = setInterval(() => {
     const currentThirst = parseInt(document.getElementById('gem-thirst-offset').innerText)
     if (currentThirst <= 15) {
-      Toaster.display('You are about to die, drink something!', 'error')
+      Toaster.display('You are about to die of thirst, drink something!', 'error')
     }
     Stats.decrease('thirst', 5)
   }, 12000)

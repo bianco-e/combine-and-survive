@@ -110,6 +110,7 @@ button:hover {
   left: calc(50% - 200px);
   padding: 10px;
   position: fixed;
+  text-align: center;
   width: 400px;
 }
 
@@ -117,6 +118,12 @@ button:hover {
   display: flex;
   background: rgb(230, 2, 2);
   border: 1px solid rgb(90, 2, 2);
+}
+
+.toaster-info {
+  display: flex;
+  background: #ededed;
+  border: 1px solid navy;
 }
 
 .toaster-warning {
@@ -142,11 +149,10 @@ button:hover {
   display: none;
   flex-direction: column;
   font-size: 18px;
-  left: 50%;
   position: absolute;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
 }
 
 .modal h2 {
