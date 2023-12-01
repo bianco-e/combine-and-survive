@@ -9,6 +9,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0;
   min-height: 100vh;
 }
 
@@ -153,6 +154,7 @@ button:hover {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;
 }
 
 .modal h2 {
@@ -176,13 +178,17 @@ button:hover {
 }
 
 @media (max-width: 729px) {
+  .content-wrapper {
+    padding: 0 5px 80px;
+  }
+
   .stats-container {
     height: 75px;
   }
 
   .card {
     height: 80px;
-    margin: 5px 10px;
+    margin: 5px;
     padding: 5px;
     width: 75px;
   }
