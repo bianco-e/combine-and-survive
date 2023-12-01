@@ -3,8 +3,10 @@ import Stats from './components/stats/index.js'
 import Toaster from './components/toaster/index.js'
 import Card from './components/card/index.js'
 import Modal from './components/modal/index.js'
+import { polyfill } from 'mobile-drag-drop'
 
 window.addEventListener('load', () => {
+  polyfill()
   const person = document.querySelector('.person')
   Stats.initiate()
   Card.addListeners(person)

@@ -8,6 +8,7 @@ export default class Card {
   static addListeners(cardElement) {
     cardElement.addEventListener('dragstart', e => e.dataTransfer.setData('text/plain', getCurrentCardId(e)))
     cardElement.addEventListener('dragover', e => e.preventDefault())
+    cardElement.addEventListener('dragenter', e => e.preventDefault())
     cardElement.addEventListener('drop', onDrop)
   }
 
