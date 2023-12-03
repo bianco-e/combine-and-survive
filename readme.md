@@ -15,22 +15,33 @@ ENJOY!
 
 ### TODO:
 * Add extra visual effect when health decreases
+* Add person inventory to equip clothes/weapons
 * Highlight created card when it already exists
 * Update readme
 * Split CSS files
 * Optimize card images
-* Combine more than 2 cards
+* Combine more than 2 cards (combine field on bottom bar)
+* Make more cards consumable after combining (seeds, water when boiled)
+* Add actions if specific cards are nex to each other (i.e. Bull next to Sprout would eat it, Worm next to Apple would rotten it)
+* Make bull poop after certain seconds alive, make bull drop raw meat (-health) when killed
+* Make Dirt drop Worm when combined with Person
+* Add a button to display discovered combinations recipes (probably add next items to discover)?
+* Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
 
-### POSSIBLE COMBINATIONS TO ADD:
-* Leaf + Cordage = Basket
-* Fish + Fire = Grilled Fish
-* Boiled Water + Leaf = Herbal Tea
+### 2 CARDS COMBOS TO ADD:
+* Fish + Fire = Grilled Fish (+health)
+* Boiled Water + Leaf = Herbal Tea (+health +thirst)
 * Bone + Vessel = Mortar
 * Seeds + Mortar = Flour
-* Flour + Water = Bread
-* Clothes + Person = Dressed Person
+* Flour + Water = Bread (+health)
+* Dirt + Seeds = Sprout
+* Crop + Water = Plant
+* Raw Meat + Campfire = Steak (+health)
+* Fishing Rod + River = IDLE + bait msg
+* Fishing Rod + Worm = Fishing Rod with bait
+* Fishing Rod with bait + River = Fish
 
-### IDEAS:
-* Person having an inventory for equipped items
-* Get recipes to learn
-* Get milestones/badges (i.e. Fisherman, Chef, Herbalist, N discoveries)
+### +2 CARDS COMBOS TO ADD:
+* Brick + Stick + leaf = hut
+* Flour + Water + Apple = Apple Pie
+* Stick + Leaf + Cordage = Basket
