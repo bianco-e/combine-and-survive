@@ -28,23 +28,25 @@ ENJOY!
 * Add a button to display discovered combinations recipes (probably add next items to discover)?
 * Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
 * Use Typescript
+* Add wild Bird appearing after X secs bread is crafted and eats it
 
 ### 2 CARDS COMBOS TO ADD:
-* Fish + Fire = Grilled Fish (+health)
-* Boiled Water + Leaf = Herbal Tea (+health +thirst)
-* Bone + Vessel = Mortar
-* Seeds + Mortar = Flour
-* Flour + Water = Bread (+health)
-* Dirt + Seeds = Sprout
-* Crop + Water = Plant
-* Raw Meat + Campfire = Steak (+health)
+* Fish + Fire = Grilled Fish (+health, consumes Fish)
+* Boiled Water + Leaf = Herbal Tea (+health +thirst, consumes both)
+* Bone + Vessel = Mortar (consumes both)
+* Seeds + Mortar = Flour (consumes Seeds)
+* Flour + Water = Bread (+health, consumes both)
+* Dirt + Seeds = Sprout (consumes Seeds)
+* Crop + Water = Plant (consumes Sprout)
+* Raw Meat + Campfire = Steak (+health, consumes Raw Meat)
 * Fishing Rod + River = IDLE + bait msg
-* Fishing Rod + Worm = Fishing Rod with bait
+* Fishing Rod + Worm = Fishing Rod with bait (consumes Worm)
 * Fishing Rod with bait + River = Fish
 * River + Mountain = Sand
-* Sand + Campfire = Glass
+* Sand + Campfire = Glass (consumes Sand)
+* Bird + Rock = Feather (consumes Bird)
 
 ### +2 CARDS COMBOS TO ADD:
-* Brick + Mud + Stick + leaf = hut
-* Flour + Water + Apple = Apple Pie
-* Stick + Leaf + Cordage = Basket
+* Brick + Mud + Stick + leaf = hut (consumes all)
+* Flour + Water + Apple = Apple Pie (consumes all)
+* Stick + Leaf + Cordage = Basket (consumes all)
