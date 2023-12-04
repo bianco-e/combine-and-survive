@@ -58,7 +58,7 @@ const combinations = [
     message: { type: 'error', content: i18n.rawMeat[LANG] }
   },
   { combo: [1, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: 20 } },
-  { combo: [2, 15], result: [24], consumes: [15], message: null, decrease: null, increase: null },
+  { combo: [2, 15], result: [14, 24], consumes: [15], message: null, decrease: null, increase: null },
   { combo: [2, 30], result: [31], consumes: [30], message: null, decrease: null, increase: null },
   { combo: [3, 10], result: [19, 36], consumes: [], message: null, decrease: null, increase: null },
   { combo: [3, 12], result: [6, 8, 16], consumes: [], message: null, decrease: null, increase: null },

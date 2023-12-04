@@ -11,3 +11,4 @@ export function areArraysEqual(arr1, arr2) {
 
 export const LANG = (navigator.language || navigator.userLanguage).split('-')[0] || 'en'
 export const IDLE = 'IDLE'
+export const DISCOVERIES_HISTORY_KEY = 'discoveries-history'

@@ -36,7 +36,7 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
-  static create({ id, name, image, className }, boardId) {
+  static create({ id, name, image, className }, boardId, increaseDiscoveries = true) {
     const newCardElement = document.createElement('div')
     newCardElement.setAttribute('id', `card-${id}`)
     newCardElement.setAttribute('draggable', 'true')
@@ -57,7 +57,9 @@ export default class Card {
     this.addListeners(newCardElement)
     const board = document.getElementById(boardId)
     board.appendChild(newCardElement)
-    Stats.updateDiscoveries()
+    if (increaseDiscoveries) {
+      Stats.increaseDiscoveries(id)
+    }
     setTimeout(() => {
       newCardElement.classList.remove('new-card')
     }, 300)
@@ -118,7 +120,7 @@ function onDrop(e, draggedId) {
     existingCard.classList.add('highlight')
     setTimeout(() => {
       existingCard.classList.remove('highlight')
-    }, 650);
+    }, 650)
     return acc.concat(newCard.name[LANG])
   }, [])
   if (createdCards.length) {

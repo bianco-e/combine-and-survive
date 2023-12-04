@@ -10,18 +10,12 @@ import { LANG } from './utils.js'
 window.addEventListener('load', () => {
   polyfill()
   Stats.initiate()
-  Card.create({ ...cardsData[0], className: 'person' }, 'person-board') //create Person
+  Card.create({ ...cardsData[0], className: 'person' }, 'person-board', false) //create Person
   const initialCards = cardsData.filter(card => card.isInitial)
-  initialCards.forEach(card => addCard(card, 'initial-board'))
-  Stats.updateDiscoveries()
+  initialCards.forEach(card => Card.create(card, 'initial-board', false))
   setInitialIntervals()
   document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
 })
-
-function addCard(newCard, boardId) {
-  Card.create(newCard, boardId)
-  Stats.updateDiscoveries()
-}
 
 function setInitialIntervals() {
   window.thirstIntervalId = setInterval(() => {
@@ -37,7 +31,7 @@ function setInitialIntervals() {
     const animalCardElement = document.getElementById(`card-${animalCard.id}`)
     const currentDiscoveries = document.querySelectorAll('#discoveries-board div.card').length
     if (Boolean(animalCardElement) || !currentDiscoveries) return
-    addCard(animalCard, 'discoveries-board')
+    Card.create(animalCard, 'discoveries-board')
     Toaster.display(i18n.wildBull[LANG], 'success')
   }, 25000)
 }

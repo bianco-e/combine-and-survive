@@ -14,11 +14,10 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
-* Highlight created card when it already exists
-* Add extra visual effect when health decreases
 * Add a button to display discovered combinations recipes (probably add next items to discover)?
-* Add person inventory to equip clothes/weapons
 * Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
+* Add person inventory to equip clothes/weapons
+* Add extra visual effect when health decreases
 * Split CSS files
 * Optimize card images
 * Add wild Bird appearing after X secs Bread/Worm is crafted and eats it
