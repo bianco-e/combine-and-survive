@@ -2,7 +2,7 @@ import Gem from '../gem/index.js'
 import cardsData from '../../cards.js'
 import Modal from '../modal/index.js'
 import i18n from '../../i18n.js'
-import { DISCOVERIES_HISTORY_KEY, LANG } from '../../utils.js'
+import { COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY, LANG } from '../../utils.js'
 
 const MAX_STAT = 100
 const MIN_STAT = 0
@@ -42,6 +42,7 @@ export default class Stats {
     const statsContainer = document.getElementById('stats')
     const discoveriesContainer = document.createElement('span')
     sessionStorage.clear(DISCOVERIES_HISTORY_KEY)
+    sessionStorage.clear(COMBOS_HISTORY_KEY)
 
     Gem.create('#991212', 'stats', 'health')
     discoveriesContainer.innerHTML = `${i18n.discoveries[

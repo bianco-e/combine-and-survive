@@ -1,7 +1,7 @@
 import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
 import i18n from '../../i18n.js'
-import { LANG, areArraysEqual } from '../../utils.js'
+import { COMBOS_HISTORY_KEY, LANG, areArraysEqual } from '../../utils.js'
 import Stats from '../stats/index.js'
 import Toaster from '../toaster/index.js'
 
@@ -106,7 +106,8 @@ function onDrop(e, draggedId) {
   if (!dropzoneCard) return
 
   const draggedCardId = parseInt(draggedId || e.dataTransfer.getData('text/plain'))
-  const combination = combinations.find(({ combo }) => areArraysEqual(combo, [draggedCardId, dropzoneCardId]))
+  const combinedIds = [draggedCardId, dropzoneCardId]
+  const combination = combinations.find(({ combo }) => areArraysEqual(combo, combinedIds))
   if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardId, draggedCardId)
 
   Card.applyEffects(combination)
@@ -114,7 +115,17 @@ function onDrop(e, draggedId) {
   const createdCards = resultCards.reduce((acc, newCard) => {
     const existingCard = document.getElementById(`card-${newCard.id}`)
     if (!Boolean(existingCard)) {
-      newCard.isPerson ? updatePerson(newCard) : Card.create(newCard, 'discoveries-board')
+      if (newCard.isPerson) {
+        updatePerson(newCard)
+      } else {
+        const combosHistory = JSON.parse(sessionStorage.getItem(COMBOS_HISTORY_KEY)) || []
+        const comboExists = combosHistory.find(({ combo }) => areArraysEqual(combo, combinedIds))
+        const newCombosHistory = comboExists
+          ? combosHistory
+          : combosHistory.concat({ combo: combinedIds, result: combination.result })
+        sessionStorage.setItem(COMBOS_HISTORY_KEY, JSON.stringify(newCombosHistory))
+        Card.create(newCard, 'discoveries-board')
+      }
       return acc
     }
     existingCard.classList.add('highlight')

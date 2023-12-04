@@ -151,6 +151,8 @@ button:hover {
   display: none;
   flex-direction: column;
   font-size: 18px;
+  max-height: 80vh;
+  overflow-y: auto;
   position: absolute;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   top: 50%;
@@ -170,11 +172,22 @@ button:hover {
   display: flex;
 }
 
-.instructions-button {
-  border-radius: 100%;
-  height: 40px;
+.buttons-container {
+  align-items: center;
+  display: flex;
   position: absolute;
-  top: -20px;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+
+.help-button {
+  align-items: center;
+  border-radius: 100%;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-left: 10px;
   width: 40px;
 }
 
@@ -206,5 +219,10 @@ button:hover {
   .card img {
     height: 45px;
     width: 45px;
+  }
+
+  .instructions-button {
+    height: 30px;
+    width: 30px;
   }
 }

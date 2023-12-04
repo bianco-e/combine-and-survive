@@ -80,5 +80,15 @@ export default {
       en: 'ENJOY!',
       es: '¡DISFRUTA!'
     }
+  },
+  recipesModal: {
+    title: {
+      en: 'Combinations you have created:',
+      es: 'Combinaciones que has creado:'
+    },
+    none: {
+      en: 'None yet. Try some!',
+      es: 'Ninguna. ¡Intenta alguna!'
+    }
   }
 }

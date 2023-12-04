@@ -120,14 +120,14 @@ const combinations = [
   { combo: [21, 27], result: [29], consumes: [21, 27], message: null, decrease: null, increase: null }
 ]
 
-export function seeCurrentCombinations() {
-  return combinations.map(({ combo, result }) => {
+export function seeCurrentCombinations(combos = combinations) {
+  return combos.map(({ combo, result }) => {
     const comboNames = combo.map(id => cardsData.find(card => card.id === id)?.name[LANG]).join(' + ')
     const resultNames = Array.isArray(result)
       ? result.map(id => cardsData.find(card => card.id === id)?.name[LANG]).join(', ')
       : 'IDLE'
     return `${comboNames} = ${resultNames}`
-  })
+  }).join('<br />')
 }
 
 export default combinations

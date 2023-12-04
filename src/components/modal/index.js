@@ -1,5 +1,6 @@
+import { seeCurrentCombinations } from '../../combinations'
 import i18n from '../../i18n'
-import { LANG } from '../../utils'
+import { COMBOS_HISTORY_KEY, LANG } from '../../utils'
 
 export default class Modal {
   static showInstructions() {
@@ -16,6 +17,21 @@ export default class Modal {
         </center>
     `
     modal.innerHTML = instructionsContent
+    document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show'))
+    modal.classList.add('show')
+  }
+
+  static showRecipes() {
+    const modal = document.getElementById('modal')
+    const combosHistory = JSON.parse(sessionStorage.getItem(COMBOS_HISTORY_KEY)) || []
+    const recipesContent = `
+        <center>
+            <h1>${i18n.recipesModal.title[LANG]}</h1>
+            <h3>${combosHistory.length ? seeCurrentCombinations(combosHistory) : i18n.recipesModal.none[LANG]}</h3>
+            <button id='close-modal'>${i18n.close[LANG]}</button>
+        </center>
+    `
+    modal.innerHTML = recipesContent
     document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show'))
     modal.classList.add('show')
   }

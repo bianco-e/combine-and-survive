@@ -15,6 +15,7 @@ window.addEventListener('load', () => {
   initialCards.forEach(card => Card.create(card, 'initial-board', false))
   setInitialIntervals()
   document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
+  document.getElementById('recipes-button').addEventListener('click', Modal.showRecipes)
 })
 
 function setInitialIntervals() {
