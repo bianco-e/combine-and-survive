@@ -110,11 +110,15 @@ function onDrop(e, draggedId) {
   Card.applyEffects(combination)
   const resultCards = cardsData.filter(card => combination.result.includes(card.id))
   const createdCards = resultCards.reduce((acc, newCard) => {
-    const cardIsCreated = Boolean(document.getElementById(`card-${newCard.id}`))
-    if (!cardIsCreated) {
+    const existingCard = document.getElementById(`card-${newCard.id}`)
+    if (!Boolean(existingCard)) {
       newCard.isPerson ? updatePerson(newCard) : Card.create(newCard, 'discoveries-board')
       return acc
     }
+    existingCard.classList.add('highlight')
+    setTimeout(() => {
+      existingCard.classList.remove('highlight')
+    }, 650);
     return acc.concat(newCard.name[LANG])
   }, [])
   if (createdCards.length) {

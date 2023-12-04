@@ -6,6 +6,10 @@
   animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
 
+.highlight {
+  animation: highlight-card 0.65s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
 @keyframes shake-horizontal {
   0%,
   100% {
@@ -41,5 +45,18 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes highlight-card {
+  0% {
+    border-color: #c7c7c7;
+  }
+  50% {
+    transform: scale(1.025);
+    border-color: #ff6600;
+  }
+  100% {
+    border-color: #c7c7c7;
   }
 }

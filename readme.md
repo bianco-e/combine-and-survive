@@ -14,19 +14,19 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
-* Add extra visual effect when health decreases
-* Add person inventory to equip clothes/weapons
 * Highlight created card when it already exists
-* Update readme
+* Add extra visual effect when health decreases
+* Add a button to display discovered combinations recipes (probably add next items to discover)?
+* Add person inventory to equip clothes/weapons
+* Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
 * Split CSS files
 * Optimize card images
+* Add wild Bird appearing after X secs Bread/Worm is crafted and eats it
 * Combine more than 2 cards (combine field on bottom bar)
+* Update readme
+* Use Typescript
 * Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
 * Make bull poop after certain seconds alive
-* Add a button to display discovered combinations recipes (probably add next items to discover)?
-* Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
-* Use Typescript
-* Add wild Bird appearing after X secs Bread/Worm is crafted and eats it
 
 ### 2 CARDS COMBOS TO ADD:
 * Boiled Water + Leaf = Herbal Tea (+health +thirst, consumes both)
