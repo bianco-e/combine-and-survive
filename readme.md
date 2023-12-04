@@ -14,9 +14,9 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
-* Add a button to display discovered combinations recipes (probably add next items to discover)?
 * Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
 * Add person inventory to equip clothes/weapons
+* Add style differentiator to isEquippable items
 * Add extra visual effect when health decreases
 * Split CSS files
 * Optimize card images

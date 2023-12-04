@@ -35,7 +35,7 @@ const combinations = [
     increase: { thirst: 10 }
   },
   { combo: [1, 16], result: [30], consumes: [16], message: null, decrease: null, increase: { health: 10 } },
-  { combo: [1, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: 10 } },
+  { combo: [1, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: 15 } },
   { combo: [1, 20], result: [21], consumes: [20], message: null, decrease: null, increase: null },
   { combo: [1, 23], result: IDLE, consumes: [23], message: null, decrease: null, increase: { health: 15 } },
   { combo: [1, 24], result: [25], consumes: [24], message: null, decrease: null, increase: null },
@@ -100,7 +100,7 @@ const combinations = [
     increase: { thirst: 10 }
   },
   { combo: [12, 16], result: [30], consumes: [16], message: null, decrease: null, increase: { health: 10 } },
-  { combo: [12, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: 10 } },
+  { combo: [12, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: 15 } },
   { combo: [12, 20], result: [21], consumes: [20], message: null, decrease: null, increase: null },
   { combo: [12, 23], result: IDLE, consumes: [23], message: null, decrease: null, increase: { health: 15 } },
   { combo: [12, 24], result: [25], consumes: [24], message: null, decrease: null, increase: null },
@@ -116,7 +116,7 @@ const combinations = [
     message: { type: 'error', content: i18n.rawMeat[LANG] }
   },
   { combo: [12, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: 20 } },
-  { combo: [15, 31], result: [32], consumes: [15, 31], message: null, decrease: null, increase: null },
+  { combo: [15, 31], result: [32, 14], consumes: [15, 31], message: null, decrease: null, increase: null },
   { combo: [21, 27], result: [29], consumes: [21, 27], message: null, decrease: null, increase: null }
 ]
 

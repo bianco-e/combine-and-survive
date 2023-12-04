@@ -89,6 +89,7 @@ export default [
       en: 'Axe',
       es: 'Hacha'
     },
+    isEquippable: true,
     id: 11,
     image: '/images/axe.png'
   },
