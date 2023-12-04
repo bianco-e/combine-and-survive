@@ -248,10 +248,98 @@ export default [
   },
   {
     name: {
+      en: 'Sprout',
+      es: 'Brote'
+    },
+    id: 31,
+    image: '/images/sprout.jpg'
+  },
+  {
+    name: {
       en: 'Plant',
       es: 'Planta'
     },
-    id: 31,
+    id: 32,
     image: '/images/plant.png'
+  },
+  {
+    name: {
+      en: 'Sand',
+      es: 'Arena'
+    },
+    id: 33,
+    image: '/images/sand.png'
+  },
+  {
+    name: {
+      en: 'Glass',
+      es: 'Vidrio'
+    },
+    id: 34,
+    image: '/images/glass.webp'
+  },
+  {
+    name: {
+      en: 'Worm',
+      es: 'Gusano'
+    },
+    id: 35,
+    image: '/images/worm.png'
+  },
+  {
+    name: {
+      en: 'Sap',
+      es: 'Savia'
+    },
+    id: 36,
+    image: '/images/sap.webp'
+  },
+  {
+    name: {
+      en: 'Bark',
+      es: 'Corteza'
+    },
+    id: 37,
+    image: '/images/bark.png'
+  },
+  {
+    name: {
+      en: 'Torch',
+      es: 'Antorcha'
+    },
+    id: 38,
+    image: '/images/torch.png'
+  },
+  {
+    name: {
+      en: 'Ashes',
+      es: 'Cenizas'
+    },
+    id: 39,
+    image: '/images/ashes.webp'
+  },
+  {
+    name: {
+      en: 'Grilled Fish',
+      es: 'Pescado Asado'
+    },
+    id: 40,
+    image: '/images/grilled-fish.webp'
+  },
+  {
+    name: {
+      en: 'Raw Meat',
+      es: 'Carne Cruda'
+    },
+    id: 41,
+    image: '/images/raw-meat.webp'
+  },
+  {
+    name: {
+      en: 'Cooked Meat',
+      es: 'Carne Cocida'
+    },
+    id: 42,
+    image: '/images/cooked-meat.png'
   }
 ]

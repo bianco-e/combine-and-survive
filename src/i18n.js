@@ -7,9 +7,17 @@ export default {
     en: 'You are an Axeman now',
     es: 'Ahora eres un Hachero'
   },
+  bullAttack: {
+    en: 'You cannot kill a Bull with your hands',
+    es: 'No puedes matar a un Toro con tus manos'
+  },
   combinationNotPossible: {
     en: 'Combination not possible',
     es: 'La combinación no es posible'
+  },
+  rawMeat: {
+    en: 'Raw Meat may harm you',
+    es: 'La Carne Cruda puede dañarte'
   },
   close: {
     en: 'CLOSE',
