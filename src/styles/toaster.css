@@ -1,0 +1,43 @@
+.toaster {
+  align-items: center;
+  bottom: 80px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: none;
+  justify-content: center;
+  left: 50%;
+  padding: 10px;
+  position: fixed;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 410px;
+}
+
+.toaster-error {
+  display: flex;
+  background: rgb(230, 2, 2);
+  border: 1px solid rgb(90, 2, 2);
+}
+
+.toaster-info {
+  display: flex;
+  background: #ededed;
+  border: 1px solid navy;
+}
+
+.toaster-warning {
+  display: flex;
+  background: orange;
+  border: 1px solid rgb(200, 140, 0);
+}
+
+.toaster-success {
+  display: flex;
+  background: limegreen;
+  border: 1px solid rgb(50, 140, 50);
+}
+
+@media (max-width: 729px) {
+  .toaster {
+    width: 90%;
+  }
+}

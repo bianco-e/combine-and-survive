@@ -37,6 +37,15 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
+  static renderEquippableIcon(newCardElement) {
+    const equippableIcon = document.createElement('img')
+    equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
+    equippableIcon.setAttribute('alt', i18n.equippableCard[LANG])
+    equippableIcon.title = i18n.equippableCard[LANG]
+    equippableIcon.classList.add('equippable-icon')
+    newCardElement.appendChild(equippableIcon)
+  }
+
   static create({ id, name, image, className, isEquippable }, boardId, cardConfig = { increaseDiscoveries: true, isInteractive: true }) {
     const { isInteractive, increaseDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
@@ -57,14 +66,9 @@ export default class Card {
     newCardImg.setAttribute('src', image)
     newCardImg.setAttribute('alt', name[LANG])
     newCardImg.setAttribute('draggable', 'false')
-    console.log(id, isEquippable)
+
     if (isEquippable) {
-      const equippableIcon = document.createElement('img')
-      equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
-      equippableIcon.setAttribute('alt', i18n.equippableCard[LANG])
-      equippableIcon.title = i18n.equippableCard[LANG]
-      equippableIcon.classList.add('equippable-icon')
-      newCardElement.appendChild(equippableIcon)
+      this.renderEquippableIcon(newCardElement)
     }
     if (className) {
       newCardElement.classList.add(className)
