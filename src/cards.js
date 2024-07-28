@@ -343,5 +343,53 @@ export default [
     },
     id: 42,
     image: '/images/cooked-meat.png'
+  },
+  {
+    name: {
+      en: 'Herbal Tea',
+      es: 'Te Herbal'
+    },
+    id: 43,
+    image: '/images/herbal-tea.png'
+  },
+  {
+    name: {
+      en: 'Mortar',
+      es: 'Mortero'
+    },
+    id: 44,
+    image: '/images/mortar.png'
+  },
+  {
+    name: {
+      en: 'Flour',
+      es: 'Harina'
+    },
+    id: 45,
+    image: '/images/flour.webp'
+  },
+  {
+    name: {
+      en: 'Dough',
+      es: 'Masa'
+    },
+    id: 46,
+    image: '/images/dough.webp'
+  },
+  {
+    name: {
+      en: 'Bread',
+      es: 'Pan'
+    },
+    id: 47,
+    image: '/images/bread.png'
+  },
+  {
+    name: {
+      en: 'Bait + Fishing Rod',
+      es: 'Carnada + Caña de pescar'
+    },
+    id: 48,
+    image: '/images/fishing-rod-bait.png'
   }
 ]

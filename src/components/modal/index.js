@@ -9,7 +9,7 @@ export default class Modal {
     const modal = document.getElementById('modal')
     const instructionsContent = `
         <center>
-            <button class='close-btn' id='close-modal'>x</button>
+            <button class='modal-btn close-btn' id='close-modal'>x</button>
             <h1>${i18n.howToPlay.title[LANG]}</h1>
             <h2>${i18n.howToPlay.line1[LANG]}</h2>
             <h2>${i18n.howToPlay.line2[LANG]}</h2>
@@ -47,13 +47,13 @@ export default class Modal {
             <button class='modal-btn close-btn' id='close-modal'>x</button>
             <button id='switch-modal-content'>${i18n.cardsToGetModal.switchModalContentButton[LANG]}</button>
             <h1>${i18n.cardsToGetModal.title[LANG]}</h1>
-            <div id='possible-cards-board' class='container'></div>
+            <div id='cards-to-get-board' class='container'></div>
         </center>`
     modal.innerHTML = possibleCardsContent
     document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show'))
     document.getElementById('switch-modal-content').addEventListener('click', Modal.showCombinedCards)
     modal.classList.add('show')
-    cards.filter(card => !card.isInitial).forEach(card => Card.create(card, 'possible-cards-board', { increaseDiscoveries: false, isInteractive: false }))
+    cards.filter(card => !card.isInitial).forEach(card => Card.create(card, 'cards-to-get-board', { increaseDiscoveries: false, isInteractive: false }))
   }
 
   //TODO: improve this
@@ -61,7 +61,7 @@ export default class Modal {
     const modal = document.getElementById('modal')
     const wonContent = `
     <center>
-        <button class='close-btn' id='close-modal'>x</button>
+        <button class='modal-btn close-btn' id='close-modal'>x</button>
         <h1>${i18n.wonMsg[LANG]}</h1>
     </center>
     `
@@ -75,7 +75,7 @@ export default class Modal {
     const modal = document.getElementById('modal')
     const lostContent = `
         <center>
-            <button class='close-btn' id='close-modal'>x</button>
+            <button class='modal-btn close-btn' id='close-modal'>x</button>
             <h1>${i18n.lostMsg[LANG]}</h1>
         </center>
     `

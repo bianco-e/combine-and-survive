@@ -27,6 +27,10 @@ export default {
     en: 'Health',
     es: 'Vida'
   },
+  noBaitMsg: {
+    en: 'Seems like you are missing the bait',
+    es: 'Parece que te falta la carnada'
+  },
   thirst: {
     en: 'Thirst',
     es: 'Sed'

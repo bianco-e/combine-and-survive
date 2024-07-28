@@ -58,13 +58,15 @@ const combinations = [
     message: { type: 'error', content: i18n.rawMeat[LANG] }
   },
   { combo: [1, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: STAT_CHANGE_LG } },
+  { combo: [1, 43], result: [14], consumes: [43], message: null, decrease: null, increase: { health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD } },
+  { combo: [1, 47], result: IDLE, consumes: [47], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
   { combo: [2, 15], result: [14, 24], consumes: [15], message: null, decrease: null, increase: null },
   { combo: [2, 30], result: [31], consumes: [30], message: null, decrease: null, increase: null },
   { combo: [3, 10], result: [19, 36], consumes: [], message: null, decrease: null, increase: null },
   { combo: [3, 12], result: [6, 8, 16], consumes: [], message: null, decrease: null, increase: null },
   { combo: [4, 14], result: [15], consumes: [14], message: null, decrease: null, increase: null },
   { combo: [4, 5], result: [33], consumes: [], message: null, decrease: null, increase: null },
-  { combo: [4, 22], result: [23], consumes: [], message: null, decrease: null, increase: null },
+  { combo: [4, 22], result: IDLE, consumes: [], message: { type: 'info', content: i18n.noBaitMsg[LANG] }, decrease: null, increase: null },
   { combo: [6, 9], result: [18, 39], consumes: [6], message: null, decrease: null, increase: null },
   { combo: [6, 10], result: [37], consumes: [6], message: null, decrease: null, increase: null },
   { combo: [7, 7], result: [10], consumes: [], message: null, decrease: null, increase: null },
@@ -116,8 +118,17 @@ const combinations = [
     message: { type: 'error', content: i18n.rawMeat[LANG] }
   },
   { combo: [12, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: STAT_CHANGE_LG } },
+  { combo: [12, 43], result: [14], consumes: [43], message: null, decrease: null, increase: { health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD } },
+  { combo: [12, 47], result: IDLE, consumes: [47], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
   { combo: [15, 31], result: [32, 14], consumes: [15, 31], message: null, decrease: null, increase: null },
-  { combo: [21, 27], result: [29], consumes: [21, 27], message: null, decrease: null, increase: null }
+  { combo: [21, 27], result: [29], consumes: [21, 27], message: null, decrease: null, increase: null },
+  { combo: [17, 19], result: [43], consumes: [17, 19], message: null, decrease: null, increase: null },
+  { combo: [14, 28], result: [44], consumes: [14, 28], message: null, decrease: null, increase: null },
+  { combo: [30, 44], result: [45], consumes: [30], message: null, decrease: null, increase: null },
+  { combo: [45, 15], result: [46, 14], consumes: [15, 45], message: null, decrease: null, increase: null },
+  { combo: [46, 9], result: [47], consumes: [46], message: null, decrease: null, increase: null },
+  { combo: [22, 35], result: [48], consumes: [22, 35], message: null, decrease: null, increase: null },
+  { combo: [48, 4], result: [23, 22], consumes: [48], message: null, decrease: null, increase: null }
 ]
 
 export function seeCurrentCombinations(combos = combinations) {

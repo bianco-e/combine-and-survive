@@ -24,7 +24,7 @@ function setInitialIntervals() {
       Toaster.display(i18n.thirstDeath[LANG], 'error')
     }
     Stats.decrease('thirst', STAT_CHANGE_SM)
-  }, 12000)
+  }, 13000)
 
   window.animalIntervalId = setInterval(() => {
     const animalCard = cardsData.find(card => card.isAnimal)

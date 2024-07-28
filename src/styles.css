@@ -107,9 +107,15 @@ h3 {
 
 .card p {
   color: #000;
+  display: block;
   font-size: 10px;
   margin: 0 0 7px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
   text-transform: uppercase;
+  white-space: nowrap;
+  width: 80px;
 }
 
 .card img {
@@ -264,6 +270,7 @@ h3 {
   .card p {
     font-size: 8px;
     margin: 0 0 5px;
+    width: 70px;
   }
   
   .card img {

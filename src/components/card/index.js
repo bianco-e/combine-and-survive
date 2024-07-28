@@ -50,6 +50,7 @@ export default class Card {
     }
     const newCardName = document.createElement('p')
     newCardName.innerText = name[LANG]
+    newCardName.title = name[LANG]
     newCardName.setAttribute('draggable', 'false')
     newCardElement.appendChild(newCardName)
     const newCardImg = document.createElement('img')
