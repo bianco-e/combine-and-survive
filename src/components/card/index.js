@@ -2,9 +2,10 @@ import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
 import i18n from '../../i18n.js'
 import { areArraysEqual } from '../../utils.js'
-import { COMBOS_HISTORY_KEY, LANG } from '../../constants.js'
+import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG } from '../../constants.js'
 import Stats from '../stats/index.js'
 import Toaster from '../toaster/index.js' 
+import Modal from '../modal/index.js'
 
 export default class Card {
   static addListeners(cardElement) {
@@ -130,6 +131,14 @@ function onDrop(e, draggedId) {
   if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardId, draggedCardId)
 
   Card.applyEffects(combination)
+  if (combination.badge) {
+    const currentBadges = JSON.parse(sessionStorage.getItem(BADGES_KEY)) || []
+    if (!currentBadges.includes(combination.badge)) {
+      sessionStorage.setItem(BADGES_KEY, JSON.stringify(currentBadges.concat(combination.badge)))
+      Modal.newBadge(BADGES[combination.badge])
+    }
+  }
+
   const resultCards = cardsData.filter(card => combination.result.includes(card.id))
   const createdCards = resultCards.reduce((acc, newCard) => {
     const existingCard = document.getElementById(`card-${newCard.id}`)

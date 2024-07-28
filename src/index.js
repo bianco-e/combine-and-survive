@@ -14,6 +14,7 @@ window.addEventListener('load', () => {
   const initialCards = cardsData.filter(card => card.isInitial && !card.isPerson)
   initialCards.forEach(card => Card.create(card, 'initial-board', { increaseDiscoveries: false, isInteractive: true }))
   setInitialIntervals()
+  document.getElementById('badges-button').addEventListener('click', Modal.showBadges)
   document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
 })
 

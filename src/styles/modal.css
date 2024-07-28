@@ -44,6 +44,11 @@
   right: 0;
 }
 
+.modal .completed-badge {
+  color: rgb(50, 140, 50);
+  text-decoration: line-through;
+}
+
 @media (max-width: 729px) {
   .modal {
     width: 90%;

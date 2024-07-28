@@ -1,7 +1,7 @@
 import { seeCurrentCombinations } from '../../combinations'
 import i18n from '../../i18n'
 import cards from '../../cards'
-import { COMBOS_HISTORY_KEY, LANG } from '../../constants'
+import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG } from '../../constants'
 import Card from '../card'
 
 export default class Modal {
@@ -49,7 +49,32 @@ export default class Modal {
     `
     Modal.render(possibleCardsContent)
     document.getElementById('switch-modal-content').addEventListener('click', Modal.showCombinedCards)
-    cards.filter(card => !card.isInitial).forEach(card => Card.create(card, 'cards-to-get-board', { increaseDiscoveries: false, isInteractive: false }))
+    cards
+      .filter(card => !card.isInitial)
+      .forEach(card => Card.create(card, 'cards-to-get-board', { increaseDiscoveries: false, isInteractive: false }))
+  }
+
+  static showBadges() {
+    const currentBadges = JSON.parse(sessionStorage.getItem(BADGES_KEY)) || []
+    const badgesContent = `
+      <h1>${i18n.badges.modalTitle[LANG]}</h1>
+      ${Object.entries(BADGES)
+        .map(([id, badge]) => {
+          const hasBadge = currentBadges.includes(parseInt(id))
+          return `<h3 class='${hasBadge ? 'completed-badge' : ''}'>${i18n.badges.types[badge].name[LANG]}</h3>`
+        })
+        .join('')}
+    `
+    Modal.render(badgesContent)
+  }
+
+  static newBadge(badge) {
+    const badgesContent = `
+      <h1>${i18n.badges.newBadgeTitle[LANG]}</h1>
+      <h2>${i18n.badges.newBadgeSubtitle[LANG]}</h2>
+      <h3>${i18n.badges.types[badge].msg[LANG]}</h3>
+    `
+    Modal.render(badgesContent)
   }
 
   //TODO: improve this

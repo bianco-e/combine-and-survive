@@ -3,9 +3,71 @@ export default {
     en: 'You already have',
     es: 'Ya tienes'
   },
-  axemanMsg: {
-    en: 'You are an Axeman now',
-    es: 'Ahora eres un Hachero'
+  badges: {
+    modalTitle: {
+      en: 'Badges',
+      es: 'Logros'
+    },
+    newBadgeTitle: {
+      en: 'NEW BADGE',
+      es: 'NUEVO LOGRO'
+    },
+    newBadgeSubtitle: {
+      en: 'Congratulations!',
+      es: '¡Felicitaciones!'
+    },
+    types: {
+      axeman: {
+        name: {
+          en: 'Axeman',
+          es: 'Hachero'
+        },
+        msg: {
+          en: 'You are an Axeman now',
+          es: 'Ahora eres un Hachero'
+        }
+      },
+      fisherman: {
+        name: {
+          en: 'Fisherman',
+          es: 'Pescador'
+        },
+        msg: {
+          en: 'You are a Fisherman now',
+          es: 'Ahora eres un Pescador'
+        }
+      },
+      baker: {
+        name: {
+          en: 'Baker',
+          es: 'Panadero'
+        },
+        msg: {
+          en: 'You are a Baker now',
+          es: 'Ahora eres un Panadero'
+        }
+      },
+      herbalist: {
+        name: {
+          en: 'Herbalist',
+          es: 'Herbolario'
+        },
+        msg: {
+          en: 'You are a Herbalist now',
+          es: 'Ahora eres un Herbolario'
+        }
+      },
+      hunter: {
+        name: {
+          en: 'Hunter',
+          es: 'Cazador'
+        },
+        msg: {
+          en: 'You are a Hunter now',
+          es: 'Ahora eres un Cazador'
+        }
+      }
+    }
   },
   bullAttack: {
     en: 'You cannot kill a Bull with your hands',
@@ -97,7 +159,7 @@ export default {
     switchModalContentButton: {
       en: 'See cards to get',
       es: 'Ver cartas por obtener'
-    },
+    }
   },
   cardsToGetModal: {
     title: {
@@ -107,6 +169,6 @@ export default {
     switchModalContentButton: {
       en: 'See combined cards',
       es: 'Ver cartas combinadas'
-    },
+    }
   }
 }

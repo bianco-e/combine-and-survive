@@ -1,7 +1,7 @@
 import Gem from '../gem/index.js'
 import cardsData from '../../cards.js'
 import Modal from '../modal/index.js'
-import { COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../constants.js'
+import { BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../constants.js'
 
 const MAX_STAT = 100
 const MIN_STAT = 0
@@ -42,6 +42,7 @@ export default class Stats {
     const discoveriesButton = document.createElement('button')
     sessionStorage.clear(DISCOVERIES_HISTORY_KEY)
     sessionStorage.clear(COMBOS_HISTORY_KEY)
+    sessionStorage.clear(BADGES_KEY)
 
     Gem.create('#991212', 'stats', 'health')
     discoveriesButton.innerHTML = `📜 &nbsp; <span id="current-discoveries">0</span>/<span>${TOTAL_DISCOVERIES}</span>`
