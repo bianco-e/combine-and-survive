@@ -23,6 +23,10 @@ export default {
     en: 'Discoveries',
     es: 'Descubrimientos'
   },
+  equippableCard: {
+    en: 'Equippable card',
+    es: 'Carta equipable'
+  },
   health: {
     en: 'Health',
     es: 'Vida'

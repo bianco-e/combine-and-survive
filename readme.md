@@ -16,7 +16,6 @@ ENJOY!
 ### TODO:
 * Add milestones/badges (i.e. Fisherman, Chef, Herbalist, N of discoveries, Hunter, Builder)
 * Add person inventory to equip clothes/weapons
-* Add style differentiator to isEquippable items
 * Add extra visual effect when health decreases
 * Split CSS files
 * Optimize card images

@@ -89,6 +89,7 @@ h3 {
   height: 105px;
   margin: 10px 20px;
   padding: 10px;
+  position: relative;
   transition: all 0.2s ease;
   width: 105px;
 }
@@ -122,6 +123,14 @@ h3 {
   height: 65px;
   object-fit: contain;
   width: 65px;
+}
+
+.card img.equippable-icon {
+  height: 15px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 15px;
 }
 
 .toaster {

@@ -37,7 +37,7 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
-  static create({ id, name, image, className }, boardId, cardConfig = { increaseDiscoveries: true, isInteractive: true }) {
+  static create({ id, name, image, className, isEquippable }, boardId, cardConfig = { increaseDiscoveries: true, isInteractive: true }) {
     const { isInteractive, increaseDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
     newCardElement.classList.add('card', 'new-card')
@@ -57,6 +57,15 @@ export default class Card {
     newCardImg.setAttribute('src', image)
     newCardImg.setAttribute('alt', name[LANG])
     newCardImg.setAttribute('draggable', 'false')
+    console.log(id, isEquippable)
+    if (isEquippable) {
+      const equippableIcon = document.createElement('img')
+      equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
+      equippableIcon.setAttribute('alt', i18n.equippableCard[LANG])
+      equippableIcon.title = i18n.equippableCard[LANG]
+      equippableIcon.classList.add('equippable-icon')
+      newCardElement.appendChild(equippableIcon)
+    }
     if (className) {
       newCardElement.classList.add(className)
     }
