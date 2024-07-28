@@ -93,7 +93,7 @@ const combinations = [
   { combo: [9, 33], result: [34], consumes: [33], message: null, decrease: null, increase: null },
   { combo: [9, 37], result: [39], consumes: [37], message: null, decrease: null, increase: null },
   { combo: [9, 41], result: [42], consumes: [41], message: null, decrease: null, increase: null },
-  { combo: [12, 2], result: [13], consumes: [], message: null, decrease: null, increase: null },
+  { combo: [12, 2], result: [13, 35], consumes: [], message: null, decrease: null, increase: null },
   { combo: [12, 3], result: [8, 16], consumes: [], message: null, decrease: null, increase: null },
   {
     combo: [12, 4],
