@@ -1,6 +1,7 @@
 import { IDLE, LANG } from './utils'
 import cardsData from './cards.js'
 import i18n from './i18n.js'
+import { STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM } from './constants.js'
 
 const combinations = [
   { combo: [1, 2], result: [13, 35], consumes: [], message: null, decrease: null, increase: null },
@@ -10,8 +11,8 @@ const combinations = [
     result: IDLE,
     consumes: [],
     message: { type: 'info', content: i18n.waterHarm[LANG] },
-    decrease: { health: 5 },
-    increase: { thirst: 5 }
+    decrease: { health: STAT_CHANGE_SM },
+    increase: { thirst: STAT_CHANGE_SM }
   },
   { combo: [1, 5], result: [7], consumes: [], message: null, decrease: null, increase: null },
   {
@@ -31,33 +32,33 @@ const combinations = [
     result: [14],
     consumes: [15],
     message: { type: 'info', content: i18n.waterHarm[LANG] },
-    decrease: { health: 5 },
-    increase: { thirst: 10 }
+    decrease: { health: STAT_CHANGE_SM },
+    increase: { thirst: STAT_CHANGE_MD }
   },
-  { combo: [1, 16], result: [30], consumes: [16], message: null, decrease: null, increase: { health: 10 } },
-  { combo: [1, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: 15 } },
+  { combo: [1, 16], result: [30], consumes: [16], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
+  { combo: [1, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: STAT_CHANGE_LG } },
   { combo: [1, 20], result: [21], consumes: [20], message: null, decrease: null, increase: null },
-  { combo: [1, 23], result: IDLE, consumes: [23], message: null, decrease: null, increase: { health: 15 } },
+  { combo: [1, 23], result: IDLE, consumes: [23], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
   { combo: [1, 24], result: [25], consumes: [24], message: null, decrease: null, increase: null },
   {
     combo: [1, 26],
     result: IDLE,
     consumes: [],
     message: { type: 'error', content: i18n.bullAttack[LANG] },
-    decrease: { health: 20 },
+    decrease: { health: STAT_CHANGE_LG },
     increase: null
   },
-  { combo: [1, 40], result: IDLE, consumes: [40], message: null, decrease: null, increase: { health: 15 } },
+  { combo: [1, 40], result: IDLE, consumes: [40], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
   {
     combo: [1, 41],
     result: IDLE,
     consumes: [41],
     message: null,
-    decrease: { health: 10 },
+    decrease: { health: STAT_CHANGE_MD },
     increase: null,
     message: { type: 'error', content: i18n.rawMeat[LANG] }
   },
-  { combo: [1, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: 20 } },
+  { combo: [1, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: STAT_CHANGE_LG } },
   { combo: [2, 15], result: [14, 24], consumes: [15], message: null, decrease: null, increase: null },
   { combo: [2, 30], result: [31], consumes: [30], message: null, decrease: null, increase: null },
   { combo: [3, 10], result: [19, 36], consumes: [], message: null, decrease: null, increase: null },
@@ -86,8 +87,8 @@ const combinations = [
     result: IDLE,
     consumes: [],
     message: { type: 'info', content: i18n.waterHarm[LANG] },
-    decrease: { health: 5 },
-    increase: { thirst: 5 }
+    decrease: { health: STAT_CHANGE_SM },
+    increase: { thirst: STAT_CHANGE_SM }
   },
   { combo: [12, 5], result: [7], consumes: [], message: null, decrease: null, increase: null },
   { combo: [12, 13], result: [14], consumes: [13], message: null, decrease: null, increase: null },
@@ -96,26 +97,26 @@ const combinations = [
     result: [14],
     consumes: [15],
     message: { type: 'info', content: i18n.waterHarm[LANG] },
-    decrease: { health: 5 },
-    increase: { thirst: 10 }
+    decrease: { health: STAT_CHANGE_SM },
+    increase: { thirst: STAT_CHANGE_MD }
   },
-  { combo: [12, 16], result: [30], consumes: [16], message: null, decrease: null, increase: { health: 10 } },
-  { combo: [12, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: 15 } },
+  { combo: [12, 16], result: [30], consumes: [16], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
+  { combo: [12, 17], result: [14], consumes: [17], message: null, decrease: null, increase: { thirst: STAT_CHANGE_LG } },
   { combo: [12, 20], result: [21], consumes: [20], message: null, decrease: null, increase: null },
-  { combo: [12, 23], result: IDLE, consumes: [23], message: null, decrease: null, increase: { health: 15 } },
+  { combo: [12, 23], result: IDLE, consumes: [23], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
   { combo: [12, 24], result: [25], consumes: [24], message: null, decrease: null, increase: null },
   { combo: [12, 26], result: [27, 28, 41], consumes: [26], message: null, decrease: null, increase: null },
-  { combo: [12, 40], result: IDLE, consumes: [40], message: null, decrease: null, increase: { health: 15 } },
+  { combo: [12, 40], result: IDLE, consumes: [40], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
   {
     combo: [12, 41],
     result: IDLE,
     consumes: [41],
     message: null,
-    decrease: { health: 10 },
+    decrease: { health: STAT_CHANGE_MD },
     increase: null,
     message: { type: 'error', content: i18n.rawMeat[LANG] }
   },
-  { combo: [12, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: 20 } },
+  { combo: [12, 42], result: IDLE, consumes: [42], message: null, decrease: null, increase: { health: STAT_CHANGE_LG } },
   { combo: [15, 31], result: [32, 14], consumes: [15, 31], message: null, decrease: null, increase: null },
   { combo: [21, 27], result: [29], consumes: [21, 27], message: null, decrease: null, increase: null }
 ]

@@ -6,6 +6,7 @@ import Modal from './components/modal/index.js'
 import { polyfill } from 'mobile-drag-drop'
 import i18n from './i18n.js'
 import { LANG } from './utils.js'
+import { LOW_THIRST_WARNING, STAT_CHANGE_SM } from './constants.js'
 
 window.addEventListener('load', () => {
   polyfill()
@@ -21,10 +22,10 @@ window.addEventListener('load', () => {
 function setInitialIntervals() {
   window.thirstIntervalId = setInterval(() => {
     const currentThirst = parseInt(document.getElementById('gem-thirst-offset').innerText)
-    if (currentThirst <= 15) {
+    if (currentThirst <= LOW_THIRST_WARNING) {
       Toaster.display(i18n.thirstDeath[LANG], 'error')
     }
-    Stats.decrease('thirst', 5)
+    Stats.decrease('thirst', STAT_CHANGE_SM)
   }, 12000)
 
   window.animalIntervalId = setInterval(() => {

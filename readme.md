@@ -26,6 +26,7 @@ ENJOY!
 * Use Typescript
 * Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
 * Make bull poop after certain seconds alive
+* Improve mobile UX/UI
 
 ### 2 CARDS COMBOS TO ADD:
 * Boiled Water + Leaf = Herbal Tea (+health +thirst, consumes both)
