@@ -1,9 +1,10 @@
 import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
 import i18n from '../../i18n.js'
-import { COMBOS_HISTORY_KEY, LANG, areArraysEqual } from '../../utils.js'
+import { areArraysEqual } from '../../utils.js'
+import { COMBOS_HISTORY_KEY, LANG } from '../../constants.js'
 import Stats from '../stats/index.js'
-import Toaster from '../toaster/index.js'
+import Toaster from '../toaster/index.js' 
 
 export default class Card {
   static addListeners(cardElement) {
@@ -36,11 +37,17 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
-  static create({ id, name, image, className }, boardId, increaseDiscoveries = true) {
+  static create({ id, name, image, className }, boardId, cardConfig = { increaseDiscoveries: true, isInteractive: true }) {
+    const { isInteractive, increaseDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
-    newCardElement.setAttribute('id', `card-${id}`)
-    newCardElement.setAttribute('draggable', 'true')
     newCardElement.classList.add('card', 'new-card')
+    if (isInteractive) {
+      newCardElement.setAttribute('id', `card-${id}`)
+      newCardElement.setAttribute('draggable', 'true')
+      this.addListeners(newCardElement)
+    } else {
+      newCardElement.classList.add('non-interactive-card')
+    }
     const newCardName = document.createElement('p')
     newCardName.innerText = name[LANG]
     newCardName.setAttribute('draggable', 'false')
@@ -53,8 +60,6 @@ export default class Card {
       newCardElement.classList.add(className)
     }
     newCardElement.appendChild(newCardImg)
-
-    this.addListeners(newCardElement)
     const board = document.getElementById(boardId)
     board.appendChild(newCardElement)
     if (increaseDiscoveries) {

@@ -1,5 +1,6 @@
 import i18n from '../../i18n.js'
-import { LANG, capitalize } from '../../utils.js'
+import { capitalize } from '../../utils.js'
+import { LANG } from '../../constants.js'
 
 export default class Gem {
   static create(color, rootId, id) {

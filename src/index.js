@@ -5,18 +5,16 @@ import Card from './components/card/index.js'
 import Modal from './components/modal/index.js'
 import { polyfill } from 'mobile-drag-drop'
 import i18n from './i18n.js'
-import { LANG } from './utils.js'
-import { LOW_THIRST_WARNING, STAT_CHANGE_SM } from './constants.js'
+import { LOW_THIRST_WARNING, STAT_CHANGE_SM, LANG } from './constants.js'
 
 window.addEventListener('load', () => {
   polyfill()
   Stats.initiate()
-  Card.create({ ...cardsData[0], className: 'person' }, 'person-board', false) //create Person
-  const initialCards = cardsData.filter(card => card.isInitial)
-  initialCards.forEach(card => Card.create(card, 'initial-board', false))
+  Card.create({ ...cardsData[0], className: 'person' }, 'person-board', { increaseDiscoveries: false, isInteractive: true }) //create Person
+  const initialCards = cardsData.filter(card => card.isInitial && !card.isPerson)
+  initialCards.forEach(card => Card.create(card, 'initial-board', { increaseDiscoveries: false, isInteractive: true }))
   setInitialIntervals()
   document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
-  document.getElementById('recipes-button').addEventListener('click', Modal.showRecipes)
 })
 
 function setInitialIntervals() {

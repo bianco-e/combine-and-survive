@@ -8,8 +8,3 @@ export function areArraysEqual(arr1, arr2) {
   const sortedArr2 = arr2.slice().sort()
   return !sortedArr1.some((n, idx) => n !== sortedArr2[idx])
 }
-
-export const LANG = (navigator.language || navigator.userLanguage).split('-')[0] || 'en'
-export const IDLE = 'IDLE'
-export const DISCOVERIES_HISTORY_KEY = 'discoveries-history'
-export const COMBOS_HISTORY_KEY = 'combos-history'

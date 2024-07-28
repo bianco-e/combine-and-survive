@@ -1,7 +1,6 @@
-import { IDLE, LANG } from './utils'
 import cardsData from './cards.js'
 import i18n from './i18n.js'
-import { STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM } from './constants.js'
+import { STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM, IDLE, LANG } from './constants.js'
 
 const combinations = [
   { combo: [1, 2], result: [13, 35], consumes: [], message: null, decrease: null, increase: null },

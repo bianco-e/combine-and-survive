@@ -19,10 +19,6 @@ export default {
     en: 'Raw Meat may harm you',
     es: 'La Carne Cruda puede dañarte'
   },
-  close: {
-    en: 'CLOSE',
-    es: 'CERRAR'
-  },
   discoveries: {
     en: 'Discoveries',
     es: 'Descubrimientos'
@@ -81,14 +77,28 @@ export default {
       es: '¡DISFRUTA!'
     }
   },
-  recipesModal: {
+  combinedCardsModal: {
     title: {
-      en: 'Combinations you have created:',
-      es: 'Combinaciones que has creado:'
+      en: 'Combined cards',
+      es: 'Cartas combinadas'
     },
     none: {
       en: 'None yet. Try some!',
       es: 'Ninguna. ¡Intenta alguna!'
-    }
+    },
+    switchModalContentButton: {
+      en: 'See cards to get',
+      es: 'Ver cartas por obtener'
+    },
+  },
+  cardsToGetModal: {
+    title: {
+      en: 'Cards to get',
+      es: 'Cartas por obtener'
+    },
+    switchModalContentButton: {
+      en: 'See combined cards',
+      es: 'Ver cartas combinadas'
+    },
   }
 }

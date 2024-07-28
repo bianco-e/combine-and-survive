@@ -6,7 +6,8 @@ export default [
     },
     image: '/images/person.png',
     id: 1,
-    isPerson: true
+    isPerson: true,
+    isInitial: true
   },
   {
     name: {

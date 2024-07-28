@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url('/images/modal-bg.jpg');
+  background-image: url('/images/board-bg.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@ button {
   align-items: center;
   background: rgb(20, 14, 0);
   border: none;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 2px 1px rgb(200, 140, 0.05);
   color: #efefef;
   cursor: pointer;
   display: flex;
@@ -32,6 +32,17 @@ button:hover {
   box-shadow: 0 0 5px 1px rgb(200, 140, 0.15);
 }
 
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
 
 .stats-container {
   align-items: center;
@@ -82,6 +93,10 @@ button:hover {
   width: 105px;
 }
 
+.card.non-interactive-card {
+  cursor: default;
+}
+
 .card:hover {
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
 }
@@ -91,6 +106,7 @@ button:hover {
 }
 
 .card p {
+  color: #000;
   font-size: 10px;
   margin: 0 0 7px;
   text-transform: uppercase;
@@ -104,7 +120,7 @@ button:hover {
 
 .toaster {
   align-items: center;
-  top: 10px;
+  bottom: 80px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
   display: none;
   justify-content: center;
@@ -141,22 +157,19 @@ button:hover {
 }
 
 .modal {
-  background-image: url('/images/bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: rgba(25, 25, 25, 0.85);
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.25);
   border: 0;
   color: #efefef;
   display: none;
   flex-direction: column;
   font-size: 18px;
-  max-height: 80vh;
+  max-height: 75vh;
   overflow-y: auto;
   position: absolute;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   top: 50%;
   transform: translateY(-50%);
+  width: 75%;
   z-index: 10;
 }
 
@@ -166,6 +179,27 @@ button:hover {
 
 .modal button {
   margin-top: 15px;
+}
+
+.modal .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal .modal-btn {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 1px rgba(200, 140, 0, 0.75);
+}
+
+.modal .close-btn {
+  position: absolute;
+  top: -15px;
+  right: 0;
 }
 
 .show {
@@ -192,23 +226,39 @@ button:hover {
 }
 
 @media (max-width: 729px) {
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+
   .modal, .toaster {
     width: 90%;
   }
 
   .content-wrapper {
-    padding: 0 5px 80px;
+    padding: 0 22px 80px;
   }
 
   .stats-container {
     height: 75px;
   }
 
+  div#discoveries-board {
+    overflow-y: auto;
+  }
+
   .card {
-    height: 80px;
+    height: 70px;
     margin: 5px;
-    padding: 5px;
-    width: 75px;
+    padding: 3px;
+    width: 72px;
   }
   
   .card p {
@@ -217,8 +267,8 @@ button:hover {
   }
   
   .card img {
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
   }
 
   .instructions-button {
