@@ -3,22 +3,29 @@ import i18n from '../../i18n'
 import cards from '../../cards'
 import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG } from '../../constants'
 import Card from '../card'
+import { startNewGame } from '../../utils'
 
 export default class Modal {
-  static render(modalContent) {
+  static render(modalContent, closeButton = true) {
     const modal = document.getElementById('modal')
     const modalBase = `
       <center>
-        <button class='modal-btn close-btn' id='close-modal'>x</button>
+        ${closeButton ? `<button class='modal-btn close-btn' id='close-modal'>x</button>` : ''}
         ${modalContent}
       </center>
     `
     modal.innerHTML = modalBase
-    document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('show'))
+    if (closeButton) {
+      document.getElementById('close-modal').addEventListener('click', this.close)
+    }
     modal.classList.add('show')
   }
 
-  static showInstructions() {
+  static close() {
+    document.getElementById('modal').classList.remove('show')
+  }
+
+  static showInstructions({ isInitialInstructions }) {
     const instructionsContent = `
       <h1>${i18n.howToPlay.title[LANG]}</h1>
       <h2>${i18n.howToPlay.line1[LANG]}</h2>
@@ -26,8 +33,15 @@ export default class Modal {
       <h2>${i18n.howToPlay.line3[LANG]}</h2>
       <h2>${i18n.howToPlay.line4[LANG]}</h2>
       <h2>${i18n.howToPlay.line5[LANG]}</h2>
+      ${isInitialInstructions ? `<button id='play-button'>${i18n.howToPlay.play[LANG]}</button>` : ''}
     `
-    Modal.render(instructionsContent)
+    Modal.render(instructionsContent, !isInitialInstructions)
+    if (isInitialInstructions) {
+      document.getElementById('play-button').addEventListener('click', () => {
+        startNewGame()
+        this.close()
+      })
+    }
   }
 
   static showCombinedCards() {

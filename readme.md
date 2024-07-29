@@ -14,7 +14,6 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
-* Improve how to play instructions and add them as a modal at the beginning
 * Add extra visual effect when health decreases
 * Optimize card images
 * Use Typescript

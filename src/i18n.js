@@ -163,6 +163,10 @@ export default {
     line5: {
       en: 'ENJOY!',
       es: '¡DISFRUTA!'
+    },
+    play: {
+      en: 'Play',
+      es: 'Jugar'
     }
   },
   combinedCardsModal: {
