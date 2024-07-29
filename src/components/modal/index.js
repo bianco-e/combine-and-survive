@@ -5,6 +5,14 @@ import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG } from '../../constants'
 import Card from '../card'
 import { startNewGame } from '../../utils'
 
+function checksClickOutside (e) {
+  const modal = document.getElementById('modal')
+  const clickOutsideModal = !modal.contains(e.target)
+  if (clickOutsideModal) {
+    Modal.close()
+  }
+}
+
 export default class Modal {
   static render(modalContent, closeButton = true) {
     const modal = document.getElementById('modal')
@@ -15,14 +23,16 @@ export default class Modal {
       </center>
     `
     modal.innerHTML = modalBase
+    modal.classList.add('show')
     if (closeButton) {
       document.getElementById('close-modal').addEventListener('click', this.close)
+      document.addEventListener('mousedown', checksClickOutside)
     }
-    modal.classList.add('show')
   }
 
   static close() {
     document.getElementById('modal').classList.remove('show')
+    document.removeEventListener('mousedown', checksClickOutside)
   }
 
   static showInstructions({ isInitialInstructions }) {

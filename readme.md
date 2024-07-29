@@ -17,7 +17,6 @@ ENJOY!
 * Add extra visual effect when health decreases
 * Optimize card images
 * Use Typescript
-* Close modals when clicking outside
 * Create css variables to manage sizes and colors
 
 ### IDEAS:
