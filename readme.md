@@ -19,9 +19,6 @@ ENJOY!
 * Use Typescript
 * Create css variables to manage sizes and colors
 
-### 2 CARDS COMBOS TO ADD:
-* Bird + Rock = Feather (consumes Bird)
-
 ### IDEAS:
 * Add natural phenomens like rain, wind, flood that affect the cards in the board
 * Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
