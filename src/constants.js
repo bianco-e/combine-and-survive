@@ -15,5 +15,6 @@ export const BADGES = {
   2: 'fisherman',
   3: 'baker',
   4: 'herbalist',
-  5: 'hunter'
+  5: 'builder',
+  6: 'writer'
 }

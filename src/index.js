@@ -6,6 +6,7 @@ import Modal from './components/modal/index.js'
 import { polyfill } from 'mobile-drag-drop'
 import i18n from './i18n.js'
 import { LOW_THIRST_WARNING, STAT_CHANGE_SM, LANG } from './constants.js'
+import { addWildAnimalToBoard } from './utils.js'
 
 window.addEventListener('load', () => {
   polyfill()
@@ -28,11 +29,7 @@ function setInitialIntervals() {
   }, 13000)
 
   window.animalIntervalId = setInterval(() => {
-    const animalCard = cardsData.find(card => card.isAnimal)
-    const animalCardElement = document.getElementById(`card-${animalCard.id}`)
-    const currentDiscoveries = document.querySelectorAll('#discoveries-board div.card').length
-    if (Boolean(animalCardElement) || !currentDiscoveries) return
-    Card.create(animalCard, 'discoveries-board')
-    Toaster.display(i18n.wildBull[LANG], 'success')
-  }, 25000)
+    const BULL_CARD_ID = 26
+    addWildAnimalToBoard(BULL_CARD_ID, i18n.wildBull[LANG])
+  }, 26000)
 }

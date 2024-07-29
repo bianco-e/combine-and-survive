@@ -1,6 +1,7 @@
 import cardsData from './cards.js'
 import i18n from './i18n.js'
 import { STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM, IDLE, LANG, STAT_CHANGE_XL } from './constants.js'
+import { addWildAnimalToBoard } from './utils.js'
 
 const combinations = [
   { combo: [1, 2], result: [13, 35], consumes: [], message: null, decrease: null, increase: null },
@@ -64,7 +65,39 @@ const combinations = [
     decrease: null,
     increase: { health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
   },
-  { combo: [1, 47], result: IDLE, consumes: [47], message: null, decrease: null, increase: { health: STAT_CHANGE_MD } },
+  {
+    combo: [1, 47],
+    result: [53],
+    consumes: [47],
+    message: null,
+    decrease: null,
+    increase: { health: STAT_CHANGE_MD },
+    callback: () => {
+      setTimeout(() => {
+        const CHICKEN_CARD_ID = 54
+        const BREAD_CRUMBS_ID = 53
+        addWildAnimalToBoard(CHICKEN_CARD_ID, i18n.wildChicken[LANG], BREAD_CRUMBS_ID)
+      }, 5000)
+    }
+  },
+  {
+    combo: [1, 56],
+    result: IDLE,
+    consumes: [56],
+    message: null,
+    decrease: { health: STAT_CHANGE_MD },
+    increase: null,
+    message: { type: 'error', content: i18n.rawChicken[LANG] }
+  },
+  {
+    combo: [1, 57],
+    result: IDLE,
+    consumes: [57],
+    message: null,
+    decrease: null,
+    increase: { health: STAT_CHANGE_LG },
+    message: null
+  },
   { combo: [2, 15], result: [14, 24], consumes: [15], message: null, decrease: null, increase: null },
   { combo: [2, 30], result: [31], consumes: [30], message: null, decrease: null, increase: null },
   { combo: [3, 10], result: [19, 36], consumes: [], message: null, decrease: null, increase: null },
@@ -104,6 +137,7 @@ const combinations = [
     increase: { thirst: STAT_CHANGE_SM }
   },
   { combo: [12, 5], result: [7], consumes: [], message: null, decrease: null, increase: null },
+  { combo: [12, 6], result: [49], consumes: [6], message: null, decrease: null, increase: null },
   { combo: [12, 13], result: [14], consumes: [13], message: null, decrease: null, increase: null },
   {
     combo: [12, 15],
@@ -145,8 +179,7 @@ const combinations = [
     consumes: [26],
     message: null,
     decrease: null,
-    increase: null,
-    badge: 5
+    increase: null
   },
   {
     combo: [12, 40],
@@ -183,11 +216,44 @@ const combinations = [
   },
   {
     combo: [12, 47],
-    result: IDLE,
+    result: [53],
     consumes: [47],
     message: null,
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: { health: STAT_CHANGE_MD },
+    callback: () => {
+      setTimeout(() => {
+        const CHICKEN_CARD_ID = 54
+        const BREAD_CRUMBS_ID = 53
+        addWildAnimalToBoard(CHICKEN_CARD_ID, i18n.wildChicken[LANG], BREAD_CRUMBS_ID)
+      }, 5000)
+    }
+  },
+  {
+    combo: [12, 54],
+    result: [55, 56],
+    consumes: [54],
+    message: null,
+    decrease: null,
+    increase: null
+  },
+  {
+    combo: [12, 56],
+    result: IDLE,
+    consumes: [56],
+    message: null,
+    decrease: { health: STAT_CHANGE_MD },
+    increase: null,
+    message: { type: 'error', content: i18n.rawChicken[LANG] }
+  },
+  {
+    combo: [12, 57],
+    result: IDLE,
+    consumes: [57],
+    message: null,
+    decrease: null,
+    increase: { health: STAT_CHANGE_LG },
+    message: null
   },
   { combo: [15, 31], result: [32, 14], consumes: [15, 31], message: null, decrease: null, increase: null },
   { combo: [21, 27], result: [29], consumes: [21, 27], message: null, decrease: null, increase: null },
@@ -221,7 +287,20 @@ const combinations = [
     decrease: null,
     increase: null,
     badge: 2
-  }
+  },
+  { combo: [19, 21], result: [50], consumes: [19, 21], message: null, decrease: null, increase: null },
+  { combo: [25, 49], result: [51], consumes: [25, 49], message: null, decrease: null, increase: null, badge: 5 },
+  {
+    combo: [18, 15],
+    result: [52, 14],
+    consumes: [18, 15],
+    message: null,
+    decrease: null,
+    increase: null
+  },
+  { combo: [9, 56], result: [57], consumes: [56], message: null, decrease: null, increase: null },
+  { combo: [50, 54], result: [58], consumes: IDLE, message: null, decrease: null, increase: null },
+  { combo: [52, 55], result: [59], consumes: [52, 55], message: null, decrease: null, increase: null, badge: 6 }
 ]
 
 export function seeCurrentCombinations(combos = combinations) {

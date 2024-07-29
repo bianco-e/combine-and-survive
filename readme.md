@@ -14,6 +14,7 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
+* Improve how to play instructions and add them as a modal at the beginning
 * Add extra visual effect when health decreases
 * Optimize card images
 * Use Typescript
@@ -21,6 +22,7 @@ ENJOY!
 * Create css variables to manage sizes and colors
 
 ### IDEAS:
+* Add natural phenomens like rain, wind, flood that affect the cards in the board
 * Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
 * Make bull poop after certain seconds alive
 * Add wild Bird appearing after X secs Bread/Worm is crafted and eats it

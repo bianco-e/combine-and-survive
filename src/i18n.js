@@ -23,8 +23,8 @@ export default {
           es: 'Hachero'
         },
         msg: {
-          en: 'You are an Axeman now',
-          es: 'Ahora eres un Hachero'
+          en: 'You are an Axeman now. You will be able to easily kill wild animals',
+          es: 'Ahora eres un Hachero. Podrás matar animales salvajes con facilidad'
         }
       },
       fisherman: {
@@ -53,18 +53,28 @@ export default {
           es: 'Herbolario'
         },
         msg: {
-          en: 'You are a Herbalist now',
-          es: 'Ahora eres un Herbolario'
+          en: 'You are a Herbalist now. Teas not just quench your thirst but also heal you',
+          es: 'Ahora eres un Herbolario. Los tes no solo calman tu sed, tambien te curan'
         }
       },
-      hunter: {
+      builder: {
         name: {
-          en: 'Hunter',
-          es: 'Cazador'
+          en: 'Builder',
+          es: 'Constructor'
         },
         msg: {
-          en: 'You are a Hunter now',
-          es: 'Ahora eres un Cazador'
+          en: 'You are a Builder now',
+          es: 'Ahora eres un Constructor'
+        }
+      },
+      writer: {
+        name: {
+          en: 'Writer',
+          es: 'Escritor'
+        },
+        msg: {
+          en: 'You are a Writer now',
+          es: 'Ahora eres un Escritor'
         }
       }
     }
@@ -80,6 +90,10 @@ export default {
   rawMeat: {
     en: 'Raw Meat may harm you',
     es: 'La Carne Cruda puede dañarte'
+  },
+  rawChicken: {
+    en: 'Raw Chicken may harm you',
+    es: 'El pollo crudo puede dañarte'
   },
   discoveries: {
     en: 'Discoveries',
@@ -112,6 +126,10 @@ export default {
   wildBull: {
     en: 'A wild bull has just appeared',
     es: 'Ha aparecido un toro salvaje'
+  },
+  wildChicken: {
+    en: 'A hungry chicken just appeared and ate your bread crumbs',
+    es: 'Ha aparecido una gallina hambrienta y se comió tus migas de pan'
   },
   wonMsg: {
     en: 'You won!',

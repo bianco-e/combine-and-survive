@@ -391,5 +391,94 @@ export default [
     },
     id: 48,
     image: '/images/fishing-rod-bait.png'
+  },
+  {
+    name: {
+      en: 'Wooden planks',
+      es: 'Planchas de madera'
+    },
+    id: 49,
+    image: '/images/wooden-planks.png'
+  },
+  {
+    name: {
+      en: 'Basket',
+      es: 'Canasta'
+    },
+    id: 50,
+    image: '/images/basket.webp'
+  },
+  {
+    name: {
+      en: 'Hut',
+      es: 'Choza'
+    },
+    id: 51,
+    image: '/images/hut.png'
+  },
+  {
+    name: {
+      en: 'Ink',
+      es: 'Tinta'
+    },
+    id: 52,
+    image: '/images/ink.png'
+  },
+  {
+    name: {
+      en: 'Bread crumbs',
+      es: 'Migas de pan'
+    },
+    id: 53,
+    image: '/images/bread-crumbs.png'
+  },
+  {
+    name: {
+      en: 'Chicken',
+      es: 'Gallina'
+    },
+    id: 54,
+    isAnimal: true,
+    image: '/images/chicken.png'
+  },
+  {
+    name: {
+      en: 'Feather',
+      es: 'Pluma'
+    },
+    id: 55,
+    image: '/images/feather.webp'
+  },
+  {
+    name: {
+      en: 'Raw chicken',
+      es: 'Pollo crudo'
+    },
+    id: 56,
+    image: '/images/raw-chicken.png'
+  },
+  {
+    name: {
+      en: 'Cooked chicken',
+      es: 'Pollo cocido'
+    },
+    id: 57,
+    image: '/images/cooked-chicken.webp'
+  },
+  {
+    name: {
+      en: 'Eggs',
+      es: 'Huevos'
+    },
+    id: 58,
+    image: '/images/eggs.webp'
+  },
+  {
+    name: {
+      en: 'Quill',
+      es: 'Pluma de escribir'
+    },
+    id: 59,
+    image: '/images/quill.png'
   }
 ]

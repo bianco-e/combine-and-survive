@@ -38,15 +38,6 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
-  static renderEquippableIcon(newCardElement) {
-    const equippableIcon = document.createElement('img')
-    equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
-    equippableIcon.setAttribute('alt', i18n.equippableCard[LANG])
-    equippableIcon.title = i18n.equippableCard[LANG]
-    equippableIcon.classList.add('equippable-icon')
-    newCardElement.appendChild(equippableIcon)
-  }
-
   static create({ id, name, image, className, isEquippable }, boardId, cardConfig = { increaseDiscoveries: true, isInteractive: true }) {
     const { isInteractive, increaseDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
@@ -69,7 +60,7 @@ export default class Card {
     newCardImg.setAttribute('draggable', 'false')
 
     if (isEquippable) {
-      this.renderEquippableIcon(newCardElement)
+      renderEquippableIcon(newCardElement)
     }
     if (className) {
       newCardElement.classList.add(className)
@@ -84,6 +75,15 @@ export default class Card {
       newCardElement.classList.remove('new-card')
     }, 300)
   }
+}
+
+function renderEquippableIcon(newCardElement) {
+  const equippableIcon = document.createElement('img')
+  equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
+  equippableIcon.setAttribute('alt', i18n.equippableCard[LANG])
+  equippableIcon.title = i18n.equippableCard[LANG]
+  equippableIcon.classList.add('equippable-icon')
+  newCardElement.appendChild(equippableIcon)
 }
 
 function extractNumberFromId(id) {
@@ -153,6 +153,9 @@ function onDrop(e, draggedId) {
           : combosHistory.concat({ combo: combinedIds, result: combination.result })
         sessionStorage.setItem(COMBOS_HISTORY_KEY, JSON.stringify(newCombosHistory))
         Card.create(newCard, 'discoveries-board')
+      }
+      if (combination.callback) {
+        combination.callback()
       }
       return acc
     }
