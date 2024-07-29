@@ -19,18 +19,15 @@ ENJOY!
 * Use Typescript
 * Create css variables to manage sizes and colors
 
+### 2 CARDS COMBOS TO ADD:
+* Bird + Rock = Feather (consumes Bird)
+
 ### IDEAS:
 * Add natural phenomens like rain, wind, flood that affect the cards in the board
 * Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
 * Make bull poop after certain seconds alive
-* Add wild Bird appearing after X secs Bread/Worm is crafted and eats it
 * Combine more than 2 cards (combine field on bottom bar)
 * Add person inventory to equip clothes/weapons
 
-### 2 CARDS COMBOS TO ADD:
-* Bird + Rock = Feather (consumes Bird)
-
 ### +2 CARDS COMBOS TO ADD:
-* Brick + Mud + Stick + leaf = hut (consumes all)
 * Flour + Water + Apple = Apple Pie (consumes all)
-* Stick + Leaf + Cordage = Basket (consumes all)
