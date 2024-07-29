@@ -1,8 +1,10 @@
+@import './root.css';
+
 .modal {
   background: rgba(25, 25, 25, 0.85);
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.25);
   border: 0;
-  color: #efefef;
+  color: var(--not-white);
   display: none;
   flex-direction: column;
   font-size: 18px;
@@ -45,7 +47,7 @@
 }
 
 .modal .completed-badge {
-  color: rgb(50, 140, 50);
+  color: var(--success-green-dark);
   text-decoration: line-through;
 }
 

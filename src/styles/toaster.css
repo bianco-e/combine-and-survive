@@ -1,3 +1,5 @@
+@import './root.css';
+
 .toaster {
   align-items: center;
   bottom: 80px;
@@ -14,26 +16,26 @@
 
 .toaster-error {
   display: flex;
-  background: rgb(230, 2, 2);
-  border: 1px solid rgb(90, 2, 2);
+  background: var(--error-red);
+  border: 1px solid var(--error-red-dark);
 }
 
 .toaster-info {
   display: flex;
-  background: #ededed;
-  border: 1px solid navy;
+  background: var(--not-white);
+  border: 1px solid var(--info-blue);
 }
 
 .toaster-warning {
   display: flex;
-  background: orange;
-  border: 1px solid rgb(200, 140, 0);
+  background: var(--warning-orange);
+  border: 1px solid var(--warning-orange-dark);
 }
 
 .toaster-success {
   display: flex;
-  background: limegreen;
-  border: 1px solid rgb(50, 140, 50);
+  background: var(--success-green);
+  border: 1px solid var(--success-green-dark);
 }
 
 @media (max-width: 729px) {

@@ -1,7 +1,7 @@
 .card {
   align-items: center;
-  background: #fff;
-  border: 1px solid #c7c7c7;
+  background: var(--white);
+  border: 1px solid var(--gray);
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.075);
   cursor: grab;
   display: flex;
@@ -27,7 +27,7 @@
 }
 
 .card p {
-  color: #000;
+  color: var(--not-black);
   display: block;
   font-size: 10px;
   margin: 0 0 7px;
