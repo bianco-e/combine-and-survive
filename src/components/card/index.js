@@ -2,7 +2,7 @@ import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
 import i18n from '../../i18n.js'
 import { areArraysEqual } from '../../utils.js'
-import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG } from '../../constants.js'
+import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG, IDLE } from '../../constants.js'
 import Stats from '../stats/index.js'
 import Toaster from '../toaster/index.js' 
 import Modal from '../modal/index.js'
@@ -25,7 +25,7 @@ export default class Card {
     if (combination.decrease) {
       Object.entries(combination.decrease).forEach(([stat, amount]) => Stats.decrease(stat, amount))
     }
-    if (combination.consumes.length) {
+    if (combination.consumes !== IDLE && Boolean(combination.consumes.length)) {
       combination.consumes.forEach(consumed => {
         this.remove(consumed, 'discoveries-board')
       })
