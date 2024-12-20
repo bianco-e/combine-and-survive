@@ -11,4 +11,66 @@
   --warning-orange-dark: #c88c00;
   --success-green: limegreen;
   --success-green-dark: #328c32;
+
+  --gap-regular: 10px;
+}
+
+* {
+  border-radius: 1px;
+  box-sizing: border-box;
+  font-family: 'IM Fell DW Pica SC', serif;
+}
+
+body {
+  background-image: url('/images/board-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  min-height: 100vh;
+}
+
+button {
+  align-items: center;
+  background: var(--black);
+  border: none;
+  box-shadow: 0 0 2px 1px rgb(200, 140, 0.05);
+  color: var(--not-white);
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: var(--gap-regular) 15px;
+  transition: all 0.15 ease;
+}
+
+button:hover {
+  background: var(--not-black);
+  box-shadow: 0 0 5px 1px rgb(200, 140, 0.15);
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+@media (max-width: 729px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
 }

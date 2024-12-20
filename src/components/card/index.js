@@ -47,6 +47,7 @@ export default class Card {
       newCardElement.setAttribute('draggable', 'true')
       this.addListeners(newCardElement)
     } else {
+      newCardElement.setAttribute('non-interactive-id', `card-${id}`)
       newCardElement.classList.add('non-interactive-card')
     }
     const newCardName = document.createElement('p')
@@ -101,6 +102,7 @@ function updatePerson(newPerson) {
   personCardElement.setAttribute('id', `card-${newPerson.id}`)
   const personName = personCardElement.querySelector('p')
   personName.innerText = newPerson.name[LANG]
+  personName.title = newPerson.name[LANG]
   const personImage = personCardElement.querySelector('img')
   personImage.setAttribute('alt', newPerson.name[LANG])
   personImage.setAttribute('src', newPerson.image)

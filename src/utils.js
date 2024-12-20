@@ -41,6 +41,30 @@ export const startNewGame = () => {
   document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
 }
 
+export const setInitialBoard = () => {
+  const initialBoard = `
+    <div id="board-left-top-container" class="board-buttons-container discoveries"></div>
+
+    <div id="board-right-top-container" class="board-buttons-container badges-instructions">
+      <button class="board-button" id="badges-button">🏅</button>
+      <button class="board-button" id="instructions-button">❔</button>
+    </div>
+
+    <div class="content-wrapper">
+      <div id="person-board" class="board"></div>
+      <div id="initial-board" class="board"></div>
+      <div id="discoveries-board" class="board"></div>
+    </div>
+
+    <div id="toaster" class="toaster"></div>
+    <dialog id="modal" class="modal"></dialog>
+
+    <div id="stats" class="stats-container"></div>
+    <script src="./index.js" type="module"></script>
+  `
+  document.body.innerHTML = initialBoard
+}
+
 function setInitialIntervals() {
   window.thirstIntervalId = setInterval(() => {
     const currentThirst = parseInt(document.getElementById('gem-thirst-offset').innerText)

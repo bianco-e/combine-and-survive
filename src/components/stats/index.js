@@ -38,16 +38,15 @@ export default class Stats {
   }
 
   static initiate() {
-    const statsContainer = document.getElementById('stats')
+    const boardLeftTopContainer = document.getElementById('board-left-top-container')
     const discoveriesButton = document.createElement('button')
     sessionStorage.clear(DISCOVERIES_HISTORY_KEY)
     sessionStorage.clear(COMBOS_HISTORY_KEY)
     sessionStorage.clear(BADGES_KEY)
-
-    Gem.create('#991212', 'stats', 'health')
     discoveriesButton.innerHTML = `📜 &nbsp; <span id="current-discoveries">0</span>/<span>${TOTAL_DISCOVERIES}</span>`
     discoveriesButton.addEventListener('click', Modal.showCombinedCards)
-    statsContainer.appendChild(discoveriesButton)
+    boardLeftTopContainer.appendChild(discoveriesButton)
+    Gem.create('#991212', 'stats', 'health')
     Gem.create('#00FFFF', 'stats', 'thirst')
   }
 }

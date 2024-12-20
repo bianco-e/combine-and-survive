@@ -4,7 +4,7 @@ export default [
       en: 'Person',
       es: 'Persona'
     },
-    image: '/images/person.png',
+    image: '/images/person.webp',
     id: 1,
     isPerson: true,
     isInitial: true
@@ -100,7 +100,7 @@ export default [
       es: 'Hachero'
     },
     id: 12,
-    image: '/images/axeman.png',
+    image: '/images/person_axe.webp',
     isPerson: true
   },
   {
@@ -238,7 +238,8 @@ export default [
       es: 'Ropa'
     },
     id: 29,
-    image: '/images/clothes.png'
+    image: '/images/clothes.png',
+    isEquippable: true
   },
   {
     name: {
@@ -480,5 +481,38 @@ export default [
     },
     id: 59,
     image: '/images/quill.png'
-  }
+  },
+  {
+    name: {
+      en: 'Dressed axeman',
+      es: 'Hachero vestido'
+    },
+    id: 60,
+    image: '/images/person_axe_clothes.webp',
+    isPerson: true
+  },
+  {
+    name: {
+      en: 'Brush',
+      es: 'Cepillo'
+    },
+    id: 61,
+    image: '/images/brush.png',
+  },
+  {
+    name: {
+      en: 'Fish spines',
+      es: 'Espinas de pez'
+    },
+    id: 62,
+    image: '/images/fish-skeleton.png',
+  },
+  {
+    name: {
+      en: 'Needle + thread',
+      es: 'Aguja + hilo'
+    },
+    id: 63,
+    image: '/images/needle-thread.png',
+  },
 ]

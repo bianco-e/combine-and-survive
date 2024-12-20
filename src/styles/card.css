@@ -1,3 +1,5 @@
+@import './root.css';
+
 .card {
   align-items: center;
   background: var(--white);
@@ -8,10 +10,14 @@
   flex-direction: column;
   height: 105px;
   margin: 10px 20px;
-  padding: 10px;
+  padding: var(--gap-regular);
   position: relative;
   transition: all 0.2s ease;
   width: 105px;
+}
+
+.card.owned-card {
+  opacity: 0.4;
 }
 
 .card.non-interactive-card {

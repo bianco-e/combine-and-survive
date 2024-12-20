@@ -3,52 +3,6 @@
 @import './toaster.css';
 @import './card.css';
 
-* {
-  border-radius: 1px;
-  box-sizing: border-box;
-  font-family: 'IM Fell DW Pica SC', serif;
-}
-
-body {
-  background-image: url('/images/board-bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: 0;
-  min-height: 100vh;
-}
-
-button {
-  align-items: center;
-  background: var(--black);
-  border: none;
-  box-shadow: 0 0 2px 1px rgb(200, 140, 0.05);
-  color: var(--not-white);
-  cursor: pointer;
-  display: flex;
-  font-size: 16px;
-  justify-content: center;
-  padding: 10px 15px;
-  transition: all 0.15 ease;
-}
-
-button:hover {
-  background: var(--not-black);
-  box-shadow: 0 0 5px 1px rgb(200, 140, 0.15);
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 20px;
-}
-
 .stats-container {
   align-items: center;
   background-image: url('/images/stats-bg.jpg');
@@ -69,7 +23,7 @@ h3 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 0 10px 90px;
+  padding: 0 var(--gap-regular) 90px;
   position: relative;
   width: 100%;
 }
@@ -87,13 +41,20 @@ h3 {
   display: flex;
 }
 
-.buttons-container {
+.board-buttons-container {
   align-items: center;
   display: flex;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  top: var(--gap-regular);
   z-index: 10;
+}
+
+.board-buttons-container.discoveries {
+  left: var(--gap-regular);
+}
+
+.board-buttons-container.badges-instructions {
+  right: var(--gap-regular);
 }
 
 .board-button {
@@ -102,23 +63,11 @@ h3 {
   display: flex;
   height: 40px;
   justify-content: center;
-  margin-left: 10px;
+  margin-left: var(--gap-regular);
   width: 40px;
 }
 
 @media (max-width: 729px) {
-  h1 {
-    font-size: 24px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-
   .content-wrapper {
     padding: 0 22px 80px;
   }

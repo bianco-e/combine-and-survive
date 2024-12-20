@@ -99,6 +99,10 @@ export default {
     en: 'Discoveries',
     es: 'Descubrimientos'
   },
+  cleanFloor: {
+    en: 'Cleaning the area will keep some animals away',
+    es: 'Limpiar el terreno mantiene a algunos animales alejados'
+  },
   equippableCard: {
     en: 'Equippable card',
     es: 'Carta equipable'
@@ -135,9 +139,21 @@ export default {
     en: 'You won!',
     es: '¡Ganaste!'
   },
+  wonParagraph: {
+    en: 'You already did all the possible combinations!',
+    es: '¡Ya has hecho todas las combinaciones posibles!'
+  },
   lostMsg: {
     en: 'You lost!',
     es: '¡Perdiste!'
+  },
+  lostParagraph: {
+    en: 'Next time you should pay more attention to your Health and Thirst!',
+    es: '¡La próxima vez tienes que tener mas cuidado con tu Vida y tu Sed!'
+  },
+  playAgain: {
+    en: 'Play again',
+    es: 'Jugar de nuevo'
   },
   howToPlay: {
     title: {
