@@ -5,7 +5,7 @@ import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY, LANG }
 import Card from '../card'
 import { setInitialBoard, startNewGame } from '../../utils'
 
-function checksClickOutside (e) {
+function checksClickOutside(e) {
   const modal = document.getElementById('modal')
   const clickOutsideModal = !modal.contains(e.target)
   if (clickOutsideModal) {
@@ -73,14 +73,18 @@ export default class Modal {
     `
     Modal.render(possibleCardsContent)
     document.getElementById('switch-modal-content').addEventListener('click', Modal.showCombinedCards)
-    cards
+    const sortedCards = cards
       .filter(card => !card.isInitial && !card.isPerson)
-      .forEach(card => Card.create(card, 'cards-to-get-board', { increaseDiscoveries: false, isInteractive: false }))
+      .sort((a, b) => a.name[LANG] > b.name[LANG])
+
+    sortedCards.forEach(card =>
+      Card.create(card, 'cards-to-get-board', { increaseDiscoveries: false, isInteractive: false })
+    )
     const discoveriesHistory = JSON.parse(sessionStorage.getItem(DISCOVERIES_HISTORY_KEY)) || []
     discoveriesHistory.forEach(discoveryId => {
       const cardInBoard = document.querySelector(`#cards-to-get-board [non-interactive-id=card-${discoveryId}]`)
       if (Boolean(cardInBoard)) {
-        cardInBoard.classList.add("owned-card")
+        cardInBoard.classList.add('owned-card')
       }
     })
   }
@@ -110,13 +114,16 @@ export default class Modal {
 
   //TODO: improve this
   static showWon() {
-    Modal.render(`
+    Modal.render(
+      `
       <div>
         <h1>${i18n.wonMsg[LANG]}</h1>
         <p>${i18n.wonParagraph[LANG]}</p>
         <button id='play-again'>${i18n.playAgain[LANG]}</button>
       </div>
-    `, false)
+    `,
+      false
+    )
     document.getElementById('play-again').addEventListener('click', () => {
       setInitialBoard()
       startNewGame()
@@ -125,13 +132,16 @@ export default class Modal {
 
   //TODO: improve this
   static showLost() {
-    Modal.render(`
+    Modal.render(
+      `
       <div>
         <h1>${i18n.lostMsg[LANG]}</h1>
         <p>${i18n.lostParagraph[LANG]}</p>
         <button id='play-again'>${i18n.playAgain[LANG]}</button>
       </div>
-    `, false)
+    `,
+      false
+    )
     document.getElementById('play-again').addEventListener('click', () => {
       setInitialBoard()
       startNewGame()

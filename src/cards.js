@@ -177,11 +177,11 @@ export default [
   },
   {
     name: {
-      en: 'Fishing Rod',
-      es: 'Caña de pescar'
+      en: 'Fishing Line',
+      es: 'Línea de pesca'
     },
     id: 22,
-    image: '/images/fishing-rod.png'
+    image: '/images/fishing-line.png'
   },
   {
     name: {
@@ -387,11 +387,11 @@ export default [
   },
   {
     name: {
-      en: 'Bait + Fishing Rod',
-      es: 'Carnada + Caña de pescar'
+      en: 'Bait + Fishing line',
+      es: 'Carnada + Línea de pesca'
     },
     id: 48,
-    image: '/images/fishing-rod-bait.png'
+    image: '/images/fishing-line-bait.png'
   },
   {
     name: {
@@ -497,15 +497,15 @@ export default [
       es: 'Cepillo'
     },
     id: 61,
-    image: '/images/brush.png',
+    image: '/images/brush.png'
   },
   {
     name: {
-      en: 'Fish spines',
-      es: 'Espinas de pez'
+      en: 'Fish spine',
+      es: 'Espina de pez'
     },
     id: 62,
-    image: '/images/fish-skeleton.png',
+    image: '/images/fish-skeleton.png'
   },
   {
     name: {
@@ -513,6 +513,22 @@ export default [
       es: 'Aguja + hilo'
     },
     id: 63,
-    image: '/images/needle-thread.png',
+    image: '/images/needle-thread.png'
   },
+  {
+    name: {
+      en: 'Tree thorn',
+      es: 'Espina de árbol'
+    },
+    id: 64,
+    image: '/images/tree-thorn.webp'
+  },
+  {
+    name: {
+      en: 'Rotten apple',
+      es: 'Manzana podrida'
+    },
+    id: 65,
+    image: '/images/rotten-apple.png'
+  }
 ]

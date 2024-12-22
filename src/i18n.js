@@ -95,6 +95,10 @@ export default {
     en: 'Raw Chicken may harm you',
     es: 'El pollo crudo puede dañarte'
   },
+  rottenFood: {
+    en: 'Eating rotten food may harm you',
+    es: 'La comida podrida puede dañarte'
+  },
   discoveries: {
     en: 'Discoveries',
     es: 'Descubrimientos'
