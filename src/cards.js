@@ -1,534 +1,362 @@
 export default [
   {
-    name: {
-      en: 'Person',
-      es: 'Persona'
-    },
-    image: '/images/person.webp',
+    key: 'person',
     id: 1,
-    isPerson: true,
-    isInitial: true
+    image: '/images/person.webp',
+    isInitial: true,
+    isPerson: true
   },
   {
-    name: {
-      en: 'Dirt',
-      es: 'Tierra'
-    },
+    key: 'dirt',
     id: 2,
     image: '/images/dirt.jpg',
-    isInitial: true
+    isInitial: true,
+    isSource: true
   },
   {
-    name: {
-      en: 'Tree',
-      es: 'Árbol'
-    },
+    key: 'tree',
     id: 3,
     image: '/images/tree.webp',
-    isInitial: true
+    isInitial: true,
+    isSource: true
   },
   {
-    name: {
-      en: 'River',
-      es: 'Río'
-    },
+    key: 'river',
     id: 4,
     image: '/images/river.png',
-    isInitial: true
+    isInitial: true,
+    isSource: true
   },
   {
-    name: {
-      en: 'Mountain',
-      es: 'Montaña'
-    },
+    key: 'mountain',
     id: 5,
     image: '/images/mountain.png',
-    isInitial: true
+    isInitial: true,
+    isSource: true
   },
   {
-    name: {
-      en: 'Log',
-      es: 'Tronco'
-    },
+    key: 'log',
     id: 6,
     image: '/images/log.webp'
   },
   {
-    name: {
-      en: 'Rock',
-      es: 'Roca'
-    },
+    key: 'rock',
     id: 7,
     image: '/images/rock.png'
   },
   {
-    name: {
-      en: 'Stick',
-      es: 'Palo'
-    },
+    key: 'stick',
     id: 8,
     image: '/images/stick.png'
   },
   {
-    name: {
-      en: 'Campfire',
-      es: 'Fogata'
-    },
+    key: 'campfire',
     id: 9,
     image: '/images/campfire.png'
   },
   {
-    name: {
-      en: 'Sharpen Rock',
-      es: 'Roca afilada'
-    },
+    key: 'sharpen-rock',
     id: 10,
     image: '/images/sharpen-rock.jpeg'
   },
   {
-    name: {
-      en: 'Axe',
-      es: 'Hacha'
-    },
-    isEquippable: true,
+    key: 'axe',
     id: 11,
+    isEquippable: true,
     image: '/images/axe.png'
   },
   {
-    name: {
-      en: 'Axeman',
-      es: 'Hachero'
-    },
+    key: 'axeman',
     id: 12,
     image: '/images/person_axe.webp',
     isPerson: true
   },
   {
-    name: {
-      en: 'Clay',
-      es: 'Arcilla'
-    },
+    key: 'clay',
     id: 13,
     image: '/images/clay.jpeg'
   },
   {
-    name: {
-      en: 'Vessel',
-      es: 'Vasija'
-    },
+    key: 'vessel',
     id: 14,
     image: '/images/vessel.webp'
   },
   {
-    name: {
-      en: 'Water',
-      es: 'Agua'
-    },
+    key: 'water',
     id: 15,
     image: '/images/water.png'
   },
   {
-    name: {
-      en: 'Apple',
-      es: 'Manzana'
-    },
+    key: 'apple',
     id: 16,
     image: '/images/apple.png'
   },
   {
-    name: {
-      en: 'Boiled Water',
-      es: 'Agua hervida'
-    },
+    key: 'boiled-water',
     id: 17,
     image: '/images/boiled-water.png'
   },
   {
-    name: {
-      en: 'Coal',
-      es: 'Carbón'
-    },
+    key: 'coal',
     id: 18,
     image: '/images/coal.png'
   },
   {
-    name: {
-      en: 'Leaf',
-      es: 'Hoja'
-    },
+    key: 'leaf',
     id: 19,
     image: '/images/leaf.png'
   },
   {
-    name: {
-      en: 'Leaf Fibers',
-      es: 'Fibras de hoja'
-    },
+    key: 'leaf-fibers',
     id: 20,
     image: '/images/leaf-fibers.png'
   },
   {
-    name: {
-      en: 'Cordage',
-      es: 'Cuerda'
-    },
+    key: 'cordage',
     id: 21,
     image: '/images/cordage.webp'
   },
   {
-    name: {
-      en: 'Fishing Line',
-      es: 'Línea de pesca'
-    },
+    key: 'fishing-line',
     id: 22,
     image: '/images/fishing-line.png'
   },
   {
-    name: {
-      en: 'Fish',
-      es: 'Pescado'
-    },
+    key: 'fish',
     id: 23,
     image: '/images/fish.png'
   },
   {
-    name: {
-      en: 'Mud',
-      es: 'Barro'
-    },
+    key: 'mud',
     id: 24,
     image: '/images/mud.png'
   },
   {
-    name: {
-      en: 'Adobe Brick',
-      es: 'Ladrillo'
-    },
+    key: 'adobe-brick',
     id: 25,
     image: '/images/adobe-brick.jpg'
   },
   {
-    name: {
-      en: 'Bull',
-      es: 'Toro'
-    },
+    key: 'bull',
     id: 26,
-    isAnimal: true,
     image: '/images/bull.webp'
   },
   {
-    name: {
-      en: 'Leather',
-      es: 'Cuero'
-    },
+    key: 'leather',
     id: 27,
     image: '/images/leather.png'
   },
   {
-    name: {
-      en: 'Bone',
-      es: 'Hueso'
-    },
+    key: 'bone',
     id: 28,
     image: '/images/bone.png'
   },
   {
-    name: {
-      en: 'Clothes',
-      es: 'Ropa'
-    },
+    key: 'clothes',
     id: 29,
-    image: '/images/clothes.png',
-    isEquippable: true
+    isEquippable: true,
+    image: '/images/clothes.png'
   },
   {
-    name: {
-      en: 'Seeds',
-      es: 'Semillas'
-    },
+    key: 'seeds',
     id: 30,
     image: '/images/seeds.webp'
   },
   {
-    name: {
-      en: 'Sprout',
-      es: 'Brote'
-    },
+    key: 'sprout',
     id: 31,
     image: '/images/sprout.jpg'
   },
   {
-    name: {
-      en: 'Plant',
-      es: 'Planta'
-    },
+    key: 'plant',
     id: 32,
     image: '/images/plant.png'
   },
   {
-    name: {
-      en: 'Sand',
-      es: 'Arena'
-    },
+    key: 'sand',
     id: 33,
     image: '/images/sand.png'
   },
   {
-    name: {
-      en: 'Glass',
-      es: 'Vidrio'
-    },
+    key: 'glass',
     id: 34,
     image: '/images/glass.webp'
   },
   {
-    name: {
-      en: 'Worm',
-      es: 'Gusano'
-    },
+    key: 'worm',
     id: 35,
     image: '/images/worm.png'
   },
   {
-    name: {
-      en: 'Sap',
-      es: 'Savia'
-    },
+    key: 'sap',
     id: 36,
     image: '/images/sap.webp'
   },
   {
-    name: {
-      en: 'Bark',
-      es: 'Corteza'
-    },
+    key: 'bark',
     id: 37,
     image: '/images/bark.png'
   },
   {
-    name: {
-      en: 'Torch',
-      es: 'Antorcha'
-    },
+    key: 'torch',
     id: 38,
     image: '/images/torch.png'
   },
   {
-    name: {
-      en: 'Ashes',
-      es: 'Cenizas'
-    },
+    key: 'ashes',
     id: 39,
     image: '/images/ashes.webp'
   },
   {
-    name: {
-      en: 'Grilled Fish',
-      es: 'Pescado Asado'
-    },
+    key: 'grilled-fish',
     id: 40,
     image: '/images/grilled-fish.webp'
   },
   {
-    name: {
-      en: 'Raw Meat',
-      es: 'Carne Cruda'
-    },
+    key: 'raw-meat',
     id: 41,
     image: '/images/raw-meat.webp'
   },
   {
-    name: {
-      en: 'Cooked Meat',
-      es: 'Carne Cocida'
-    },
+    key: 'cooked-meat',
     id: 42,
     image: '/images/cooked-meat.png'
   },
   {
-    name: {
-      en: 'Herbal Tea',
-      es: 'Te Herbal'
-    },
+    key: 'herbal-tea',
     id: 43,
     image: '/images/herbal-tea.png'
   },
   {
-    name: {
-      en: 'Mortar',
-      es: 'Mortero'
-    },
+    key: 'mortar',
     id: 44,
     image: '/images/mortar.png'
   },
   {
-    name: {
-      en: 'Flour',
-      es: 'Harina'
-    },
+    key: 'flour',
     id: 45,
     image: '/images/flour.webp'
   },
   {
-    name: {
-      en: 'Dough',
-      es: 'Masa'
-    },
+    key: 'dough',
     id: 46,
     image: '/images/dough.webp'
   },
   {
-    name: {
-      en: 'Bread',
-      es: 'Pan'
-    },
+    key: 'bread',
     id: 47,
     image: '/images/bread.png'
   },
   {
-    name: {
-      en: 'Bait + Fishing line',
-      es: 'Carnada + Línea de pesca'
-    },
+    key: 'bait-fishing-line',
     id: 48,
     image: '/images/fishing-line-bait.png'
   },
   {
-    name: {
-      en: 'Wooden planks',
-      es: 'Planchas de madera'
-    },
+    key: 'wooden-planks',
     id: 49,
     image: '/images/wooden-planks.png'
   },
   {
-    name: {
-      en: 'Basket',
-      es: 'Canasta'
-    },
+    key: 'basket',
     id: 50,
     image: '/images/basket.webp'
   },
   {
-    name: {
-      en: 'Hut',
-      es: 'Choza'
-    },
+    key: 'hut',
     id: 51,
     image: '/images/hut.png'
   },
   {
-    name: {
-      en: 'Ink',
-      es: 'Tinta'
-    },
+    key: 'ink',
     id: 52,
     image: '/images/ink.png'
   },
   {
-    name: {
-      en: 'Bread crumbs',
-      es: 'Migas de pan'
-    },
+    key: 'bread-crumbs',
     id: 53,
     image: '/images/bread-crumbs.png'
   },
   {
-    name: {
-      en: 'Chicken',
-      es: 'Gallina'
-    },
+    key: 'chicken',
     id: 54,
-    isAnimal: true,
     image: '/images/chicken.png'
   },
   {
-    name: {
-      en: 'Feather',
-      es: 'Pluma'
-    },
+    key: 'feather',
     id: 55,
     image: '/images/feather.webp'
   },
   {
-    name: {
-      en: 'Raw chicken',
-      es: 'Pollo crudo'
-    },
+    key: 'raw-chicken',
     id: 56,
     image: '/images/raw-chicken.png'
   },
   {
-    name: {
-      en: 'Cooked chicken',
-      es: 'Pollo cocido'
-    },
+    key: 'cooked-chicken',
     id: 57,
     image: '/images/cooked-chicken.webp'
   },
   {
-    name: {
-      en: 'Eggs',
-      es: 'Huevos'
-    },
+    key: 'eggs',
     id: 58,
     image: '/images/eggs.webp'
   },
   {
-    name: {
-      en: 'Quill',
-      es: 'Pluma de escribir'
-    },
+    key: 'quill',
     id: 59,
     image: '/images/quill.png'
   },
   {
-    name: {
-      en: 'Dressed axeman',
-      es: 'Hachero vestido'
-    },
+    key: 'dressed-axeman',
     id: 60,
     image: '/images/person_axe_clothes.webp',
     isPerson: true
   },
   {
-    name: {
-      en: 'Brush',
-      es: 'Cepillo'
-    },
+    key: 'brush',
     id: 61,
     image: '/images/brush.png'
   },
   {
-    name: {
-      en: 'Fish spine',
-      es: 'Espina de pez'
-    },
+    key: 'fish-spine',
     id: 62,
     image: '/images/fish-skeleton.png'
   },
   {
-    name: {
-      en: 'Needle + thread',
-      es: 'Aguja + hilo'
-    },
+    key: 'needle-thread',
     id: 63,
     image: '/images/needle-thread.png'
   },
   {
-    name: {
-      en: 'Tree thorn',
-      es: 'Espina de árbol'
-    },
+    key: 'tree-thorn',
     id: 64,
     image: '/images/tree-thorn.webp'
   },
   {
-    name: {
-      en: 'Rotten apple',
-      es: 'Manzana podrida'
-    },
+    key: 'rotten-apple',
     id: 65,
     image: '/images/rotten-apple.png'
+  },
+  {
+    key: 'cave',
+    id: 66,
+    image: '/images/cave.webp',
+    isSource: true
+  },
+  {
+    key: 'iron-ore',
+    id: 67,
+    image: '/images/iron-ore.png'
+  },
+  {
+    key: 'furnace',
+    id: 68,
+    image: '/images/furnace.png'
+  },
+  {
+    key: 'iron-nugget',
+    id: 69,
+    image: '/images/iron-nugget.png'
   }
 ]

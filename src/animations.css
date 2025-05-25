@@ -2,12 +2,16 @@
   animation: new-card 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
 
-.not-combination {
+.shake-horizontal {
   animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
 
-.highlight {
+.highlight-card {
   animation: highlight-card 0.65s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+.highlight-button {
+  animation: highlight-button 0.9s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
 
 @keyframes shake-horizontal {
@@ -60,3 +64,25 @@
     border-color: #c7c7c7;
   }
 }
+
+@keyframes highlight-button {
+  0% {
+    border-color: #c7c7c7;
+  }
+  25% {
+    transform: scale(1.35);
+    border-color: #ff6600;
+  }
+  50% {
+    transform: scale(1);
+    border-color: #c7c7c7;
+  }
+  75% {
+    transform: scale(1.35);
+    border-color: #ff6600;
+  }
+  100% {
+    border-color: #c7c7c7;
+  }
+}
+

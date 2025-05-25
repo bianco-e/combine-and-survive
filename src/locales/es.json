@@ -1,0 +1,150 @@
+{
+  "alreadyCreatedCard": "Ya tienes",
+  "badges": {
+    "modalTitle": "Logros",
+    "types": {
+      "axeman": {
+        "name": "Hachero",
+        "msg": "Ahora eres un Hachero. Podrás matar animales salvajes con facilidad"
+      },
+      "fisherman": {
+        "name": "Pescador",
+        "msg": "Ahora eres un Pescador"
+      },
+      "baker": {
+        "name": "Panadero",
+        "msg": "Ahora eres un Panadero"
+      },
+      "herbalist": {
+        "name": "Herbolario",
+        "msg": "Ahora eres un Herbolario. Los tes no solo calman tu sed, tambien te curan"
+      },
+      "builder": {
+        "name": "Constructor",
+        "msg": "Ahora eres un Constructor"
+      },
+      "writer": {
+        "name": "Escritor",
+        "msg": "Ahora eres un Escritor"
+      },
+      "miner": {
+        "name": "Minero",
+        "msg": "Ahora eres un Minero"
+      }
+    }
+  },
+  "bullAttack": "No puedes matar a un Toro con tus manos",
+  "combinationNotPossible": "La combinación no es posible",
+  "rawMeat": "La Carne Cruda puede dañarte",
+  "rawChicken": "El pollo crudo puede dañarte",
+  "rottenFood": "La comida podrida puede dañarte",
+  "discoveries": "Descubrimientos",
+  "cleanFloor": "Limpiar el terreno mantiene a algunos animales alejados",
+  "equippableCard": "Carta equipable",
+  "health": "Vida",
+  "noBaitMsg": "Parece que te falta la carnada",
+  "thirst": "Sed",
+  "thirstDeath": "Estás a punto de morir de sed, ¡bebe algo!",
+  "waterHarm": "Beber agua directamente del río satisface tu sed pero puede dañarte",
+  "wildBull": "Ha aparecido un toro salvaje",
+  "wildChicken": "Ha aparecido una gallina hambrienta y se comió tus migas de pan",
+  "wonMsg": "¡Ganaste!",
+  "wonParagraph": "¡Ya has hecho todas las combinaciones posibles!",
+  "lostMsg": "¡Perdiste!",
+  "lostParagraph": "¡La próxima vez tienes que tener mas cuidado con tu Vida y tu Sed!",
+  "playAgain": "Jugar de nuevo",
+  "howToPlay": {
+    "title": "Cómo jugar",
+    "line1": "Combine & Survive es un juego de estrategia",
+    "line2": "El objetivo es alcanzar el mayor numero de descubrimientos, arrastrando y soltando cartas",
+    "line3": "• En esta edición sólo se puede combinar de a 2 cartas a la vez",
+    "line4": "• Algunas cartas pueden combinarse consigo mismas",
+    "line5": "¡DISFRUTA!",
+    "play": "Jugar"
+  },
+  "combinedCardsModal": {
+    "title": "Cartas combinadas",
+    "none": "Ninguna. ¡Intenta alguna!",
+    "switchModalContentButton": "Ver cartas por obtener"
+  },
+  "cardsToGetModal": {
+    "title": "Cartas por obtener",
+    "switchModalContentButton": "Ver cartas combinadas"
+  },
+  "allCombinationsModal": {
+    "title": "Todas las combinaciones"
+  },
+  "accessToCave": "Ahora que tienes Antorcha puedes acceder a la Cueva para obtener nuevos recursos. Asegurate de estar equipado correctamente ya que es muy peligroso",
+  "caveDanger": "No puedes acceder a la Cueva así. Es muy peligroso. Necesitas un arma y ropa",
+  "cards": {
+    "person":"Persona",
+    "dirt":"Tierra",
+    "tree":"Árbol",
+    "river":"Río",
+    "mountain":"Montaña",
+    "log":"Tronco",
+    "rock":"Roca",
+    "stick":"Palo",
+    "campfire":"Fogata",
+    "sharpen-rock":"Roca afilada",
+    "axe":"Hacha",
+    "axeman":"Hachero",
+    "clay":"Arcilla",
+    "vessel":"Vasija",
+    "water":"Agua",
+    "apple":"Manzana",
+    "boiled-water":"Agua hervida",
+    "coal":"Carbón",
+    "leaf":"Hoja",
+    "leaf-fibers":"Fibras de hoja",
+    "cordage":"Cuerda",
+    "fishing-line":"Línea de pesca",
+    "fish":"Pescado",
+    "mud":"Barro",
+    "adobe-brick":"Ladrillo",
+    "bull":"Toro",
+    "leather":"Cuero",
+    "bone":"Hueso",
+    "clothes":"Ropa",
+    "seeds":"Semillas",
+    "sprout":"Brote",
+    "plant":"Planta",
+    "sand":"Arena",
+    "glass":"Vidrio",
+    "worm":"Gusano",
+    "sap":"Savia",
+    "bark":"Corteza",
+    "torch":"Antorcha",
+    "ashes":"Cenizas",
+    "grilled-fish":"Pescado Asado",
+    "raw-meat":"Carne Cruda",
+    "cooked-meat":"Carne Cocida",
+    "herbal-tea":"Te Herbal",
+    "mortar":"Mortero",
+    "flour":"Harina",
+    "dough":"Masa",
+    "bread":"Pan",
+    "bait-fishing-line":"Carnada + Línea de pesca",
+    "wooden-planks":"Planchas de madera",
+    "basket":"Canasta",
+    "hut":"Choza",
+    "ink":"Tinta",
+    "bread-crumbs":"Migas de pan",
+    "chicken":"Gallina",
+    "feather":"Pluma",
+    "raw-chicken":"Pollo crudo",
+    "cooked-chicken":"Pollo cocido",
+    "eggs":"Huevos",
+    "quill":"Pluma de escribir",
+    "dressed-axeman":"Hachero vestido",
+    "brush":"Cepillo",
+    "fish-spine":"Espina de pez",
+    "needle-thread":"Aguja + hilo",
+    "tree-thorn":"Espina de árbol",
+    "rotten-apple":"Manzana podrida",
+    "cave":"Cueva",
+    "iron-ore":"Mineral de Hierro",
+    "furnace":"Horno",
+    "iron-nugget":"Pepita de Hierro"
+  }
+}

@@ -1,11 +1,10 @@
 import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
-import i18n from '../../i18n.js'
+import i18n from '../../locales/i18n.js'
 import { areArraysEqual } from '../../utils.js'
-import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, LANG, IDLE } from '../../constants.js'
+import { BADGES_KEY, COMBOS_HISTORY_KEY, IDLE } from '../../constants.js'
 import Stats from '../stats/index.js'
-import Toaster from '../toaster/index.js' 
-import Modal from '../modal/index.js'
+import Toaster from '../toaster/index.js'
 
 export default class Card {
   static addListeners(cardElement) {
@@ -16,9 +15,6 @@ export default class Card {
   }
 
   static applyEffects(combination) {
-    if (combination.message) {
-      Toaster.display(combination.message.content, combination.message.type)
-    }
     if (combination.increase) {
       Object.entries(combination.increase).forEach(([stat, amount]) => Stats.increase(stat, amount))
     }
@@ -38,7 +34,11 @@ export default class Card {
     board.removeChild(cardToRemove)
   }
 
-  static create({ id, name, image, className, isEquippable }, boardId, cardConfig = { increaseDiscoveries: true, isInteractive: true }) {
+  static create(
+    { id, key, image, className, isEquippable },
+    boardId,
+    cardConfig = { increaseDiscoveries: true, isInteractive: true }
+  ) {
     const { isInteractive, increaseDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
     newCardElement.classList.add('card', 'new-card')
@@ -51,13 +51,13 @@ export default class Card {
       newCardElement.classList.add('non-interactive-card')
     }
     const newCardName = document.createElement('p')
-    newCardName.innerText = name[LANG]
-    newCardName.title = name[LANG]
+    newCardName.innerText = i18n.t(`cards.${key}`)
+    newCardName.title = i18n.t(`cards.${key}`)
     newCardName.setAttribute('draggable', 'false')
     newCardElement.appendChild(newCardName)
     const newCardImg = document.createElement('img')
     newCardImg.setAttribute('src', image)
-    newCardImg.setAttribute('alt', name[LANG])
+    newCardImg.setAttribute('alt', i18n.t(`cards.${key}`))
     newCardImg.setAttribute('draggable', 'false')
 
     if (isEquippable) {
@@ -81,8 +81,8 @@ export default class Card {
 function renderEquippableIcon(newCardElement) {
   const equippableIcon = document.createElement('img')
   equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
-  equippableIcon.setAttribute('alt', i18n.equippableCard[LANG])
-  equippableIcon.title = i18n.equippableCard[LANG]
+  equippableIcon.setAttribute('alt', i18n.t('equippableCard'))
+  equippableIcon.title = i18n.t('equippableCard')
   equippableIcon.classList.add('equippable-icon')
   newCardElement.appendChild(equippableIcon)
 }
@@ -101,23 +101,23 @@ function updatePerson(newPerson) {
   const personCardElement = document.querySelector('.person')
   personCardElement.setAttribute('id', `card-${newPerson.id}`)
   const personName = personCardElement.querySelector('p')
-  personName.innerText = newPerson.name[LANG]
-  personName.title = newPerson.name[LANG]
+  personName.innerText = i18n.t(`cards.${newPerson.key}`)
+  personName.title = i18n.t(`cards.${newPerson.key}`)
   const personImage = personCardElement.querySelector('img')
-  personImage.setAttribute('alt', newPerson.name[LANG])
+  personImage.setAttribute('alt', i18n.t(`cards.${newPerson.key}`))
   personImage.setAttribute('src', newPerson.image)
 }
 
 function warnNotPossibleCombination(dropzoneCardId, draggedCardId) {
   const dropzoneCardElement = document.getElementById(`card-${dropzoneCardId}`)
   const draggedCardElement = document.getElementById(`card-${draggedCardId}`)
-  dropzoneCardElement.classList.add('not-combination')
-  draggedCardElement.classList.add('not-combination')
+  dropzoneCardElement.classList.add('shake-horizontal')
+  draggedCardElement.classList.add('shake-horizontal')
   setTimeout(() => {
-    dropzoneCardElement.classList.remove('not-combination')
-    draggedCardElement.classList.remove('not-combination')
+    dropzoneCardElement.classList.remove('shake-horizontal')
+    draggedCardElement.classList.remove('shake-horizontal')
   }, 850)
-  return Toaster.display(i18n.combinationNotPossible[LANG])
+  return Toaster.display(i18n.t('combinationNotPossible'))
 }
 
 function onDrop(e, draggedId) {
@@ -132,12 +132,13 @@ function onDrop(e, draggedId) {
   const combination = combinations.find(({ combo }) => areArraysEqual(combo, combinedIds))
   if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardId, draggedCardId)
 
+
   Card.applyEffects(combination)
   if (combination.badge) {
     const currentBadges = JSON.parse(sessionStorage.getItem(BADGES_KEY)) || []
     if (!currentBadges.includes(combination.badge)) {
       sessionStorage.setItem(BADGES_KEY, JSON.stringify(currentBadges.concat(combination.badge)))
-      Modal.newBadge(BADGES[combination.badge])
+      Stats.showNewBadgeIcon()
     }
   }
 
@@ -156,18 +157,18 @@ function onDrop(e, draggedId) {
         sessionStorage.setItem(COMBOS_HISTORY_KEY, JSON.stringify(newCombosHistory))
         Card.create(newCard, 'discoveries-board')
       }
-      if (combination.callback) {
-        combination.callback()
-      }
       return acc
     }
-    existingCard.classList.add('highlight')
+    existingCard.classList.add('highlight-card')
     setTimeout(() => {
-      existingCard.classList.remove('highlight')
+      existingCard.classList.remove('highlight-card')
     }, 650)
-    return acc.concat(newCard.name[LANG])
+    return acc.concat(i18n.t(`cards.${newCard.key}`))
   }, [])
   if (createdCards.length) {
-    Toaster.display(`${i18n.alreadyCreatedCard[LANG]} ${createdCards.join(', ')}`)
+    Toaster.display(`${i18n.t('alreadyCreatedCard')} ${createdCards.join(', ')}`)
+  }
+  if (combination.message) {
+    Toaster.display(i18n.t(combination.message.i18nKey), combination.message.type)
   }
 }

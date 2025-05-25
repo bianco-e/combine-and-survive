@@ -1,0 +1,150 @@
+{
+  "alreadyCreatedCard": "You already have",
+  "badges": {
+    "modalTitle": "Badges",
+    "types": {
+      "axeman": {
+        "name": "Axeman",
+        "msg": "You are an Axeman now. You will be able to easily kill wild animals"
+      },
+      "fisherman": {
+        "name": "Fisherman",
+        "msg": "You are a Fisherman now"
+      },
+      "baker": {
+        "name": "Baker",
+        "msg": "You are a Baker now"
+      },
+      "herbalist": {
+        "name": "Herbalist",
+        "msg": "You are a Herbalist now. Teas not just quench your thirst but also heal you"
+      },
+      "builder": {
+        "name": "Builder",
+        "msg": "You are a Builder now"
+      },
+      "writer": {
+        "name": "Writer",
+        "msg": "You are a Writer now"
+      },
+      "miner": {
+        "name": "Miner",
+        "msg": "You are a Miner now"
+      }
+    }
+  },
+  "bullAttack": "You cannot kill a Bull with your hands",
+  "combinationNotPossible": "Combination not possible",
+  "rawMeat": "Raw Meat may harm you",
+  "rawChicken": "Raw Chicken may harm you",
+  "rottenFood": "Eating rotten food may harm you",
+  "discoveries": "Discoveries",
+  "cleanFloor": "Cleaning the area will keep some animals away",
+  "equippableCard": "Equippable card",
+  "health": "Health",
+  "noBaitMsg": "Seems like you are missing the bait",
+  "thirst": "Thirst",
+  "thirstDeath": "You are about to die of thirst, drink something!",
+  "waterHarm": "Water straight from the river will quench your thirst but may harm you",
+  "wildBull": "A wild bull has just appeared",
+  "wildChicken": "A hungry chicken just appeared and ate your bread crumbs",
+  "wonMsg": "You won!",
+  "wonParagraph": "You already did all the possible combinations!",
+  "lostMsg": "You lost!",
+  "lostParagraph": "Next time you should pay more attention to your Health and Thirst!",
+  "playAgain": "Play again",
+  "howToPlay": {
+    "title": "How to play",
+    "line1": "Combine & Survive is a strategy game",
+    "line2": "The goal is to reach the greatest number of discoveries by dragging and dropping cards",
+    "line3": "• Only 2 cards can be combined at a time in this edition",
+    "line4": "• Some cards can be combined themselves",
+    "line5": "ENJOY!",
+    "play": "Play"
+  },
+  "combinedCardsModal": {
+    "title": "Combined cards",
+    "none": "None yet. Try some!",
+    "switchModalContentButton": "See cards to get"
+  },
+  "cardsToGetModal": {
+    "title": "Cards to get",
+    "switchModalContentButton": "See combined cards"
+  },
+  "allCombinationsModal": {
+    "title": "All combinations"
+  },
+  "accessToCave": "Now that you have Torch you can access the Cave to get new resources. Make sure you are properly equipped since it is very dangerous",
+  "caveDanger": "You cannot access the Cave like this. It is too dangerous. You need a weapon and clothes",
+  "cards": {
+    "person": "Person",
+    "dirt": "Dirt",
+    "tree": "Tree",
+    "river": "River",
+    "mountain": "Mountain",
+    "log": "Log",
+    "rock": "Rock",
+    "stick": "Stick",
+    "campfire": "Campfire",
+    "sharpen-rock": "Sharpen Rock",
+    "axe": "Axe",
+    "axeman": "Axeman",
+    "clay": "Clay",
+    "vessel": "Vessel",
+    "water": "Water",
+    "apple": "Apple",
+    "boiled-water": "Boiled Water",
+    "coal": "Coal",
+    "leaf": "Leaf",
+    "leaf-fibers": "Leaf Fibers",
+    "cordage": "Cordage",
+    "fishing-line": "Fishing Line",
+    "fish": "Fish",
+    "mud": "Mud",
+    "adobe-brick": "Adobe Brick",
+    "bull": "Bull",
+    "leather": "Leather",
+    "bone": "Bone",
+    "clothes": "Clothes",
+    "seeds": "Seeds",
+    "sprout": "Sprout",
+    "plant": "Plant",
+    "sand": "Sand",
+    "glass": "Glass",
+    "worm": "Worm",
+    "sap": "Sap",
+    "bark": "Bark",
+    "torch": "Torch",
+    "ashes": "Ashes",
+    "grilled-fish": "Grilled Fish",
+    "raw-meat": "Raw Meat",
+    "cooked-meat": "Cooked Meat",
+    "herbal-tea": "Herbal Tea",
+    "mortar": "Mortar",
+    "flour": "Flour",
+    "dough": "Dough",
+    "bread": "Bread",
+    "bait-fishing-line": "Bait + Fishing line",
+    "wooden-planks": "Wooden planks",
+    "basket": "Basket",
+    "hut": "Hut",
+    "ink": "Ink",
+    "bread-crumbs": "Bread crumbs",
+    "chicken": "Chicken",
+    "feather": "Feather",
+    "raw-chicken": "Raw chicken",
+    "cooked-chicken": "Cooked chicken",
+    "eggs": "Eggs",
+    "quill": "Quill",
+    "dressed-axeman": "Dressed axeman",
+    "brush": "Brush",
+    "fish-spine": "Fish spine",
+    "needle-thread": "Needle + thread",
+    "tree-thorn": "Tree thorn",
+    "rotten-apple": "Rotten apple",
+    "cave": "Cave",
+    "iron-ore": "Iron Ore",
+    "furnace": "Furnace",
+    "iron-nugget": "Iron Nugget"
+  }
+}

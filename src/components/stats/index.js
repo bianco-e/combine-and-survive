@@ -5,7 +5,7 @@ import { BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../c
 
 const MAX_STAT = 100
 const MIN_STAT = 0
-const TOTAL_DISCOVERIES = cardsData.filter(card => !card.isInitial && !card.isPerson).length
+const TOTAL_DISCOVERIES = cardsData.filter(card => !card.isPerson && !card.isSource).length
 
 export default class Stats {
   static decrease(id, amountToDecrease = 10) {
@@ -37,6 +37,29 @@ export default class Stats {
     }
   }
 
+  static showNewBadgeIcon() {
+    const newBadgeId = 'new-badge-icon'
+    const badgesButton = document.getElementById('badges-button')
+    const newBadgeIcon = document.createElement('span')
+    newBadgeIcon.setAttribute('id', newBadgeId)
+    newBadgeIcon.classList.add('new-badge')
+    if (!document.getElementById(newBadgeId)) {
+      badgesButton.appendChild(newBadgeIcon)
+      badgesButton.classList.add('highlight-button')
+      setTimeout(() => {
+        badgesButton.classList.remove('highlight-button')
+      }, 850)
+    }
+  }
+
+  static removeNewBadgeIcon() {
+    const badgesButton = document.getElementById('badges-button')
+    const newBadgeIcon = document.getElementById('new-badge-icon')
+    if (Boolean(newBadgeIcon)) {
+      badgesButton.removeChild(newBadgeIcon)
+    }
+  }
+
   static initiate() {
     const boardLeftTopContainer = document.getElementById('board-left-top-container')
     const discoveriesButton = document.createElement('button')
@@ -48,6 +71,15 @@ export default class Stats {
     boardLeftTopContainer.appendChild(discoveriesButton)
     Gem.create('#991212', 'stats', 'health')
     Gem.create('#00FFFF', 'stats', 'thirst')
+
+    if (import.meta.env.MODE === 'development') {
+      // show all possible combinations in dev mode ONLY
+      const allPossibleCombinationsButton = document.createElement('button')
+      allPossibleCombinationsButton.innerHTML = `🃏`
+      allPossibleCombinationsButton.classList.add('board-button')
+      allPossibleCombinationsButton.addEventListener('click', Modal.showAllCombinationRecipes)
+      boardLeftTopContainer.appendChild(allPossibleCombinationsButton)
+    }
   }
 }
 

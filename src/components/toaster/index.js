@@ -1,10 +1,15 @@
 export default class Toaster {
   static display(message, type = 'warning') {
-    const toaster = document.getElementById('toaster')
-    toaster.textContent = message
-    toaster.classList.add(`toaster-${type}`)
+    const toastersWrapper = document.getElementById('toasters-wrapper')
+    const currentToasters = Array.from(toastersWrapper.querySelectorAll('.toaster'))
+    if (currentToasters.length === 3) return
+    const newToaster = document.createElement('div')
+    newToaster.textContent = message
+    newToaster.classList.add('toaster', `toaster-${type}`)
+    toastersWrapper.appendChild(newToaster)
+    newToaster.style.bottom = `${75 * (currentToasters.length + 1)}px`
     setTimeout(() => {
-      toaster.classList.remove(`toaster-${type}`)
-    }, 1800)
+      toastersWrapper.removeChild(newToaster)
+    }, 2100)
   }
 }

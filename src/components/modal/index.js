@@ -1,9 +1,10 @@
-import { seeCurrentCombinations } from '../../combinations'
-import i18n from '../../i18n'
+import { seeAllCombinations, seeCurrentCombinations } from '../../combinations'
+import i18n from '../../locales/i18n'
 import cards from '../../cards'
-import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY, LANG } from '../../constants'
+import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../constants'
 import Card from '../card'
 import { setInitialBoard, startNewGame } from '../../utils'
+import Stats from '../stats'
 
 function checksClickOutside(e) {
   const modal = document.getElementById('modal')
@@ -37,13 +38,13 @@ export default class Modal {
 
   static showInstructions({ isInitialInstructions }) {
     const instructionsContent = `
-      <h1>${i18n.howToPlay.title[LANG]}</h1>
-      <h2>${i18n.howToPlay.line1[LANG]}</h2>
-      <h2>${i18n.howToPlay.line2[LANG]}</h2>
-      <h2>${i18n.howToPlay.line3[LANG]}</h2>
-      <h2>${i18n.howToPlay.line4[LANG]}</h2>
-      <h2>${i18n.howToPlay.line5[LANG]}</h2>
-      ${isInitialInstructions ? `<button id='play-button'>${i18n.howToPlay.play[LANG]}</button>` : ''}
+      <h1>${i18n.t('howToPlay.title')}</h1>
+      <h2>${i18n.t('howToPlay.line1')}</h2>
+      <h2>${i18n.t('howToPlay.line2')}</h2>
+      <h2>${i18n.t('howToPlay.line3')}</h2>
+      <h2>${i18n.t('howToPlay.line4')}</h2>
+      <h2>${i18n.t('howToPlay.line5')}</h2>
+      ${isInitialInstructions ? `<button id='play-button'>${i18n.t('howToPlay.play')}</button>` : ''}
     `
     Modal.render(instructionsContent, !isInitialInstructions)
     if (isInitialInstructions) {
@@ -57,32 +58,41 @@ export default class Modal {
   static showCombinedCards() {
     const combosHistory = JSON.parse(sessionStorage.getItem(COMBOS_HISTORY_KEY)) || []
     const combinedCardsContent = `
-      <button id='switch-modal-content'>${i18n.combinedCardsModal.switchModalContentButton[LANG]}</button>
-      <h1>${i18n.combinedCardsModal.title[LANG]}</h1>
-      <h3>${combosHistory.length ? seeCurrentCombinations(combosHistory) : i18n.combinedCardsModal.none[LANG]}</h3>
+      <button id='switch-modal-content'>${i18n.t('combinedCardsModal.switchModalContentButton')}</button>
+      <h1>${i18n.t('combinedCardsModal.title')}</h1>
+      <h3>${combosHistory.length ? seeCurrentCombinations(combosHistory) : i18n.t('combinedCardsModal.none')}</h3>
     `
     Modal.render(combinedCardsContent)
     document.getElementById('switch-modal-content').addEventListener('click', Modal.showCardsToGet)
   }
 
+  static showAllCombinationRecipes() {
+    const allCombinationsContent = `
+      <h1>${i18n.t('allCombinationsModal.title')}</h1>
+      ${seeAllCombinations()}
+    `
+    Modal.render(allCombinationsContent)
+  }
+
   static showCardsToGet() {
+    const cardsToGetBoardId = 'cards-to-get-board'
     const possibleCardsContent = `
-      <button id='switch-modal-content'>${i18n.cardsToGetModal.switchModalContentButton[LANG]}</button>
-      <h1>${i18n.cardsToGetModal.title[LANG]}</h1>
-      <div id='cards-to-get-board' class='container'></div>
+      <button id='switch-modal-content'>${i18n.t('cardsToGetModal.switchModalContentButton')}</button>
+      <h1>${i18n.t('cardsToGetModal.title')}</h1>
+      <div id=${cardsToGetBoardId} class='container'></div>
     `
     Modal.render(possibleCardsContent)
     document.getElementById('switch-modal-content').addEventListener('click', Modal.showCombinedCards)
     const sortedCards = cards
-      .filter(card => !card.isInitial && !card.isPerson)
-      .sort((a, b) => a.name[LANG] > b.name[LANG])
+      .filter(card => !card.isPerson && !card.isSource)
+      .sort((a, b) => i18n.t(`cards.${a.key}`) > i18n.t(`cards.${b.key}`))
 
     sortedCards.forEach(card =>
-      Card.create(card, 'cards-to-get-board', { increaseDiscoveries: false, isInteractive: false })
+      Card.create(card, cardsToGetBoardId, { increaseDiscoveries: false, isInteractive: false })
     )
     const discoveriesHistory = JSON.parse(sessionStorage.getItem(DISCOVERIES_HISTORY_KEY)) || []
     discoveriesHistory.forEach(discoveryId => {
-      const cardInBoard = document.querySelector(`#cards-to-get-board [non-interactive-id=card-${discoveryId}]`)
+      const cardInBoard = document.querySelector(`#${cardsToGetBoardId} [non-interactive-id=card-${discoveryId}]`)
       if (Boolean(cardInBoard)) {
         cardInBoard.classList.add('owned-card')
       }
@@ -92,23 +102,18 @@ export default class Modal {
   static showBadges() {
     const currentBadges = JSON.parse(sessionStorage.getItem(BADGES_KEY)) || []
     const badgesContent = `
-      <h1>${i18n.badges.modalTitle[LANG]}</h1>
+      <h1>${i18n.t('badges.modalTitle')}</h1>
       ${Object.entries(BADGES)
-        .map(([id, badge]) => {
+        .map(([id, badgeKey]) => {
           const hasBadge = currentBadges.includes(parseInt(id))
-          return `<h3 class='${hasBadge ? 'completed-badge' : ''}'>${i18n.badges.types[badge].name[LANG]}</h3>`
+          return `
+            <h3 class='${hasBadge ? 'completed-badge' : ''}'>${i18n.t(`badges.types.${badgeKey}.name`)}</h3>
+            ${hasBadge ? `<p>${i18n.t(`badges.types.${badgeKey}.msg`)}</p>` : ''}
+          `
         })
         .join('')}
     `
-    Modal.render(badgesContent)
-  }
-
-  static newBadge(badge) {
-    const badgesContent = `
-      <h1>${i18n.badges.newBadgeTitle[LANG]}</h1>
-      <h2>${i18n.badges.newBadgeSubtitle[LANG]}</h2>
-      <h3>${i18n.badges.types[badge].msg[LANG]}</h3>
-    `
+    Stats.removeNewBadgeIcon()
     Modal.render(badgesContent)
   }
 
@@ -117,9 +122,9 @@ export default class Modal {
     Modal.render(
       `
       <div>
-        <h1>${i18n.wonMsg[LANG]}</h1>
-        <p>${i18n.wonParagraph[LANG]}</p>
-        <button id='play-again'>${i18n.playAgain[LANG]}</button>
+        <h1>${i18n.t('wonMsg')}</h1>
+        <p>${i18n.t('wonParagraph')}</p>
+        <button id='play-again'>${i18n.t('playAgain')}</button>
       </div>
     `,
       false
@@ -135,9 +140,9 @@ export default class Modal {
     Modal.render(
       `
       <div>
-        <h1>${i18n.lostMsg[LANG]}</h1>
-        <p>${i18n.lostParagraph[LANG]}</p>
-        <button id='play-again'>${i18n.playAgain[LANG]}</button>
+        <h1>${i18n.t('lostMsg')}</h1>
+        <p>${i18n.t('lostParagraph')}</p>
+        <button id='play-again'>${i18n.t('playAgain')}</button>
       </div>
     `,
       false
