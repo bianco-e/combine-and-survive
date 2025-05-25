@@ -1,5 +1,5 @@
 import cardsData from './cards.js'
-import i18n from './locales/i18n.js'
+import i18n from './i18n.js'
 import { BADGES, STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM, IDLE, STAT_CHANGE_XL } from './constants.js'
 import { addSourceCardToBoard, addWildAnimalToBoard } from './utils.js'
 import Toaster from './components/toaster/index.js'

@@ -1,4 +1,4 @@
-import i18n from '../../locales/i18n.js'
+import i18n from '../../i18n.js'
 import { capitalize } from '../../utils.js'
 
 export default class Gem {

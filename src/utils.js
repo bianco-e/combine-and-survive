@@ -3,7 +3,7 @@ import Stats from './components/stats/index.js'
 import Toaster from './components/toaster/index.js'
 import Card from './components/card/index.js'
 import Modal from './components/modal/index.js'
-import i18n from './locales/i18n.js'
+import i18n from './i18n.js'
 import { LOW_THIRST_WARNING, STAT_CHANGE_SM } from './constants.js'
 
 // helpers

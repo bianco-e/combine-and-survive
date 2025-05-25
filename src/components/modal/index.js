@@ -1,5 +1,5 @@
 import { seeAllCombinations, seeCurrentCombinations } from '../../combinations'
-import i18n from '../../locales/i18n'
+import i18n from '../../i18n'
 import cards from '../../cards'
 import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../constants'
 import Card from '../card'

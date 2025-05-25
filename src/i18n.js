@@ -3,7 +3,7 @@ const i18n = {
   language: 'en',
 
   async load(lang) {
-    const res = await fetch(`./locales/${lang}.json`)
+    const res = await fetch(`/locales/${lang}.json`)
     this.translations = await res.json()
     this.language = lang
   },

@@ -1,6 +1,6 @@
 import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
-import i18n from '../../locales/i18n.js'
+import i18n from '../../i18n.js'
 import { areArraysEqual } from '../../utils.js'
 import { BADGES_KEY, COMBOS_HISTORY_KEY, IDLE } from '../../constants.js'
 import Stats from '../stats/index.js'
