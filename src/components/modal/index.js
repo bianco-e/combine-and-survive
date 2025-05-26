@@ -46,11 +46,6 @@ export default class Modal {
       <h2>${i18n.t('howToPlay.line5')}</h2>
       ${isInitialInstructions ? `<button id='play-button'>${i18n.t('howToPlay.play')}</button>` : ''}
     `
-    gtag('event', 'see_instructions', {
-      event_category: 'action',
-      event_label: 'see_instructions',
-      isInitialInstructions
-    })
     Modal.render(instructionsContent, !isInitialInstructions)
     if (isInitialInstructions) {
       document.getElementById('play-button').addEventListener('click', () => {
@@ -60,6 +55,11 @@ export default class Modal {
           event_label: 'new_game'
         })
         this.close()
+      })
+    } else {
+      gtag('event', 'see_instructions', {
+        event_category: 'action',
+        event_label: 'see_instructions',
       })
     }
   }

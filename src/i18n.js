@@ -1,11 +1,19 @@
+const defaultLanguage = 'en'
+
 const i18n = {
   translations: {},
-  language: 'en',
+  language: defaultLanguage,
 
   async load(lang) {
-    const res = await fetch(`/locales/${lang}.json`)
-    this.translations = await res.json()
-    this.language = lang
+    try {
+      const res = await fetch(`/locales/${lang}.json`)
+      this.translations = await res.json()
+      this.language = lang
+    } catch (e) {
+      const res = await fetch(`/locales/${defaultLanguage}.json`)
+      this.translations = await res.json()
+      this.language = defaultLanguage
+    }
   },
 
   t(key) {

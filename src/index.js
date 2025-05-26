@@ -6,7 +6,11 @@ import i18n from './i18n.js';
 window.addEventListener('load', async () => {
   const LANG = (navigator.language || navigator.userLanguage).split('-')[0] || 'en'
   await i18n.load(LANG);
-
+  gtag('event', 'set_language', {
+    event_category: 'action',
+    event_label: 'set_language',
+    language: LANG
+  })
   polyfill()
   setInitialBoard()
   Modal.showInstructions({ isInitialInstructions: true })
