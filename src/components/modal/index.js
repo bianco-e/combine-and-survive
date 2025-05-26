@@ -50,6 +50,10 @@ export default class Modal {
     if (isInitialInstructions) {
       document.getElementById('play-button').addEventListener('click', () => {
         startNewGame()
+        gtag('event', 'game_start', {
+          event_category: 'game',
+          event_label: 'new_game'
+        })
         this.close()
       })
     }
