@@ -157,6 +157,9 @@ function onDrop(e, draggedId) {
         sessionStorage.setItem(COMBOS_HISTORY_KEY, JSON.stringify(newCombosHistory))
         Card.create(newCard, 'discoveries-board')
       }
+      if (combination.callback) {
+        combination.callback()
+      }
       return acc
     }
     existingCard.classList.add('highlight-card')

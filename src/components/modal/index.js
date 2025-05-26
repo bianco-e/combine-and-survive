@@ -107,8 +107,8 @@ export default class Modal {
         .map(([id, badgeKey]) => {
           const hasBadge = currentBadges.includes(parseInt(id))
           return `
-            <h3 class='${hasBadge ? 'completed-badge' : ''}'>${i18n.t(`badges.types.${badgeKey}.name`)}</h3>
-            ${hasBadge ? `<p>${i18n.t(`badges.types.${badgeKey}.msg`)}</p>` : ''}
+            <h2 class='${hasBadge ? 'completed-badge' : ''}'>${i18n.t(`badges.types.${badgeKey}.name`)}</h2>
+            ${hasBadge ? `<p class='badge-description'>${i18n.t(`badges.types.${badgeKey}.msg`)}</p>` : ''}
           `
         })
         .join('')}

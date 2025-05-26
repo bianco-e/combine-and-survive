@@ -51,6 +51,11 @@
   text-decoration: line-through;
 }
 
+.modal .badge-description {
+  margin: 0 0 24px 0;
+  font-size: 16px;
+}
+
 @media (max-width: 729px) {
   .modal {
     width: 90%;
