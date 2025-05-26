@@ -131,7 +131,11 @@ function onDrop(e, draggedId) {
   const combinedIds = [draggedCardId, dropzoneCardId]
   const combination = combinations.find(({ combo }) => areArraysEqual(combo, combinedIds))
   if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardId, draggedCardId)
-
+  gtag('event', 'new_combination', {
+    event_category: 'game',
+    event_label: 'successful_combination',
+    combination: JSON.stringify(combination)
+  })
 
   Card.applyEffects(combination)
   if (combination.badge) {

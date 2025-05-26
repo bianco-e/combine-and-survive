@@ -46,6 +46,10 @@ export default class Modal {
       <h2>${i18n.t('howToPlay.line5')}</h2>
       ${isInitialInstructions ? `<button id='play-button'>${i18n.t('howToPlay.play')}</button>` : ''}
     `
+    gtag('event', 'see_instructions', {
+      event_category: 'action',
+      event_label: 'see_instructions'
+    })
     Modal.render(instructionsContent, !isInitialInstructions)
     if (isInitialInstructions) {
       document.getElementById('play-button').addEventListener('click', () => {
@@ -85,6 +89,10 @@ export default class Modal {
       <h1>${i18n.t('cardsToGetModal.title')}</h1>
       <div id=${cardsToGetBoardId} class='container'></div>
     `
+    gtag('event', 'see_cards_to_get', {
+      event_category: 'action',
+      event_label: 'see_cards_to_get'
+    })
     Modal.render(possibleCardsContent)
     document.getElementById('switch-modal-content').addEventListener('click', Modal.showCombinedCards)
     const sortedCards = cards
@@ -117,12 +125,20 @@ export default class Modal {
         })
         .join('')}
     `
+    gtag('event', 'see_badges', {
+      event_category: 'action',
+      event_label: 'see_badges'
+    })
     Stats.removeNewBadgeIcon()
     Modal.render(badgesContent)
   }
 
   //TODO: improve this
   static showWon() {
+    gtag('event', 'game_status', {
+      event_category: 'game',
+      event_label: 'win'
+    })
     Modal.render(
       `
       <div>
@@ -136,11 +152,19 @@ export default class Modal {
     document.getElementById('play-again').addEventListener('click', () => {
       setInitialBoard()
       startNewGame()
+      gtag('event', 'game_start', {
+        event_category: 'game',
+        event_label: 'restart_after_win'
+      })
     })
   }
 
   //TODO: improve this
   static showLost() {
+    gtag('event', 'game_status', {
+      event_category: 'game',
+      event_label: 'lose'
+    })
     Modal.render(
       `
       <div>
@@ -154,6 +178,10 @@ export default class Modal {
     document.getElementById('play-again').addEventListener('click', () => {
       setInitialBoard()
       startNewGame()
+      gtag('event', 'game_start', {
+        event_category: 'game',
+        event_label: 'restart_after_lose'
+      })
     })
   }
 }
