@@ -48,7 +48,8 @@ export default class Modal {
     `
     gtag('event', 'see_instructions', {
       event_category: 'action',
-      event_label: 'see_instructions'
+      event_label: 'see_instructions',
+      isInitialInstructions
     })
     Modal.render(instructionsContent, !isInitialInstructions)
     if (isInitialInstructions) {
