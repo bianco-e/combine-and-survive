@@ -4,12 +4,16 @@ import {
   CURRENT_BOARDS_KEY,
   DISCOVERIES_HISTORY_KEY,
   PERSON_KEY,
-  STATS_STATUS_KEY
+  STATS_STATUS_KEY,
+  WRONG_COMBO_KEY
 } from '../../constants.js'
 import Card from '../card/index.js'
 import Stats from '../stats/index.js'
 import cardsData from '../../cards.js'
 import { setInitialIntervalsAndButtonsOnClick } from '../../utils.js'
+import Modal from '../modal/index.js'
+
+const WRONG_COMBOS_FOR_SUGGESTION = 1
 
 export default class Game {
   static clearSavedGame() {
@@ -19,6 +23,7 @@ export default class Game {
     localStorage.clear(STATS_STATUS_KEY)
     localStorage.clear(PERSON_KEY)
     localStorage.clear(CURRENT_BOARDS_KEY)
+    sessionStorage.clear(WRONG_COMBO_KEY)
   }
 
   static checkGameInProgress() {
@@ -80,6 +85,15 @@ export default class Game {
 
   static saveDiscoveries(newDiscoveries) {
     localStorage.setItem(DISCOVERIES_HISTORY_KEY, JSON.stringify(newDiscoveries))
+  }
+
+  static updateWrongComboNumber() {
+    const newWrongComboNumber = Number(sessionStorage.getItem(WRONG_COMBO_KEY) || 0) + 1
+    const suggestCombination = newWrongComboNumber >= WRONG_COMBOS_FOR_SUGGESTION
+    sessionStorage.setItem(WRONG_COMBO_KEY, suggestCombination ? 0 : newWrongComboNumber)
+    if (suggestCombination) {
+      Modal.showCombinationSuggestion()
+    }
   }
 
   static endGame(callback) {

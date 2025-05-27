@@ -13,6 +13,7 @@ export const BADGES_KEY = 'current-badges'
 export const STATS_STATUS_KEY = 'stats-status'
 export const PERSON_KEY = 'person'
 export const CURRENT_BOARDS_KEY = 'current-boards'
+export const WRONG_COMBO_KEY = 'wrong-combo'
 
 export const BADGES = {
   1: 'axeman',

@@ -68,6 +68,12 @@
       "resumeGame": "Continuar jogo",
       "autoSave": "Seu progresso será salvo automaticamente"
     },
+    "combinationSuggestionModal": {
+      "title": "Parece que você está preso",
+      "line1": "Clique no botão Revelar para ver uma combinação possível",
+      "reveal": "Revelar",
+      "dismissSuggestion": "Descartar sugestão"
+    },
     "combinedCardsModal": {
       "title": "Cartas combinadas",
       "none": "Nenhuma ainda. Tente algumas!",

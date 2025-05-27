@@ -14,6 +14,8 @@ The goal is to reach the greatest number of discoveries by dragging and dropping
 ENJOY!
 
 ### TODO:
+* Remove numerical id from cards - leave only keys since it is more verbose
+* Add tests
 * Add extra visual effect when health decreases
 * Optimize card images
 * Use Typescript

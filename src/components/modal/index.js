@@ -1,4 +1,4 @@
-import { seeAllCombinations, seeCurrentCombinations } from '../../combinations'
+import combinations, { seeAllCombinations, seeCurrentCombinations } from '../../combinations'
 import i18n from '../../i18n'
 import cards from '../../cards'
 import { BADGES } from '../../constants'
@@ -37,6 +37,73 @@ export default class Modal {
     document.removeEventListener('mousedown', checksClickOutside)
   }
 
+  static showCombinationSuggestion() {
+    const [_, { combosHistory }] = Game.checkGameInProgress()
+    const currentPersonBoardIds = Array.from(document.querySelectorAll('#person-board div.card')).map(cardElement =>
+      Number(cardElement.getAttribute('id').replace('card-', ''))
+    )
+    const currentDiscoveriesBoardIds = Array.from(document.querySelectorAll('#discoveries-board div.card')).map(
+      cardElement => Number(cardElement.getAttribute('id').replace('card-', ''))
+    )
+    const currentSourcesBoardIds = Array.from(document.querySelectorAll('#sources-board div.card')).map(cardElement =>
+      Number(cardElement.getAttribute('id').replace('card-', ''))
+    )
+    const allBoardIds = currentPersonBoardIds.concat(currentDiscoveriesBoardIds).concat(currentSourcesBoardIds)
+    const combinationSuggestion = combinations.find(combination => {
+      return (
+        combination.combo.every(cardId => allBoardIds.includes(cardId)) &&
+        Array.isArray(combination.result) &&
+        combination.result.some(cardId => !currentDiscoveriesBoardIds.includes(cardId)) &&
+        !combosHistory.some(comboHistory =>
+          comboHistory.combo.some(comboHistoryId => combination.combo.includes(comboHistoryId))
+        )
+      )
+    })
+    if (!combinationSuggestion) return
+
+    const revealButtonId = 'reveal-button'
+    const dismissButtonId = 'dismiss-button'
+    const suggestionToRevealContent = `
+      <h1>${i18n.t('combinationSuggestionModal.title')}</h1>
+      <h2>${i18n.t('combinationSuggestionModal.line1')}</h2>
+      <button id='${revealButtonId}'>${i18n.t('combinationSuggestionModal.reveal')}</button>
+      <button id='${dismissButtonId}'>${i18n.t('combinationSuggestionModal.dismissSuggestion')}</button>
+    `
+    Modal.render(suggestionToRevealContent, true)
+    document.getElementById(revealButtonId).addEventListener('click', () => {
+      this.close()
+    })
+    document.getElementById(revealButtonId).addEventListener('click', () => {
+      this.close()
+      const suggestionContent = `
+        <div class='centered-container'>
+          <div id='suggestion-combo' class='centered-container'></div>
+          <h1>=</h1>
+          <div id='suggestion-results' class='centered-container'></div>
+        </div>
+      `
+      Modal.render(suggestionContent, true)
+      cards
+        .filter(card => combinationSuggestion.combo.includes(card.id))
+        .forEach(card => {
+          Card.create(card, 'suggestion-combo', {
+            updateDiscoveries: false,
+            isInteractive: false
+          })
+        })
+      cards
+        .filter(card => combinationSuggestion.result.includes(card.id))
+        .forEach(card => {
+          Card.create(card, 'suggestion-results', { updateDiscoveries: false, isInteractive: false })
+        })
+
+      gtag('event', 'reveal_suggestion', {
+        event_category: 'game',
+        event_label: 'reveal_suggestion'
+      })
+    })
+  }
+
   static showInstructions({ isInitialInstructions }) {
     const startNewGameButtonId = 'start-new-game-button'
     const instructionsContent = `
@@ -53,7 +120,7 @@ export default class Modal {
     if (!isInitialInstructions) {
       gtag('event', 'see_instructions', {
         event_category: 'action',
-        event_label: 'see_instructions',
+        event_label: 'see_instructions'
       })
       return
     }
@@ -95,13 +162,13 @@ export default class Modal {
       this.close()
       gtag('event', 'game_start', {
         event_category: 'game',
-        event_label: 'resume_game',
+        event_label: 'resume_game'
       })
     })
   }
 
   static showCombinedCards() {
-    const [_, {combosHistory}] = Game.checkGameInProgress()
+    const [_, { combosHistory }] = Game.checkGameInProgress()
     const combinedCardsContent = `
       <button id='switch-modal-content'>${i18n.t('combinedCardsModal.switchModalContentButton')}</button>
       <h1>${i18n.t('combinedCardsModal.title')}</h1>
@@ -139,7 +206,7 @@ export default class Modal {
     sortedCards.forEach(card =>
       Card.create(card, cardsToGetBoardId, { updateDiscoveries: false, isInteractive: false })
     )
-    const [_, {discoveriesHistory}] = Game.checkGameInProgress()
+    const [_, { discoveriesHistory }] = Game.checkGameInProgress()
     discoveriesHistory.forEach(discoveryId => {
       const cardInBoard = document.querySelector(`#${cardsToGetBoardId} [non-interactive-id=card-${discoveryId}]`)
       if (Boolean(cardInBoard)) {
@@ -149,7 +216,7 @@ export default class Modal {
   }
 
   static showBadges() {
-    const [_, {currentBadges}] = Game.checkGameInProgress()
+    const [_, { currentBadges }] = Game.checkGameInProgress()
     const badgesContent = `
       <h1>${i18n.t('badges.modalTitle')}</h1>
       ${Object.entries(BADGES)

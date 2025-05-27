@@ -23,7 +23,7 @@ export const addSourceCardToBoard = (cardId, messageOnAdd) => {
   const sourceCard = cardsData.find(card => card.id === cardId)
   const sourceCardElement = document.getElementById(`card-${cardId}`)
   if (Boolean(sourceCardElement)) return
-  Card.create(sourceCard, 'sources-board')
+  Card.create(sourceCard, 'sources-board', { updateDiscoveries: false })
   Toaster.display(messageOnAdd, 'success')
 }
 

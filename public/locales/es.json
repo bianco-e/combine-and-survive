@@ -68,6 +68,12 @@
     "resumeGame": "Reanudar partida",
     "autoSave": "Tu progreso se guardará automáticamente"
   },
+  "combinationSuggestionModal": {
+    "title": "Parece que estás atascado",
+    "line1": "Haz clic en el botón Revelar para ver una combinación posible",
+    "reveal": "Revelar",
+    "dismissSuggestion": "Descartar sugerencia"
+  },
   "combinedCardsModal": {
     "title": "Cartas combinadas",
     "none": "Ninguna. ¡Intenta alguna!",

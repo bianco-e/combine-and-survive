@@ -119,6 +119,7 @@ function warnNotPossibleCombination(dropzoneCardId, draggedCardId) {
     dropzoneCardElement.classList.remove('shake-horizontal')
     draggedCardElement.classList.remove('shake-horizontal')
   }, 850)
+  Game.updateWrongComboNumber()
   return Toaster.display(i18n.t('combinationNotPossible'))
 }
 

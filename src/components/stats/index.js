@@ -10,10 +10,7 @@ import {
 import Game from '../game/index.js'
 
 const TOTAL_DISCOVERIES = cardsData.filter(card => !card.isPerson && !card.isSource).length
-
 export default class Stats {
-
-
   static decrease(id, amountToDecrease = STAT_CHANGE_SM) {
     const currentAmount = document.querySelector(`#gem-${id}-offset`).innerText
     const newAmount = parseInt(currentAmount) - amountToDecrease
@@ -44,7 +41,7 @@ export default class Stats {
     const currentDiscoveriesEl = document.getElementById('current-discoveries')
     currentDiscoveriesEl.textContent = newDiscoveriesHistory.length
     if (newDiscoveriesHistory.length === TOTAL_DISCOVERIES) {
-      endGame(Modal.showWon)
+      Game.endGame(Modal.showWon)
     }
   }
 

@@ -68,6 +68,12 @@
     "resumeGame": "Resume game",
     "autoSave": "Your progress will be automatically saved"
   },
+  "combinationSuggestionModal": {
+    "title": "Looks like you are stuck",
+    "line1": "Click on Reveal button to see a possible combination",
+    "reveal": "Reveal",
+    "dismissSuggestion": "Dismiss suggestion"
+  },
   "combinedCardsModal": {
     "title": "Combined cards",
     "none": "None yet. Try some!",
