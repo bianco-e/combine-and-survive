@@ -59,8 +59,14 @@
     "line2": "El objetivo es alcanzar el mayor numero de descubrimientos, arrastrando y soltando cartas",
     "line3": "• En esta edición sólo se puede combinar de a 2 cartas a la vez",
     "line4": "• Algunas cartas pueden combinarse consigo mismas",
-    "line5": "¡DISFRUTA!",
-    "play": "Jugar"
+    "line5": "¡DISFRUTA!"
+  },
+  "game": {
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "gameInProgress": "Parece que tienes una partida en curso. ¿Te gustaría continuar jugando?",
+    "startNewGame": "Nueva partida",
+    "resumeGame": "Reanudar partida",
+    "autoSave": "Tu progreso se guardará automáticamente"
   },
   "combinedCardsModal": {
     "title": "Cartas combinadas",

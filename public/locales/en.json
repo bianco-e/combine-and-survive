@@ -59,8 +59,14 @@
     "line2": "The goal is to reach the greatest number of discoveries by dragging and dropping cards",
     "line3": "• Only 2 cards can be combined at a time in this edition",
     "line4": "• Some cards can be combined with themselves",
-    "line5": "ENJOY!",
-    "play": "Play"
+    "line5": "ENJOY!"
+  },
+  "game": {
+    "welcomeBack": "Welcome back!",
+    "gameInProgress": "Looks like you have a game in progress. Would you like to continue playing?",
+    "startNewGame": "Start new game",
+    "resumeGame": "Resume game",
+    "autoSave": "Your progress will be automatically saved"
   },
   "combinedCardsModal": {
     "title": "Combined cards",

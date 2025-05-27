@@ -2,9 +2,10 @@ import cardsData from '../../cards.js'
 import combinations from '../../combinations.js'
 import i18n from '../../i18n.js'
 import { areArraysEqual } from '../../utils.js'
-import { BADGES_KEY, COMBOS_HISTORY_KEY, IDLE } from '../../constants.js'
+import { IDLE } from '../../constants.js'
 import Stats from '../stats/index.js'
 import Toaster from '../toaster/index.js'
+import Game from '../game/index.js'
 
 export default class Card {
   static addListeners(cardElement) {
@@ -37,9 +38,9 @@ export default class Card {
   static create(
     { id, key, image, className, isEquippable },
     boardId,
-    cardConfig = { increaseDiscoveries: true, isInteractive: true }
+    cardConfig = { updateDiscoveries: true, isInteractive: true }
   ) {
-    const { isInteractive, increaseDiscoveries } = cardConfig
+    const { isInteractive, updateDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
     newCardElement.classList.add('card', 'new-card')
     if (isInteractive) {
@@ -69,8 +70,8 @@ export default class Card {
     newCardElement.appendChild(newCardImg)
     const board = document.getElementById(boardId)
     board.appendChild(newCardElement)
-    if (increaseDiscoveries) {
-      Stats.increaseDiscoveries(id)
+    if (updateDiscoveries) {
+      Stats.updateDiscoveries(id)
     }
     setTimeout(() => {
       newCardElement.classList.remove('new-card')
@@ -106,6 +107,7 @@ function updatePerson(newPerson) {
   const personImage = personCardElement.querySelector('img')
   personImage.setAttribute('alt', i18n.t(`cards.${newPerson.key}`))
   personImage.setAttribute('src', newPerson.image)
+  Game.savePerson(newPerson.key)
 }
 
 function warnNotPossibleCombination(dropzoneCardId, draggedCardId) {
@@ -139,26 +141,26 @@ function onDrop(e, draggedId) {
 
   Card.applyEffects(combination)
   if (combination.badge) {
-    const currentBadges = JSON.parse(sessionStorage.getItem(BADGES_KEY)) || []
+    const [_, { currentBadges }] = Game.checkGameInProgress()
     if (!currentBadges.includes(combination.badge)) {
-      sessionStorage.setItem(BADGES_KEY, JSON.stringify(currentBadges.concat(combination.badge)))
+      Game.saveBadges(currentBadges.concat(combination.badge))
       Stats.showNewBadgeIcon()
     }
   }
 
   const resultCards = cardsData.filter(card => combination.result.includes(card.id))
-  const createdCards = resultCards.reduce((acc, newCard) => {
+  const alreadyCreatedCards = resultCards.reduce((acc, newCard) => {
     const existingCard = document.getElementById(`card-${newCard.id}`)
     if (!Boolean(existingCard)) {
       if (newCard.isPerson) {
         updatePerson(newCard)
       } else {
-        const combosHistory = JSON.parse(sessionStorage.getItem(COMBOS_HISTORY_KEY)) || []
+        const [_, { combosHistory }] = Game.checkGameInProgress()
         const comboExists = combosHistory.find(({ combo }) => areArraysEqual(combo, combinedIds))
         const newCombosHistory = comboExists
           ? combosHistory
           : combosHistory.concat({ combo: combinedIds, result: combination.result })
-        sessionStorage.setItem(COMBOS_HISTORY_KEY, JSON.stringify(newCombosHistory))
+        Game.saveCombosHistory(newCombosHistory)
         Card.create(newCard, 'discoveries-board')
       }
       if (combination.callback) {
@@ -172,10 +174,11 @@ function onDrop(e, draggedId) {
     }, 650)
     return acc.concat(i18n.t(`cards.${newCard.key}`))
   }, [])
-  if (createdCards.length) {
-    Toaster.display(`${i18n.t('alreadyCreatedCard')} ${createdCards.join(', ')}`)
+  if (alreadyCreatedCards.length) {
+    Toaster.display(`${i18n.t('alreadyCreatedCard')} ${alreadyCreatedCards.join(', ')}`)
   }
   if (combination.message) {
     Toaster.display(i18n.t(combination.message.i18nKey), combination.message.type)
   }
+  Game.saveCurrentBoards()
 }

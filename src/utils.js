@@ -2,9 +2,9 @@ import cardsData from './cards.js'
 import Stats from './components/stats/index.js'
 import Toaster from './components/toaster/index.js'
 import Card from './components/card/index.js'
-import Modal from './components/modal/index.js'
 import i18n from './i18n.js'
 import { LOW_THIRST_WARNING, STAT_CHANGE_SM } from './constants.js'
+import Modal from './components/modal/index.js'
 
 // helpers
 export function capitalize(string) {
@@ -39,16 +39,6 @@ export const addWildAnimalToBoard = (animalId, messageOnAdd, cardIdToRemove) => 
   Toaster.display(messageOnAdd, 'success')
 }
 
-export const startNewGame = () => {
-  Stats.initiate()
-  Card.create({ ...cardsData[0], className: 'person' }, 'person-board', { increaseDiscoveries: false, isInteractive: true }) //create Person
-  const initialCards = cardsData.filter(card => card.isInitial && !card.isPerson)
-  initialCards.forEach(card => Card.create(card, 'sources-board', { increaseDiscoveries: false, isInteractive: true }))
-  setInitialIntervals()
-  document.getElementById('badges-button').addEventListener('click', Modal.showBadges)
-  document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
-}
-
 export const setInitialBoard = () => {
   const initialBoard = `
     <div id="board-left-top-container" class="board-buttons-container discoveries"></div>
@@ -73,7 +63,10 @@ export const setInitialBoard = () => {
   document.body.innerHTML = initialBoard
 }
 
-function setInitialIntervals() {
+export function setInitialIntervalsAndButtonsOnClick() {
+  document.getElementById('badges-button').addEventListener('click', Modal.showBadges)
+  document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
+
   window.thirstIntervalId = setInterval(() => {
     const currentThirst = parseInt(document.getElementById('gem-thirst-offset').innerText)
     if (currentThirst <= LOW_THIRST_WARNING) {

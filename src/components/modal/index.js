@@ -1,10 +1,11 @@
 import { seeAllCombinations, seeCurrentCombinations } from '../../combinations'
 import i18n from '../../i18n'
 import cards from '../../cards'
-import { BADGES, BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../constants'
+import { BADGES } from '../../constants'
 import Card from '../card'
-import { setInitialBoard, startNewGame } from '../../utils'
+import { setInitialBoard } from '../../utils'
 import Stats from '../stats'
+import Game from '../game'
 
 function checksClickOutside(e) {
   const modal = document.getElementById('modal')
@@ -37,6 +38,7 @@ export default class Modal {
   }
 
   static showInstructions({ isInitialInstructions }) {
+    const startNewGameButtonId = 'start-new-game-button'
     const instructionsContent = `
       <h1>${i18n.t('howToPlay.title')}</h1>
       <h2>${i18n.t('howToPlay.line1')}</h2>
@@ -44,28 +46,62 @@ export default class Modal {
       <h2>${i18n.t('howToPlay.line3')}</h2>
       <h2>${i18n.t('howToPlay.line4')}</h2>
       <h2>${i18n.t('howToPlay.line5')}</h2>
-      ${isInitialInstructions ? `<button id='play-button'>${i18n.t('howToPlay.play')}</button>` : ''}
+      <i>(${i18n.t('game.autoSave')})</i>
+      ${isInitialInstructions ? `<button id='${startNewGameButtonId}'>${i18n.t('game.startNewGame')}</button>` : ''}
     `
     Modal.render(instructionsContent, !isInitialInstructions)
-    if (isInitialInstructions) {
-      document.getElementById('play-button').addEventListener('click', () => {
-        startNewGame()
-        gtag('event', 'game_start', {
-          event_category: 'game',
-          event_label: 'new_game'
-        })
-        this.close()
-      })
-    } else {
+    if (!isInitialInstructions) {
       gtag('event', 'see_instructions', {
         event_category: 'action',
         event_label: 'see_instructions',
       })
+      return
     }
+    document.getElementById(startNewGameButtonId).addEventListener('click', () => {
+      Game.startGame()
+      this.close()
+      gtag('event', 'game_start', {
+        event_category: 'game',
+        event_label: 'new_game'
+      })
+    })
+  }
+
+  static showResumeGame() {
+    const startNewGameButtonId = 'start-new-game-button'
+    const resumeGameButtonId = 'resume-game-button'
+    const resumeGameContent = `
+      <h1>${i18n.t('game.welcomeBack')}</h1>
+      <h2>${i18n.t('game.gameInProgress')}</h2>
+      <i>(${i18n.t('game.autoSave')})</i>
+      <div class=''>
+        <button id='${resumeGameButtonId}'>${i18n.t('game.resumeGame')}</button>
+        <button id='${startNewGameButtonId}'>${i18n.t('game.startNewGame')}</button>
+      </div>
+    `
+    Modal.render(resumeGameContent, false)
+
+    document.getElementById(startNewGameButtonId).addEventListener('click', () => {
+      Game.startGame()
+      this.close()
+      gtag('event', 'game_start', {
+        event_category: 'game',
+        event_label: 'new_game'
+      })
+    })
+
+    document.getElementById(resumeGameButtonId).addEventListener('click', () => {
+      Game.resumeGame()
+      this.close()
+      gtag('event', 'game_start', {
+        event_category: 'game',
+        event_label: 'resume_game',
+      })
+    })
   }
 
   static showCombinedCards() {
-    const combosHistory = JSON.parse(sessionStorage.getItem(COMBOS_HISTORY_KEY)) || []
+    const [_, {combosHistory}] = Game.checkGameInProgress()
     const combinedCardsContent = `
       <button id='switch-modal-content'>${i18n.t('combinedCardsModal.switchModalContentButton')}</button>
       <h1>${i18n.t('combinedCardsModal.title')}</h1>
@@ -101,9 +137,9 @@ export default class Modal {
       .sort((a, b) => i18n.t(`cards.${a.key}`) > i18n.t(`cards.${b.key}`))
 
     sortedCards.forEach(card =>
-      Card.create(card, cardsToGetBoardId, { increaseDiscoveries: false, isInteractive: false })
+      Card.create(card, cardsToGetBoardId, { updateDiscoveries: false, isInteractive: false })
     )
-    const discoveriesHistory = JSON.parse(sessionStorage.getItem(DISCOVERIES_HISTORY_KEY)) || []
+    const [_, {discoveriesHistory}] = Game.checkGameInProgress()
     discoveriesHistory.forEach(discoveryId => {
       const cardInBoard = document.querySelector(`#${cardsToGetBoardId} [non-interactive-id=card-${discoveryId}]`)
       if (Boolean(cardInBoard)) {
@@ -113,7 +149,7 @@ export default class Modal {
   }
 
   static showBadges() {
-    const currentBadges = JSON.parse(sessionStorage.getItem(BADGES_KEY)) || []
+    const [_, {currentBadges}] = Game.checkGameInProgress()
     const badgesContent = `
       <h1>${i18n.t('badges.modalTitle')}</h1>
       ${Object.entries(BADGES)
@@ -152,7 +188,7 @@ export default class Modal {
     )
     document.getElementById('play-again').addEventListener('click', () => {
       setInitialBoard()
-      startNewGame()
+      Game.startGame()
       gtag('event', 'game_start', {
         event_category: 'game',
         event_label: 'restart_after_win'
@@ -178,7 +214,7 @@ export default class Modal {
     )
     document.getElementById('play-again').addEventListener('click', () => {
       setInitialBoard()
-      startNewGame()
+      Game.startGame()
       gtag('event', 'game_start', {
         event_category: 'game',
         event_label: 'restart_after_lose'

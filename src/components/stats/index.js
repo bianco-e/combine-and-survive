@@ -1,34 +1,45 @@
 import Gem from '../gem/index.js'
 import cardsData from '../../cards.js'
 import Modal from '../modal/index.js'
-import { BADGES_KEY, COMBOS_HISTORY_KEY, DISCOVERIES_HISTORY_KEY } from '../../constants.js'
+import {
+  MAX_STAT,
+  MIN_STAT,
+  STAT_CHANGE_LG,
+  STAT_CHANGE_SM,
+} from '../../constants.js'
+import Game from '../game/index.js'
 
-const MAX_STAT = 100
-const MIN_STAT = 0
 const TOTAL_DISCOVERIES = cardsData.filter(card => !card.isPerson && !card.isSource).length
 
 export default class Stats {
-  static decrease(id, amountToDecrease = 10) {
+
+
+  static decrease(id, amountToDecrease = STAT_CHANGE_SM) {
     const currentAmount = document.querySelector(`#gem-${id}-offset`).innerText
     const newAmount = parseInt(currentAmount) - amountToDecrease
     const isDead = newAmount <= MIN_STAT
-    Gem.updateFill(id, isDead ? MIN_STAT : newAmount)
+    const newSanitizedAmount = isDead ? MIN_STAT : newAmount
+    Gem.updateFill(id, newSanitizedAmount)
+    Game.saveStat(id, newSanitizedAmount)
     if (isDead) {
-      endGame(Modal.showLost)
+      Game.endGame(Modal.showLost)
     }
   }
 
-  static increase(id, amountToIncrease = 20) {
+  static increase(id, amountToIncrease = STAT_CHANGE_LG) {
     const currentAmount = document.querySelector(`#gem-${id}-offset`).innerText
+    if (parseInt(currentAmount) === MAX_STAT) return
     const newAmount = parseInt(currentAmount) + amountToIncrease
     const isFull = newAmount > MAX_STAT
-    Gem.updateFill(id, isFull ? MAX_STAT : newAmount)
+    const newSanitizedAmount = isFull ? MAX_STAT : newAmount
+    Gem.updateFill(id, newSanitizedAmount)
+    Game.saveStat(id, newSanitizedAmount)
   }
 
-  static increaseDiscoveries(id) {
-    const discoveriesHistory = JSON.parse(sessionStorage.getItem(DISCOVERIES_HISTORY_KEY)) || []
-    const newDiscoveriesHistory = discoveriesHistory.includes(id) ? discoveriesHistory : discoveriesHistory.concat(id)
-    sessionStorage.setItem(DISCOVERIES_HISTORY_KEY, JSON.stringify(newDiscoveriesHistory))
+  static updateDiscoveries(id) {
+    const [_, { discoveriesHistory }] = Game.checkGameInProgress()
+    const newDiscoveriesHistory = !id || discoveriesHistory.includes(id) ? discoveriesHistory : discoveriesHistory.concat(id)
+    Game.saveDiscoveries(newDiscoveriesHistory)
 
     const currentDiscoveriesEl = document.getElementById('current-discoveries')
     currentDiscoveriesEl.textContent = newDiscoveriesHistory.length
@@ -60,17 +71,23 @@ export default class Stats {
     }
   }
 
-  static initiate() {
+  static initiate(initialStats) {
     const boardLeftTopContainer = document.getElementById('board-left-top-container')
     const discoveriesButton = document.createElement('button')
-    sessionStorage.clear(DISCOVERIES_HISTORY_KEY)
-    sessionStorage.clear(COMBOS_HISTORY_KEY)
-    sessionStorage.clear(BADGES_KEY)
     discoveriesButton.innerHTML = `📜 &nbsp; <span id="current-discoveries">0</span>/<span>${TOTAL_DISCOVERIES}</span>`
     discoveriesButton.addEventListener('click', Modal.showCombinedCards)
     boardLeftTopContainer.appendChild(discoveriesButton)
     Gem.create('#991212', 'stats', 'health')
     Gem.create('#00FFFF', 'stats', 'thirst')
+    if (initialStats) {
+      if (initialStats.health) {
+        Gem.updateFill('health', initialStats.health)
+      }
+      if (initialStats.thirst) {
+        Gem.updateFill('thirst', initialStats.thirst)
+      }
+      this.updateDiscoveries(null)
+    }
 
     if (import.meta.env.MODE === 'development') {
       // show all possible combinations in dev mode ONLY
@@ -81,10 +98,4 @@ export default class Stats {
       boardLeftTopContainer.appendChild(allPossibleCombinationsButton)
     }
   }
-}
-
-function endGame(callback) {
-  window.clearInterval(window.thirstIntervalId)
-  window.clearInterval(window.animalIntervalId)
-  callback()
 }
