@@ -13,7 +13,7 @@ import cardsData from '../../cards.js'
 import { setInitialIntervalsAndButtonsOnClick } from '../../utils.js'
 import Modal from '../modal/index.js'
 
-const WRONG_COMBOS_FOR_SUGGESTION = 1
+const WRONG_COMBOS_FOR_SUGGESTION = 10
 
 export default class Game {
   static clearSavedGame() {
