@@ -9,7 +9,7 @@
 ### How to play:
 The goal is to reach the greatest number of discoveries by dragging and dropping cards
 - Only 2 cards can be combined at a time in this edition
-- Some cards can be combined themselves
+- Some cards can be combined with themselves
 
 ENJOY!
 
