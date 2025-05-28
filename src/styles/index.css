@@ -2,14 +2,13 @@
 @import './modal.css';
 @import './toaster.css';
 @import './card.css';
+@import './hud-bar.css';
 
-.stats-container {
+.hud-container {
   align-items: center;
-  background-image: url('/images/stats-bg.jpg');
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: var(--brown-dark);
   color: var(--not-white);
+  border-top: 2px solid var(--brown-light);
   display: flex;
   height: 75px;
   justify-content: space-around;
@@ -78,12 +77,16 @@
   left: 0;
 }
 
+h1 {
+  color: var(--sand);
+}
+
 @media (max-width: 729px) {
   .content-wrapper {
     padding: 0 22px 80px;
   }
 
-  .stats-container {
+  .hud-container {
     height: 75px;
   }
 

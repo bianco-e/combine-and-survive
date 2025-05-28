@@ -57,7 +57,7 @@ export const setInitialBoard = () => {
     <div id="toasters-wrapper"></div>
     <dialog id="modal" class="modal"></dialog>
 
-    <div id="stats" class="stats-container"></div>
+    <div id="hud" class="hud-container"></div>
     <script src="./index.js" type="module"></script>
   `
   document.body.innerHTML = initialBoard
@@ -68,7 +68,7 @@ export function setInitialIntervalsAndButtonsOnClick() {
   document.getElementById('instructions-button').addEventListener('click', Modal.showInstructions)
 
   window.thirstIntervalId = setInterval(() => {
-    const currentThirst = parseInt(document.getElementById('gem-thirst-offset').innerText)
+    const currentThirst = parseInt(document.getElementById('hud-bar-percentage-thirst').innerText)
     if (currentThirst <= LOW_THIRST_WARNING) {
       Toaster.display(i18n.t('thirstDeath'), 'error')
     }

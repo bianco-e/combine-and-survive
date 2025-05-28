@@ -2,18 +2,19 @@
 
 .card {
   align-items: center;
-  background: var(--white);
-  border: 1px solid var(--gray);
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.075);
+  background: var(--sand);
+  border: 2px solid var(--brown-dark);
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   cursor: grab;
   display: flex;
   flex-direction: column;
-  height: 105px;
+  height: 100px;
   margin: 10px 20px;
-  padding: var(--gap-regular);
+  padding: var(--gap-small);
   position: relative;
   transition: all 0.2s ease;
-  width: 105px;
+  width: 100px;
 }
 
 .card.owned-card {
@@ -29,14 +30,16 @@
 }
 
 .card:active {
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .card p {
-  color: var(--not-black);
+  color: var(--brown-dark);
   display: block;
-  font-size: 10px;
-  margin: 0 0 7px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin: 4px 0;
   overflow: hidden;
   text-align: center;
   text-overflow: ellipsis;
@@ -46,17 +49,17 @@
 }
 
 .card img {
-  height: 65px;
+  height: 50px;
   object-fit: contain;
-  width: 65px;
+  width: 50px;
 }
 
 .card img.equippable-icon {
-  height: 15px;
+  height: 16px;
   position: absolute;
-  right: 2px;
-  top: 2px;
-  width: 15px;
+  right: 4px;
+  top: 4px;
+  width: 16px;
 }
 
 @media (max-width: 729px) {

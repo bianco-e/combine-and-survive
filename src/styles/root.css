@@ -1,28 +1,42 @@
 :root {
-  --white: #fff;
-  --not-white: #efefef;
-  --black: #140e00;
-  --not-black: #0a0500;
-  --gray: #c7c7c7;
+  /* Neutros */
+  --sand: #fdffdd;
+  --not-white: #f5f5f5;
+  --gray: #a3a3a3;
+  --not-black: #140e00;
+  --brown-dark: #2d190d;
+  --brown: #4a2e1a;
+  --brown-light: #7c4f3c;
   --info-blue: navy;
+
+  /* stats */
+  --health-red: #b52929;
+  --health-red-dark: #5a0202;
+  --thirst-blue: #3e84c3;
+  --thirst-blue-dark: #1f4e79;
+
+  /* states */
+  --success-green: #25ce25;
+  --success-green-dark: #328c32;
+  --warning-orange: #ffa500;
+  --warning-orange-dark: #c88c00;
   --error-red: #e60202;
   --error-red-dark: #5a0202;
-  --warning-orange: orange;
-  --warning-orange-dark: #c88c00;
-  --success-green: limegreen;
-  --success-green-dark: #328c32;
 
   --gap-regular: 10px;
+  --gap-small: 6px;
+  --gap-xsmall: 3px;
+  --card-border-radius: 12px;
 }
 
 * {
   border-radius: 1px;
   box-sizing: border-box;
-  font-family: 'IM Fell DW Pica SC', serif;
+  font-family: 'Bebas Neue', serif;
 }
 
 body {
-  background-image: url('/images/board-bg.jpg');
+  background-image: url('/images/board-bg.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,7 +46,7 @@ body {
 
 button {
   align-items: center;
-  background: var(--black);
+  background: var(--brown-dark);
   border: none;
   box-shadow: 0 0 2px 1px rgb(200, 140, 0.05);
   color: var(--not-white);
@@ -45,7 +59,7 @@ button {
 }
 
 button:hover {
-  background: var(--not-black);
+  background: var(--brown);
   box-shadow: 0 0 5px 1px rgb(200, 140, 0.15);
 }
 

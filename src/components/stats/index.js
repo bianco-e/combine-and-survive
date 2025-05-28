@@ -1,4 +1,3 @@
-import Gem from '../gem/index.js'
 import cardsData from '../../cards.js'
 import Modal from '../modal/index.js'
 import {
@@ -8,15 +7,16 @@ import {
   STAT_CHANGE_SM,
 } from '../../constants.js'
 import Game from '../game/index.js'
+import HudBar from '../hud-bar/index.js'
 
 const TOTAL_DISCOVERIES = cardsData.filter(card => !card.isPerson && !card.isSource).length
 export default class Stats {
   static decrease(id, amountToDecrease = STAT_CHANGE_SM) {
-    const currentAmount = document.querySelector(`#gem-${id}-offset`).innerText
+    const currentAmount = document.getElementById(`hud-bar-percentage-${id}`).innerText
     const newAmount = parseInt(currentAmount) - amountToDecrease
     const isDead = newAmount <= MIN_STAT
     const newSanitizedAmount = isDead ? MIN_STAT : newAmount
-    Gem.updateFill(id, newSanitizedAmount)
+    HudBar.updateFill(id, newSanitizedAmount)
     Game.saveStat(id, newSanitizedAmount)
     if (isDead) {
       Game.endGame(Modal.showLost)
@@ -24,12 +24,12 @@ export default class Stats {
   }
 
   static increase(id, amountToIncrease = STAT_CHANGE_LG) {
-    const currentAmount = document.querySelector(`#gem-${id}-offset`).innerText
+    const currentAmount = document.getElementById(`hud-bar-percentage-${id}`).innerText
     if (parseInt(currentAmount) === MAX_STAT) return
     const newAmount = parseInt(currentAmount) + amountToIncrease
     const isFull = newAmount > MAX_STAT
     const newSanitizedAmount = isFull ? MAX_STAT : newAmount
-    Gem.updateFill(id, newSanitizedAmount)
+    HudBar.updateFill(id, newSanitizedAmount)
     Game.saveStat(id, newSanitizedAmount)
   }
 
@@ -74,14 +74,14 @@ export default class Stats {
     discoveriesButton.innerHTML = `📜 &nbsp; <span id="current-discoveries">0</span>/<span>${TOTAL_DISCOVERIES}</span>`
     discoveriesButton.addEventListener('click', Modal.showCombinedCards)
     boardLeftTopContainer.appendChild(discoveriesButton)
-    Gem.create('#991212', 'stats', 'health')
-    Gem.create('#00FFFF', 'stats', 'thirst')
+    HudBar.create('hud', 'health', '❤️')
+    HudBar.create('hud', 'thirst', '💧')
     if (initialStats) {
       if (initialStats.health) {
-        Gem.updateFill('health', initialStats.health)
+        HudBar.updateFill('health', Number(initialStats.health))
       }
       if (initialStats.thirst) {
-        Gem.updateFill('thirst', initialStats.thirst)
+        HudBar.updateFill('thirst', Number(initialStats.thirst))
       }
       this.updateDiscoveries(null)
     }

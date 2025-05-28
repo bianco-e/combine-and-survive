@@ -9,7 +9,7 @@ export default [
   {
     key: 'dirt',
     id: 2,
-    image: '/images/dirt.jpg',
+    image: '/images/dirt.png',
     isInitial: true,
     isSource: true
   },
@@ -57,7 +57,7 @@ export default [
   {
     key: 'sharpen-rock',
     id: 10,
-    image: '/images/sharpen-rock.jpeg'
+    image: '/images/sharpen-rock.png'
   },
   {
     key: 'axe',
@@ -74,7 +74,7 @@ export default [
   {
     key: 'clay',
     id: 13,
-    image: '/images/clay.jpeg'
+    image: '/images/clay.png'
   },
   {
     key: 'vessel',
@@ -134,12 +134,12 @@ export default [
   {
     key: 'adobe-brick',
     id: 25,
-    image: '/images/adobe-brick.jpg'
+    image: '/images/adobe-brick.png'
   },
   {
     key: 'bull',
     id: 26,
-    image: '/images/bull.webp'
+    image: '/images/bull.png'
   },
   {
     key: 'leather',
@@ -165,7 +165,7 @@ export default [
   {
     key: 'sprout',
     id: 31,
-    image: '/images/sprout.jpg'
+    image: '/images/sprout.png'
   },
   {
     key: 'plant',
@@ -180,7 +180,7 @@ export default [
   {
     key: 'glass',
     id: 34,
-    image: '/images/glass.webp'
+    image: '/images/glass.png'
   },
   {
     key: 'worm',
