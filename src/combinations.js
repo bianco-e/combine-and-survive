@@ -301,6 +301,7 @@ const combinations = [
   { combo: [16, 35], result: [65], consumes: [16, 35], decrease: null, increase: null },
   { combo: [30, 44], result: [45], consumes: [30], decrease: null, increase: null },
   { combo: [45, 15], result: [46, 14], consumes: [15, 45], decrease: null, increase: null },
+  { combo: [45, 17], result: [46, 14], consumes: [17, 45], decrease: null, increase: null },
   {
     combo: [46, 9],
     result: [47],
