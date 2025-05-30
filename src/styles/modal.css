@@ -2,7 +2,7 @@
 
 .modal {
   background: rgba(25, 25, 25, 0.85);
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
   border: 0;
   color: var(--not-white);
   display: none;
@@ -14,7 +14,7 @@
   top: 50%;
   transform: translateY(-50%);
   width: 75%;
-  z-index: 10;
+  z-index: 100;
 }
 
 .modal h2 {
@@ -64,6 +64,11 @@
 
 @media (max-width: 729px) {
   .modal {
-    width: 90%;
+    max-height: 80vh;
+    width: 92%;
+  }
+
+  .modal .close-btn {
+    font-size: 40px;
   }
 }

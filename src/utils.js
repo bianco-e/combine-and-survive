@@ -48,6 +48,8 @@ export const setInitialBoard = () => {
       <button class="board-button" id="instructions-button">❔</button>
     </div>
 
+    <div id="overlay" class="overlay"></div>
+
     <div class="content-wrapper">
       <div id="person-board" class="board"></div>
       <div id="sources-board" class="board"></div>

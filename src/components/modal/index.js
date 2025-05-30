@@ -20,11 +20,12 @@ export default class Modal {
     const modal = document.getElementById('modal')
     const modalBase = `
       <center>
-        ${closeButton ? `<button class='modal-btn close-btn' id='close-modal'>x</button>` : ''}
+        ${closeButton ? `<button class='modal-btn close-btn' id='close-modal'>×</button>` : ''}
         ${modalContent}
       </center>
     `
     modal.innerHTML = modalBase
+    document.getElementById('overlay').classList.add('overlay-show')
     modal.classList.add('show')
     if (closeButton) {
       document.getElementById('close-modal').addEventListener('click', this.close)
@@ -33,6 +34,7 @@ export default class Modal {
   }
 
   static close() {
+    document.getElementById('overlay').classList.remove('overlay-show')
     document.getElementById('modal').classList.remove('show')
     document.removeEventListener('mousedown', checksClickOutside)
   }

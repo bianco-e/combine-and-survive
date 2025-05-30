@@ -1,0 +1,162 @@
+{
+  "alreadyCreatedCard": "Tu as déjà",
+  "badges": {
+    "modalTitle": "Insignes",
+    "types": {
+      "axeman": {
+        "name": "Axeman",
+        "msg": "Vous êtes un Axeman maintenant. "
+      },
+      "fisherman": {
+        "name": "Pêcheur",
+        "msg": "Tu es un pêcheur maintenant"
+      },
+      "baker": {
+        "name": "Boulanger",
+        "msg": "Tu es un boulanger maintenant"
+      },
+      "herbalist": {
+        "name": "Herboriste",
+        "msg": "Vous êtes maintenant herboriste. "
+      },
+      "builder": {
+        "name": "Constructeur",
+        "msg": "Vous êtes un constructeur maintenant"
+      },
+      "writer": {
+        "name": "Écrivain",
+        "msg": "Tu es un écrivain maintenant"
+      },
+      "miner": {
+        "name": "Mineur",
+        "msg": "Tu es un mineur maintenant"
+      }
+    }
+  },
+  "bullAttack": "Vous ne pouvez pas tuer un taureau avec vos mains",
+  "combinationNotPossible": "Combinaison non possible",
+  "rawMeat": "La viande crue peut vous faire du mal",
+  "rawChicken": "Le poulet cru peut vous faire du mal",
+  "rottenFood": "Manger des aliments pourris peut vous faire du mal",
+  "discoveries": "Découvertes",
+  "cleanFloor": "Le nettoyage de la zone éloignera certains animaux",
+  "equippableCard": "Carte à équiper",
+  "health": "Santé",
+  "noBaitMsg": "On dirait que vous manquez l'appât",
+  "thirst": "Soif",
+  "thirstDeath": "Vous êtes sur le point de mourir de soif, buvez quelque chose!",
+  "waterHarm": "L'eau directement de la rivière étanchera votre soif mais peut vous faire du mal",
+  "wildBull": "Un taureau sauvage vient de apparaître",
+  "wildChicken": "Un poulet affamé",
+  "wonMsg": "Vous avez gagné!",
+  "wonParagraph": "Vous avez déjà fait toutes les combinaisons possibles!",
+  "lostMsg": "Vous avez perdu!",
+  "lostParagraph": "La prochaine fois, vous devriez accorder plus d'attention à votre santé et à votre soif!",
+  "playAgain": "Jouer à nouveau",
+  "howToPlay": {
+    "title": "Comment jouer",
+    "line1": "Combinez et survivre est un jeu de stratégie",
+    "line2": "L'objectif est d'atteindre le plus grand nombre de découvertes en faisant glisser et abandonner les cartes",
+    "line3": "• Seules 2 cartes peuvent être combinées à la fois de cette édition",
+    "line4": "• Certaines cartes peuvent être combinées avec elles-mêmes",
+    "line5": "APPRÉCIER!"
+  },
+  "game": {
+    "welcomeBack": "Content de te revoir!",
+    "gameInProgress": "On dirait que vous avez un jeu en cours. ",
+    "startNewGame": "Commencer un nouveau jeu",
+    "resumeGame": "Jeu de CV",
+    "autoSave": "Vos progrès seront automatiquement enregistrés"
+  },
+  "combinationSuggestionModal": {
+    "title": "On dirait que tu es coincé",
+    "line1": "Cliquez sur le bouton Revever pour voir une combinaison possible",
+    "reveal": "Révéler",
+    "dismissSuggestion": "Rejeter la suggestion"
+  },
+  "combinedCardsModal": {
+    "title": "Cartes combinées",
+    "none": "Aucun encore. ",
+    "switchModalContentButton": "Voir les cartes pour obtenir"
+  },
+  "cardsToGetModal": {
+    "title": "Cartes pour obtenir",
+    "switchModalContentButton": "Voir les cartes combinées"
+  },
+  "allCombinationsModal": {
+    "title": "Toutes les combinaisons"
+  },
+  "accessToCave": "Maintenant que vous avez une torche, vous pouvez accéder à la grotte pour obtenir de nouvelles ressources. ",
+  "caveDanger": "Vous ne pouvez pas accéder à la grotte comme celle-ci. ",
+  "cards": {
+    "person": "Personne",
+    "dirt": "Saleté",
+    "tree": "Arbre",
+    "river": "Rivière",
+    "mountain": "Montagne",
+    "log": "Enregistrer",
+    "rock": "Rocher",
+    "stick": "Bâton",
+    "campfire": "Feu de camp",
+    "sharpen-rock": "Aiguiser",
+    "axe": "Hache",
+    "axeman": "Axeman",
+    "clay": "Argile",
+    "vessel": "Navire",
+    "water": "Eau",
+    "apple": "Pomme",
+    "boiled-water": "Eau bouillie",
+    "coal": "Charbon",
+    "leaf": "Feuille",
+    "leaf-fibers": "Fibres de feuilles",
+    "cordage": "Cordage",
+    "fishing-line": "Ligne de pêche",
+    "fish": "Poisson",
+    "mud": "Boue",
+    "adobe-brick": "Adobe Brick",
+    "bull": "Taureau",
+    "leather": "Cuir",
+    "bone": "Os",
+    "clothes": "Vêtements",
+    "seeds": "Graines",
+    "sprout": "Germer",
+    "plant": "Usine",
+    "sand": "Sable",
+    "glass": "Verre",
+    "worm": "Ver",
+    "sap": "Sève",
+    "bark": "Aboyer",
+    "torch": "Torche",
+    "ashes": "Cendres",
+    "grilled-fish": "Poisson grillé",
+    "raw-meat": "Viande crue",
+    "cooked-meat": "Viande cuite",
+    "herbal-tea": "Thé à base de plantes",
+    "mortar": "Mortier",
+    "flour": "Farine",
+    "dough": "Pâte",
+    "bread": "Pain",
+    "bait-fishing-line": "Appâts + ligne de pêche",
+    "wooden-planks": "Planches en bois",
+    "basket": "Panier",
+    "hut": "Cabane",
+    "ink": "Encre",
+    "bread-crumbs": "Chapelure",
+    "chicken": "Poulet",
+    "feather": "Plume",
+    "raw-chicken": "Poulet cru",
+    "cooked-chicken": "Poulet cuit",
+    "eggs": "Œufs",
+    "quill": "Penne",
+    "dressed-axeman": "Axeman habillé",
+    "brush": "Brosse",
+    "fish-spine": "Colonne vertébrale de poisson",
+    "needle-thread": "Aiguille + fil",
+    "tree-thorn": "Épine de l'arbre",
+    "rotten-apple": "Pomme pourrie",
+    "cave": "Grotte",
+    "iron-ore": "Minerai de fer",
+    "furnace": "Four",
+    "iron-nugget": "Pépite de fer"
+  }
+}

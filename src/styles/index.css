@@ -81,13 +81,28 @@ h1 {
   color: var(--sand);
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(65, 65, 65, 0.8);
+  z-index: 99;
+}
+
+.overlay-show {
+  display: block;
+}
+
 @media (max-width: 729px) {
   .content-wrapper {
     padding: 0 22px 80px;
   }
 
   .hud-container {
-    height: 75px;
+    height: 60px;
   }
 
   div#discoveries-board {

@@ -72,3 +72,15 @@
   position: absolute;
   z-index: 2;
 }
+
+@media (max-width: 729px) {
+  .hud-bar-label {
+    margin-bottom: var(--gap-xsmall);
+    font-size: 14px;
+  }
+
+  .hud-bar-track {
+    height: 24px;
+    width: 140px;
+  }
+}
