@@ -1,5 +1,4 @@
 import i18n from '../../i18n.js'
-import { capitalize } from '../../utils.js'
 
 export default class HudBar {
   static create(rootId, id, icon) {
@@ -7,7 +6,7 @@ export default class HudBar {
     hudBar.setAttribute('id', id)
     const hudBarContent = `
        <div class='hud-bar'>
-        <div class='hud-bar-label ${id}'>${capitalize(id)}</div>
+        <div class='hud-bar-label ${id}'>${i18n.t(id)}</div>
         <div class='hud-bar-track'>
           <span class='hud-bar-icon'>${icon}</span>
           <div class='hud-bar-fill hud-bar-fill-${id}'></div>
