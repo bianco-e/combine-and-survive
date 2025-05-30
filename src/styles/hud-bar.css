@@ -28,7 +28,7 @@
 }
 
 .hud-bar-track {
-  width: 120px;
+  width: 140px;
   height: 30px;
   background-color: var(--not-black);
   border-radius: 6px;
@@ -81,6 +81,5 @@
 
   .hud-bar-track {
     height: 24px;
-    width: 140px;
   }
 }

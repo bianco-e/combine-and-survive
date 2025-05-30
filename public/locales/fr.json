@@ -159,6 +159,11 @@
     "furnace": "Four",
     "iron-nugget": "Pépite de fer",
     "loom": "Métier à tisser",
-    "fabric": "Tissu"
+    "fabric": "Tissu",
+    "paper-pulp": "Pâte à papier",
+    "paper": "Papier",
+    "note": "Note",
+    "book": "Livre",
+    "lye": "Lessive de soude"
   }
 }

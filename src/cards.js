@@ -368,5 +368,30 @@ export default [
     key: 'fabric',
     id: 71,
     image: '/images/fabric.png'
+  },
+  {
+    key: 'paper-pulp',
+    id: 72,
+    image: '/images/paper-pulp.png'
+  },
+  {
+    key: 'paper',
+    id: 73,
+    image: '/images/paper.png'
+  },
+  {
+    key: 'note',
+    id: 74,
+    image: '/images/note.png'
+  },
+  {
+    key: 'book',
+    id: 75,
+    image: '/images/book.png'
+  },
+  {
+    key: 'lye',
+    id: 76,
+    image: '/images/lye.png'
   }
 ]

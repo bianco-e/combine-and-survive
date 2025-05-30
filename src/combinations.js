@@ -1,6 +1,14 @@
 import cardsData from './cards.js'
 import i18n from './i18n.js'
-import { BADGES, STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM, IDLE, STAT_CHANGE_XL } from './constants.js'
+import {
+  BADGES,
+  STAT_CHANGE_LG,
+  STAT_CHANGE_MD,
+  STAT_CHANGE_SM,
+  IDLE,
+  STAT_CHANGE_XL,
+  STAT_CHANGE_XXL
+} from './constants.js'
 import { addSourceCardToBoard, addWildAnimalToBoard } from './utils.js'
 
 const spawnChickenCallback = () => {
@@ -48,7 +56,7 @@ const combinations = [
     increase: { thirst: STAT_CHANGE_MD }
   },
   { combo: [1, 16], result: [30], consumes: [16], decrease: null, increase: { health: STAT_CHANGE_MD } },
-  { combo: [1, 17], result: [14], consumes: [17], decrease: null, increase: { thirst: STAT_CHANGE_XL } },
+  { combo: [1, 17], result: [14], consumes: [17], decrease: null, increase: { thirst: STAT_CHANGE_XXL } },
   { combo: [1, 20], result: [21], consumes: [20], decrease: null, increase: null },
   { combo: [1, 23], result: [62], consumes: [23], decrease: null, increase: { health: STAT_CHANGE_MD } },
   { combo: [1, 24], result: [25], consumes: [24], decrease: null, increase: null },
@@ -116,6 +124,7 @@ const combinations = [
     increase: null,
     message: { type: 'error', i18nKey: 'caveDanger' }
   },
+  { combo: [1, 72], result: [73], consumes: [72], decrease: null, increase: null },
   { combo: [2, 15], result: [14, 24], consumes: [15], decrease: null, increase: null },
   { combo: [2, 17], result: [14, 24], consumes: [17], decrease: null, increase: null },
   { combo: [2, 30], result: [31], consumes: [30], decrease: null, increase: null },
@@ -189,7 +198,7 @@ const combinations = [
     result: [14],
     consumes: [17],
     decrease: null,
-    increase: { thirst: STAT_CHANGE_XL }
+    increase: { thirst: STAT_CHANGE_XXL }
   },
   { combo: [12, 20], result: [21], consumes: [20], decrease: null, increase: null },
   {
@@ -289,6 +298,7 @@ const combinations = [
     increase: null,
     message: { type: 'error', i18nKey: 'caveDanger' }
   },
+  { combo: [12, 72], result: [73], consumes: [72], decrease: null, increase: null },
   { combo: [15, 31], result: [32, 14], consumes: [15, 31], decrease: null, increase: null },
   { combo: [21, 62], result: [63], consumes: [21, 62], decrease: null, increase: null },
   { combo: [21, 49], result: [70], consumes: [21, 49], decrease: null, increase: null },
@@ -301,6 +311,8 @@ const combinations = [
     increase: null,
     badge: 4
   },
+  { combo: [15, 39], result: [76], consumes: [15, 39], decrease: null, increase: null },
+  { combo: [17, 39], result: [76], consumes: [17, 39], decrease: null, increase: null },
   { combo: [14, 28], result: [44], consumes: [14, 28], decrease: null, increase: null },
   { combo: [16, 35], result: [65], consumes: [16, 35], decrease: null, increase: null },
   { combo: [30, 44], result: [45], consumes: [30], decrease: null, increase: null },
@@ -324,6 +336,8 @@ const combinations = [
     badge: 2
   },
   { combo: [19, 21], result: [50], consumes: [19, 21], decrease: null, increase: null },
+  { combo: [20, 15], result: [72, 14], consumes: [20, 15], decrease: null, increase: null },
+  { combo: [20, 17], result: [72, 14], consumes: [20, 17], decrease: null, increase: null },
   { combo: [25, 49], result: [51], consumes: [25, 49], decrease: null, increase: null, badge: 5 },
   {
     combo: [18, 15],
@@ -334,7 +348,7 @@ const combinations = [
   },
   { combo: [9, 56], result: [57], consumes: [56], decrease: null, increase: null },
   { combo: [50, 54], result: [58], consumes: [], decrease: null, increase: null },
-  { combo: [52, 55], result: [59], consumes: [52, 55], decrease: null, increase: null, badge: 6 },
+  { combo: [52, 55], result: [59], consumes: [52, 55], decrease: null, increase: null },
   {
     combo: [53, 61],
     result: IDLE,
@@ -375,7 +389,7 @@ const combinations = [
     result: [14],
     consumes: [17],
     decrease: null,
-    increase: { thirst: STAT_CHANGE_XL }
+    increase: { thirst: STAT_CHANGE_XXL }
   },
   { combo: [60, 20], result: [21], consumes: [20], decrease: null, increase: null },
   {
@@ -468,9 +482,14 @@ const combinations = [
     increase: null,
     badge: 7
   },
+  { combo: [60, 72], result: [73], consumes: [72], decrease: null, increase: null },
   { combo: [63, 27], result: [29], consumes: [27], decrease: null, increase: null },
   { combo: [68, 67], result: [69], consumes: [67], decrease: null, increase: null },
   { combo: [71, 63], result: [29], consumes: [71], decrease: null, increase: null },
+  { combo: [73, 59], result: [74], consumes: [73], decrease: null, increase: null, badge: 6 },
+  { combo: [73, 59], result: [74], consumes: [73], decrease: null, increase: null },
+  { combo: [73, 27], result: [75], consumes: [73, 27], decrease: null, increase: null },
+  { combo: [74, 27], result: [75], consumes: [74, 27], decrease: null, increase: null }
 ]
 
 export function seeCurrentCombinations(combos = combinations) {

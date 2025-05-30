@@ -3,6 +3,7 @@ export const STAT_CHANGE_SM = 5
 export const STAT_CHANGE_MD = 15
 export const STAT_CHANGE_LG = 25
 export const STAT_CHANGE_XL = 40
+export const STAT_CHANGE_XXL = 60
 export const MAX_STAT = 100
 export const MIN_STAT = 0
 

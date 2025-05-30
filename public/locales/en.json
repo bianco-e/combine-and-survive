@@ -159,6 +159,11 @@
     "furnace": "Furnace",
     "iron-nugget": "Iron Nugget",
     "loom": "Loom",
-    "fabric": "Fabric"
+    "fabric": "Fabric",
+    "paper-pulp": "Paper pulp",
+    "paper": "Paper",
+    "note": "Note",
+    "book": "Book",
+    "lye": "Lye"
   }
 }

@@ -159,6 +159,11 @@
     "furnace": "Forno",
     "iron-nugget": "Pepita de Ferro",
     "loom": "Tear",
-    "fabric": "Tecido"
+    "fabric": "Tecido",
+    "paper-pulp": "Polpa de papel",
+    "paper": "Papel",
+    "note": "Nota",
+    "book": "Livro",
+    "lye": "Soda cáustica"
   }
 }

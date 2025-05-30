@@ -159,6 +159,11 @@
     "furnace": "Ofen",
     "iron-nugget": "Eisenklumpen",
     "loom": "Webstuhl",
-    "fabric": "Stoff"
+    "fabric": "Stoff",
+    "paper-pulp": "Papierbrei",
+    "paper": "Papier",
+    "note": "Notiz",
+    "book": "Buch",
+    "lye": "Lauge"
   }
 }
