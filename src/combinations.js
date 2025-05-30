@@ -117,6 +117,7 @@ const combinations = [
     message: { type: 'error', i18nKey: 'caveDanger' }
   },
   { combo: [2, 15], result: [14, 24], consumes: [15], decrease: null, increase: null },
+  { combo: [2, 17], result: [14, 24], consumes: [17], decrease: null, increase: null },
   { combo: [2, 30], result: [31], consumes: [30], decrease: null, increase: null },
   { combo: [3, 10], result: [19, 36, 64], consumes: [], decrease: null, increase: null },
   { combo: [3, 12], result: [6, 8, 16], consumes: [], decrease: null, increase: null },
@@ -140,6 +141,7 @@ const combinations = [
   { combo: [8, 10], result: [11], consumes: [8, 10], decrease: null, increase: null },
   { combo: [8, 20], result: [61], consumes: [8, 20], decrease: null, increase: null },
   { combo: [9, 18], result: [39], consumes: [18], decrease: null, increase: null },
+  { combo: [9, 64], result: [39], consumes: [64], decrease: null, increase: null },
   { combo: [64, 21], result: [22], consumes: [64, 21], decrease: null, increase: null },
   {
     combo: [8, 36],
@@ -289,6 +291,8 @@ const combinations = [
   },
   { combo: [15, 31], result: [32, 14], consumes: [15, 31], decrease: null, increase: null },
   { combo: [21, 62], result: [63], consumes: [21, 62], decrease: null, increase: null },
+  { combo: [21, 49], result: [70], consumes: [21, 49], decrease: null, increase: null },
+  { combo: [21, 70], result: [71], consumes: [21], decrease: null, increase: null },
   {
     combo: [17, 19],
     result: [43],
@@ -465,7 +469,8 @@ const combinations = [
     badge: 7
   },
   { combo: [63, 27], result: [29], consumes: [27], decrease: null, increase: null },
-  { combo: [68, 67], result: [69], consumes: [67], decrease: null, increase: null }
+  { combo: [68, 67], result: [69], consumes: [67], decrease: null, increase: null },
+  { combo: [71, 63], result: [29], consumes: [71], decrease: null, increase: null },
 ]
 
 export function seeCurrentCombinations(combos = combinations) {

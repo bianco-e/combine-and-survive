@@ -1,163 +1,164 @@
 {
-    "alreadyCreatedCard": "Du hast bereits",
-    "badges": {
-      "modalTitle": "Abzeichen",
-      "types": {
-        "axeman": {
-          "name": "Axtmann",
-          "msg": "Du bist jetzt ein Axtmann. Du wirst wilde Tiere leicht töten können."
-        },
-        "fisherman": {
-          "name": "Fischer",
-          "msg": "Du bist jetzt ein Fischer."
-        },
-        "baker": {
-          "name": "Bäcker",
-          "msg": "Du bist jetzt ein Bäcker."
-        },
-        "herbalist": {
-          "name": "Kräuterkundler",
-          "msg": "Du bist jetzt ein Kräuterkundler. Tees stillen nicht nur deinen Durst, sondern heilen dich auch."
-        },
-        "builder": {
-          "name": "Baumeister",
-          "msg": "Du bist jetzt ein Baumeister."
-        },
-        "writer": {
-          "name": "Schriftsteller",
-          "msg": "Du bist jetzt ein Schriftsteller."
-        },
-        "miner": {
-          "name": "Bergmann",
-          "msg": "Du bist jetzt ein Bergmann."
-        }
+  "alreadyCreatedCard": "Du hast bereits",
+  "badges": {
+    "modalTitle": "Abzeichen",
+    "types": {
+      "axeman": {
+        "name": "Axtmann",
+        "msg": "Du bist jetzt ein Axtmann. Du wirst wilde Tiere leicht töten können."
+      },
+      "fisherman": {
+        "name": "Fischer",
+        "msg": "Du bist jetzt ein Fischer."
+      },
+      "baker": {
+        "name": "Bäcker",
+        "msg": "Du bist jetzt ein Bäcker."
+      },
+      "herbalist": {
+        "name": "Kräuterkundler",
+        "msg": "Du bist jetzt ein Kräuterkundler. Tees stillen nicht nur deinen Durst, sondern heilen dich auch."
+      },
+      "builder": {
+        "name": "Baumeister",
+        "msg": "Du bist jetzt ein Baumeister."
+      },
+      "writer": {
+        "name": "Schriftsteller",
+        "msg": "Du bist jetzt ein Schriftsteller."
+      },
+      "miner": {
+        "name": "Bergmann",
+        "msg": "Du bist jetzt ein Bergmann."
       }
-    },
-    "bullAttack": "Du kannst einen Bullen nicht mit bloßen Händen töten.",
-    "combinationNotPossible": "Kombination nicht möglich.",
-    "rawMeat": "Rohes Fleisch kann dir schaden.",
-    "rawChicken": "Rohes Huhn kann dir schaden.",
-    "rottenFood": "Der Verzehr von verdorbenem Essen kann dir schaden.",
-    "discoveries": "Entdeckungen",
-    "cleanFloor": "Das Reinigen des Bereichs hält einige Tiere fern.",
-    "equippableCard": "Ausrüstbare Karte",
-    "health": "Gesundheit",
-    "noBaitMsg": "Es scheint, als ob dir der Köder fehlt.",
-    "thirst": "Durst",
-    "thirstDeath": "Du bist dabei, vor Durst zu sterben. Trink etwas!",
-    "waterHarm": "Wasser direkt aus dem Fluss stillt deinen Durst, kann dir aber schaden.",
-    "wildBull": "Ein wilder Bulle ist gerade erschienen.",
-    "wildChicken": "Ein hungriges Huhn ist gerade erschienen und hat deine Brotkrumen gefressen.",
-    "wonMsg": "Du hast gewonnen!",
-    "wonParagraph": "Du hast bereits alle möglichen Kombinationen gemacht!",
-    "lostMsg": "Du hast verloren!",
-    "lostParagraph": "Beim nächsten Mal solltest du mehr auf deine Gesundheit und deinen Durst achten!",
-    "playAgain": "Erneut spielen",
-    "howToPlay": {
-      "title": "Wie man spielt",
-      "line1": "Combine & Survive ist ein Strategiespiel.",
-      "line2": "Das Ziel ist es, die größte Anzahl an Entdeckungen zu erreichen, indem du Karten ziehst und ablegst.",
-      "line3": "• In dieser Ausgabe können nur 2 Karten gleichzeitig kombiniert werden.",
-      "line4": "• Einige Karten können mit sich selbst kombiniert werden.",
-      "line5": "VIEL SPASS!"
-    },
-    "game": {
-      "welcomeBack": "Willkommen zurück!",
-      "gameInProgress": "Es sieht so aus, als hättest du ein laufendes Spiel. Möchtest du weiterspielen?",
-      "startNewGame": "Neues Spiel starten",
-      "resumeGame": "Spiel fortsetzen",
-      "autoSave": "Dein Fortschritt wird automatisch gespeichert."
-    },
-    "combinationSuggestionModal": {
-      "title": "Es scheint, als wärst du festgefahren.",
-      "line1": "Klicke auf die Schaltfläche 'Aufdecken', um eine mögliche Kombination zu sehen.",
-      "reveal": "Aufdecken",
-      "dismissSuggestion": "Vorschlag verwerfen"
-    },
-    "combinedCardsModal": {
-      "title": "Kombinierte Karten",
-      "none": "Noch keine. Versuch es mal!",
-      "switchModalContentButton": "Zu erhaltende Karten ansehen"
-    },
-    "cardsToGetModal": {
-      "title": "Zu erhaltende Karten",
-      "switchModalContentButton": "Kombinierte Karten ansehen"
-    },
-    "allCombinationsModal": {
-      "title": "Alle Kombinationen"
-    },
-    "accessToCave": "Jetzt, da du eine Fackel hast, kannst du die Höhle betreten, um neue Ressourcen zu erhalten. Stelle sicher, dass du richtig ausgerüstet bist, da es sehr gefährlich ist.",
-    "caveDanger": "Du kannst die Höhle so nicht betreten. Es ist zu gefährlich. Du brauchst eine Waffe und Kleidung.",
-    "cards": {
-      "person": "Person",
-      "dirt": "Erde",
-      "tree": "Baum",
-      "river": "Fluss",
-      "mountain": "Berg",
-      "log": "Holzstamm",
-      "rock": "Fels",
-      "stick": "Stock",
-      "campfire": "Lagerfeuer",
-      "sharpen-rock": "Geschärfter Fels",
-      "axe": "Axt",
-      "axeman": "Axtmann",
-      "clay": "Ton",
-      "vessel": "Gefäß",
-      "water": "Wasser",
-      "apple": "Apfel",
-      "boiled-water": "Abgekochtes Wasser",
-      "coal": "Kohle",
-      "leaf": "Blatt",
-      "leaf-fibers": "Blattfasern",
-      "cordage": "Schnur",
-      "fishing-line": "Angelschnur",
-      "fish": "Fisch",
-      "mud": "Schlamm",
-      "adobe-brick": "Lehmziegel",
-      "bull": "Bulle",
-      "leather": "Leder",
-      "bone": "Knochen",
-      "clothes": "Kleidung",
-      "seeds": "Samen",
-      "sprout": "Spross",
-      "plant": "Pflanze",
-      "sand": "Sand",
-      "glass": "Glas",
-      "worm": "Wurm",
-      "sap": "Saft",
-      "bark": "Rinde",
-      "torch": "Fackel",
-      "ashes": "Asche",
-      "grilled-fish": "Gegrillter Fisch",
-      "raw-meat": "Rohes Fleisch",
-      "cooked-meat": "Gekochtes Fleisch",
-      "herbal-tea": "Kräutertee",
-      "mortar": "Mörser",
-      "flour": "Mehl",
-      "dough": "Teig",
-      "bread": "Brot",
-      "bait-fishing-line": "Köder + Angelschnur",
-      "wooden-planks": "Holzbretter",
-      "basket": "Korb",
-      "hut": "Hütte",
-      "ink": "Tinte",
-      "bread-crumbs": "Brotkrumen",
-      "chicken": "Huhn",
-      "feather": "Feder",
-      "raw-chicken": "Rohes Huhn",
-      "cooked-chicken": "Gekochtes Huhn",
-      "eggs": "Eier",
-      "quill": "Federkiel",
-      "dressed-axeman": "Gekleideter Axtmann",
-      "brush": "Pinsel",
-      "fish-spine": "Fischgräte",
-      "needle-thread": "Nadel + Faden",
-      "tree-thorn": "Baumdorn",
-      "rotten-apple": "Verdorbener Apfel",
-      "cave": "Höhle",
-      "iron-ore": "Eisenerz",
-      "furnace": "Ofen",
-      "iron-nugget": "Eisenklumpen"
     }
+  },
+  "bullAttack": "Du kannst einen Bullen nicht mit bloßen Händen töten.",
+  "combinationNotPossible": "Kombination nicht möglich.",
+  "rawMeat": "Rohes Fleisch kann dir schaden.",
+  "rawChicken": "Rohes Huhn kann dir schaden.",
+  "rottenFood": "Der Verzehr von verdorbenem Essen kann dir schaden.",
+  "discoveries": "Entdeckungen",
+  "cleanFloor": "Das Reinigen des Bereichs hält einige Tiere fern.",
+  "equippableCard": "Ausrüstbare Karte",
+  "health": "Gesundheit",
+  "noBaitMsg": "Es scheint, als ob dir der Köder fehlt.",
+  "thirst": "Durst",
+  "thirstDeath": "Du bist dabei, vor Durst zu sterben. Trink etwas!",
+  "waterHarm": "Wasser direkt aus dem Fluss stillt deinen Durst, kann dir aber schaden.",
+  "wildBull": "Ein wilder Bulle ist gerade erschienen.",
+  "wildChicken": "Ein hungriges Huhn ist gerade erschienen und hat deine Brotkrumen gefressen.",
+  "wonMsg": "Du hast gewonnen!",
+  "wonParagraph": "Du hast bereits alle möglichen Kombinationen gemacht!",
+  "lostMsg": "Du hast verloren!",
+  "lostParagraph": "Beim nächsten Mal solltest du mehr auf deine Gesundheit und deinen Durst achten!",
+  "playAgain": "Erneut spielen",
+  "howToPlay": {
+    "title": "Wie man spielt",
+    "line1": "Combine & Survive ist ein Strategiespiel.",
+    "line2": "Das Ziel ist es, die größte Anzahl an Entdeckungen zu erreichen, indem du Karten ziehst und ablegst.",
+    "line3": "• In dieser Ausgabe können nur 2 Karten gleichzeitig kombiniert werden.",
+    "line4": "• Einige Karten können mit sich selbst kombiniert werden.",
+    "line5": "VIEL SPASS!"
+  },
+  "game": {
+    "welcomeBack": "Willkommen zurück!",
+    "gameInProgress": "Es sieht so aus, als hättest du ein laufendes Spiel. Möchtest du weiterspielen?",
+    "startNewGame": "Neues Spiel starten",
+    "resumeGame": "Spiel fortsetzen",
+    "autoSave": "Dein Fortschritt wird automatisch gespeichert."
+  },
+  "combinationSuggestionModal": {
+    "title": "Es scheint, als wärst du festgefahren.",
+    "line1": "Klicke auf die Schaltfläche 'Aufdecken', um eine mögliche Kombination zu sehen.",
+    "reveal": "Aufdecken",
+    "dismissSuggestion": "Vorschlag verwerfen"
+  },
+  "combinedCardsModal": {
+    "title": "Kombinierte Karten",
+    "none": "Noch keine. Versuch es mal!",
+    "switchModalContentButton": "Zu erhaltende Karten ansehen"
+  },
+  "cardsToGetModal": {
+    "title": "Zu erhaltende Karten",
+    "switchModalContentButton": "Kombinierte Karten ansehen"
+  },
+  "allCombinationsModal": {
+    "title": "Alle Kombinationen"
+  },
+  "accessToCave": "Jetzt, da du eine Fackel hast, kannst du die Höhle betreten, um neue Ressourcen zu erhalten. Stelle sicher, dass du richtig ausgerüstet bist, da es sehr gefährlich ist.",
+  "caveDanger": "Du kannst die Höhle so nicht betreten. Es ist zu gefährlich. Du brauchst eine Waffe und Kleidung.",
+  "cards": {
+    "person": "Person",
+    "dirt": "Erde",
+    "tree": "Baum",
+    "river": "Fluss",
+    "mountain": "Berg",
+    "log": "Holzstamm",
+    "rock": "Fels",
+    "stick": "Stock",
+    "campfire": "Lagerfeuer",
+    "sharpen-rock": "Geschärfter Fels",
+    "axe": "Axt",
+    "axeman": "Axtmann",
+    "clay": "Ton",
+    "vessel": "Gefäß",
+    "water": "Wasser",
+    "apple": "Apfel",
+    "boiled-water": "Abgekochtes Wasser",
+    "coal": "Kohle",
+    "leaf": "Blatt",
+    "leaf-fibers": "Blattfasern",
+    "cordage": "Schnur",
+    "fishing-line": "Angelschnur",
+    "fish": "Fisch",
+    "mud": "Schlamm",
+    "adobe-brick": "Lehmziegel",
+    "bull": "Bulle",
+    "leather": "Leder",
+    "bone": "Knochen",
+    "clothes": "Kleidung",
+    "seeds": "Samen",
+    "sprout": "Spross",
+    "plant": "Pflanze",
+    "sand": "Sand",
+    "glass": "Glas",
+    "worm": "Wurm",
+    "sap": "Saft",
+    "bark": "Rinde",
+    "torch": "Fackel",
+    "ashes": "Asche",
+    "grilled-fish": "Gegrillter Fisch",
+    "raw-meat": "Rohes Fleisch",
+    "cooked-meat": "Gekochtes Fleisch",
+    "herbal-tea": "Kräutertee",
+    "mortar": "Mörser",
+    "flour": "Mehl",
+    "dough": "Teig",
+    "bread": "Brot",
+    "bait-fishing-line": "Köder + Angelschnur",
+    "wooden-planks": "Holzbretter",
+    "basket": "Korb",
+    "hut": "Hütte",
+    "ink": "Tinte",
+    "bread-crumbs": "Brotkrumen",
+    "chicken": "Huhn",
+    "feather": "Feder",
+    "raw-chicken": "Rohes Huhn",
+    "cooked-chicken": "Gekochtes Huhn",
+    "eggs": "Eier",
+    "quill": "Federkiel",
+    "dressed-axeman": "Gekleideter Axtmann",
+    "brush": "Pinsel",
+    "fish-spine": "Fischgräte",
+    "needle-thread": "Nadel + Faden",
+    "tree-thorn": "Baumdorn",
+    "rotten-apple": "Verdorbener Apfel",
+    "cave": "Höhle",
+    "iron-ore": "Eisenerz",
+    "furnace": "Ofen",
+    "iron-nugget": "Eisenklumpen",
+    "loom": "Webstuhl",
+    "fabric": "Stoff"
   }
-  
+}

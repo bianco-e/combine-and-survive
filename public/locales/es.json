@@ -157,6 +157,8 @@
     "cave":"Cueva",
     "iron-ore":"Mineral de Hierro",
     "furnace":"Horno",
-    "iron-nugget":"Pepita de Hierro"
+    "iron-nugget":"Pepita de Hierro",
+    "loom": "Telar",
+    "fabric": "Tela"
   }
 }

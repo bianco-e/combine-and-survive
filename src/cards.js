@@ -358,5 +358,15 @@ export default [
     key: 'iron-nugget',
     id: 69,
     image: '/images/iron-nugget.png'
+  },
+  {
+    key: 'loom',
+    id: 70,
+    image: '/images/loom.png'
+  },
+  {
+    key: 'fabric',
+    id: 71,
+    image: '/images/fabric.png'
   }
 ]

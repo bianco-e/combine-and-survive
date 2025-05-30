@@ -157,6 +157,8 @@
     "cave": "Cave",
     "iron-ore": "Iron Ore",
     "furnace": "Furnace",
-    "iron-nugget": "Iron Nugget"
+    "iron-nugget": "Iron Nugget",
+    "loom": "Loom",
+    "fabric": "Fabric"
   }
 }

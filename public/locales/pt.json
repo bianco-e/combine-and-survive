@@ -1,163 +1,164 @@
 {
-    "alreadyCreatedCard": "Você já tem",
-    "badges": {
-      "modalTitle": "Distintivos",
-      "types": {
-        "axeman": {
-          "name": "Lenhador",
-          "msg": "Agora você é um Lenhador. Será capaz de matar animais selvagens com facilidade"
-        },
-        "fisherman": {
-          "name": "Pescador",
-          "msg": "Agora você é um Pescador"
-        },
-        "baker": {
-          "name": "Padeiro",
-          "msg": "Agora você é um Padeiro"
-        },
-        "herbalist": {
-          "name": "Herbalista",
-          "msg": "Agora você é um Herbalista. Chás não apenas saciam sua sede, mas também curam você"
-        },
-        "builder": {
-          "name": "Construtor",
-          "msg": "Agora você é um Construtor"
-        },
-        "writer": {
-          "name": "Escritor",
-          "msg": "Agora você é um Escritor"
-        },
-        "miner": {
-          "name": "Mineiro",
-          "msg": "Agora você é um Mineiro"
-        }
+  "alreadyCreatedCard": "Você já tem",
+  "badges": {
+    "modalTitle": "Distintivos",
+    "types": {
+      "axeman": {
+        "name": "Lenhador",
+        "msg": "Agora você é um Lenhador. Será capaz de matar animais selvagens com facilidade"
+      },
+      "fisherman": {
+        "name": "Pescador",
+        "msg": "Agora você é um Pescador"
+      },
+      "baker": {
+        "name": "Padeiro",
+        "msg": "Agora você é um Padeiro"
+      },
+      "herbalist": {
+        "name": "Herbalista",
+        "msg": "Agora você é um Herbalista. Chás não apenas saciam sua sede, mas também curam você"
+      },
+      "builder": {
+        "name": "Construtor",
+        "msg": "Agora você é um Construtor"
+      },
+      "writer": {
+        "name": "Escritor",
+        "msg": "Agora você é um Escritor"
+      },
+      "miner": {
+        "name": "Mineiro",
+        "msg": "Agora você é um Mineiro"
       }
-    },
-    "bullAttack": "Você não pode matar um Touro com as mãos",
-    "combinationNotPossible": "Combinação não possível",
-    "rawMeat": "Carne crua pode prejudicar você",
-    "rawChicken": "Frango cru pode prejudicar você",
-    "rottenFood": "Comer comida estragada pode prejudicar você",
-    "discoveries": "Descobertas",
-    "cleanFloor": "Limpar a área manterá alguns animais afastados",
-    "equippableCard": "Carta equipável",
-    "health": "Saúde",
-    "noBaitMsg": "Parece que você está sem isca",
-    "thirst": "Sede",
-    "thirstDeath": "Você está prestes a morrer de sede, beba algo!",
-    "waterHarm": "Água diretamente do rio saciará sua sede, mas pode prejudicar você",
-    "wildBull": "Um touro selvagem acabou de aparecer",
-    "wildChicken": "Uma galinha faminta acabou de aparecer e comeu suas migalhas de pão",
-    "wonMsg": "Você venceu!",
-    "wonParagraph": "Você já fez todas as combinações possíveis!",
-    "lostMsg": "Você perdeu!",
-    "lostParagraph": "Da próxima vez, preste mais atenção à sua Saúde e Sede!",
-    "playAgain": "Jogar novamente",
-    "howToPlay": {
-      "title": "Como jogar",
-      "line1": "Combine & Sobreviva é um jogo de estratégia",
-      "line2": "O objetivo é alcançar o maior número de descobertas arrastando e soltando cartas",
-      "line3": "• Apenas 2 cartas podem ser combinadas por vez nesta edição",
-      "line4": "• Algumas cartas podem ser combinadas entre si",
-      "line5": "APROVEITE!"
-    },
-    "game": {
-      "welcomeBack": "Bem-vindo de volta!",
-      "gameInProgress": "Parece que você tem um jogo em andamento. Gostaria de continuar jogando?",
-      "startNewGame": "Novo jogo",
-      "resumeGame": "Continuar jogo",
-      "autoSave": "Seu progresso será salvo automaticamente"
-    },
-    "combinationSuggestionModal": {
-      "title": "Parece que você está preso",
-      "line1": "Clique no botão Revelar para ver uma combinação possível",
-      "reveal": "Revelar",
-      "dismissSuggestion": "Descartar sugestão"
-    },
-    "combinedCardsModal": {
-      "title": "Cartas combinadas",
-      "none": "Nenhuma ainda. Tente algumas!",
-      "switchModalContentButton": "Ver cartas para obter"
-    },
-    "cardsToGetModal": {
-      "title": "Cartas para obter",
-      "switchModalContentButton": "Ver cartas combinadas"
-    },
-    "allCombinationsModal": {
-      "title": "Todas as combinações"
-    },
-    "accessToCave": "Agora que você tem uma Tocha, pode acessar a Caverna para obter novos recursos. Certifique-se de estar devidamente equipado, pois é muito perigoso",
-    "caveDanger": "Você não pode acessar a Caverna assim. É muito perigoso. Você precisa de uma arma e roupas",
-    "cards": {
-      "person": "Pessoa",
-      "dirt": "Terra",
-      "tree": "Árvore",
-      "river": "Rio",
-      "mountain": "Montanha",
-      "log": "Tora",
-      "rock": "Pedra",
-      "stick": "Graveto",
-      "campfire": "Fogueira",
-      "sharpen-rock": "Pedra Afiada",
-      "axe": "Machado",
-      "axeman": "Lenhador",
-      "clay": "Argila",
-      "vessel": "Recipiente",
-      "water": "Água",
-      "apple": "Maçã",
-      "boiled-water": "Água Fervida",
-      "coal": "Carvão",
-      "leaf": "Folha",
-      "leaf-fibers": "Fibras de Folha",
-      "cordage": "Cordame",
-      "fishing-line": "Linha de Pesca",
-      "fish": "Peixe",
-      "mud": "Lama",
-      "adobe-brick": "Tijolo de Adobe",
-      "bull": "Touro",
-      "leather": "Couro",
-      "bone": "Osso",
-      "clothes": "Roupas",
-      "seeds": "Sementes",
-      "sprout": "Broto",
-      "plant": "Planta",
-      "sand": "Areia",
-      "glass": "Vidro",
-      "worm": "Minhoca",
-      "sap": "Seiva",
-      "bark": "Casca",
-      "torch": "Tocha",
-      "ashes": "Cinzas",
-      "grilled-fish": "Peixe Grelhado",
-      "raw-meat": "Carne Crua",
-      "cooked-meat": "Carne Cozida",
-      "herbal-tea": "Chá de Ervas",
-      "mortar": "Pilão",
-      "flour": "Farinha",
-      "dough": "Massa",
-      "bread": "Pão",
-      "bait-fishing-line": "Isca + Linha de Pesca",
-      "wooden-planks": "Tábuas de Madeira",
-      "basket": "Cesta",
-      "hut": "Cabana",
-      "ink": "Tinta",
-      "bread-crumbs": "Migalhas de Pão",
-      "chicken": "Galinha",
-      "feather": "Pena",
-      "raw-chicken": "Frango Cru",
-      "cooked-chicken": "Frango Cozido",
-      "eggs": "Ovos",
-      "quill": "Pena de Escrever",
-      "dressed-axeman": "Lenhador Vestido",
-      "brush": "Pincel",
-      "fish-spine": "Espinha de Peixe",
-      "needle-thread": "Agulha + Linha",
-      "tree-thorn": "Espinho de Árvore",
-      "rotten-apple": "Maçã Podre",
-      "cave": "Caverna",
-      "iron-ore": "Minério de Ferro",
-      "furnace": "Forno",
-      "iron-nugget": "Pepita de Ferro"
     }
+  },
+  "bullAttack": "Você não pode matar um Touro com as mãos",
+  "combinationNotPossible": "Combinação não possível",
+  "rawMeat": "Carne crua pode prejudicar você",
+  "rawChicken": "Frango cru pode prejudicar você",
+  "rottenFood": "Comer comida estragada pode prejudicar você",
+  "discoveries": "Descobertas",
+  "cleanFloor": "Limpar a área manterá alguns animais afastados",
+  "equippableCard": "Carta equipável",
+  "health": "Saúde",
+  "noBaitMsg": "Parece que você está sem isca",
+  "thirst": "Sede",
+  "thirstDeath": "Você está prestes a morrer de sede, beba algo!",
+  "waterHarm": "Água diretamente do rio saciará sua sede, mas pode prejudicar você",
+  "wildBull": "Um touro selvagem acabou de aparecer",
+  "wildChicken": "Uma galinha faminta acabou de aparecer e comeu suas migalhas de pão",
+  "wonMsg": "Você venceu!",
+  "wonParagraph": "Você já fez todas as combinações possíveis!",
+  "lostMsg": "Você perdeu!",
+  "lostParagraph": "Da próxima vez, preste mais atenção à sua Saúde e Sede!",
+  "playAgain": "Jogar novamente",
+  "howToPlay": {
+    "title": "Como jogar",
+    "line1": "Combine & Sobreviva é um jogo de estratégia",
+    "line2": "O objetivo é alcançar o maior número de descobertas arrastando e soltando cartas",
+    "line3": "• Apenas 2 cartas podem ser combinadas por vez nesta edição",
+    "line4": "• Algumas cartas podem ser combinadas entre si",
+    "line5": "APROVEITE!"
+  },
+  "game": {
+    "welcomeBack": "Bem-vindo de volta!",
+    "gameInProgress": "Parece que você tem um jogo em andamento. Gostaria de continuar jogando?",
+    "startNewGame": "Novo jogo",
+    "resumeGame": "Continuar jogo",
+    "autoSave": "Seu progresso será salvo automaticamente"
+  },
+  "combinationSuggestionModal": {
+    "title": "Parece que você está preso",
+    "line1": "Clique no botão Revelar para ver uma combinação possível",
+    "reveal": "Revelar",
+    "dismissSuggestion": "Descartar sugestão"
+  },
+  "combinedCardsModal": {
+    "title": "Cartas combinadas",
+    "none": "Nenhuma ainda. Tente algumas!",
+    "switchModalContentButton": "Ver cartas para obter"
+  },
+  "cardsToGetModal": {
+    "title": "Cartas para obter",
+    "switchModalContentButton": "Ver cartas combinadas"
+  },
+  "allCombinationsModal": {
+    "title": "Todas as combinações"
+  },
+  "accessToCave": "Agora que você tem uma Tocha, pode acessar a Caverna para obter novos recursos. Certifique-se de estar devidamente equipado, pois é muito perigoso",
+  "caveDanger": "Você não pode acessar a Caverna assim. É muito perigoso. Você precisa de uma arma e roupas",
+  "cards": {
+    "person": "Pessoa",
+    "dirt": "Terra",
+    "tree": "Árvore",
+    "river": "Rio",
+    "mountain": "Montanha",
+    "log": "Tora",
+    "rock": "Pedra",
+    "stick": "Graveto",
+    "campfire": "Fogueira",
+    "sharpen-rock": "Pedra Afiada",
+    "axe": "Machado",
+    "axeman": "Lenhador",
+    "clay": "Argila",
+    "vessel": "Recipiente",
+    "water": "Água",
+    "apple": "Maçã",
+    "boiled-water": "Água Fervida",
+    "coal": "Carvão",
+    "leaf": "Folha",
+    "leaf-fibers": "Fibras de Folha",
+    "cordage": "Cordame",
+    "fishing-line": "Linha de Pesca",
+    "fish": "Peixe",
+    "mud": "Lama",
+    "adobe-brick": "Tijolo de Adobe",
+    "bull": "Touro",
+    "leather": "Couro",
+    "bone": "Osso",
+    "clothes": "Roupas",
+    "seeds": "Sementes",
+    "sprout": "Broto",
+    "plant": "Planta",
+    "sand": "Areia",
+    "glass": "Vidro",
+    "worm": "Minhoca",
+    "sap": "Seiva",
+    "bark": "Casca",
+    "torch": "Tocha",
+    "ashes": "Cinzas",
+    "grilled-fish": "Peixe Grelhado",
+    "raw-meat": "Carne Crua",
+    "cooked-meat": "Carne Cozida",
+    "herbal-tea": "Chá de Ervas",
+    "mortar": "Pilão",
+    "flour": "Farinha",
+    "dough": "Massa",
+    "bread": "Pão",
+    "bait-fishing-line": "Isca + Linha de Pesca",
+    "wooden-planks": "Tábuas de Madeira",
+    "basket": "Cesta",
+    "hut": "Cabana",
+    "ink": "Tinta",
+    "bread-crumbs": "Migalhas de Pão",
+    "chicken": "Galinha",
+    "feather": "Pena",
+    "raw-chicken": "Frango Cru",
+    "cooked-chicken": "Frango Cozido",
+    "eggs": "Ovos",
+    "quill": "Pena de Escrever",
+    "dressed-axeman": "Lenhador Vestido",
+    "brush": "Pincel",
+    "fish-spine": "Espinha de Peixe",
+    "needle-thread": "Agulha + Linha",
+    "tree-thorn": "Espinho de Árvore",
+    "rotten-apple": "Maçã Podre",
+    "cave": "Caverna",
+    "iron-ore": "Minério de Ferro",
+    "furnace": "Forno",
+    "iron-nugget": "Pepita de Ferro",
+    "loom": "Tear",
+    "fabric": "Tecido"
   }
-  
+}

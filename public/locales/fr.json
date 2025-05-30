@@ -157,6 +157,8 @@
     "cave": "Grotte",
     "iron-ore": "Minerai de fer",
     "furnace": "Four",
-    "iron-nugget": "Pépite de fer"
+    "iron-nugget": "Pépite de fer",
+    "loom": "Métier à tisser",
+    "fabric": "Tissu"
   }
 }
