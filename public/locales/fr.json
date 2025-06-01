@@ -72,7 +72,8 @@
     "title": "On dirait que tu es coincé",
     "line1": "Cliquez sur le bouton Revever pour voir une combinaison possible",
     "reveal": "Révéler",
-    "dismissSuggestion": "Rejeter la suggestion"
+    "dismissSuggestion": "Rejeter la suggestion",
+    "disableSuggestions": "Cochez pour désactiver les suggestions de combinaison"
   },
   "combinedCardsModal": {
     "title": "Cartes combinées",

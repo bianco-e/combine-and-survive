@@ -40,7 +40,7 @@ export default class Modal {
   }
 
   static showCombinationSuggestion() {
-    const [_, { combosHistory }] = Game.checkGameInProgress()
+    const [_, { combosHistory, suggestionsDisabled }] = Game.checkGameInProgress()
     const currentPersonBoardIds = Array.from(document.querySelectorAll('#person-board div.card')).map(cardElement =>
       Number(cardElement.getAttribute('id').replace('card-', ''))
     )
@@ -61,18 +61,29 @@ export default class Modal {
         )
       )
     })
-    if (!combinationSuggestion) return
+    if (!combinationSuggestion || suggestionsDisabled) return
 
     const revealButtonId = 'reveal-button'
     const dismissButtonId = 'dismiss-button'
+    const disableSuggestionsId = 'suggestions-checkbox'
     const suggestionToRevealContent = `
       <h1>${i18n.t('combinationSuggestionModal.title')}</h1>
       <h2>${i18n.t('combinationSuggestionModal.line1')}</h2>
       <button id='${revealButtonId}'>${i18n.t('combinationSuggestionModal.reveal')}</button>
       <button id='${dismissButtonId}'>${i18n.t('combinationSuggestionModal.dismissSuggestion')}</button>
+      <label class='checkbox-label'>
+        <input type='checkbox' id='${disableSuggestionsId}' />
+        <span>${i18n.t('combinationSuggestionModal.disableSuggestions')}</span>
+      </label>
     `
     Modal.render(suggestionToRevealContent, true)
-    document.getElementById(revealButtonId).addEventListener('click', () => {
+    document.getElementById(disableSuggestionsId).addEventListener('change', (e) => {
+      const isChecked = e.target.checked
+      if (isChecked) {
+        Game.updateSuggestionsDisabled(isChecked)
+      }
+    })
+    document.getElementById(dismissButtonId).addEventListener('click', () => {
       this.close()
     })
     document.getElementById(revealButtonId).addEventListener('click', () => {

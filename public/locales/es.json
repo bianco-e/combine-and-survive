@@ -72,7 +72,8 @@
     "title": "Parece que estás atascado",
     "line1": "Haz clic en el botón Revelar para ver una combinación posible",
     "reveal": "Revelar",
-    "dismissSuggestion": "Descartar sugerencia"
+    "dismissSuggestion": "Descartar sugerencia",
+    "disableSuggestions": "Marque para deshabilitar sugerencias de combinación"
   },
   "combinedCardsModal": {
     "title": "Cartas combinadas",

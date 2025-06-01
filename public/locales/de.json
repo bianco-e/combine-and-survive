@@ -72,7 +72,8 @@
     "title": "Es scheint, als wärst du festgefahren.",
     "line1": "Klicke auf die Schaltfläche 'Aufdecken', um eine mögliche Kombination zu sehen.",
     "reveal": "Aufdecken",
-    "dismissSuggestion": "Vorschlag verwerfen"
+    "dismissSuggestion": "Vorschlag verwerfen",
+    "disableSuggestions": "Aktivieren Sie dieses Kontrollkästchen, um Kombinationsvorschläge zu deaktivieren"
   },
   "combinedCardsModal": {
     "title": "Kombinierte Karten",

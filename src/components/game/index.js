@@ -5,6 +5,7 @@ import {
   DISCOVERIES_HISTORY_KEY,
   PERSON_KEY,
   STATS_STATUS_KEY,
+  SUGGESTIONS_DISABLED_KEY,
   WRONG_COMBO_KEY
 } from '../../constants.js'
 import Card from '../card/index.js'
@@ -13,7 +14,7 @@ import cardsData from '../../cards.js'
 import { setInitialIntervalsAndButtonsOnClick } from '../../utils.js'
 import Modal from '../modal/index.js'
 
-const WRONG_COMBOS_FOR_SUGGESTION = 10
+const WRONG_COMBOS_FOR_SUGGESTION = 12
 
 export default class Game {
   static clearSavedGame() {
@@ -26,6 +27,10 @@ export default class Game {
     sessionStorage.clear(WRONG_COMBO_KEY)
   }
 
+  static updateSuggestionsDisabled(value) {
+    sessionStorage.setItem(SUGGESTIONS_DISABLED_KEY, value)
+  }
+
   static checkGameInProgress() {
     const discoveriesHistory = JSON.parse(localStorage.getItem(DISCOVERIES_HISTORY_KEY)) || []
     const combosHistory = JSON.parse(localStorage.getItem(COMBOS_HISTORY_KEY)) || []
@@ -33,6 +38,7 @@ export default class Game {
     const currentBoards = JSON.parse(localStorage.getItem(CURRENT_BOARDS_KEY)) || {}
     const currentStats = JSON.parse(localStorage.getItem(STATS_STATUS_KEY)) || {}
     const personKey = localStorage.getItem(PERSON_KEY)
+    const suggestionsDisabled = sessionStorage.getItem(SUGGESTIONS_DISABLED_KEY)
     const gameInProgress = !!discoveriesHistory.length && !!combosHistory.length
     return [
       gameInProgress,
@@ -42,7 +48,8 @@ export default class Game {
         currentBadges,
         currentStats,
         personKey,
-        currentBoards
+        currentBoards,
+        suggestionsDisabled
       }
     ]
   }

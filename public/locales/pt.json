@@ -72,7 +72,8 @@
     "title": "Parece que você está preso",
     "line1": "Clique no botão Revelar para ver uma combinação possível",
     "reveal": "Revelar",
-    "dismissSuggestion": "Descartar sugestão"
+    "dismissSuggestion": "Descartar sugestão",
+    "disableSuggestions": "Marque para desativar as sugestões de combinação"
   },
   "combinedCardsModal": {
     "title": "Cartas combinadas",

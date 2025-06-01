@@ -72,7 +72,8 @@
     "title": "Looks like you are stuck",
     "line1": "Click on Reveal button to see a possible combination",
     "reveal": "Reveal",
-    "dismissSuggestion": "Dismiss suggestion"
+    "dismissSuggestion": "Dismiss suggestion",
+    "disableSuggestions": "Check to disable combination suggestions"
   },
   "combinedCardsModal": {
     "title": "Combined cards",

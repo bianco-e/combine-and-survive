@@ -62,6 +62,15 @@
   font-size: 16px;
 }
 
+.modal .checkbox-label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  margin: 15px auto 0 auto;
+  width: fit-content;
+  gap: var(--gap-small);
+}
+
 @media (max-width: 729px) {
   .modal {
     max-height: 80vh;
