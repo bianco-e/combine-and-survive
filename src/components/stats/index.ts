@@ -1,19 +1,21 @@
-import cardsData from '../../cards.js'
-import Modal from '../modal/index.js'
-import {
-  MAX_STAT,
-  MIN_STAT,
-  STAT_CHANGE_LG,
-  STAT_CHANGE_SM,
-} from '../../constants.js'
-import Game from '../game/index.js'
-import HudBar from '../hud-bar/index.js'
+import cardsData from '../../cards'
+import Modal from '../modal'
+import { MAX_STAT, MIN_STAT, STAT_CHANGE_LG, STAT_CHANGE_SM } from '../../constants'
+import Game from '../game'
+import HudBar from '../hud-bar'
+import type { CardKey, StatId, StatsStatus } from '../../types'
 
 const TOTAL_DISCOVERIES = cardsData.filter(card => !card.isPerson && !card.isSource).length
+
+function getHudAmount(id: StatId): number {
+  const element = document.getElementById(`hud-bar-percentage-${id}`)
+  if (!(element instanceof HTMLElement)) return MAX_STAT
+  return parseInt(element.innerText, 10)
+}
+
 export default class Stats {
-  static decrease(id, amountToDecrease = STAT_CHANGE_SM) {
-    const currentAmount = document.getElementById(`hud-bar-percentage-${id}`).innerText
-    const newAmount = parseInt(currentAmount) - amountToDecrease
+  static decrease(id: StatId, amountToDecrease = STAT_CHANGE_SM): void {
+    const newAmount = getHudAmount(id) - amountToDecrease
     const isDead = newAmount <= MIN_STAT
     const newSanitizedAmount = isDead ? MIN_STAT : newAmount
     HudBar.updateFill(id, newSanitizedAmount)
@@ -23,32 +25,36 @@ export default class Stats {
     }
   }
 
-  static increase(id, amountToIncrease = STAT_CHANGE_LG) {
-    const currentAmount = document.getElementById(`hud-bar-percentage-${id}`).innerText
-    if (parseInt(currentAmount) === MAX_STAT) return
-    const newAmount = parseInt(currentAmount) + amountToIncrease
+  static increase(id: StatId, amountToIncrease = STAT_CHANGE_LG): void {
+    const currentAmount = getHudAmount(id)
+    if (currentAmount === MAX_STAT) return
+    const newAmount = currentAmount + amountToIncrease
     const isFull = newAmount > MAX_STAT
     const newSanitizedAmount = isFull ? MAX_STAT : newAmount
     HudBar.updateFill(id, newSanitizedAmount)
     Game.saveStat(id, newSanitizedAmount)
   }
 
-  static updateDiscoveries(cardKey) {
-    const [_, { discoveriesHistory }] = Game.checkGameInProgress()
+  static updateDiscoveries(cardKey: CardKey | null): void {
+    const [, { discoveriesHistory }] = Game.checkGameInProgress()
     const newDiscoveriesHistory =
       !cardKey || discoveriesHistory.includes(cardKey) ? discoveriesHistory : discoveriesHistory.concat(cardKey)
     Game.saveDiscoveries(newDiscoveriesHistory)
 
     const currentDiscoveriesEl = document.getElementById('current-discoveries')
-    currentDiscoveriesEl.textContent = newDiscoveriesHistory.length
+    if (currentDiscoveriesEl instanceof HTMLElement) {
+      currentDiscoveriesEl.textContent = String(newDiscoveriesHistory.length)
+    }
     if (newDiscoveriesHistory.length === TOTAL_DISCOVERIES) {
       Game.endGame(Modal.showWon)
     }
   }
 
-  static showNewBadgeIcon() {
+  static showNewBadgeIcon(): void {
     const newBadgeId = 'new-badge-icon'
     const badgesButton = document.getElementById('badges-button')
+    if (!(badgesButton instanceof HTMLElement)) return
+
     const newBadgeIcon = document.createElement('span')
     newBadgeIcon.setAttribute('id', newBadgeId)
     newBadgeIcon.classList.add('new-badge')
@@ -61,36 +67,38 @@ export default class Stats {
     }
   }
 
-  static removeNewBadgeIcon() {
+  static removeNewBadgeIcon(): void {
     const badgesButton = document.getElementById('badges-button')
     const newBadgeIcon = document.getElementById('new-badge-icon')
-    if (Boolean(newBadgeIcon)) {
+    if (badgesButton instanceof HTMLElement && newBadgeIcon instanceof HTMLElement) {
       badgesButton.removeChild(newBadgeIcon)
     }
   }
 
-  static initiate(initialStats) {
+  static initiate(initialStats?: StatsStatus): void {
     const boardLeftTopContainer = document.getElementById('board-left-top-container')
+    if (!(boardLeftTopContainer instanceof HTMLElement)) return
+
     const discoveriesButton = document.createElement('button')
     discoveriesButton.innerHTML = `📜 &nbsp; <span id="current-discoveries">0</span>/<span>${TOTAL_DISCOVERIES}</span>`
     discoveriesButton.addEventListener('click', Modal.showCombinedCards)
     boardLeftTopContainer.appendChild(discoveriesButton)
     HudBar.create('hud', 'health', '❤️')
     HudBar.create('hud', 'thirst', '💧')
+
     if (initialStats) {
-      if (initialStats.health) {
+      if (typeof initialStats.health === 'number') {
         HudBar.updateFill('health', Number(initialStats.health))
       }
-      if (initialStats.thirst) {
+      if (typeof initialStats.thirst === 'number') {
         HudBar.updateFill('thirst', Number(initialStats.thirst))
       }
       this.updateDiscoveries(null)
     }
 
     if (import.meta.env.MODE === 'development') {
-      // show all possible combinations in dev mode ONLY
       const allPossibleCombinationsButton = document.createElement('button')
-      allPossibleCombinationsButton.innerHTML = `🃏`
+      allPossibleCombinationsButton.innerHTML = '🃏'
       allPossibleCombinationsButton.classList.add('board-button')
       allPossibleCombinationsButton.addEventListener('click', Modal.showAllCombinationRecipes)
       boardLeftTopContainer.appendChild(allPossibleCombinationsButton)

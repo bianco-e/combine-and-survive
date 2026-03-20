@@ -1,7 +1,8 @@
-import i18n from '../../i18n.js'
+import i18n from '../../i18n'
+import type { StatId } from '../../types'
 
 export default class HudBar {
-  static create(rootId, id, icon) {
+  static create(rootId: string, id: StatId, icon: string): void {
     const hudBar = document.createElement('div')
     hudBar.setAttribute('id', id)
     const hudBarContent = `
@@ -15,12 +16,14 @@ export default class HudBar {
       </div>`
     hudBar.innerHTML = hudBarContent
     const root = document.getElementById(rootId)
+    if (!(root instanceof HTMLElement)) return
     root.appendChild(hudBar)
   }
 
-  static updateFill(id, fillNumber) {
+  static updateFill(id: StatId, fillNumber: number): void {
     const hudBarTextElement = document.getElementById(`hud-bar-percentage-${id}`)
     const hudBarFill = document.querySelector(`.hud-bar-fill-${id}`)
+    if (!(hudBarTextElement instanceof HTMLElement) || !(hudBarFill instanceof HTMLElement)) return
     hudBarTextElement.textContent = `${fillNumber} %`
     hudBarFill.style.width = `${fillNumber}%`
   }

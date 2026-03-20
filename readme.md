@@ -17,7 +17,6 @@ ENJOY!
 * Add tests
 * Add extra visual effect when health decreases
 * Optimize card images
-* Use Typescript
 * Create css variables to manage sizes and colors
 
 ### IDEAS:

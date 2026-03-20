@@ -1,7 +1,10 @@
 import path from 'path'
-const folderName = `${path.basename(process.cwd())}/`
+import { defineConfig } from 'vite'
 
-export default {
+const folderName = `${path.basename(process.cwd())}/`
+void folderName
+
+export default defineConfig({
   root: 'src',
   base: '/',
   publicDir: '../public',
@@ -9,4 +12,4 @@ export default {
     outDir: '../dist',
     assetsDir: './'
   }
-}
+})

@@ -6,52 +6,64 @@ import Card from '../card'
 import { setInitialBoard } from '../../utils'
 import Stats from '../stats'
 import Game from '../game'
+import { type CardKey, type ModalInstructionsOptions } from '../../types'
 
-function checksClickOutside(e) {
+function checksClickOutside(e: MouseEvent): void {
   const modal = document.getElementById('modal')
-  const clickOutsideModal = !modal.contains(e.target)
+  if (!(modal instanceof HTMLElement)) return
+  const clickTarget = e.target
+  const clickOutsideModal = clickTarget instanceof Node && !modal.contains(clickTarget)
   if (clickOutsideModal) {
     Modal.close()
   }
 }
 
+function domIdToKey(domId: string | null): CardKey | null {
+  if (!domId) return null
+  const key = domId.replace(/^card-/, '')
+  return cards.some(card => card.key === key) ? (key as CardKey) : null
+}
+
+function getBoardKeys(selector: string): CardKey[] {
+  return Array.from(document.querySelectorAll(selector))
+    .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
+    .filter((cardKey): cardKey is CardKey => Boolean(cardKey))
+}
+
 export default class Modal {
-  static render(modalContent, closeButton = true) {
+  static render(modalContent: string, closeButton = true): void {
     const modal = document.getElementById('modal')
+    const overlay = document.getElementById('overlay')
+    if (!(modal instanceof HTMLElement) || !(overlay instanceof HTMLElement)) return
+
     const modalBase = `
       <center>
-        ${closeButton ? `<button class='modal-btn close-btn' id='close-modal'>×</button>` : ''}
+        ${closeButton ? "<button class='modal-btn close-btn' id='close-modal'>×</button>" : ''}
         ${modalContent}
       </center>
     `
     modal.innerHTML = modalBase
-    document.getElementById('overlay').classList.add('overlay-show')
+    overlay.classList.add('overlay-show')
     modal.classList.add('show')
     if (closeButton) {
-      document.getElementById('close-modal').addEventListener('click', this.close)
+      document.getElementById('close-modal')?.addEventListener('click', this.close)
       document.addEventListener('mousedown', checksClickOutside)
     }
   }
 
-  static close() {
-    document.getElementById('overlay').classList.remove('overlay-show')
-    document.getElementById('modal').classList.remove('show')
+  static close(): void {
+    document.getElementById('overlay')?.classList.remove('overlay-show')
+    document.getElementById('modal')?.classList.remove('show')
     document.removeEventListener('mousedown', checksClickOutside)
   }
 
-  static showCombinationSuggestion() {
-    const [_, { combosHistory, suggestionsDisabled }] = Game.checkGameInProgress()
-    const domIdToKey = domId => (domId ? domId.replace(/^card-/, '') : null)
-    const currentPersonBoardKeys = Array.from(document.querySelectorAll('#person-board div.card'))
-      .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
-      .filter(Boolean)
-    const currentDiscoveriesBoardKeys = Array.from(document.querySelectorAll('#discoveries-board div.card'))
-      .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
-      .filter(Boolean)
-    const currentSourcesBoardKeys = Array.from(document.querySelectorAll('#sources-board div.card'))
-      .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
-      .filter(Boolean)
-    const allBoardKeys = currentPersonBoardKeys.concat(currentDiscoveriesBoardKeys).concat(currentSourcesBoardKeys)
+  static showCombinationSuggestion(): void {
+    const [, { combosHistory, suggestionsDisabled }] = Game.checkGameInProgress()
+    const currentPersonBoardKeys = getBoardKeys('#person-board div.card')
+    const currentDiscoveriesBoardKeys = getBoardKeys('#discoveries-board div.card')
+    const currentSourcesBoardKeys = getBoardKeys('#sources-board div.card')
+    const allBoardKeys = currentPersonBoardKeys.concat(currentDiscoveriesBoardKeys, currentSourcesBoardKeys)
+
     const combinationSuggestion = combinations.find(combination => {
       return (
         combination.combo.every(cardKey => allBoardKeys.includes(cardKey)) &&
@@ -78,16 +90,17 @@ export default class Modal {
       </label>
     `
     Modal.render(suggestionToRevealContent, true)
-    document.getElementById(disableSuggestionsId).addEventListener('change', (e) => {
-      const isChecked = e.target.checked
-      if (isChecked) {
-        Game.updateSuggestionsDisabled(isChecked)
+    document.getElementById(disableSuggestionsId)?.addEventListener('change', e => {
+      const checkbox = e.target
+      if (!(checkbox instanceof HTMLInputElement)) return
+      if (checkbox.checked) {
+        Game.updateSuggestionsDisabled(String(checkbox.checked))
       }
     })
-    document.getElementById(dismissButtonId).addEventListener('click', () => {
+    document.getElementById(dismissButtonId)?.addEventListener('click', () => {
       this.close()
     })
-    document.getElementById(revealButtonId).addEventListener('click', () => {
+    document.getElementById(revealButtonId)?.addEventListener('click', () => {
       this.close()
       const suggestionContent = `
         <div class='centered-container'>
@@ -105,11 +118,13 @@ export default class Modal {
             isInteractive: false
           })
         })
-      cards
-        .filter(card => combinationSuggestion.result.includes(card.key))
-        .forEach(card => {
-          Card.create(card, 'suggestion-results', { updateDiscoveries: false, isInteractive: false })
-        })
+      if (Array.isArray(combinationSuggestion.result)) {
+        cards
+          .filter(card => combinationSuggestion.result.includes(card.key))
+          .forEach(card => {
+            Card.create(card, 'suggestion-results', { updateDiscoveries: false, isInteractive: false })
+          })
+      }
 
       gtag('event', 'reveal_suggestion', {
         event_category: 'game',
@@ -118,7 +133,7 @@ export default class Modal {
     })
   }
 
-  static showInstructions({ isInitialInstructions }) {
+  static showInstructions({ isInitialInstructions }: ModalInstructionsOptions): void {
     const startNewGameButtonId = 'start-new-game-button'
     const instructionsContent = `
       <h1>${i18n.t('howToPlay.title')}</h1>
@@ -138,7 +153,7 @@ export default class Modal {
       })
       return
     }
-    document.getElementById(startNewGameButtonId).addEventListener('click', () => {
+    document.getElementById(startNewGameButtonId)?.addEventListener('click', () => {
       Game.startGame()
       this.close()
       gtag('event', 'game_start', {
@@ -148,7 +163,7 @@ export default class Modal {
     })
   }
 
-  static showResumeGame() {
+  static showResumeGame(): void {
     const startNewGameButtonId = 'start-new-game-button'
     const resumeGameButtonId = 'resume-game-button'
     const resumeGameContent = `
@@ -162,7 +177,7 @@ export default class Modal {
     `
     Modal.render(resumeGameContent, false)
 
-    document.getElementById(startNewGameButtonId).addEventListener('click', () => {
+    document.getElementById(startNewGameButtonId)?.addEventListener('click', () => {
       Game.startGame()
       this.close()
       gtag('event', 'game_start', {
@@ -171,7 +186,7 @@ export default class Modal {
       })
     })
 
-    document.getElementById(resumeGameButtonId).addEventListener('click', () => {
+    document.getElementById(resumeGameButtonId)?.addEventListener('click', () => {
       Game.resumeGame()
       this.close()
       gtag('event', 'game_start', {
@@ -181,18 +196,18 @@ export default class Modal {
     })
   }
 
-  static showCombinedCards() {
-    const [_, { combosHistory }] = Game.checkGameInProgress()
+  static showCombinedCards(): void {
+    const [, { combosHistory }] = Game.checkGameInProgress()
     const combinedCardsContent = `
       <button id='switch-modal-content'>${i18n.t('combinedCardsModal.switchModalContentButton')}</button>
       <h1>${i18n.t('combinedCardsModal.title')}</h1>
       <h3>${combosHistory.length ? seeCurrentCombinations(combosHistory) : i18n.t('combinedCardsModal.none')}</h3>
     `
     Modal.render(combinedCardsContent)
-    document.getElementById('switch-modal-content').addEventListener('click', Modal.showCardsToGet)
+    document.getElementById('switch-modal-content')?.addEventListener('click', Modal.showCardsToGet)
   }
 
-  static showAllCombinationRecipes() {
+  static showAllCombinationRecipes(): void {
     const allCombinationsContent = `
       <h1>${i18n.t('allCombinationsModal.title')}</h1>
       ${seeAllCombinations()}
@@ -200,7 +215,7 @@ export default class Modal {
     Modal.render(allCombinationsContent)
   }
 
-  static showCardsToGet() {
+  static showCardsToGet(): void {
     const cardsToGetBoardId = 'cards-to-get-board'
     const possibleCardsContent = `
       <button id='switch-modal-content'>${i18n.t('cardsToGetModal.switchModalContentButton')}</button>
@@ -212,30 +227,31 @@ export default class Modal {
       event_label: 'see_cards_to_get'
     })
     Modal.render(possibleCardsContent)
-    document.getElementById('switch-modal-content').addEventListener('click', Modal.showCombinedCards)
+    document.getElementById('switch-modal-content')?.addEventListener('click', Modal.showCombinedCards)
     const sortedCards = cards
       .filter(card => !card.isPerson && !card.isSource)
-      .sort((a, b) => i18n.t(`cards.${a.key}`) > i18n.t(`cards.${b.key}`))
+      .sort((a, b) => i18n.t(`cards.${a.key}`).localeCompare(i18n.t(`cards.${b.key}`)))
 
-    sortedCards.forEach(card =>
-      Card.create(card, cardsToGetBoardId, { updateDiscoveries: false, isInteractive: false })
-    )
-    const [_, { discoveriesHistory }] = Game.checkGameInProgress()
+    sortedCards.forEach(card => Card.create(card, cardsToGetBoardId, { updateDiscoveries: false, isInteractive: false }))
+
+    const [, { discoveriesHistory }] = Game.checkGameInProgress()
     discoveriesHistory.forEach(discoveryKey => {
-      const cardInBoard = document.querySelector(`#${cardsToGetBoardId} [non-interactive-id="card-${discoveryKey}"]`)
-      if (Boolean(cardInBoard)) {
+      const cardInBoard = document.querySelector(
+        `#${cardsToGetBoardId} [non-interactive-id="card-${discoveryKey}"]`
+      )
+      if (cardInBoard instanceof HTMLElement) {
         cardInBoard.classList.add('owned-card')
       }
     })
   }
 
-  static showBadges() {
-    const [_, { currentBadges }] = Game.checkGameInProgress()
+  static showBadges(): void {
+    const [, { currentBadges }] = Game.checkGameInProgress()
     const badgesContent = `
       <h1>${i18n.t('badges.modalTitle')}</h1>
       ${Object.entries(BADGES)
         .map(([id, badgeKey]) => {
-          const hasBadge = currentBadges.includes(parseInt(id))
+          const hasBadge = currentBadges.includes(parseInt(id, 10))
           return `
             <h2 class='${hasBadge ? 'completed-badge' : ''}'>${i18n.t(`badges.types.${badgeKey}.name`)}</h2>
             ${hasBadge ? `<p class='badge-description'>${i18n.t(`badges.types.${badgeKey}.msg`)}</p>` : ''}
@@ -251,8 +267,7 @@ export default class Modal {
     Modal.render(badgesContent)
   }
 
-  //TODO: improve this
-  static showWon() {
+  static showWon(): void {
     gtag('event', 'game_status', {
       event_category: 'game',
       event_label: 'win'
@@ -267,7 +282,7 @@ export default class Modal {
     `,
       false
     )
-    document.getElementById('play-again').addEventListener('click', () => {
+    document.getElementById('play-again')?.addEventListener('click', () => {
       setInitialBoard()
       Game.startGame()
       gtag('event', 'game_start', {
@@ -277,8 +292,7 @@ export default class Modal {
     })
   }
 
-  //TODO: improve this
-  static showLost() {
+  static showLost(): void {
     gtag('event', 'game_status', {
       event_category: 'game',
       event_label: 'lose'
@@ -293,7 +307,7 @@ export default class Modal {
     `,
       false
     )
-    document.getElementById('play-again').addEventListener('click', () => {
+    document.getElementById('play-again')?.addEventListener('click', () => {
       setInitialBoard()
       Game.startGame()
       gtag('event', 'game_start', {

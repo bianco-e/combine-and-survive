@@ -1,45 +1,67 @@
-import cardsData from '../../cards.js'
-import combinations from '../../combinations.js'
-import i18n from '../../i18n.js'
-import { areArraysEqual } from '../../utils.js'
-import { IDLE } from '../../constants.js'
-import Stats from '../stats/index.js'
-import Toaster from '../toaster/index.js'
-import Game from '../game/index.js'
+import cardsData from '../../cards'
+import combinations from '../../combinations'
+import i18n from '../../i18n'
+import { areArraysEqual } from '../../utils'
+import { IDLE, type CardConfig, type CardData, type CardKey, type Combination, type StatId } from '../../types'
+import Stats from '../stats'
+import Toaster from '../toaster'
+import Game from '../game'
+
+function toCardKey(value: string | null): CardKey | null {
+  if (!value) return null
+  return cardsData.some(card => card.key === value) ? (value as CardKey) : null
+}
+
+function toHtmlElement(value: Element | null): HTMLElement | null {
+  return value instanceof HTMLElement ? value : null
+}
 
 export default class Card {
-  static addListeners(cardElement) {
-    cardElement.addEventListener('dragstart', e => e.dataTransfer.setData('text/plain', getCurrentCardKey(e)))
+  static addListeners(cardElement: HTMLElement): void {
+    cardElement.addEventListener('dragstart', e => {
+      const dragEvent = e as DragEvent
+      dragEvent.dataTransfer?.setData('text/plain', getCurrentCardKey(dragEvent) ?? '')
+    })
     cardElement.addEventListener('dragover', e => e.preventDefault())
     cardElement.addEventListener('dragenter', e => e.preventDefault())
-    cardElement.addEventListener('drop', onDrop)
+    cardElement.addEventListener('drop', e => onDrop(e as DragEvent))
   }
 
-  static applyEffects(combination) {
+  static applyEffects(combination: Combination): void {
     if (combination.increase) {
-      Object.entries(combination.increase).forEach(([stat, amount]) => Stats.increase(stat, amount))
+      Object.entries(combination.increase).forEach(([stat, amount]) => {
+        if (typeof amount === 'number') {
+          Stats.increase(stat as StatId, amount)
+        }
+      })
     }
     if (combination.decrease) {
-      Object.entries(combination.decrease).forEach(([stat, amount]) => Stats.decrease(stat, amount))
+      Object.entries(combination.decrease).forEach(([stat, amount]) => {
+        if (typeof amount === 'number') {
+          Stats.decrease(stat as StatId, amount)
+        }
+      })
     }
-    if (combination.consumes !== IDLE && Boolean(combination.consumes.length)) {
+    if (combination.result !== IDLE && combination.consumes.length) {
       combination.consumes.forEach(consumedKey => {
         this.remove(consumedKey, 'discoveries-board')
       })
     }
   }
 
-  static remove(cardKey, boardId) {
+  static remove(cardKey: CardKey, boardId: string): void {
     const board = document.getElementById(boardId)
     const cardToRemove = document.getElementById(`card-${cardKey}`)
-    board.removeChild(cardToRemove)
+    if (board instanceof HTMLElement && cardToRemove instanceof HTMLElement) {
+      board.removeChild(cardToRemove)
+    }
   }
 
   static create(
-    { key, image, className, isEquippable },
-    boardId,
-    cardConfig = { updateDiscoveries: true, isInteractive: true }
-  ) {
+    { key, image, className, isEquippable }: CardData,
+    boardId: string,
+    cardConfig: CardConfig = { updateDiscoveries: true, isInteractive: true }
+  ): void {
     const { isInteractive, updateDiscoveries } = cardConfig
     const newCardElement = document.createElement('div')
     newCardElement.classList.add('card', 'new-card')
@@ -69,6 +91,7 @@ export default class Card {
     }
     newCardElement.appendChild(newCardImg)
     const board = document.getElementById(boardId)
+    if (!(board instanceof HTMLElement)) return
     board.appendChild(newCardElement)
     if (updateDiscoveries) {
       Stats.updateDiscoveries(key)
@@ -79,7 +102,7 @@ export default class Card {
   }
 }
 
-function renderEquippableIcon(newCardElement) {
+function renderEquippableIcon(newCardElement: HTMLElement): void {
   const equippableIcon = document.createElement('img')
   equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
   equippableIcon.setAttribute('alt', i18n.t('equippableCard'))
@@ -88,61 +111,76 @@ function renderEquippableIcon(newCardElement) {
   newCardElement.appendChild(equippableIcon)
 }
 
-function keyFromCardDomId(domId) {
+function keyFromCardDomId(domId: string | null): CardKey | null {
   if (!domId || !domId.startsWith('card-')) return null
-  const key = domId.slice(5)
-  return cardsData.some(card => card.key === key) ? key : null
+  return toCardKey(domId.slice(5))
 }
 
-function getCurrentCardKey(e) {
-  if (e.target.id && e.target.id.startsWith('card')) return keyFromCardDomId(e.target.id)
-  return keyFromCardDomId(e.target.closest('div').id)
+function getCurrentCardKey(e: DragEvent): CardKey | null {
+  const target = e.target
+  if (!(target instanceof HTMLElement)) return null
+
+  if (target.id && target.id.startsWith('card-')) return keyFromCardDomId(target.id)
+  const closestCard = target.closest('div[id^="card-"]')
+  return keyFromCardDomId(closestCard?.id ?? null)
 }
 
-function parseDraggedCardKey(raw) {
+function parseDraggedCardKey(raw: string | undefined): CardKey | null {
   if (raw == null || raw === '') return null
-  const s = String(raw)
-  return cardsData.find(card => card.key === s)?.key ?? null
+  return toCardKey(String(raw))
 }
 
-function updatePerson(newPerson) {
-  const personCardElement = document.querySelector('.person')
+function updatePerson(newPerson: CardData): void {
+  const personCardElement = toHtmlElement(document.querySelector('.person'))
+  if (!personCardElement) return
+
   personCardElement.setAttribute('id', `card-${newPerson.key}`)
   const personName = personCardElement.querySelector('p')
-  personName.innerText = i18n.t(`cards.${newPerson.key}`)
-  personName.title = i18n.t(`cards.${newPerson.key}`)
+  if (personName instanceof HTMLElement) {
+    personName.innerText = i18n.t(`cards.${newPerson.key}`)
+    personName.title = i18n.t(`cards.${newPerson.key}`)
+  }
   const personImage = personCardElement.querySelector('img')
-  personImage.setAttribute('alt', i18n.t(`cards.${newPerson.key}`))
-  personImage.setAttribute('src', newPerson.image)
+  if (personImage instanceof HTMLImageElement) {
+    personImage.setAttribute('alt', i18n.t(`cards.${newPerson.key}`))
+    personImage.setAttribute('src', newPerson.image)
+  }
   Game.savePerson(newPerson.key)
 }
 
-function warnNotPossibleCombination(dropzoneCardKey, draggedCardKey) {
+function warnNotPossibleCombination(dropzoneCardKey: CardKey, draggedCardKey: CardKey): void {
   const dropzoneCardElement = document.getElementById(`card-${dropzoneCardKey}`)
   const draggedCardElement = document.getElementById(`card-${draggedCardKey}`)
-  dropzoneCardElement.classList.add('shake-horizontal')
-  draggedCardElement.classList.add('shake-horizontal')
+  if (dropzoneCardElement instanceof HTMLElement) {
+    dropzoneCardElement.classList.add('shake-horizontal')
+  }
+  if (draggedCardElement instanceof HTMLElement) {
+    draggedCardElement.classList.add('shake-horizontal')
+  }
   setTimeout(() => {
-    dropzoneCardElement.classList.remove('shake-horizontal')
-    draggedCardElement.classList.remove('shake-horizontal')
+    dropzoneCardElement?.classList.remove('shake-horizontal')
+    draggedCardElement?.classList.remove('shake-horizontal')
   }, 850)
   Game.updateWrongComboNumber()
-  return Toaster.display(i18n.t('combinationNotPossible'))
+  Toaster.display(i18n.t('combinationNotPossible'))
 }
 
-function onDrop(e, draggedId) {
+function onDrop(e: DragEvent, draggedId?: string): void {
   e.preventDefault()
 
   const dropzoneCardKey = getCurrentCardKey(e)
   const dropzoneCard = cardsData.find(card => card.key === dropzoneCardKey)
-  if (!dropzoneCard) return
+  if (!dropzoneCard || !dropzoneCardKey) return
 
-  const draggedCardKey = parseDraggedCardKey(draggedId ?? e.dataTransfer.getData('text/plain'))
+  const draggedCardKey = parseDraggedCardKey(draggedId ?? e.dataTransfer?.getData('text/plain'))
   if (!draggedCardKey) return
 
-  const combinedKeys = [draggedCardKey, dropzoneCardKey]
+  const combinedKeys: [CardKey, CardKey] = [draggedCardKey, dropzoneCardKey]
   const combination = combinations.find(({ combo }) => areArraysEqual(combo, combinedKeys))
-  if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardKey, draggedCardKey)
+  if (!combination) {
+    warnNotPossibleCombination(dropzoneCardKey, draggedCardKey)
+    return
+  }
   gtag('event', 'new_combination', {
     event_category: 'game',
     event_label: 'successful_combination',
@@ -151,25 +189,26 @@ function onDrop(e, draggedId) {
 
   Card.applyEffects(combination)
   if (combination.badge) {
-    const [_, { currentBadges }] = Game.checkGameInProgress()
+    const [, { currentBadges }] = Game.checkGameInProgress()
     if (!currentBadges.includes(combination.badge)) {
       Game.saveBadges(currentBadges.concat(combination.badge))
       Stats.showNewBadgeIcon()
     }
   }
 
-  const resultCards = cardsData.filter(card => combination.result.includes(card.key))
-  const alreadyCreatedCards = resultCards.reduce((acc, newCard) => {
+  const resultKeys = combination.result === IDLE ? [] : combination.result
+  const resultCards = cardsData.filter(card => resultKeys.includes(card.key))
+  const alreadyCreatedCards = resultCards.reduce<string[]>((acc, newCard) => {
     const existingCard = document.getElementById(`card-${newCard.key}`)
-    if (!Boolean(existingCard)) {
+    if (!existingCard) {
       if (newCard.isPerson) {
         updatePerson(newCard)
       } else {
-        const [_, { combosHistory }] = Game.checkGameInProgress()
+        const [, { combosHistory }] = Game.checkGameInProgress()
         const comboExists = combosHistory.find(({ combo }) => areArraysEqual(combo, combinedKeys))
         const newCombosHistory = comboExists
           ? combosHistory
-          : combosHistory.concat({ combo: combinedKeys, result: combination.result })
+          : combosHistory.concat({ combo: combinedKeys, result: resultKeys })
         Game.saveCombosHistory(newCombosHistory)
         Card.create(newCard, 'discoveries-board')
       }

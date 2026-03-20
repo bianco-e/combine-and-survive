@@ -1,17 +1,10 @@
-import { CARD_KEY } from './cards.js'
-import i18n from './i18n.js'
-import {
-  BADGES,
-  STAT_CHANGE_LG,
-  STAT_CHANGE_MD,
-  STAT_CHANGE_SM,
-  IDLE,
-  STAT_CHANGE_XL,
-  STAT_CHANGE_XXL
-} from './constants.js'
-import { addSourceCardToBoard, addWildAnimalToBoard } from './utils.js'
+import { CARD_KEY } from './cards'
+import i18n from './i18n'
+import { BADGES, STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM, STAT_CHANGE_XL, STAT_CHANGE_XXL } from './constants'
+import { addSourceCardToBoard, addWildAnimalToBoard } from './utils'
+import { IDLE, type Combination, type ComboHistory } from './types'
 
-const spawnChickenCallback = () => {
+const spawnChickenCallback = (): void => {
   setTimeout(() => {
     if (document.getElementById(`card-${CARD_KEY.BREAD_CRUMBS}`)) {
       addWildAnimalToBoard(CARD_KEY.CHICKEN, i18n.t('wildChicken'), CARD_KEY.BREAD_CRUMBS)
@@ -19,11 +12,11 @@ const spawnChickenCallback = () => {
   }, 6500)
 }
 
-const addCaveCallback = () => {
+const addCaveCallback = (): void => {
   addSourceCardToBoard(CARD_KEY.CAVE, i18n.t('accessToCave'))
 }
 
-const combinations = [
+const combinations: Combination[] = [
   { combo: [CARD_KEY.PERSON, CARD_KEY.DIRT], result: [CARD_KEY.CLAY, CARD_KEY.WORM], consumes: [], decrease: null, increase: null },
   { combo: [CARD_KEY.PERSON, CARD_KEY.TREE], result: [CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
   {
@@ -489,7 +482,7 @@ const combinations = [
   { combo: [CARD_KEY.NOTE, CARD_KEY.LEATHER], result: [CARD_KEY.BOOK], consumes: [CARD_KEY.NOTE, CARD_KEY.LEATHER], decrease: null, increase: null }
 ]
 
-export function seeCurrentCombinations(combos = combinations) {
+export function seeCurrentCombinations(combos: ComboHistory[] | Combination[] = combinations): string {
   return combos
     .map(({ combo, result }) => {
       const comboNames = combo.map(cardKey => i18n.t(`cards.${cardKey}`)).join(' <> ')
@@ -501,7 +494,7 @@ export function seeCurrentCombinations(combos = combinations) {
     .join('<br />')
 }
 
-export function seeAllCombinations() {
+export function seeAllCombinations(): string {
   return combinations
     .map(({ combo, result, decrease, increase, badge }) => {
       const comboNames = combo.map(cardKey => i18n.t(`cards.${cardKey}`)).join(' <> ')
