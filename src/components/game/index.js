@@ -55,15 +55,15 @@ export default class Game {
   }
 
   static saveCurrentBoards() {
-    const currentDiscoveriesBoardIds = Array.from(document.querySelectorAll('#discoveries-board div.card')).map(
-      cardElement => Number(cardElement.getAttribute('id').replace('card-', ''))
+    const currentDiscoveriesBoardKeys = Array.from(document.querySelectorAll('#discoveries-board div.card')).map(
+      cardElement => cardElement.getAttribute('id').replace(/^card-/, '')
     )
-    const currentSourcesBoardIds = Array.from(document.querySelectorAll('#sources-board div.card')).map(cardElement =>
-      Number(cardElement.getAttribute('id').replace('card-', ''))
+    const currentSourcesBoardKeys = Array.from(document.querySelectorAll('#sources-board div.card')).map(cardElement =>
+      cardElement.getAttribute('id').replace(/^card-/, '')
     )
     localStorage.setItem(
       CURRENT_BOARDS_KEY,
-      JSON.stringify({ discoveries: currentDiscoveriesBoardIds, sources: currentSourcesBoardIds })
+      JSON.stringify({ discoveries: currentDiscoveriesBoardKeys, sources: currentSourcesBoardKeys })
     )
   }
 
@@ -119,17 +119,19 @@ export default class Game {
 
     //create initial cards
     const initialCards = boardsToResume?.sources
-      ? cardsData.filter(card => boardsToResume.sources.includes(card.id))
+      ? cardsData.filter(card => boardsToResume.sources.includes(card.key))
       : cardsData.filter(card => card.isInitial && !card.isPerson)
     initialCards.forEach(card => Card.create(card, 'sources-board', { updateDiscoveries: false, isInteractive: true }))
 
     //create discoveries cards in case it is resumed game
     if (boardsToResume?.discoveries) {
-      const discoveriesCards = cardsData.filter(card => boardsToResume.discoveries.includes(card.id))
-      discoveriesCards.forEach(card => Card.create(card, 'discoveries-board'), {
-        updateDiscoveries: false,
-        isInteractive: true
-      })
+      const discoveriesCards = cardsData.filter(card => boardsToResume.discoveries.includes(card.key))
+      discoveriesCards.forEach(card =>
+        Card.create(card, 'discoveries-board', {
+          updateDiscoveries: false,
+          isInteractive: true
+        })
+      )
     }
   }
 

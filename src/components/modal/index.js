@@ -41,23 +41,24 @@ export default class Modal {
 
   static showCombinationSuggestion() {
     const [_, { combosHistory, suggestionsDisabled }] = Game.checkGameInProgress()
-    const currentPersonBoardIds = Array.from(document.querySelectorAll('#person-board div.card')).map(cardElement =>
-      Number(cardElement.getAttribute('id').replace('card-', ''))
-    )
-    const currentDiscoveriesBoardIds = Array.from(document.querySelectorAll('#discoveries-board div.card')).map(
-      cardElement => Number(cardElement.getAttribute('id').replace('card-', ''))
-    )
-    const currentSourcesBoardIds = Array.from(document.querySelectorAll('#sources-board div.card')).map(cardElement =>
-      Number(cardElement.getAttribute('id').replace('card-', ''))
-    )
-    const allBoardIds = currentPersonBoardIds.concat(currentDiscoveriesBoardIds).concat(currentSourcesBoardIds)
+    const domIdToKey = domId => (domId ? domId.replace(/^card-/, '') : null)
+    const currentPersonBoardKeys = Array.from(document.querySelectorAll('#person-board div.card'))
+      .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
+      .filter(Boolean)
+    const currentDiscoveriesBoardKeys = Array.from(document.querySelectorAll('#discoveries-board div.card'))
+      .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
+      .filter(Boolean)
+    const currentSourcesBoardKeys = Array.from(document.querySelectorAll('#sources-board div.card'))
+      .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
+      .filter(Boolean)
+    const allBoardKeys = currentPersonBoardKeys.concat(currentDiscoveriesBoardKeys).concat(currentSourcesBoardKeys)
     const combinationSuggestion = combinations.find(combination => {
       return (
-        combination.combo.every(cardId => allBoardIds.includes(cardId)) &&
+        combination.combo.every(cardKey => allBoardKeys.includes(cardKey)) &&
         Array.isArray(combination.result) &&
-        combination.result.some(cardId => !currentDiscoveriesBoardIds.includes(cardId)) &&
+        combination.result.some(cardKey => !currentDiscoveriesBoardKeys.includes(cardKey)) &&
         !combosHistory.some(comboHistory =>
-          comboHistory.combo.some(comboHistoryId => combination.combo.includes(comboHistoryId))
+          comboHistory.combo.some(comboHistoryPart => combination.combo.includes(comboHistoryPart))
         )
       )
     })
@@ -97,7 +98,7 @@ export default class Modal {
       `
       Modal.render(suggestionContent, true)
       cards
-        .filter(card => combinationSuggestion.combo.includes(card.id))
+        .filter(card => combinationSuggestion.combo.includes(card.key))
         .forEach(card => {
           Card.create(card, 'suggestion-combo', {
             updateDiscoveries: false,
@@ -105,7 +106,7 @@ export default class Modal {
           })
         })
       cards
-        .filter(card => combinationSuggestion.result.includes(card.id))
+        .filter(card => combinationSuggestion.result.includes(card.key))
         .forEach(card => {
           Card.create(card, 'suggestion-results', { updateDiscoveries: false, isInteractive: false })
         })
@@ -220,8 +221,8 @@ export default class Modal {
       Card.create(card, cardsToGetBoardId, { updateDiscoveries: false, isInteractive: false })
     )
     const [_, { discoveriesHistory }] = Game.checkGameInProgress()
-    discoveriesHistory.forEach(discoveryId => {
-      const cardInBoard = document.querySelector(`#${cardsToGetBoardId} [non-interactive-id=card-${discoveryId}]`)
+    discoveriesHistory.forEach(discoveryKey => {
+      const cardInBoard = document.querySelector(`#${cardsToGetBoardId} [non-interactive-id="card-${discoveryKey}"]`)
       if (Boolean(cardInBoard)) {
         cardInBoard.classList.add('owned-card')
       }

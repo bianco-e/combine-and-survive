@@ -1,4 +1,4 @@
-import cardsData from './cards.js'
+import cardsData, { CARD_KEY } from './cards.js'
 import Stats from './components/stats/index.js'
 import Toaster from './components/toaster/index.js'
 import Card from './components/card/index.js'
@@ -19,22 +19,22 @@ export function areArraysEqual(arr1, arr2) {
 }
 
 // game logic related
-export const addSourceCardToBoard = (cardId, messageOnAdd) => {
-  const sourceCard = cardsData.find(card => card.id === cardId)
-  const sourceCardElement = document.getElementById(`card-${cardId}`)
+export const addSourceCardToBoard = (cardKey, messageOnAdd) => {
+  const sourceCard = cardsData.find(card => card.key === cardKey)
+  const sourceCardElement = document.getElementById(`card-${sourceCard.key}`)
   if (Boolean(sourceCardElement)) return
   Card.create(sourceCard, 'sources-board', { updateDiscoveries: false, isInteractive: true })
   Toaster.display(messageOnAdd, 'success')
 }
 
-export const addWildAnimalToBoard = (animalId, messageOnAdd, cardIdToRemove) => {
-  const animalCard = cardsData.find(card => card.id === animalId)
-  const animalCardElement = document.getElementById(`card-${animalId}`)
+export const addWildAnimalToBoard = (animalKey, messageOnAdd, cardKeyToRemove) => {
+  const animalCard = cardsData.find(card => card.key === animalKey)
+  const animalCardElement = document.getElementById(`card-${animalCard.key}`)
   const currentDiscoveries = document.querySelectorAll('#discoveries-board div.card').length
   if (Boolean(animalCardElement) || !currentDiscoveries) return
   Card.create(animalCard, 'discoveries-board')
-  if (cardIdToRemove) {
-    Card.remove(cardIdToRemove, 'discoveries-board')
+  if (cardKeyToRemove) {
+    Card.remove(cardKeyToRemove, 'discoveries-board')
   }
   Toaster.display(messageOnAdd, 'success')
 }
@@ -78,7 +78,6 @@ export function setInitialIntervalsAndButtonsOnClick() {
   }, 13000)
 
   window.animalIntervalId = setInterval(() => {
-    const BULL_CARD_ID = 26
-    addWildAnimalToBoard(BULL_CARD_ID, i18n.t('wildBull'))
+    addWildAnimalToBoard(CARD_KEY.BULL, i18n.t('wildBull'))
   }, 26000)
 }

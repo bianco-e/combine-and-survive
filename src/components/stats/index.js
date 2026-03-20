@@ -33,9 +33,10 @@ export default class Stats {
     Game.saveStat(id, newSanitizedAmount)
   }
 
-  static updateDiscoveries(id) {
+  static updateDiscoveries(cardKey) {
     const [_, { discoveriesHistory }] = Game.checkGameInProgress()
-    const newDiscoveriesHistory = !id || discoveriesHistory.includes(id) ? discoveriesHistory : discoveriesHistory.concat(id)
+    const newDiscoveriesHistory =
+      !cardKey || discoveriesHistory.includes(cardKey) ? discoveriesHistory : discoveriesHistory.concat(cardKey)
     Game.saveDiscoveries(newDiscoveriesHistory)
 
     const currentDiscoveriesEl = document.getElementById('current-discoveries')

@@ -1,397 +1,402 @@
-export default [
+export const CARD_KEY = Object.freeze({
+  PERSON: 'person',
+  DIRT: 'dirt',
+  TREE: 'tree',
+  RIVER: 'river',
+  MOUNTAIN: 'mountain',
+  LOG: 'log',
+  ROCK: 'rock',
+  STICK: 'stick',
+  CAMPFIRE: 'campfire',
+  SHARPEN_ROCK: 'sharpen-rock',
+  AXE: 'axe',
+  AXEMAN: 'axeman',
+  CLAY: 'clay',
+  VESSEL: 'vessel',
+  WATER: 'water',
+  APPLE: 'apple',
+  BOILED_WATER: 'boiled-water',
+  COAL: 'coal',
+  LEAF: 'leaf',
+  LEAF_FIBERS: 'leaf-fibers',
+  CORDAGE: 'cordage',
+  FISHING_LINE: 'fishing-line',
+  FISH: 'fish',
+  MUD: 'mud',
+  ADOBE_BRICK: 'adobe-brick',
+  BULL: 'bull',
+  LEATHER: 'leather',
+  BONE: 'bone',
+  CLOTHES: 'clothes',
+  SEEDS: 'seeds',
+  SPROUT: 'sprout',
+  PLANT: 'plant',
+  SAND: 'sand',
+  GLASS: 'glass',
+  WORM: 'worm',
+  SAP: 'sap',
+  BARK: 'bark',
+  TORCH: 'torch',
+  ASHES: 'ashes',
+  GRILLED_FISH: 'grilled-fish',
+  RAW_MEAT: 'raw-meat',
+  COOKED_MEAT: 'cooked-meat',
+  HERBAL_TEA: 'herbal-tea',
+  MORTAR: 'mortar',
+  FLOUR: 'flour',
+  DOUGH: 'dough',
+  BREAD: 'bread',
+  BAIT_FISHING_LINE: 'bait-fishing-line',
+  WOODEN_PLANKS: 'wooden-planks',
+  BASKET: 'basket',
+  HUT: 'hut',
+  INK: 'ink',
+  BREAD_CRUMBS: 'bread-crumbs',
+  CHICKEN: 'chicken',
+  FEATHER: 'feather',
+  RAW_CHICKEN: 'raw-chicken',
+  COOKED_CHICKEN: 'cooked-chicken',
+  EGGS: 'eggs',
+  QUILL: 'quill',
+  DRESSED_AXEMAN: 'dressed-axeman',
+  BRUSH: 'brush',
+  FISH_SPINE: 'fish-spine',
+  NEEDLE_THREAD: 'needle-thread',
+  TREE_THORN: 'tree-thorn',
+  ROTTEN_APPLE: 'rotten-apple',
+  CAVE: 'cave',
+  IRON_ORE: 'iron-ore',
+  FURNACE: 'furnace',
+  IRON_NUGGET: 'iron-nugget',
+  LOOM: 'loom',
+  FABRIC: 'fabric',
+  PAPER_PULP: 'paper-pulp',
+  PAPER: 'paper',
+  NOTE: 'note',
+  BOOK: 'book',
+  LYE: 'lye'
+})
+
+const cardsData = [
   {
-    key: 'person',
-    id: 1,
+    key: CARD_KEY.PERSON,
     image: '/images/person.webp',
     isInitial: true,
     isPerson: true
   },
   {
-    key: 'dirt',
-    id: 2,
+    key: CARD_KEY.DIRT,
     image: '/images/dirt.png',
     isInitial: true,
     isSource: true
   },
   {
-    key: 'tree',
-    id: 3,
+    key: CARD_KEY.TREE,
     image: '/images/tree.webp',
     isInitial: true,
     isSource: true
   },
   {
-    key: 'river',
-    id: 4,
+    key: CARD_KEY.RIVER,
     image: '/images/river.png',
     isInitial: true,
     isSource: true
   },
   {
-    key: 'mountain',
-    id: 5,
+    key: CARD_KEY.MOUNTAIN,
     image: '/images/mountain.png',
     isInitial: true,
     isSource: true
   },
   {
-    key: 'log',
-    id: 6,
+    key: CARD_KEY.LOG,
     image: '/images/log.webp'
   },
   {
-    key: 'rock',
-    id: 7,
+    key: CARD_KEY.ROCK,
     image: '/images/rock.png'
   },
   {
-    key: 'stick',
-    id: 8,
+    key: CARD_KEY.STICK,
     image: '/images/stick.png'
   },
   {
-    key: 'campfire',
-    id: 9,
+    key: CARD_KEY.CAMPFIRE,
     image: '/images/campfire.png'
   },
   {
-    key: 'sharpen-rock',
-    id: 10,
+    key: CARD_KEY.SHARPEN_ROCK,
     image: '/images/sharpen-rock.png'
   },
   {
-    key: 'axe',
-    id: 11,
+    key: CARD_KEY.AXE,
     isEquippable: true,
     image: '/images/axe.png'
   },
   {
-    key: 'axeman',
-    id: 12,
+    key: CARD_KEY.AXEMAN,
     image: '/images/person_axe.webp',
     isPerson: true
   },
   {
-    key: 'clay',
-    id: 13,
+    key: CARD_KEY.CLAY,
     image: '/images/clay.png'
   },
   {
-    key: 'vessel',
-    id: 14,
+    key: CARD_KEY.VESSEL,
     image: '/images/vessel.webp'
   },
   {
-    key: 'water',
-    id: 15,
+    key: CARD_KEY.WATER,
     image: '/images/water.png'
   },
   {
-    key: 'apple',
-    id: 16,
+    key: CARD_KEY.APPLE,
     image: '/images/apple.png'
   },
   {
-    key: 'boiled-water',
-    id: 17,
+    key: CARD_KEY.BOILED_WATER,
     image: '/images/boiled-water.png'
   },
   {
-    key: 'coal',
-    id: 18,
+    key: CARD_KEY.COAL,
     image: '/images/coal.png'
   },
   {
-    key: 'leaf',
-    id: 19,
+    key: CARD_KEY.LEAF,
     image: '/images/leaf.png'
   },
   {
-    key: 'leaf-fibers',
-    id: 20,
+    key: CARD_KEY.LEAF_FIBERS,
     image: '/images/leaf-fibers.png'
   },
   {
-    key: 'cordage',
-    id: 21,
+    key: CARD_KEY.CORDAGE,
     image: '/images/cordage.webp'
   },
   {
-    key: 'fishing-line',
-    id: 22,
+    key: CARD_KEY.FISHING_LINE,
     image: '/images/fishing-line.png'
   },
   {
-    key: 'fish',
-    id: 23,
+    key: CARD_KEY.FISH,
     image: '/images/fish.png'
   },
   {
-    key: 'mud',
-    id: 24,
+    key: CARD_KEY.MUD,
     image: '/images/mud.png'
   },
   {
-    key: 'adobe-brick',
-    id: 25,
+    key: CARD_KEY.ADOBE_BRICK,
     image: '/images/adobe-brick.png'
   },
   {
-    key: 'bull',
-    id: 26,
+    key: CARD_KEY.BULL,
     image: '/images/bull.png'
   },
   {
-    key: 'leather',
-    id: 27,
+    key: CARD_KEY.LEATHER,
     image: '/images/leather.png'
   },
   {
-    key: 'bone',
-    id: 28,
+    key: CARD_KEY.BONE,
     image: '/images/bone.png'
   },
   {
-    key: 'clothes',
-    id: 29,
+    key: CARD_KEY.CLOTHES,
     isEquippable: true,
     image: '/images/clothes.png'
   },
   {
-    key: 'seeds',
-    id: 30,
+    key: CARD_KEY.SEEDS,
     image: '/images/seeds.webp'
   },
   {
-    key: 'sprout',
-    id: 31,
+    key: CARD_KEY.SPROUT,
     image: '/images/sprout.png'
   },
   {
-    key: 'plant',
-    id: 32,
+    key: CARD_KEY.PLANT,
     image: '/images/plant.png'
   },
   {
-    key: 'sand',
-    id: 33,
+    key: CARD_KEY.SAND,
     image: '/images/sand.png'
   },
   {
-    key: 'glass',
-    id: 34,
+    key: CARD_KEY.GLASS,
     image: '/images/glass.png'
   },
   {
-    key: 'worm',
-    id: 35,
+    key: CARD_KEY.WORM,
     image: '/images/worm.png'
   },
   {
-    key: 'sap',
-    id: 36,
+    key: CARD_KEY.SAP,
     image: '/images/sap.webp'
   },
   {
-    key: 'bark',
-    id: 37,
+    key: CARD_KEY.BARK,
     image: '/images/bark.png'
   },
   {
-    key: 'torch',
-    id: 38,
+    key: CARD_KEY.TORCH,
     image: '/images/torch.png'
   },
   {
-    key: 'ashes',
-    id: 39,
+    key: CARD_KEY.ASHES,
     image: '/images/ashes.webp'
   },
   {
-    key: 'grilled-fish',
-    id: 40,
+    key: CARD_KEY.GRILLED_FISH,
     image: '/images/grilled-fish.webp'
   },
   {
-    key: 'raw-meat',
-    id: 41,
+    key: CARD_KEY.RAW_MEAT,
     image: '/images/raw-meat.webp'
   },
   {
-    key: 'cooked-meat',
-    id: 42,
+    key: CARD_KEY.COOKED_MEAT,
     image: '/images/cooked-meat.png'
   },
   {
-    key: 'herbal-tea',
-    id: 43,
+    key: CARD_KEY.HERBAL_TEA,
     image: '/images/herbal-tea.png'
   },
   {
-    key: 'mortar',
-    id: 44,
+    key: CARD_KEY.MORTAR,
     image: '/images/mortar.png'
   },
   {
-    key: 'flour',
-    id: 45,
+    key: CARD_KEY.FLOUR,
     image: '/images/flour.webp'
   },
   {
-    key: 'dough',
-    id: 46,
+    key: CARD_KEY.DOUGH,
     image: '/images/dough.webp'
   },
   {
-    key: 'bread',
-    id: 47,
+    key: CARD_KEY.BREAD,
     image: '/images/bread.png'
   },
   {
-    key: 'bait-fishing-line',
-    id: 48,
+    key: CARD_KEY.BAIT_FISHING_LINE,
     image: '/images/fishing-line-bait.png'
   },
   {
-    key: 'wooden-planks',
-    id: 49,
+    key: CARD_KEY.WOODEN_PLANKS,
     image: '/images/wooden-planks.png'
   },
   {
-    key: 'basket',
-    id: 50,
+    key: CARD_KEY.BASKET,
     image: '/images/basket.webp'
   },
   {
-    key: 'hut',
-    id: 51,
+    key: CARD_KEY.HUT,
     image: '/images/hut.png'
   },
   {
-    key: 'ink',
-    id: 52,
+    key: CARD_KEY.INK,
     image: '/images/ink.png'
   },
   {
-    key: 'bread-crumbs',
-    id: 53,
+    key: CARD_KEY.BREAD_CRUMBS,
     image: '/images/bread-crumbs.png'
   },
   {
-    key: 'chicken',
-    id: 54,
+    key: CARD_KEY.CHICKEN,
     image: '/images/chicken.png'
   },
   {
-    key: 'feather',
-    id: 55,
+    key: CARD_KEY.FEATHER,
     image: '/images/feather.webp'
   },
   {
-    key: 'raw-chicken',
-    id: 56,
+    key: CARD_KEY.RAW_CHICKEN,
     image: '/images/raw-chicken.png'
   },
   {
-    key: 'cooked-chicken',
-    id: 57,
+    key: CARD_KEY.COOKED_CHICKEN,
     image: '/images/cooked-chicken.webp'
   },
   {
-    key: 'eggs',
-    id: 58,
+    key: CARD_KEY.EGGS,
     image: '/images/eggs.webp'
   },
   {
-    key: 'quill',
-    id: 59,
+    key: CARD_KEY.QUILL,
     image: '/images/quill.png'
   },
   {
-    key: 'dressed-axeman',
-    id: 60,
+    key: CARD_KEY.DRESSED_AXEMAN,
     image: '/images/person_axe_clothes.webp',
     isPerson: true
   },
   {
-    key: 'brush',
-    id: 61,
+    key: CARD_KEY.BRUSH,
     image: '/images/brush.png'
   },
   {
-    key: 'fish-spine',
-    id: 62,
+    key: CARD_KEY.FISH_SPINE,
     image: '/images/fish-skeleton.png'
   },
   {
-    key: 'needle-thread',
-    id: 63,
+    key: CARD_KEY.NEEDLE_THREAD,
     image: '/images/needle-thread.png'
   },
   {
-    key: 'tree-thorn',
-    id: 64,
+    key: CARD_KEY.TREE_THORN,
     image: '/images/tree-thorn.webp'
   },
   {
-    key: 'rotten-apple',
-    id: 65,
+    key: CARD_KEY.ROTTEN_APPLE,
     image: '/images/rotten-apple.png'
   },
   {
-    key: 'cave',
-    id: 66,
+    key: CARD_KEY.CAVE,
     image: '/images/cave.webp',
     isSource: true
   },
   {
-    key: 'iron-ore',
-    id: 67,
+    key: CARD_KEY.IRON_ORE,
     image: '/images/iron-ore.png'
   },
   {
-    key: 'furnace',
-    id: 68,
+    key: CARD_KEY.FURNACE,
     image: '/images/furnace.png'
   },
   {
-    key: 'iron-nugget',
-    id: 69,
+    key: CARD_KEY.IRON_NUGGET,
     image: '/images/iron-nugget.png'
   },
   {
-    key: 'loom',
-    id: 70,
+    key: CARD_KEY.LOOM,
     image: '/images/loom.png'
   },
   {
-    key: 'fabric',
-    id: 71,
+    key: CARD_KEY.FABRIC,
     image: '/images/fabric.png'
   },
   {
-    key: 'paper-pulp',
-    id: 72,
+    key: CARD_KEY.PAPER_PULP,
     image: '/images/paper-pulp.png'
   },
   {
-    key: 'paper',
-    id: 73,
+    key: CARD_KEY.PAPER,
     image: '/images/paper.png'
   },
   {
-    key: 'note',
-    id: 74,
+    key: CARD_KEY.NOTE,
     image: '/images/note.png'
   },
   {
-    key: 'book',
-    id: 75,
+    key: CARD_KEY.BOOK,
     image: '/images/book.png'
   },
   {
-    key: 'lye',
-    id: 76,
+    key: CARD_KEY.LYE,
     image: '/images/lye.png'
   }
 ]
+
+export default cardsData

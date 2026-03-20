@@ -9,7 +9,7 @@ import Game from '../game/index.js'
 
 export default class Card {
   static addListeners(cardElement) {
-    cardElement.addEventListener('dragstart', e => e.dataTransfer.setData('text/plain', getCurrentCardId(e)))
+    cardElement.addEventListener('dragstart', e => e.dataTransfer.setData('text/plain', getCurrentCardKey(e)))
     cardElement.addEventListener('dragover', e => e.preventDefault())
     cardElement.addEventListener('dragenter', e => e.preventDefault())
     cardElement.addEventListener('drop', onDrop)
@@ -23,20 +23,20 @@ export default class Card {
       Object.entries(combination.decrease).forEach(([stat, amount]) => Stats.decrease(stat, amount))
     }
     if (combination.consumes !== IDLE && Boolean(combination.consumes.length)) {
-      combination.consumes.forEach(consumed => {
-        this.remove(consumed, 'discoveries-board')
+      combination.consumes.forEach(consumedKey => {
+        this.remove(consumedKey, 'discoveries-board')
       })
     }
   }
 
-  static remove(id, boardId) {
+  static remove(cardKey, boardId) {
     const board = document.getElementById(boardId)
-    const cardToRemove = document.getElementById(`card-${id}`)
+    const cardToRemove = document.getElementById(`card-${cardKey}`)
     board.removeChild(cardToRemove)
   }
 
   static create(
-    { id, key, image, className, isEquippable },
+    { key, image, className, isEquippable },
     boardId,
     cardConfig = { updateDiscoveries: true, isInteractive: true }
   ) {
@@ -44,11 +44,11 @@ export default class Card {
     const newCardElement = document.createElement('div')
     newCardElement.classList.add('card', 'new-card')
     if (isInteractive) {
-      newCardElement.setAttribute('id', `card-${id}`)
+      newCardElement.setAttribute('id', `card-${key}`)
       newCardElement.setAttribute('draggable', 'true')
       this.addListeners(newCardElement)
     } else {
-      newCardElement.setAttribute('non-interactive-id', `card-${id}`)
+      newCardElement.setAttribute('non-interactive-id', `card-${key}`)
       newCardElement.classList.add('non-interactive-card')
     }
     const newCardName = document.createElement('p')
@@ -71,7 +71,7 @@ export default class Card {
     const board = document.getElementById(boardId)
     board.appendChild(newCardElement)
     if (updateDiscoveries) {
-      Stats.updateDiscoveries(id)
+      Stats.updateDiscoveries(key)
     }
     setTimeout(() => {
       newCardElement.classList.remove('new-card')
@@ -88,19 +88,26 @@ function renderEquippableIcon(newCardElement) {
   newCardElement.appendChild(equippableIcon)
 }
 
-function extractNumberFromId(id) {
-  const match = id.match(/^card-(\d+)$/)
-  return match ? parseInt(match[1]) : null
+function keyFromCardDomId(domId) {
+  if (!domId || !domId.startsWith('card-')) return null
+  const key = domId.slice(5)
+  return cardsData.some(card => card.key === key) ? key : null
 }
 
-function getCurrentCardId(e) {
-  if (e.target.id && e.target.id.startsWith('card')) return extractNumberFromId(e.target.id)
-  return extractNumberFromId(e.target.closest('div').id)
+function getCurrentCardKey(e) {
+  if (e.target.id && e.target.id.startsWith('card')) return keyFromCardDomId(e.target.id)
+  return keyFromCardDomId(e.target.closest('div').id)
+}
+
+function parseDraggedCardKey(raw) {
+  if (raw == null || raw === '') return null
+  const s = String(raw)
+  return cardsData.find(card => card.key === s)?.key ?? null
 }
 
 function updatePerson(newPerson) {
   const personCardElement = document.querySelector('.person')
-  personCardElement.setAttribute('id', `card-${newPerson.id}`)
+  personCardElement.setAttribute('id', `card-${newPerson.key}`)
   const personName = personCardElement.querySelector('p')
   personName.innerText = i18n.t(`cards.${newPerson.key}`)
   personName.title = i18n.t(`cards.${newPerson.key}`)
@@ -110,9 +117,9 @@ function updatePerson(newPerson) {
   Game.savePerson(newPerson.key)
 }
 
-function warnNotPossibleCombination(dropzoneCardId, draggedCardId) {
-  const dropzoneCardElement = document.getElementById(`card-${dropzoneCardId}`)
-  const draggedCardElement = document.getElementById(`card-${draggedCardId}`)
+function warnNotPossibleCombination(dropzoneCardKey, draggedCardKey) {
+  const dropzoneCardElement = document.getElementById(`card-${dropzoneCardKey}`)
+  const draggedCardElement = document.getElementById(`card-${draggedCardKey}`)
   dropzoneCardElement.classList.add('shake-horizontal')
   draggedCardElement.classList.add('shake-horizontal')
   setTimeout(() => {
@@ -126,14 +133,16 @@ function warnNotPossibleCombination(dropzoneCardId, draggedCardId) {
 function onDrop(e, draggedId) {
   e.preventDefault()
 
-  const dropzoneCardId = getCurrentCardId(e)
-  const dropzoneCard = cardsData.find(card => card.id === dropzoneCardId)
+  const dropzoneCardKey = getCurrentCardKey(e)
+  const dropzoneCard = cardsData.find(card => card.key === dropzoneCardKey)
   if (!dropzoneCard) return
 
-  const draggedCardId = parseInt(draggedId || e.dataTransfer.getData('text/plain'))
-  const combinedIds = [draggedCardId, dropzoneCardId]
-  const combination = combinations.find(({ combo }) => areArraysEqual(combo, combinedIds))
-  if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardId, draggedCardId)
+  const draggedCardKey = parseDraggedCardKey(draggedId ?? e.dataTransfer.getData('text/plain'))
+  if (!draggedCardKey) return
+
+  const combinedKeys = [draggedCardKey, dropzoneCardKey]
+  const combination = combinations.find(({ combo }) => areArraysEqual(combo, combinedKeys))
+  if (!Boolean(combination)) return warnNotPossibleCombination(dropzoneCardKey, draggedCardKey)
   gtag('event', 'new_combination', {
     event_category: 'game',
     event_label: 'successful_combination',
@@ -149,18 +158,18 @@ function onDrop(e, draggedId) {
     }
   }
 
-  const resultCards = cardsData.filter(card => combination.result.includes(card.id))
+  const resultCards = cardsData.filter(card => combination.result.includes(card.key))
   const alreadyCreatedCards = resultCards.reduce((acc, newCard) => {
-    const existingCard = document.getElementById(`card-${newCard.id}`)
+    const existingCard = document.getElementById(`card-${newCard.key}`)
     if (!Boolean(existingCard)) {
       if (newCard.isPerson) {
         updatePerson(newCard)
       } else {
         const [_, { combosHistory }] = Game.checkGameInProgress()
-        const comboExists = combosHistory.find(({ combo }) => areArraysEqual(combo, combinedIds))
+        const comboExists = combosHistory.find(({ combo }) => areArraysEqual(combo, combinedKeys))
         const newCombosHistory = comboExists
           ? combosHistory
-          : combosHistory.concat({ combo: combinedIds, result: combination.result })
+          : combosHistory.concat({ combo: combinedKeys, result: combination.result })
         Game.saveCombosHistory(newCombosHistory)
         Card.create(newCard, 'discoveries-board')
       }
