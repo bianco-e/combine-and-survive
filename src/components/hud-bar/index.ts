@@ -18,6 +18,7 @@ export default class HudBar {
 
   private static restartAnimation(element: HTMLElement, className: string): void {
     element.classList.remove(className)
+    void element.offsetWidth // force reflow so removing+re-adding the class restarts the animation 
     element.classList.add(className)
   }
 

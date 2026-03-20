@@ -16,17 +16,29 @@ Your goal is to unlock as many discoveries as possible by experimenting with car
 
 ENJOY!
 
-### TODO:
-* Add tests
+##### TODO:
 * Optimize card images
 * Create css variables to manage sizes and colors
+* Add language selector button
 
-### IDEAS:
+##### IDEAS:
 * Add natural phenomens like rain, wind, flood that affect the cards in the board
 * Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
 * Make bull poop after certain seconds alive
 * Combine more than 2 cards (combine field on bottom bar)
 * Add person inventory to equip clothes/weapons
+* Decay: making "Raw Meat" turn into "Rotten Meat" if not used within a certain amount of clicks/time.
+* Tool Durability: Tools like the "Axe" or "Hammer" could break/disappear after 10 uses.
 
-### +2 CARDS COMBOS TO ADD:
+##### 2 CARDS COMBOS TO ADD:
+* Rock + Stick = Hammer
+* Iron Nugget + Furnace = Iron Bar
+* Iron Bar + Hammer = Iron Blade
+* Glass + Wooden Planks = Window
+* Iron Blade + Stick = Hoe
+* Flour + Eggs = Dry Pasta
+* Pasta + Boiled Water = Cooked Pasta
+* Bread + Cooked Meat = Sandwich [New badge: Chef]
+
+##### +2 CARDS COMBOS TO ADD:
 * Flour + Water + Apple = Apple Pie (consumes all)

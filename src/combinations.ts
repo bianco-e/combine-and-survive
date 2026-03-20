@@ -1,6 +1,14 @@
 import { CARD_KEY } from './cards'
 import i18n from './i18n'
-import { BADGES, STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM, STAT_CHANGE_XL, STAT_CHANGE_XXL } from './constants'
+import {
+  BADGES,
+  STAT_CHANGE_LG,
+  STAT_CHANGE_MD,
+  STAT_CHANGE_SM,
+  STAT_CHANGE_XL,
+  STAT_CHANGE_XXL,
+  WILD_CHICKEN_SPAWN_DELAY_MS
+} from './constants'
 import { addSourceCardToBoard, addWildAnimalToBoard } from './utils'
 import { IDLE, type Combination, type ComboHistory } from './types'
 
@@ -9,7 +17,7 @@ const spawnChickenCallback = (): void => {
     if (document.getElementById(`card-${CARD_KEY.BREAD_CRUMBS}`)) {
       addWildAnimalToBoard(CARD_KEY.CHICKEN, i18n.t('wildChicken'), CARD_KEY.BREAD_CRUMBS)
     }
-  }, 6500)
+  }, WILD_CHICKEN_SPAWN_DELAY_MS)
 }
 
 const addCaveCallback = (): void => {
