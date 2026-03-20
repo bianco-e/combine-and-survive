@@ -2,6 +2,25 @@ import i18n from '../../i18n'
 import type { StatId } from '../../types'
 
 export default class HudBar {
+  static triggerHealthDecreaseEffect(): void {
+    const healthTrack = document.querySelector('#health .hud-bar-track')
+    const healthFill = document.querySelector('.hud-bar-fill-health')
+    if (!(healthTrack instanceof HTMLElement) || !(healthFill instanceof HTMLElement)) return
+
+    this.restartAnimation(healthFill, 'health-hit-flash')
+  }
+
+  static triggerDamageFlash(): void {
+    const damageOverlay = document.getElementById('damage-overlay')
+    if (!(damageOverlay instanceof HTMLElement)) return
+    this.restartAnimation(damageOverlay, 'damage-flash')
+  }
+
+  private static restartAnimation(element: HTMLElement, className: string): void {
+    element.classList.remove(className)
+    element.classList.add(className)
+  }
+
   static create(rootId: string, id: StatId, icon: string): void {
     const hudBar = document.createElement('div')
     hudBar.setAttribute('id', id)

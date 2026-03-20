@@ -46,6 +46,14 @@ export const addWildAnimalToBoard = (animalKey: CardKey, messageOnAdd: string, c
   Toaster.display(messageOnAdd, ToastType.Success)
 }
 
+function setupDamageOverlay(): void {
+  if (document.getElementById('damage-overlay')) return
+  const damageOverlay = document.createElement('div')
+  damageOverlay.setAttribute('id', 'damage-overlay')
+  damageOverlay.classList.add('damage-overlay')
+  document.body.appendChild(damageOverlay)
+}
+
 export const setInitialBoard = (): void => {
   const initialBoard = `
     <div id="board-left-top-container" class="board-buttons-container discoveries"></div>
@@ -70,6 +78,7 @@ export const setInitialBoard = (): void => {
     <script src="./index.ts" type="module"></script>
   `
   document.body.innerHTML = initialBoard
+  setupDamageOverlay()
 }
 
 export function setInitialIntervalsAndButtonsOnClick(): void {

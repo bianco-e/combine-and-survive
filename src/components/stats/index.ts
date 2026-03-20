@@ -1,6 +1,6 @@
 import cardsData from '../../cards'
 import Modal from '../modal'
-import { MAX_STAT, MIN_STAT, STAT_CHANGE_LG, STAT_CHANGE_SM } from '../../constants'
+import { MAX_STAT, MIN_STAT, STAT_CHANGE_LG, STAT_CHANGE_MD, STAT_CHANGE_SM } from '../../constants'
 import Game from '../game'
 import HudBar from '../hud-bar'
 import type { CardKey, StatId, StatsStatus } from '../../types'
@@ -19,6 +19,12 @@ export default class Stats {
     const isDead = newAmount <= MIN_STAT
     const newSanitizedAmount = isDead ? MIN_STAT : newAmount
     HudBar.updateFill(id, newSanitizedAmount)
+    if (id === 'health') {
+      HudBar.triggerHealthDecreaseEffect()
+      if (amountToDecrease >= STAT_CHANGE_MD) {
+        HudBar.triggerDamageFlash()
+      }
+    }
     Game.saveStat(id, newSanitizedAmount)
     if (isDead) {
       Game.endGame(Modal.showLost)

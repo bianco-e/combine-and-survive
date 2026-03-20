@@ -7,15 +7,17 @@
 * CSS
 
 ### How to play:
-The goal is to reach the greatest number of discoveries by dragging and dropping cards
-- Only 2 cards can be combined at a time in this edition
-- Some cards can be combined with themselves
+Your goal is to unlock as many discoveries as possible by experimenting with card combinations.
+
+- Drag one card onto another to try a combination.
+- In this edition, you can combine only **2 cards at a time**.
+- Some cards can also be combined with themselves.
+- Not every combination works, and some of them may affect you instead of returning a new card.
 
 ENJOY!
 
 ### TODO:
 * Add tests
-* Add extra visual effect when health decreases
 * Optimize card images
 * Create css variables to manage sizes and colors
 

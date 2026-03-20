@@ -96,6 +96,15 @@ h1 {
   display: block;
 }
 
+.damage-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--health-red);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 999;
+}
+
 @media (max-width: 729px) {
   .content-wrapper {
     padding: 0 22px 80px;
