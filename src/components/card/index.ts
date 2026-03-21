@@ -17,6 +17,34 @@ function toHtmlElement(value: Element | null): HTMLElement | null {
 }
 
 export default class Card {
+  static refreshTranslations(): void {
+    const cardElements = document.querySelectorAll('[id^="card-"], [non-interactive-id^="card-"]')
+    cardElements.forEach(cardElement => {
+      if (!(cardElement instanceof HTMLElement)) return
+      const cardId = cardElement.getAttribute('id') || cardElement.getAttribute('non-interactive-id')
+      if (!cardId) return
+      const key = toCardKey(cardId.replace(/^card-/, ''))
+      if (!key) return
+
+      const translatedName = i18n.t(`cards.${key}`)
+      const cardNameElement = cardElement.querySelector('p')
+      if (cardNameElement instanceof HTMLElement) {
+        cardNameElement.textContent = translatedName
+        cardNameElement.title = translatedName
+      }
+      const cardImageElement = cardElement.querySelector('img:not(.equippable-icon)')
+      if (cardImageElement instanceof HTMLImageElement) {
+        cardImageElement.alt = translatedName
+      }
+      const equippableIconElement = cardElement.querySelector('.equippable-icon')
+      if (equippableIconElement instanceof HTMLImageElement) {
+        const equippableText = i18n.t('equippableCard')
+        equippableIconElement.alt = equippableText
+        equippableIconElement.title = equippableText
+      }
+    })
+  }
+
   static addListeners(cardElement: HTMLElement): void {
     cardElement.addEventListener('dragstart', e => {
       const dragEvent = e as DragEvent

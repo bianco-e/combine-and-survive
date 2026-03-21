@@ -24,10 +24,12 @@ const i18n: I18n = {
       const res = await fetch(`/locales/${lang}.json`)
       this.translations = (await res.json()) as TranslationRecord
       this.language = lang
+      document.documentElement.lang = lang
     } catch {
       const res = await fetch(`/locales/${defaultLanguage}.json`)
       this.translations = (await res.json()) as TranslationRecord
       this.language = defaultLanguage
+      document.documentElement.lang = defaultLanguage
     }
   },
 

@@ -61,6 +61,9 @@
     "line4": "• Algunas cartas pueden combinarse consigo mismas",
     "line5": "¡DISFRUTA!"
   },
+  "languageSelector": {
+    "title": "Idioma"
+  },
   "game": {
     "welcomeBack": "¡Bienvenido de nuevo!",
     "gameInProgress": "Parece que tienes una partida en curso. ¿Te gustaría continuar jugando?",

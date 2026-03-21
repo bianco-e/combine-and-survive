@@ -61,6 +61,9 @@
     "line4": "• Einige Karten können mit sich selbst kombiniert werden.",
     "line5": "VIEL SPASS!"
   },
+  "languageSelector": {
+    "title": "Sprache"
+  },
   "game": {
     "welcomeBack": "Willkommen zurück!",
     "gameInProgress": "Es sieht so aus, als hättest du ein laufendes Spiel. Möchtest du weiterspielen?",

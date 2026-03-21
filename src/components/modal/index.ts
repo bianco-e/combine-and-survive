@@ -6,7 +6,22 @@ import Card from '../card'
 import { setInitialBoard } from '../../utils'
 import Stats from '../stats'
 import Game from '../game'
+import HudBar from '../hud-bar'
 import { type CardKey, type ModalInstructionsOptions } from '../../types'
+
+interface LanguageOption {
+  code: string
+  label: string
+  flagCode: string
+}
+
+const LANGUAGE_OPTIONS: LanguageOption[] = [
+  { code: 'en', label: 'English', flagCode: 'US' },
+  { code: 'pt', label: 'Portuguese', flagCode: 'PT' },
+  { code: 'fr', label: 'French', flagCode: 'FR' },
+  { code: 'de', label: 'German', flagCode: 'DE' },
+  { code: 'es', label: 'Spanish', flagCode: 'ES' }
+]
 
 function checksClickOutside(e: MouseEvent): void {
   const modal = document.getElementById('modal')
@@ -28,6 +43,29 @@ function getBoardKeys(selector: string): CardKey[] {
   return Array.from(document.querySelectorAll(selector))
     .map(cardElement => domIdToKey(cardElement.getAttribute('id')))
     .filter((cardKey): cardKey is CardKey => Boolean(cardKey))
+}
+
+function renderLanguageSelector(): string {
+  return `
+    <div class='language-selector'>
+      <h3>${i18n.t('languageSelector.title')}</h3>
+      <div class='language-options'>
+        ${LANGUAGE_OPTIONS.map(({ code, label, flagCode }) => {
+          return `
+            <button
+              class='language-option ${i18n.language === code ? 'selected' : ''}'
+              type='button'
+              data-language='${code}'
+              title='${label}'
+              aria-label='${label}'
+            >
+              <img src='/images/flags/${flagCode}.svg' alt='${label}' />
+            </button>
+          `
+        }).join('')}
+      </div>
+    </div>
+  `
 }
 
 export default class Modal {
@@ -142,10 +180,29 @@ export default class Modal {
       <h2>${i18n.t('howToPlay.line3')}</h2>
       <h2>${i18n.t('howToPlay.line4')}</h2>
       <h2>${i18n.t('howToPlay.line5')}</h2>
+      ${renderLanguageSelector()}
       <i>(${i18n.t('game.autoSave')})</i>
       ${isInitialInstructions ? `<button id='${startNewGameButtonId}'>${i18n.t('game.startNewGame')}</button>` : ''}
     `
     Modal.render(instructionsContent, !isInitialInstructions)
+    document.querySelectorAll('.language-option').forEach(languageOption => {
+      languageOption.addEventListener('click', async e => {
+        const option = e.currentTarget
+        if (!(option instanceof HTMLButtonElement)) return
+        const selectedLanguage = option.dataset.language
+        if (!selectedLanguage || selectedLanguage === i18n.language) return
+
+        await i18n.load(selectedLanguage)
+        Card.refreshTranslations()
+        HudBar.refreshLabels()
+        gtag('event', 'set_language', {
+          event_category: 'action',
+          event_label: 'set_language',
+          player_language: selectedLanguage
+        })
+        Modal.showInstructions({ isInitialInstructions })
+      })
+    })
     if (!isInitialInstructions) {
       gtag('event', 'see_instructions', {
         event_category: 'action',

@@ -19,7 +19,6 @@ ENJOY!
 ##### TODO:
 * Optimize card images
 * Create css variables to manage sizes and colors
-* Add language selector button
 
 ##### IDEAS:
 * Add natural phenomens like rain, wind, flood that affect the cards in the board

@@ -61,6 +61,9 @@
     "line4": "• Algumas cartas podem ser combinadas entre si",
     "line5": "APROVEITE!"
   },
+  "languageSelector": {
+    "title": "Idioma"
+  },
   "game": {
     "welcomeBack": "Bem-vindo de volta!",
     "gameInProgress": "Parece que você tem um jogo em andamento. Gostaria de continuar jogando?",

@@ -71,6 +71,38 @@
   gap: var(--gap-small);
 }
 
+.modal .language-selector {
+  margin: 16px 0 8px;
+}
+
+.modal .language-selector h3 {
+  margin: 0 0 8px;
+}
+
+.modal .language-options {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal .language-option {
+  background: transparent;
+  border: 1px solid transparent;
+  margin-top: 0;
+  padding: 3px;
+}
+
+.modal .language-option.selected {
+  border-color: var(--sand);
+}
+
+.modal .language-option img {
+  display: block;
+  height: 22px;
+  width: 32px;
+}
+
 @media (max-width: 729px) {
   .modal {
     max-height: 80vh;
