@@ -30,6 +30,10 @@
       "miner": {
         "name": "Mineiro",
         "msg": "Agora você é um Mineiro"
+      },
+      "chef": {
+        "name": "Chef",
+        "msg": "Agora você é um Chef"
       }
     }
   },
@@ -139,7 +143,10 @@
     "mortar": "Pilão",
     "flour": "Farinha",
     "dough": "Massa",
+    "dried-pasta": "Macarrão seco",
+    "cooked-pasta": "Macarrão cozido",
     "bread": "Pão",
+    "sandwich": "Sanduíche",
     "bait-fishing-line": "Isca + Linha de Pesca",
     "wooden-planks": "Tábuas de Madeira",
     "basket": "Cesta",

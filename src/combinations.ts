@@ -107,6 +107,20 @@ const combinations: Combination[] = [
     increase: { health: STAT_CHANGE_LG }
   },
   {
+    combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_PASTA],
+    result: IDLE,
+    consumes: [CARD_KEY.COOKED_PASTA],
+    decrease: null,
+    increase: { health: STAT_CHANGE_MD }
+  },
+  {
+    combo: [CARD_KEY.PERSON, CARD_KEY.SANDWICH],
+    result: IDLE,
+    consumes: [CARD_KEY.SANDWICH],
+    decrease: null,
+    increase: { health: STAT_CHANGE_LG }
+  },
+  {
     combo: [CARD_KEY.PERSON, CARD_KEY.ROTTEN_APPLE],
     result: IDLE,
     consumes: [CARD_KEY.ROTTEN_APPLE],
@@ -274,6 +288,20 @@ const combinations: Combination[] = [
     increase: { health: STAT_CHANGE_LG }
   },
   {
+    combo: [CARD_KEY.AXEMAN, CARD_KEY.COOKED_PASTA],
+    result: IDLE,
+    consumes: [CARD_KEY.COOKED_PASTA],
+    decrease: null,
+    increase: { health: STAT_CHANGE_MD }
+  },
+  {
+    combo: [CARD_KEY.AXEMAN, CARD_KEY.SANDWICH],
+    result: IDLE,
+    consumes: [CARD_KEY.SANDWICH],
+    decrease: null,
+    increase: { health: STAT_CHANGE_LG }
+  },
+  {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.CLOTHES],
     result: [CARD_KEY.DRESSED_AXEMAN],
     consumes: [CARD_KEY.CLOTHES],
@@ -317,12 +345,34 @@ const combinations: Combination[] = [
   { combo: [CARD_KEY.FLOUR, CARD_KEY.WATER], result: [CARD_KEY.DOUGH, CARD_KEY.VESSEL], consumes: [CARD_KEY.WATER, CARD_KEY.FLOUR], decrease: null, increase: null },
   { combo: [CARD_KEY.FLOUR, CARD_KEY.BOILED_WATER], result: [CARD_KEY.DOUGH, CARD_KEY.VESSEL], consumes: [CARD_KEY.BOILED_WATER, CARD_KEY.FLOUR], decrease: null, increase: null },
   {
+    combo: [CARD_KEY.FLOUR, CARD_KEY.EGGS],
+    result: [CARD_KEY.DRIED_PASTA],
+    consumes: [CARD_KEY.FLOUR, CARD_KEY.EGGS],
+    decrease: null,
+    increase: null
+  },
+  {
+    combo: [CARD_KEY.DRIED_PASTA, CARD_KEY.BOILED_WATER],
+    result: [CARD_KEY.COOKED_PASTA, CARD_KEY.VESSEL],
+    consumes: [CARD_KEY.BOILED_WATER, CARD_KEY.DRIED_PASTA],
+    decrease: null,
+    increase: null
+  },
+  {
     combo: [CARD_KEY.DOUGH, CARD_KEY.CAMPFIRE],
     result: [CARD_KEY.BREAD],
     consumes: [CARD_KEY.DOUGH],
     decrease: null,
     increase: null,
     badge: 3
+  },
+  {
+    combo: [CARD_KEY.BREAD, CARD_KEY.COOKED_MEAT],
+    result: [CARD_KEY.SANDWICH],
+    consumes: [CARD_KEY.BREAD, CARD_KEY.COOKED_MEAT],
+    decrease: null,
+    increase: null,
+    badge: 8
   },
   { combo: [CARD_KEY.FISHING_LINE, CARD_KEY.WORM], result: [CARD_KEY.BAIT_FISHING_LINE], consumes: [CARD_KEY.FISHING_LINE, CARD_KEY.WORM], decrease: null, increase: null },
   {
@@ -461,6 +511,20 @@ const combinations: Combination[] = [
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.COOKED_CHICKEN],
     result: IDLE,
     consumes: [CARD_KEY.COOKED_CHICKEN],
+    decrease: null,
+    increase: { health: STAT_CHANGE_LG }
+  },
+  {
+    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.COOKED_PASTA],
+    result: IDLE,
+    consumes: [CARD_KEY.COOKED_PASTA],
+    decrease: null,
+    increase: { health: STAT_CHANGE_MD }
+  },
+  {
+    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.SANDWICH],
+    result: IDLE,
+    consumes: [CARD_KEY.SANDWICH],
     decrease: null,
     increase: { health: STAT_CHANGE_LG }
   },

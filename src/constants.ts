@@ -28,5 +28,6 @@ export const BADGES: BadgeMap = {
   4: 'herbalist',
   5: 'builder',
   6: 'writer',
-  7: 'miner'
+  7: 'miner',
+  8: 'chef'
 }

@@ -30,6 +30,10 @@
       "miner": {
         "name": "Miner",
         "msg": "You are a Miner now"
+      },
+      "chef": {
+        "name": "Chef",
+        "msg": "You are a Chef now"
       }
     }
   },
@@ -139,7 +143,10 @@
     "mortar": "Mortar",
     "flour": "Flour",
     "dough": "Dough",
+    "dried-pasta": "Dried Pasta",
+    "cooked-pasta": "Cooked Pasta",
     "bread": "Bread",
+    "sandwich": "Sandwich",
     "bait-fishing-line": "Bait + Fishing line",
     "wooden-planks": "Wooden planks",
     "basket": "Basket",

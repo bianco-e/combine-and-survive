@@ -30,6 +30,10 @@
       "miner": {
         "name": "Mineur",
         "msg": "Tu es un mineur maintenant"
+      },
+      "chef": {
+        "name": "Chef",
+        "msg": "Tu es un chef maintenant"
       }
     }
   },
@@ -139,7 +143,10 @@
     "mortar": "Mortier",
     "flour": "Farine",
     "dough": "Pâte",
+    "dried-pasta": "Pâtes sèches",
+    "cooked-pasta": "Pâtes cuites",
     "bread": "Pain",
+    "sandwich": "Sandwich",
     "bait-fishing-line": "Appâts + ligne de pêche",
     "wooden-planks": "Planches en bois",
     "basket": "Panier",

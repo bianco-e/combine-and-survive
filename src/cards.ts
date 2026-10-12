@@ -201,8 +201,20 @@ const cardsData: CardData[] = [
     image: '/images/dough.webp'
   },
   {
+    key: CARD_KEY.DRIED_PASTA,
+    image: '/images/dried-pasta.png'
+  },
+  {
+    key: CARD_KEY.COOKED_PASTA,
+    image: '/images/cooked-pasta.png'
+  },
+  {
     key: CARD_KEY.BREAD,
     image: '/images/bread.png'
+  },
+  {
+    key: CARD_KEY.SANDWICH,
+    image: '/images/sandwich.png'
   },
   {
     key: CARD_KEY.BAIT_FISHING_LINE,
