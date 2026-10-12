@@ -3,7 +3,7 @@ import Stats from './components/stats'
 import Toaster from './components/toaster'
 import Card from './components/card'
 import i18n from './i18n'
-import { ANIMAL_INTERVAL_MS, LOW_THIRST_WARNING, STAT_CHANGE_SM, THIRST_INTERVAL_MS } from './constants'
+import { ANIMAL_INTERVAL_MS, HUNGER_INTERVAL_MS, LOW_HUNGER_WARNING, LOW_THIRST_WARNING, STAT_CHANGE_SM, THIRST_INTERVAL_MS } from './constants'
 import Modal from './components/modal'
 import { ToastType, type CardKey } from './types'
 
@@ -95,6 +95,15 @@ export function setInitialIntervalsAndButtonsOnClick(): void {
     }
     Stats.decrease('thirst', STAT_CHANGE_SM)
   }, THIRST_INTERVAL_MS)
+
+  window.hungerIntervalId = window.setInterval(() => {
+    const hungerEl = document.getElementById('hud-bar-percentage-hunger')
+    const currentHunger = parseInt(hungerEl?.innerText ?? '0', 10)
+    if (currentHunger <= LOW_HUNGER_WARNING) {
+      Toaster.display(i18n.t('hungerDeath'), ToastType.Error)
+    }
+    Stats.decrease('hunger', STAT_CHANGE_SM)
+  }, HUNGER_INTERVAL_MS)
 
   window.animalIntervalId = window.setInterval(() => {
     addWildAnimalToBoard(CARD_KEY.BULL, i18n.t('wildBull'))

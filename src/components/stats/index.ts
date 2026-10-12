@@ -89,15 +89,19 @@ export default class Stats {
     discoveriesButton.innerHTML = `📜 &nbsp; <span id="current-discoveries">0</span>/<span>${TOTAL_DISCOVERIES}</span>`
     discoveriesButton.addEventListener('click', Modal.showCombinedCards)
     boardLeftTopContainer.appendChild(discoveriesButton)
-    HudBar.create('hud', 'health', '❤️')
     HudBar.create('hud', 'thirst', '💧')
+    HudBar.create('hud', 'hunger', '🍗')
+    HudBar.create('hud', 'health', '❤️')
 
     if (initialStats) {
-      if (typeof initialStats.health === 'number') {
-        HudBar.updateFill('health', Number(initialStats.health))
-      }
       if (typeof initialStats.thirst === 'number') {
         HudBar.updateFill('thirst', Number(initialStats.thirst))
+      }
+      if (typeof initialStats.hunger === 'number') {
+        HudBar.updateFill('hunger', Number(initialStats.hunger))
+      }
+      if (typeof initialStats.health === 'number') {
+        HudBar.updateFill('health', Number(initialStats.health))
       }
       this.updateDiscoveries(null)
     }

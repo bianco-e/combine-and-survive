@@ -2,17 +2,6 @@ import i18n from '../../i18n'
 import type { StatId } from '../../types'
 
 export default class HudBar {
-  static refreshLabels(): void {
-    const healthLabel = document.querySelector('#health .hud-bar-label')
-    const thirstLabel = document.querySelector('#thirst .hud-bar-label')
-    if (healthLabel instanceof HTMLElement) {
-      healthLabel.textContent = i18n.t('health')
-    }
-    if (thirstLabel instanceof HTMLElement) {
-      thirstLabel.textContent = i18n.t('thirst')
-    }
-  }
-
   static triggerHealthDecreaseEffect(): void {
     const healthTrack = document.querySelector('#health .hud-bar-track')
     const healthFill = document.querySelector('.hud-bar-fill-health')
@@ -38,7 +27,6 @@ export default class HudBar {
     hudBar.setAttribute('id', id)
     const hudBarContent = `
        <div class='hud-bar'>
-        <div class='hud-bar-label ${id}'>${i18n.t(id)}</div>
         <div class='hud-bar-track'>
           <span class='hud-bar-icon'>${icon}</span>
           <div class='hud-bar-fill hud-bar-fill-${id}'></div>

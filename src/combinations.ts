@@ -53,10 +53,10 @@ const combinations: Combination[] = [
     decrease: { health: STAT_CHANGE_SM },
     increase: { thirst: STAT_CHANGE_MD }
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.APPLE], result: [CARD_KEY.SEEDS], consumes: [CARD_KEY.APPLE], decrease: null, increase: { health: STAT_CHANGE_MD } },
+  { combo: [CARD_KEY.PERSON, CARD_KEY.APPLE], result: [CARD_KEY.SEEDS], consumes: [CARD_KEY.APPLE], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
   { combo: [CARD_KEY.PERSON, CARD_KEY.BOILED_WATER], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.BOILED_WATER], decrease: null, increase: { thirst: STAT_CHANGE_XXL } },
   { combo: [CARD_KEY.PERSON, CARD_KEY.LEAF_FIBERS], result: [CARD_KEY.CORDAGE], consumes: [CARD_KEY.LEAF_FIBERS], decrease: null, increase: null },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.FISH], decrease: null, increase: { health: STAT_CHANGE_MD } },
+  { combo: [CARD_KEY.PERSON, CARD_KEY.FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.FISH], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
   { combo: [CARD_KEY.PERSON, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.BULL],
@@ -66,29 +66,29 @@ const combinations: Combination[] = [
     decrease: { health: STAT_CHANGE_XL },
     increase: null
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.GRILLED_FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.GRILLED_FISH], decrease: null, increase: { health: STAT_CHANGE_MD } },
+  { combo: [CARD_KEY.PERSON, CARD_KEY.GRILLED_FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.GRILLED_FISH], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.RAW_MEAT],
     result: IDLE,
     consumes: [CARD_KEY.RAW_MEAT],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_MD },
     message: { type: 'error', i18nKey: 'rawMeat' }
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_MEAT], result: IDLE, consumes: [CARD_KEY.COOKED_MEAT], decrease: null, increase: { health: STAT_CHANGE_LG } },
+  { combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_MEAT], result: IDLE, consumes: [CARD_KEY.COOKED_MEAT], decrease: null, increase: {hunger: STAT_CHANGE_LG } },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.HERBAL_TEA],
     result: [CARD_KEY.VESSEL],
     consumes: [CARD_KEY.HERBAL_TEA],
     decrease: null,
-    increase: { health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
+    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.BREAD],
     result: [CARD_KEY.BREAD_CRUMBS],
     consumes: [CARD_KEY.BREAD],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD },
+    increase: {hunger: STAT_CHANGE_MD },
     callback: spawnChickenCallback
   },
   {
@@ -96,7 +96,7 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.RAW_CHICKEN],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_MD },
     message: { type: 'error', i18nKey: 'rawChicken' }
   },
   {
@@ -104,28 +104,28 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.COOKED_CHICKEN],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_PASTA],
     result: IDLE,
     consumes: [CARD_KEY.COOKED_PASTA],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.SANDWICH],
     result: IDLE,
     consumes: [CARD_KEY.SANDWICH],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.ROTTEN_APPLE],
     result: IDLE,
     consumes: [CARD_KEY.ROTTEN_APPLE],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_SM},
     message: { type: 'error', i18nKey: 'rottenFood' }
   },
   {
@@ -203,7 +203,7 @@ const combinations: Combination[] = [
     result: [CARD_KEY.SEEDS],
     consumes: [CARD_KEY.APPLE],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.BOILED_WATER],
@@ -218,7 +218,7 @@ const combinations: Combination[] = [
     result: [CARD_KEY.FISH_SPINE],
     consumes: [CARD_KEY.FISH],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   { combo: [CARD_KEY.AXEMAN, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
   {
@@ -233,14 +233,14 @@ const combinations: Combination[] = [
     result: [CARD_KEY.FISH_SPINE],
     consumes: [CARD_KEY.GRILLED_FISH],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.RAW_MEAT],
     result: IDLE,
     consumes: [CARD_KEY.RAW_MEAT],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_MD },
     message: { type: 'error', i18nKey: 'rawMeat' }
   },
   {
@@ -248,21 +248,21 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.COOKED_MEAT],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.HERBAL_TEA],
     result: [CARD_KEY.VESSEL],
     consumes: [CARD_KEY.HERBAL_TEA],
     decrease: null,
-    increase: { health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
+    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.BREAD],
     result: [CARD_KEY.BREAD_CRUMBS],
     consumes: [CARD_KEY.BREAD],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD },
+    increase: {hunger: STAT_CHANGE_MD },
     callback: spawnChickenCallback
   },
   {
@@ -277,7 +277,7 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.RAW_CHICKEN],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_MD },
     message: { type: 'error', i18nKey: 'rawChicken' }
   },
   {
@@ -285,21 +285,21 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.COOKED_CHICKEN],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.COOKED_PASTA],
     result: IDLE,
     consumes: [CARD_KEY.COOKED_PASTA],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.SANDWICH],
     result: IDLE,
     consumes: [CARD_KEY.SANDWICH],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.AXEMAN, CARD_KEY.CLOTHES],
@@ -313,7 +313,7 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.ROTTEN_APPLE],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_SM },
     message: { type: 'error', i18nKey: 'rottenFood' }
   },
   {
@@ -430,7 +430,7 @@ const combinations: Combination[] = [
     result: [CARD_KEY.SEEDS],
     consumes: [CARD_KEY.APPLE],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.BOILED_WATER],
@@ -445,7 +445,7 @@ const combinations: Combination[] = [
     result: [CARD_KEY.FISH_SPINE],
     consumes: [CARD_KEY.FISH],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
   {
@@ -460,14 +460,14 @@ const combinations: Combination[] = [
     result: [CARD_KEY.FISH_SPINE],
     consumes: [CARD_KEY.GRILLED_FISH],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.RAW_MEAT],
     result: IDLE,
     consumes: [CARD_KEY.RAW_MEAT],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_MD },
     message: { type: 'error', i18nKey: 'rawMeat' }
   },
   {
@@ -475,21 +475,21 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.COOKED_MEAT],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.HERBAL_TEA],
     result: [CARD_KEY.VESSEL],
     consumes: [CARD_KEY.HERBAL_TEA],
     decrease: null,
-    increase: { health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
+    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.BREAD],
     result: [CARD_KEY.BREAD_CRUMBS],
     consumes: [CARD_KEY.BREAD],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD },
+    increase: {hunger: STAT_CHANGE_MD },
     callback: spawnChickenCallback
   },
   {
@@ -504,7 +504,7 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.RAW_CHICKEN],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_MD },
     message: { type: 'error', i18nKey: 'rawChicken' }
   },
   {
@@ -512,28 +512,28 @@ const combinations: Combination[] = [
     result: IDLE,
     consumes: [CARD_KEY.COOKED_CHICKEN],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.COOKED_PASTA],
     result: IDLE,
     consumes: [CARD_KEY.COOKED_PASTA],
     decrease: null,
-    increase: { health: STAT_CHANGE_MD }
+    increase: {hunger: STAT_CHANGE_MD }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.SANDWICH],
     result: IDLE,
     consumes: [CARD_KEY.SANDWICH],
     decrease: null,
-    increase: { health: STAT_CHANGE_LG }
+    increase: {hunger: STAT_CHANGE_LG }
   },
   {
     combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.ROTTEN_APPLE],
     result: IDLE,
     consumes: [CARD_KEY.ROTTEN_APPLE],
     decrease: { health: STAT_CHANGE_MD },
-    increase: null,
+    increase: { hunger: STAT_CHANGE_SM },
     message: { type: 'error', i18nKey: 'rottenFood' }
   },
   {

@@ -1,6 +1,7 @@
 import type { BadgeMap } from './types'
 
 export const LOW_THIRST_WARNING = 15
+export const LOW_HUNGER_WARNING = 15
 export const STAT_CHANGE_SM = 5
 export const STAT_CHANGE_MD = 15
 export const STAT_CHANGE_LG = 25
@@ -9,6 +10,7 @@ export const STAT_CHANGE_XXL = 60
 export const MAX_STAT = 100
 export const MIN_STAT = 0
 export const THIRST_INTERVAL_MS = 13_000
+export const HUNGER_INTERVAL_MS = 22_000
 export const ANIMAL_INTERVAL_MS = 26_000
 export const WILD_CHICKEN_SPAWN_DELAY_MS = 6_500
 

@@ -135,6 +135,9 @@ export default class Game {
     if (window.animalIntervalId) {
       window.clearInterval(window.animalIntervalId)
     }
+    if (window.hungerIntervalId) {
+      window.clearInterval(window.hungerIntervalId)
+    }
     this.clearSavedGame()
     callback()
   }

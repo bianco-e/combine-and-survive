@@ -10,23 +10,6 @@
   letter-spacing: 1px;
 }
 
-.hud-bar-label {
-  border-radius: 6px;
-  margin-bottom: var(--gap-small);
-  padding: var(--gap-xsmall) var(--gap-regular);
-  color: var(--not-white);
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.hud-bar-label.health {
-  background: var(--health-red);
-}
-
-.hud-bar-label.thirst {
-  background: var(--thirst-blue);
-}
-
 .hud-bar-track {
   width: 140px;
   height: 30px;
@@ -58,6 +41,10 @@
   background: var(--thirst-blue-dark);
 }
 
+.hud-bar-fill-hunger {
+  background: var(--hunger-orange-dark);
+}
+
 .hud-bar-percentage {
   z-index: 2;
   font-size: 14px;
@@ -74,12 +61,8 @@
 }
 
 @media (max-width: 729px) {
-  .hud-bar-label {
-    margin-bottom: var(--gap-xsmall);
-    font-size: 14px;
-  }
-
   .hud-bar-track {
+    width: 100px;
     height: 24px;
   }
 }

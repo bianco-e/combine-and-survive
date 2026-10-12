@@ -6,7 +6,7 @@ export enum ToastType {
 }
 
 export type ToastTypeValue = 'warning' | 'error' | 'info' | 'success'
-export type StatId = 'health' | 'thirst'
+export type StatId = 'health' | 'thirst' | 'hunger'
 
 export type BadgeMap = Record<number, string>
 

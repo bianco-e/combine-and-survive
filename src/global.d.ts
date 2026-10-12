@@ -7,4 +7,5 @@ interface Navigator {
 interface Window {
   thirstIntervalId?: number
   animalIntervalId?: number
+  hungerIntervalId?: number
 }

@@ -70,7 +70,7 @@ export default class Card {
         }
       })
     }
-    if (combination.result !== IDLE && combination.consumes.length) {
+    if (combination.consumes.length) {
       combination.consumes.forEach(consumedKey => {
         this.remove(consumedKey, 'discoveries-board')
       })

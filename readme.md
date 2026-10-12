@@ -33,7 +33,6 @@ ENJOY!
 - Add person inventory to equip clothes/weapons
 - Decay: making "Raw Meat" turn into "Rotten Meat" if not used within a certain amount of clicks/time.
 - Tool Durability: Tools like the "Axe" or "Hammer" could break/disappear after 10 uses.
-- To have a Hunger stat bar (**🍗)** so food actually increases this bar, and time makes this bar go down instead of health. Health should be only affected by damage, not hunger.
 
 
 
@@ -49,5 +48,5 @@ ENJOY!
 
 ##### +2 CARDS COMBOS TO ADD:
 
-- Flour + Water + Apple = Apple Pie (consumes all)
+- Flour + Eggs + Apple = Apple Pie (consumes all)
 

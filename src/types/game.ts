@@ -9,6 +9,7 @@ export interface BoardsState {
 export interface StatsStatus {
   health?: number
   thirst?: number
+  hunger?: number
 }
 
 export interface SavedGameData {

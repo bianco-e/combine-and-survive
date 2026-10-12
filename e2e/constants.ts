@@ -1,5 +1,6 @@
 import {
   ANIMAL_INTERVAL_MS,
+  HUNGER_INTERVAL_MS,
   MAX_STAT,
   MIN_STAT,
   STAT_CHANGE_SM,
@@ -13,6 +14,7 @@ export const TICKS_TO_DEATH = (MAX_STAT - MIN_STAT) / STAT_CHANGE_SM
 
 export const GAME_TIMINGS = {
   thirst: THIRST_INTERVAL_MS,
+  hunger: HUNGER_INTERVAL_MS,
   wildBull: ANIMAL_INTERVAL_MS,
   wildChicken: WILD_CHICKEN_SPAWN_DELAY_MS
 } as const

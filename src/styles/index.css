@@ -10,7 +10,7 @@
   color: var(--not-white);
   border-top: 2px solid var(--brown-light);
   display: flex;
-  height: 75px;
+  height: 48px;
   justify-content: space-around;
   left: 0;
   position: fixed;
@@ -111,7 +111,7 @@ h1 {
   }
 
   .hud-container {
-    height: 60px;
+    height: 40px;
   }
 
   div#discoveries-board {
