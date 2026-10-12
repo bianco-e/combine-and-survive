@@ -33,6 +33,7 @@ ENJOY!
 - Add person inventory to equip clothes/weapons
 - Decay: making "Raw Meat" turn into "Rotten Meat" if not used within a certain amount of clicks/time.
 - Tool Durability: Tools like the "Axe" or "Hammer" could break/disappear after 10 uses.
+- Hud bars go down progressively all the time instead of doing 5% every X seconds. Same proportion in time but progressively constantly.
 
 
 

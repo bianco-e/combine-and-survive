@@ -46,11 +46,7 @@
 }
 
 .hud-bar-percentage {
-  z-index: 2;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--not-white);
-  text-align: center;
+  color: transparent;
 }
 
 .hud-bar-icon {

@@ -573,11 +573,13 @@ export function seeAllCombinations(): string {
       const resultNames = Array.isArray(result)
         ? result.map(cardKey => i18n.t(`cards.${cardKey}`)).join(', ')
         : 'IDLE'
-      return `${comboNames} = ${resultNames} ${decrease?.health ? `(- ${decrease.health} ${i18n.t('health')})` : ''} ${
-        increase?.health ? `(+ ${increase.health} ${i18n.t('health')})` : ''
-      }${decrease?.thirst ? `(- ${decrease.thirst} ${i18n.t('thirst')})` : ''} ${
+      return `${comboNames} = ${resultNames} ${decrease?.thirst ? `(- ${decrease.thirst} ${i18n.t('thirst')})` : ''} ${
         increase?.thirst ? `(+ ${increase.thirst} ${i18n.t('thirst')})` : ''
-      } ${badge ? `[New badge: ${i18n.t(`badges.types.${BADGES[badge]}.name`)}]` : ''}`
+      }${increase?.hunger ? `(+ ${increase.hunger} ${i18n.t('hunger')})` : ''} ${
+        decrease?.hunger ? `(- ${decrease.hunger} ${i18n.t('hunger')})` : ''
+      }${decrease?.health ? `(- ${decrease.health} ${i18n.t('health')})` : ''} ${
+        increase?.health ? `(+ ${increase.health} ${i18n.t('health')})` : ''
+      }${badge ? `[New badge: ${i18n.t(`badges.types.${BADGES[badge]}.name`)}]` : ''}`
     })
     .join('<br />')
 }
