@@ -194,7 +194,6 @@ export default class Modal {
 
         await i18n.load(selectedLanguage)
         Card.refreshTranslations()
-        HudBar.refreshLabels()
         gtag('event', 'set_language', {
           event_category: 'action',
           event_label: 'set_language',
