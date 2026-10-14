@@ -69,7 +69,11 @@
 
 @media (max-width: 729px) {
   .hud-bar-track {
-    width: 160px;
+    width: 140px;
     height: 20px;
+  }
+
+  .hud-bar-icon {
+    font-size: 12px;
   }
 }
