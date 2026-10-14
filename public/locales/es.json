@@ -97,7 +97,12 @@
     "title": "Todas las combinaciones"
   },
   "accessToCave": "Ahora que tienes Antorcha puedes acceder a la Cueva para obtener nuevos recursos. Asegurate de estar equipado correctamente ya que es muy peligroso",
-  "caveDanger": "No puedes acceder a la Cueva así. Es muy peligroso. Necesitas un arma y ropa",
+  "caveDanger": "No puedes acceder a la Cueva así. Es muy peligroso. Necesitas un arma, una antorcha y ropa",
+  "inventory": {
+    "itemEquipped": "Este item ya fue equipado",
+    "noEmptyHandSlot": "Tus manos están ocupadas",
+    "noEmptyArmorSlot": "Ya estas vistiendo ropa"
+  },
   "cards": {
     "person": "Persona",
     "dirt": "Tierra",

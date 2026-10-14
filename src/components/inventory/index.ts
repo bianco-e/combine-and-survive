@@ -1,3 +1,4 @@
+import i18n from '../../i18n';
 import { CardKey, StoredInventory, ToastType } from '../../types';
 import { getCardByKey } from '../../utils';
 import Card from '../card';
@@ -39,7 +40,7 @@ export default class Inventory {
       const armorSlot = document.getElementById('armor-slot')
       if (!(armorSlot instanceof HTMLElement)) return
       if (armorSlot.classList.contains('slot-equipped')) {
-        Toaster.display("asd", ToastType.Error)
+        Toaster.display(i18n.t('inventory.noEmptyArmorSlot'), ToastType.Error)
         return
       }
       armorSlot.classList.remove('armor-slot-empty')
@@ -58,12 +59,12 @@ export default class Inventory {
       const bothSlots = [leftHandSlot, rightHandSlot]
       const emptyHandSlot = bothSlots.find(slot => !slot.classList.contains('slot-equipped'))
       if (!emptyHandSlot) {
-        Toaster.display("You have no free hands", ToastType.Error)
+        Toaster.display(i18n.t('inventory.noEmptyHandSlot'), ToastType.Error)
         return
       }
       const equippedItemElement = document.querySelector(`[non-interactive-id="card-${cardKey}"]`)
       if (equippedItemElement && bothSlots.some(slot => slot.contains(equippedItemElement))) {
-        Toaster.display("Already equipped", ToastType.Error)
+        Toaster.display(i18n.t('inventory.itemEquipped'), ToastType.Error)
         return
       }
       emptyHandSlot.classList.remove('left-hand-slot-empty')

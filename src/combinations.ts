@@ -305,7 +305,7 @@ const combinations: Combination[] = [
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.FISH], result: [CARD_KEY.GRILLED_FISH], consumes: [CARD_KEY.FISH], decrease: null, increase: null },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.BARK], result: [CARD_KEY.ASHES], consumes: [CARD_KEY.BARK], decrease: null, increase: null },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.RAW_MEAT], result: [CARD_KEY.COOKED_MEAT], consumes: [CARD_KEY.RAW_MEAT], decrease: null, increase: null },
-  { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.MUD], result: [CARD_KEY.FURNACE], consumes: [CARD_KEY.CAMPFIRE, CARD_KEY.MUD], decrease: null, increase: null },
+  { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.MUD], result: [CARD_KEY.FURNACE], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
   { combo: [CARD_KEY.FURNACE, CARD_KEY.SAND], result: [CARD_KEY.GLASS], consumes: [CARD_KEY.SAND], decrease: null, increase: null },
   { combo: [CARD_KEY.FURNACE, CARD_KEY.IRON_ORE], result: [CARD_KEY.IRON_NUGGET], consumes: [CARD_KEY.IRON_ORE], decrease: null, increase: null },
   { combo: [CARD_KEY.WATER, CARD_KEY.SPROUT], result: [CARD_KEY.PLANT, CARD_KEY.VESSEL], consumes: [CARD_KEY.WATER, CARD_KEY.SPROUT], decrease: null, increase: null },

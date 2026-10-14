@@ -99,7 +99,8 @@ export default class Modal {
     const currentPersonBoardKeys = getBoardKeys('#person-board div.card')
     const currentDiscoveriesBoardKeys = getBoardKeys('#discoveries-board div.card')
     const currentSourcesBoardKeys = getBoardKeys('#sources-board div.card')
-    const allBoardKeys = currentPersonBoardKeys.concat(currentDiscoveriesBoardKeys, currentSourcesBoardKeys)
+    const currentStationsBoardKeys = getBoardKeys('#stations-board div.card')
+    const allBoardKeys = currentPersonBoardKeys.concat(currentDiscoveriesBoardKeys, currentSourcesBoardKeys, currentStationsBoardKeys)
 
     const combinationSuggestion = combinations.find(combination => {
       return (

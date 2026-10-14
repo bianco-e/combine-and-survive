@@ -97,7 +97,12 @@
     "title": "Todas as combinações"
   },
   "accessToCave": "Agora que você tem uma Tocha, pode acessar a Caverna para obter novos recursos. Certifique-se de estar devidamente equipado, pois é muito perigoso",
-  "caveDanger": "Você não pode acessar a Caverna assim. É muito perigoso. Você precisa de uma arma e roupas",
+  "caveDanger": "Não podes entrar na Caverna assim. É muito perigoso. Precisas de uma arma, uma tocha e roupas",
+  "inventory": {
+    "itemEquipped": "Este item já está equipado",
+    "noEmptyHandSlot": "As tuas mãos estão ocupadas",
+    "noEmptyArmorSlot": "Já estás a usar roupas"
+  },
   "cards": {
     "person": "Pessoa",
     "dirt": "Terra",

@@ -97,7 +97,12 @@
     "title": "All combinations"
   },
   "accessToCave": "Now that you have Torch you can access the Cave to get new resources. Make sure you are properly equipped since it is very dangerous",
-  "caveDanger": "You cannot access the Cave like this. It is too dangerous. You need a weapon and clothes",
+  "caveDanger": "You cannot access the Cave like this. It is too dangerous. You need a weapon, a torch and clothes",
+  "inventory": {
+    "itemEquipped": "Item already equipped",
+    "noEmptyHandSlot": "Your hands are busy",
+    "noEmptyArmorSlot": "You are already wearing clothes"
+  },
   "cards": {
     "person": "Person",
     "dirt": "Dirt",

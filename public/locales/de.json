@@ -97,7 +97,12 @@
     "title": "Alle Kombinationen"
   },
   "accessToCave": "Jetzt, da du eine Fackel hast, kannst du die Höhle betreten, um neue Ressourcen zu erhalten. Stelle sicher, dass du richtig ausgerüstet bist, da es sehr gefährlich ist.",
-  "caveDanger": "Du kannst die Höhle so nicht betreten. Es ist zu gefährlich. Du brauchst eine Waffe und Kleidung.",
+  "caveDanger": "Du kannst die Höhle so nicht betreten. Es ist sehr gefährlich. Du brauchst eine Waffe, eine Fackel und Kleidung",
+  "inventory": {
+    "itemEquipped": "Dieser Gegenstand ist bereits ausgerüstet",
+    "noEmptyHandSlot": "Deine Hände sind beschäftigt",
+    "noEmptyArmorSlot": "Du trägst bereits Kleidung"
+  },
   "cards": {
     "person": "Person",
     "dirt": "Erde",

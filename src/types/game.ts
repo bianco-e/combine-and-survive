@@ -4,6 +4,7 @@ import type { ComboHistory } from './combination'
 export interface BoardsState {
   discoveries: CardKey[]
   sources: CardKey[]
+  stations: CardKey[]
 }
 
 export interface StatsStatus {

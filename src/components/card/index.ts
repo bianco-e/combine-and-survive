@@ -37,11 +37,11 @@ export default class Card {
         cardNameElement.textContent = translatedName
         cardNameElement.title = translatedName
       }
-      const cardImageElement = cardElement.querySelector('img:not(.equippable-icon)')
+      const cardImageElement = cardElement.querySelector('img:not(.card-icon)')
       if (cardImageElement instanceof HTMLImageElement) {
         cardImageElement.alt = translatedName
       }
-      const equippableIconElement = cardElement.querySelector('.equippable-icon')
+      const equippableIconElement = cardElement.querySelector('.card-icon')
       if (equippableIconElement instanceof HTMLImageElement) {
         const equippableText = i18n.t('equippableCard')
         equippableIconElement.alt = equippableText
@@ -138,10 +138,10 @@ export default class Card {
 
 function renderEquippableIcon(newCardElement: HTMLElement): void {
   const equippableIcon = document.createElement('img')
-  equippableIcon.setAttribute('src', '/icons/equippable-icon.webp')
+  equippableIcon.setAttribute('src', `/icons/equippable-icon.png`)
   equippableIcon.setAttribute('alt', i18n.t('equippableCard'))
   equippableIcon.title = i18n.t('equippableCard')
-  equippableIcon.classList.add('equippable-icon')
+  equippableIcon.classList.add('card-icon')
   newCardElement.appendChild(equippableIcon)
 }
 
@@ -240,7 +240,8 @@ function onDrop(e: DragEvent, draggedId?: string): void {
           ? combosHistory
           : combosHistory.concat({ combo: combinedKeys, result: resultKeys })
         Game.saveCombosHistory(newCombosHistory)
-        Card.create(newCard, 'discoveries-board')
+        const targetBoard = newCard.isStation ? 'stations-board' : 'discoveries-board'
+        Card.create(newCard, targetBoard)
       }
       if (combination.callback) {
         combination.callback()

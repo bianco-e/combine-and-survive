@@ -90,6 +90,7 @@ export interface CardData {
   isInitial?: boolean
   isPerson?: boolean
   isSource?: boolean
+  isStation?: boolean
   equipmentId?: 'hand' | 'armor'
   className?: string
 }

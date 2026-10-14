@@ -26,7 +26,7 @@ const defaultSavedGameData: SavedGameData = {
   currentInventory: {},
   currentStats: {},
   personKey: null,
-  currentBoards: { discoveries: [], sources: [] },
+  currentBoards: { discoveries: [], sources: [], stations: [] },
   suggestionsDisabled: null
 }
 
@@ -91,10 +91,11 @@ export default class Game {
   static saveCurrentBoards(): void {
     const currentDiscoveriesBoardKeys = readCardKeysFromBoard('#discoveries-board div.card')
     const currentSourcesBoardKeys = readCardKeysFromBoard('#sources-board div.card')
+    const currentStationsBoardKeys = readCardKeysFromBoard('#stations-board div.card')
 
     localStorage.setItem(
       CURRENT_BOARDS_KEY,
-      JSON.stringify({ discoveries: currentDiscoveriesBoardKeys, sources: currentSourcesBoardKeys })
+      JSON.stringify({ discoveries: currentDiscoveriesBoardKeys, sources: currentSourcesBoardKeys, stations: currentStationsBoardKeys })
     )
   }
 
@@ -165,10 +166,20 @@ export default class Game {
       isInteractive: true
     } satisfies CardConfig)
 
-    const initialCards = boardsToResume?.sources.length
+    const sourcesCards = boardsToResume?.sources.length
       ? cardsData.filter(card => boardsToResume.sources.includes(card.key))
       : cardsData.filter(card => card.isInitial && !card.isPerson)
-    initialCards.forEach(card => Card.create(card, 'sources-board', { updateDiscoveries: false, isInteractive: true }))
+    sourcesCards.forEach(card => Card.create(card, 'sources-board', { updateDiscoveries: false, isInteractive: true }))
+
+    if (boardsToResume?.stations.length) {
+      const stationCards = cardsData.filter(card => boardsToResume.stations.includes(card.key))
+      stationCards.forEach(card =>
+        Card.create(card, 'stations-board', {
+          updateDiscoveries: false,
+          isInteractive: true
+        })
+      )
+    }
 
     if (boardsToResume?.discoveries.length) {
       const discoveriesCards = cardsData.filter(card => boardsToResume.discoveries.includes(card.key))

@@ -80,6 +80,7 @@ export const setInitialBoard = (): void => {
     <div class="content-wrapper">
       <div id="person-board" class="board"></div>
       <div id="sources-board" class="board"></div>
+      <div id="stations-board" class="board"></div>
       <div id="discoveries-board" class="board"></div>
     </div>
 

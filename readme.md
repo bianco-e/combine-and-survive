@@ -26,7 +26,6 @@ ENJOY!
 
 ##### IDEAS:
 
-- Have a 'station' type board below sources board, where cards like Campfire, Loom, Furnace go. Cards that are not single items but "work stations" where things get done.
 - Combine more than 2 cards (think of a good UX-UI for the multi-card combination)
 - Hud bars go down progressively all the time instead of doing 5% every X seconds. Same proportion in time but progressively constantly.
 - Add natural phenomens like rain, wind, flood that affect the cards in the board

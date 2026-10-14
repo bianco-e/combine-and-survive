@@ -47,7 +47,8 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.CAMPFIRE,
-    image: '/images/campfire.png'
+    image: '/images/campfire.png',
+    isStation: true,
   },
   {
     key: CARD_KEY.SHARPEN_ROCK,
@@ -226,7 +227,8 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.HUT,
-    image: '/images/hut.png'
+    image: '/images/hut.png',
+    isStation: true,
   },
   {
     key: CARD_KEY.INK,
@@ -291,7 +293,8 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.FURNACE,
-    image: '/images/furnace.png'
+    image: '/images/furnace.png',
+    isStation: true,
   },
   {
     key: CARD_KEY.IRON_NUGGET,
@@ -299,7 +302,8 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.LOOM,
-    image: '/images/loom.png'
+    image: '/images/loom.png',
+    isStation: true,
   },
   {
     key: CARD_KEY.FABRIC,

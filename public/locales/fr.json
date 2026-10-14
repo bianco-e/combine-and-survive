@@ -97,7 +97,12 @@
     "title": "Toutes les combinaisons"
   },
   "accessToCave": "Maintenant que vous avez une torche, vous pouvez accéder à la grotte pour obtenir de nouvelles ressources. ",
-  "caveDanger": "Vous ne pouvez pas accéder à la grotte comme celle-ci. ",
+  "caveDanger": "Tu ne peux pas entrer dans la Grotte comme ça. C'est très dangereux. Tu as besoin d'une arme, d'une torche et de vêtements",
+  "inventory": {
+    "itemEquipped": "Cet objet est déjà équipé",
+    "noEmptyHandSlot": "Tes mains sont occupées",
+    "noEmptyArmorSlot": "Tu portes déjà des vêtements"
+  },
   "cards": {
     "person": "Personne",
     "dirt": "Saleté",
