@@ -17,6 +17,7 @@ export const WILD_CHICKEN_SPAWN_DELAY_MS = 6_500
 export const DISCOVERIES_HISTORY_KEY = 'discoveries-history'
 export const COMBOS_HISTORY_KEY = 'combos-history'
 export const BADGES_KEY = 'current-badges'
+export const INVENTORY_KEY = 'inventory'
 export const STATS_STATUS_KEY = 'stats-status'
 export const PERSON_KEY = 'person'
 export const CURRENT_BOARDS_KEY = 'current-boards'

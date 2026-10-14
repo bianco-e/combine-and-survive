@@ -57,8 +57,8 @@
 .card img.equippable-icon {
   height: 16px;
   position: absolute;
-  right: 4px;
-  top: 4px;
+  left: 4px;
+  bottom: 4px;
   width: 16px;
 }
 

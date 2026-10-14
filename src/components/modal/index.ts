@@ -6,7 +6,6 @@ import Card from '../card'
 import { setInitialBoard } from '../../utils'
 import Stats from '../stats'
 import Game from '../game'
-import HudBar from '../hud-bar'
 import { type CardKey, type ModalInstructionsOptions } from '../../types'
 
 interface LanguageOption {

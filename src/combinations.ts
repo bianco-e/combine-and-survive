@@ -9,8 +9,8 @@ import {
   STAT_CHANGE_XXL,
   WILD_CHICKEN_SPAWN_DELAY_MS
 } from './constants'
-import { addSourceCardToBoard, addWildAnimalToBoard } from './utils'
-import { IDLE, type Combination, type ComboHistory } from './types'
+import { addSourceCardToBoard, addWildAnimalToBoard, addCardToInventory } from './utils'
+import { CardKey, IDLE, type Combination, type ComboHistory } from './types'
 
 const spawnChickenCallback = (): void => {
   setTimeout(() => {
@@ -24,40 +24,126 @@ const addCaveCallback = (): void => {
   addSourceCardToBoard(CARD_KEY.CAVE, i18n.t('accessToCave'))
 }
 
-const combinations: Combination[] = [
-  { combo: [CARD_KEY.PERSON, CARD_KEY.DIRT], result: [CARD_KEY.CLAY, CARD_KEY.WORM], consumes: [], decrease: null, increase: null },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.TREE], result: [CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
+const basePersonCombinations = (personCardKey: (CardKey.PERSON | CardKey.AXEMAN | CardKey.AXEMAN_WITH_TORCH | CardKey.DRESSED_AXEMAN | CardKey.DRESSED_AXEMAN_WITH_TORCH)): Combination[] => [
+  { combo: [personCardKey, CARD_KEY.DIRT], result: [CARD_KEY.CLAY, CARD_KEY.WORM], consumes: [], decrease: null, increase: null },
   {
-    combo: [CARD_KEY.PERSON, CARD_KEY.RIVER],
+    combo: [personCardKey, CARD_KEY.RIVER],
     result: IDLE,
     consumes: [],
     message: { type: 'warning', i18nKey: 'waterHarm' },
     decrease: { health: STAT_CHANGE_SM },
     increase: { thirst: STAT_CHANGE_SM }
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.MOUNTAIN], result: [CARD_KEY.ROCK], consumes: [], decrease: null, increase: null },
+  { combo: [personCardKey, CARD_KEY.MOUNTAIN], result: [CARD_KEY.ROCK], consumes: [], decrease: null, increase: null },
+  { combo: [personCardKey, CARD_KEY.CLAY], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.CLAY], decrease: null, increase: null },
   {
-    combo: [CARD_KEY.PERSON, CARD_KEY.AXE],
-    result: [CARD_KEY.AXEMAN],
-    consumes: [CARD_KEY.AXE],
-    decrease: null,
-    increase: null,
-    badge: 1
-  },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.CLAY], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.CLAY], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.WATER],
+    combo: [personCardKey, CARD_KEY.WATER],
     result: [CARD_KEY.VESSEL],
     consumes: [CARD_KEY.WATER],
     message: { type: 'warning', i18nKey: 'waterHarm' },
     decrease: { health: STAT_CHANGE_SM },
     increase: { thirst: STAT_CHANGE_MD }
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.APPLE], result: [CARD_KEY.SEEDS], consumes: [CARD_KEY.APPLE], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.BOILED_WATER], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.BOILED_WATER], decrease: null, increase: { thirst: STAT_CHANGE_XXL } },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.LEAF_FIBERS], result: [CARD_KEY.CORDAGE], consumes: [CARD_KEY.LEAF_FIBERS], decrease: null, increase: null },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.FISH], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
+  { combo: [personCardKey, CARD_KEY.APPLE], result: [CARD_KEY.SEEDS], consumes: [CARD_KEY.APPLE], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
+  { combo: [personCardKey, CARD_KEY.BOILED_WATER], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.BOILED_WATER], decrease: null, increase: { thirst: STAT_CHANGE_XXL } },
+  { combo: [personCardKey, CARD_KEY.LEAF_FIBERS], result: [CARD_KEY.CORDAGE], consumes: [CARD_KEY.LEAF_FIBERS], decrease: null, increase: null },
+  { combo: [personCardKey, CARD_KEY.FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.FISH], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
+  { combo: [personCardKey, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
+  { combo: [personCardKey, CARD_KEY.GRILLED_FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.GRILLED_FISH], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
+  {
+    combo: [personCardKey, CARD_KEY.RAW_MEAT],
+    result: IDLE,
+    consumes: [CARD_KEY.RAW_MEAT],
+    decrease: { health: STAT_CHANGE_MD },
+    increase: { hunger: STAT_CHANGE_MD },
+    message: { type: 'error', i18nKey: 'rawMeat' }
+  },
+  { combo: [personCardKey, CARD_KEY.COOKED_MEAT], result: IDLE, consumes: [CARD_KEY.COOKED_MEAT], decrease: null, increase: {hunger: STAT_CHANGE_LG } },
+  {
+    combo: [personCardKey, CARD_KEY.HERBAL_TEA],
+    result: [CARD_KEY.VESSEL],
+    consumes: [CARD_KEY.HERBAL_TEA],
+    decrease: null,
+    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
+  },
+  {
+    combo: [personCardKey, CARD_KEY.BREAD],
+    result: [CARD_KEY.BREAD_CRUMBS],
+    consumes: [CARD_KEY.BREAD],
+    decrease: null,
+    increase: {hunger: STAT_CHANGE_MD },
+    callback: spawnChickenCallback
+  },
+  {
+    combo: [personCardKey, CARD_KEY.RAW_CHICKEN],
+    result: IDLE,
+    consumes: [CARD_KEY.RAW_CHICKEN],
+    decrease: { health: STAT_CHANGE_MD },
+    increase: { hunger: STAT_CHANGE_MD },
+    message: { type: 'error', i18nKey: 'rawChicken' }
+  },
+  {
+    combo: [personCardKey, CARD_KEY.COOKED_CHICKEN],
+    result: IDLE,
+    consumes: [CARD_KEY.COOKED_CHICKEN],
+    decrease: null,
+    increase: {hunger: STAT_CHANGE_LG }
+  },
+  {
+    combo: [personCardKey, CARD_KEY.COOKED_PASTA],
+    result: IDLE,
+    consumes: [CARD_KEY.COOKED_PASTA],
+    decrease: null,
+    increase: {hunger: STAT_CHANGE_MD }
+  },
+  {
+    combo: [personCardKey, CARD_KEY.SANDWICH],
+    result: IDLE,
+    consumes: [CARD_KEY.SANDWICH],
+    decrease: null,
+    increase: {hunger: STAT_CHANGE_LG }
+  },
+  {
+    combo: [personCardKey, CARD_KEY.ROTTEN_APPLE],
+    result: IDLE,
+    consumes: [CARD_KEY.ROTTEN_APPLE],
+    decrease: { health: STAT_CHANGE_MD },
+    increase: { hunger: STAT_CHANGE_SM},
+    message: { type: 'error', i18nKey: 'rottenFood' }
+  },
+  { combo: [personCardKey, CARD_KEY.PAPER_PULP], result: [CARD_KEY.PAPER], consumes: [CARD_KEY.PAPER_PULP], decrease: null, increase: null },
+]
+
+const armedPersonCombinations = (personCardKey: (CardKey.AXEMAN | CardKey.AXEMAN_WITH_TORCH | CardKey.DRESSED_AXEMAN | CardKey.DRESSED_AXEMAN_WITH_TORCH)): Combination[] => [
+  { combo: [personCardKey, CARD_KEY.TREE], result: [CARD_KEY.LOG, CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
+  { combo: [personCardKey, CARD_KEY.LOG], result: [CARD_KEY.WOODEN_PLANKS], consumes: [CARD_KEY.LOG], decrease: null, increase: null },
+  {
+    combo: [personCardKey, CARD_KEY.BULL],
+    result: [CARD_KEY.LEATHER, CARD_KEY.BONE, CARD_KEY.RAW_MEAT],
+    consumes: [CARD_KEY.BULL],
+    decrease: null,
+    increase: null
+  },
+  {
+    combo: [personCardKey, CARD_KEY.CHICKEN],
+    result: [CARD_KEY.FEATHER, CARD_KEY.RAW_CHICKEN],
+    consumes: [CARD_KEY.CHICKEN],
+    decrease: null,
+    increase: null
+  },
+]
+
+const combinations: Combination[] = [
+  { combo: [CARD_KEY.PERSON, CARD_KEY.TREE], result: [CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
+  {
+    combo: [CARD_KEY.PERSON, CARD_KEY.AXE],
+    result: [CARD_KEY.AXEMAN],
+    consumes: [CARD_KEY.AXE],
+    decrease: null,
+    increase: null,
+    badge: 1,
+    callback: () => addCardToInventory(CARD_KEY.AXE)
+  },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.BULL],
     result: IDLE,
@@ -66,67 +152,13 @@ const combinations: Combination[] = [
     decrease: { health: STAT_CHANGE_XL },
     increase: null
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.GRILLED_FISH], result: [CARD_KEY.FISH_SPINE], consumes: [CARD_KEY.GRILLED_FISH], decrease: null, increase: {hunger: STAT_CHANGE_MD } },
   {
-    combo: [CARD_KEY.PERSON, CARD_KEY.RAW_MEAT],
-    result: IDLE,
-    consumes: [CARD_KEY.RAW_MEAT],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_MD },
-    message: { type: 'error', i18nKey: 'rawMeat' }
-  },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_MEAT], result: IDLE, consumes: [CARD_KEY.COOKED_MEAT], decrease: null, increase: {hunger: STAT_CHANGE_LG } },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.HERBAL_TEA],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.HERBAL_TEA],
+    combo: [CARD_KEY.PERSON, CARD_KEY.TORCH],
+    result: [CARD_KEY.PERSON_WITH_TORCH],
+    consumes: [CARD_KEY.TORCH],
     decrease: null,
-    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.BREAD],
-    result: [CARD_KEY.BREAD_CRUMBS],
-    consumes: [CARD_KEY.BREAD],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD },
-    callback: spawnChickenCallback
-  },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.RAW_CHICKEN],
-    result: IDLE,
-    consumes: [CARD_KEY.RAW_CHICKEN],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_MD },
-    message: { type: 'error', i18nKey: 'rawChicken' }
-  },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_CHICKEN],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_CHICKEN],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.COOKED_PASTA],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_PASTA],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.SANDWICH],
-    result: IDLE,
-    consumes: [CARD_KEY.SANDWICH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.PERSON, CARD_KEY.ROTTEN_APPLE],
-    result: IDLE,
-    consumes: [CARD_KEY.ROTTEN_APPLE],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_SM},
-    message: { type: 'error', i18nKey: 'rottenFood' }
+    increase: null,
+    callback: () => addCardToInventory(CARD_KEY.TORCH)
   },
   {
     combo: [CARD_KEY.PERSON, CARD_KEY.CAVE],
@@ -136,13 +168,110 @@ const combinations: Combination[] = [
     increase: null,
     message: { type: 'error', i18nKey: 'caveDanger' }
   },
-  { combo: [CARD_KEY.PERSON, CARD_KEY.PAPER_PULP], result: [CARD_KEY.PAPER], consumes: [CARD_KEY.PAPER_PULP], decrease: null, increase: null },
+  {
+    combo: [CARD_KEY.PERSON_WITH_TORCH, CARD_KEY.CAVE],
+    result: IDLE,
+    consumes: [],
+    decrease: null,
+    increase: null,
+    message: { type: 'error', i18nKey: 'caveDanger' }
+  },
+  {
+    combo: [CARD_KEY.PERSON_WITH_TORCH, CARD_KEY.BULL],
+    result: IDLE,
+    consumes: [],
+    message: { type: 'error', i18nKey: 'bullAttack' },
+    decrease: { health: STAT_CHANGE_XL },
+    increase: null
+  },
+  { combo: [CARD_KEY.PERSON_WITH_TORCH, CARD_KEY.TREE], result: [CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
+  {
+    combo: [CARD_KEY.PERSON_WITH_TORCH, CARD_KEY.AXE],
+    result: [CARD_KEY.AXEMAN_WITH_TORCH],
+    consumes: [CARD_KEY.AXE],
+    decrease: null,
+    increase: null,
+    badge: 1,
+    callback: () => addCardToInventory(CARD_KEY.AXE)
+  },
+  {
+    combo: [CARD_KEY.AXEMAN, CARD_KEY.CLOTHES],
+    result: [CARD_KEY.DRESSED_AXEMAN],
+    consumes: [CARD_KEY.CLOTHES],
+    decrease: null,
+    increase: null,
+    callback: () => addCardToInventory(CARD_KEY.CLOTHES)
+  },
+  {
+    combo: [CARD_KEY.AXEMAN, CARD_KEY.TORCH],
+    result: [CARD_KEY.AXEMAN_WITH_TORCH],
+    consumes: [CARD_KEY.TORCH],
+    decrease: null,
+    increase: null,
+    callback: () => addCardToInventory(CARD_KEY.TORCH)
+  },
+  {
+    combo: [CARD_KEY.AXEMAN, CARD_KEY.CAVE],
+    result: IDLE,
+    consumes: [],
+    decrease: null,
+    increase: null,
+    message: { type: 'error', i18nKey: 'caveDanger' }
+  },
+  {
+    combo: [CARD_KEY.AXEMAN_WITH_TORCH, CARD_KEY.CLOTHES],
+    result: [CARD_KEY.DRESSED_AXEMAN_WITH_TORCH],
+    consumes: [CARD_KEY.CLOTHES],
+    decrease: null,
+    increase: null,
+    callback: () => addCardToInventory(CARD_KEY.CLOTHES)
+  },
+  {
+    combo: [CARD_KEY.AXEMAN_WITH_TORCH, CARD_KEY.CAVE],
+    result: IDLE,
+    consumes: [],
+    decrease: null,
+    increase: null,
+    message: { type: 'error', i18nKey: 'caveDanger' }
+  },
+  {
+    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.CAVE],
+    result: IDLE,
+    consumes: [],
+    decrease: null,
+    increase: null,
+    message: { type: 'error', i18nKey: 'caveDanger' }
+  },
+  {
+    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.TORCH],
+    result: [CARD_KEY.DRESSED_AXEMAN_WITH_TORCH],
+    consumes: [CARD_KEY.TORCH],
+    decrease: null,
+    increase: null,
+    callback: () => addCardToInventory(CARD_KEY.TORCH)
+  },
+  {
+    combo: [CARD_KEY.DRESSED_AXEMAN_WITH_TORCH, CARD_KEY.CAVE],
+    result: [CARD_KEY.IRON_ORE],
+    consumes: [],
+    decrease: null,
+    increase: null,
+    badge: 7
+  },
+  ...basePersonCombinations(CARD_KEY.PERSON),
+  ...basePersonCombinations(CARD_KEY.AXEMAN),
+  ...basePersonCombinations(CARD_KEY.DRESSED_AXEMAN),
+  ...basePersonCombinations(CARD_KEY.AXEMAN_WITH_TORCH),
+  ...basePersonCombinations(CARD_KEY.DRESSED_AXEMAN_WITH_TORCH),
+  ...armedPersonCombinations(CARD_KEY.AXEMAN),
+  ...armedPersonCombinations(CARD_KEY.DRESSED_AXEMAN),
+  ...armedPersonCombinations(CARD_KEY.AXEMAN_WITH_TORCH),
+  ...armedPersonCombinations(CARD_KEY.DRESSED_AXEMAN_WITH_TORCH),
+  // non-person combinations
   { combo: [CARD_KEY.DIRT, CARD_KEY.WATER], result: [CARD_KEY.VESSEL, CARD_KEY.MUD], consumes: [CARD_KEY.WATER], decrease: null, increase: null },
   { combo: [CARD_KEY.DIRT, CARD_KEY.BOILED_WATER], result: [CARD_KEY.VESSEL, CARD_KEY.MUD], consumes: [CARD_KEY.BOILED_WATER], decrease: null, increase: null },
   { combo: [CARD_KEY.DIRT, CARD_KEY.SEEDS], result: [CARD_KEY.SPROUT], consumes: [CARD_KEY.SEEDS], decrease: null, increase: null },
   { combo: [CARD_KEY.TREE, CARD_KEY.SHARPEN_ROCK], result: [CARD_KEY.LEAF, CARD_KEY.SAP, CARD_KEY.TREE_THORN], consumes: [], decrease: null, increase: null },
-  { combo: [CARD_KEY.TREE, CARD_KEY.AXEMAN], result: [CARD_KEY.LOG, CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
-  { combo: [CARD_KEY.TREE, CARD_KEY.DRESSED_AXEMAN], result: [CARD_KEY.LOG, CARD_KEY.STICK, CARD_KEY.APPLE], consumes: [], decrease: null, increase: null },
   { combo: [CARD_KEY.RIVER, CARD_KEY.VESSEL], result: [CARD_KEY.WATER], consumes: [CARD_KEY.VESSEL], decrease: null, increase: null },
   { combo: [CARD_KEY.RIVER, CARD_KEY.MOUNTAIN], result: [CARD_KEY.SAND], consumes: [], decrease: null, increase: null },
   {
@@ -174,157 +303,11 @@ const combinations: Combination[] = [
   },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.WATER], result: [CARD_KEY.BOILED_WATER], consumes: [CARD_KEY.WATER], decrease: null, increase: null },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.FISH], result: [CARD_KEY.GRILLED_FISH], consumes: [CARD_KEY.FISH], decrease: null, increase: null },
-  { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.SAND], result: [CARD_KEY.GLASS], consumes: [CARD_KEY.SAND], decrease: null, increase: null },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.BARK], result: [CARD_KEY.ASHES], consumes: [CARD_KEY.BARK], decrease: null, increase: null },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.RAW_MEAT], result: [CARD_KEY.COOKED_MEAT], consumes: [CARD_KEY.RAW_MEAT], decrease: null, increase: null },
   { combo: [CARD_KEY.CAMPFIRE, CARD_KEY.MUD], result: [CARD_KEY.FURNACE], consumes: [CARD_KEY.CAMPFIRE, CARD_KEY.MUD], decrease: null, increase: null },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.DIRT], result: [CARD_KEY.CLAY, CARD_KEY.WORM], consumes: [], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.RIVER],
-    result: IDLE,
-    consumes: [],
-    message: { type: 'warning', i18nKey: 'waterHarm' },
-    decrease: { health: STAT_CHANGE_SM },
-    increase: { thirst: STAT_CHANGE_SM }
-  },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.MOUNTAIN], result: [CARD_KEY.ROCK], consumes: [], decrease: null, increase: null },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.LOG], result: [CARD_KEY.WOODEN_PLANKS], consumes: [CARD_KEY.LOG], decrease: null, increase: null },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.CLAY], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.CLAY], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.WATER],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.WATER],
-    message: { type: 'warning', i18nKey: 'waterHarm' },
-    decrease: { health: STAT_CHANGE_SM },
-    increase: { thirst: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.APPLE],
-    result: [CARD_KEY.SEEDS],
-    consumes: [CARD_KEY.APPLE],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.BOILED_WATER],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.BOILED_WATER],
-    decrease: null,
-    increase: { thirst: STAT_CHANGE_XXL }
-  },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.LEAF_FIBERS], result: [CARD_KEY.CORDAGE], consumes: [CARD_KEY.LEAF_FIBERS], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.FISH],
-    result: [CARD_KEY.FISH_SPINE],
-    consumes: [CARD_KEY.FISH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.BULL],
-    result: [CARD_KEY.LEATHER, CARD_KEY.BONE, CARD_KEY.RAW_MEAT],
-    consumes: [CARD_KEY.BULL],
-    decrease: null,
-    increase: null
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.GRILLED_FISH],
-    result: [CARD_KEY.FISH_SPINE],
-    consumes: [CARD_KEY.GRILLED_FISH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.RAW_MEAT],
-    result: IDLE,
-    consumes: [CARD_KEY.RAW_MEAT],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_MD },
-    message: { type: 'error', i18nKey: 'rawMeat' }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.COOKED_MEAT],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_MEAT],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.HERBAL_TEA],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.HERBAL_TEA],
-    decrease: null,
-    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.BREAD],
-    result: [CARD_KEY.BREAD_CRUMBS],
-    consumes: [CARD_KEY.BREAD],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD },
-    callback: spawnChickenCallback
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.CHICKEN],
-    result: [CARD_KEY.FEATHER, CARD_KEY.RAW_CHICKEN],
-    consumes: [CARD_KEY.CHICKEN],
-    decrease: null,
-    increase: null
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.RAW_CHICKEN],
-    result: IDLE,
-    consumes: [CARD_KEY.RAW_CHICKEN],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_MD },
-    message: { type: 'error', i18nKey: 'rawChicken' }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.COOKED_CHICKEN],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_CHICKEN],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.COOKED_PASTA],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_PASTA],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.SANDWICH],
-    result: IDLE,
-    consumes: [CARD_KEY.SANDWICH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.CLOTHES],
-    result: [CARD_KEY.DRESSED_AXEMAN],
-    consumes: [CARD_KEY.CLOTHES],
-    decrease: null,
-    increase: null
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.ROTTEN_APPLE],
-    result: IDLE,
-    consumes: [CARD_KEY.ROTTEN_APPLE],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_SM },
-    message: { type: 'error', i18nKey: 'rottenFood' }
-  },
-  {
-    combo: [CARD_KEY.AXEMAN, CARD_KEY.CAVE],
-    result: IDLE,
-    consumes: [],
-    decrease: null,
-    increase: null,
-    message: { type: 'error', i18nKey: 'caveDanger' }
-  },
-  { combo: [CARD_KEY.AXEMAN, CARD_KEY.PAPER_PULP], result: [CARD_KEY.PAPER], consumes: [CARD_KEY.PAPER_PULP], decrease: null, increase: null },
+  { combo: [CARD_KEY.FURNACE, CARD_KEY.SAND], result: [CARD_KEY.GLASS], consumes: [CARD_KEY.SAND], decrease: null, increase: null },
+  { combo: [CARD_KEY.FURNACE, CARD_KEY.IRON_ORE], result: [CARD_KEY.IRON_NUGGET], consumes: [CARD_KEY.IRON_ORE], decrease: null, increase: null },
   { combo: [CARD_KEY.WATER, CARD_KEY.SPROUT], result: [CARD_KEY.PLANT, CARD_KEY.VESSEL], consumes: [CARD_KEY.WATER, CARD_KEY.SPROUT], decrease: null, increase: null },
   { combo: [CARD_KEY.CORDAGE, CARD_KEY.FISH_SPINE], result: [CARD_KEY.NEEDLE_THREAD], consumes: [CARD_KEY.CORDAGE, CARD_KEY.FISH_SPINE], decrease: null, increase: null },
   { combo: [CARD_KEY.CORDAGE, CARD_KEY.WOODEN_PLANKS], result: [CARD_KEY.LOOM], consumes: [CARD_KEY.CORDAGE, CARD_KEY.WOODEN_PLANKS], decrease: null, increase: null },
@@ -405,148 +388,7 @@ const combinations: Combination[] = [
     decrease: null,
     increase: null
   },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.DIRT], result: [CARD_KEY.CLAY, CARD_KEY.WORM], consumes: [], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.RIVER],
-    result: IDLE,
-    consumes: [],
-    message: { type: 'warning', i18nKey: 'waterHarm' },
-    decrease: { health: STAT_CHANGE_SM },
-    increase: { thirst: STAT_CHANGE_SM }
-  },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.MOUNTAIN], result: [CARD_KEY.ROCK], consumes: [], decrease: null, increase: null },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.LOG], result: [CARD_KEY.WOODEN_PLANKS], consumes: [CARD_KEY.LOG], decrease: null, increase: null },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.CLAY], result: [CARD_KEY.VESSEL], consumes: [CARD_KEY.CLAY], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.WATER],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.WATER],
-    message: { type: 'warning', i18nKey: 'waterHarm' },
-    decrease: { health: STAT_CHANGE_SM },
-    increase: { thirst: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.APPLE],
-    result: [CARD_KEY.SEEDS],
-    consumes: [CARD_KEY.APPLE],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.BOILED_WATER],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.BOILED_WATER],
-    decrease: null,
-    increase: { thirst: STAT_CHANGE_XXL }
-  },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.LEAF_FIBERS], result: [CARD_KEY.CORDAGE], consumes: [CARD_KEY.LEAF_FIBERS], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.FISH],
-    result: [CARD_KEY.FISH_SPINE],
-    consumes: [CARD_KEY.FISH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.MUD], result: [CARD_KEY.ADOBE_BRICK], consumes: [CARD_KEY.MUD], decrease: null, increase: null },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.BULL],
-    result: [CARD_KEY.LEATHER, CARD_KEY.BONE, CARD_KEY.RAW_MEAT],
-    consumes: [CARD_KEY.BULL],
-    decrease: null,
-    increase: null
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.GRILLED_FISH],
-    result: [CARD_KEY.FISH_SPINE],
-    consumes: [CARD_KEY.GRILLED_FISH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.RAW_MEAT],
-    result: IDLE,
-    consumes: [CARD_KEY.RAW_MEAT],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_MD },
-    message: { type: 'error', i18nKey: 'rawMeat' }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.COOKED_MEAT],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_MEAT],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.HERBAL_TEA],
-    result: [CARD_KEY.VESSEL],
-    consumes: [CARD_KEY.HERBAL_TEA],
-    decrease: null,
-    increase: {health: STAT_CHANGE_SM, thirst: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.BREAD],
-    result: [CARD_KEY.BREAD_CRUMBS],
-    consumes: [CARD_KEY.BREAD],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD },
-    callback: spawnChickenCallback
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.CHICKEN],
-    result: [CARD_KEY.FEATHER, CARD_KEY.RAW_CHICKEN],
-    consumes: [CARD_KEY.CHICKEN],
-    decrease: null,
-    increase: null
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.RAW_CHICKEN],
-    result: IDLE,
-    consumes: [CARD_KEY.RAW_CHICKEN],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_MD },
-    message: { type: 'error', i18nKey: 'rawChicken' }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.COOKED_CHICKEN],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_CHICKEN],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.COOKED_PASTA],
-    result: IDLE,
-    consumes: [CARD_KEY.COOKED_PASTA],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_MD }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.SANDWICH],
-    result: IDLE,
-    consumes: [CARD_KEY.SANDWICH],
-    decrease: null,
-    increase: {hunger: STAT_CHANGE_LG }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.ROTTEN_APPLE],
-    result: IDLE,
-    consumes: [CARD_KEY.ROTTEN_APPLE],
-    decrease: { health: STAT_CHANGE_MD },
-    increase: { hunger: STAT_CHANGE_SM },
-    message: { type: 'error', i18nKey: 'rottenFood' }
-  },
-  {
-    combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.CAVE],
-    result: [CARD_KEY.IRON_ORE],
-    consumes: [],
-    decrease: null,
-    increase: null,
-    badge: 7
-  },
-  { combo: [CARD_KEY.DRESSED_AXEMAN, CARD_KEY.PAPER_PULP], result: [CARD_KEY.PAPER], consumes: [CARD_KEY.PAPER_PULP], decrease: null, increase: null },
   { combo: [CARD_KEY.NEEDLE_THREAD, CARD_KEY.LEATHER], result: [CARD_KEY.CLOTHES], consumes: [CARD_KEY.LEATHER], decrease: null, increase: null },
-  { combo: [CARD_KEY.FURNACE, CARD_KEY.IRON_ORE], result: [CARD_KEY.IRON_NUGGET], consumes: [CARD_KEY.IRON_ORE], decrease: null, increase: null },
   { combo: [CARD_KEY.FABRIC, CARD_KEY.NEEDLE_THREAD], result: [CARD_KEY.CLOTHES], consumes: [CARD_KEY.FABRIC], decrease: null, increase: null },
   { combo: [CARD_KEY.PAPER, CARD_KEY.QUILL], result: [CARD_KEY.NOTE], consumes: [CARD_KEY.PAPER], decrease: null, increase: null, badge: 6 },
   { combo: [CARD_KEY.PAPER, CARD_KEY.QUILL], result: [CARD_KEY.NOTE], consumes: [CARD_KEY.PAPER], decrease: null, increase: null },

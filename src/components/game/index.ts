@@ -3,6 +3,7 @@ import {
   COMBOS_HISTORY_KEY,
   CURRENT_BOARDS_KEY,
   DISCOVERIES_HISTORY_KEY,
+  INVENTORY_KEY,
   PERSON_KEY,
   STATS_STATUS_KEY,
   SUGGESTIONS_DISABLED_KEY,
@@ -10,10 +11,11 @@ import {
 } from '../../constants'
 import Card from '../card'
 import Stats from '../stats'
+import Inventory from '../inventory'
 import cardsData from '../../cards'
 import { setInitialIntervalsAndButtonsOnClick } from '../../utils'
 import Modal from '../modal'
-import type { BoardsState, CardConfig, CardData, CardKey, ComboHistory, GameState, SavedGameData, StatId, StatsStatus } from '../../types'
+import type { BoardsState, CardConfig, CardData, CardKey, ComboHistory, GameState, SavedGameData, StatId, StatsStatus, StoredInventory } from '../../types'
 
 const WRONG_COMBOS_FOR_SUGGESTION = 12
 
@@ -21,6 +23,7 @@ const defaultSavedGameData: SavedGameData = {
   discoveriesHistory: [],
   combosHistory: [],
   currentBadges: [],
+  currentInventory: {},
   currentStats: {},
   personKey: null,
   currentBoards: { discoveries: [], sources: [] },
@@ -48,6 +51,7 @@ export default class Game {
     localStorage.removeItem(DISCOVERIES_HISTORY_KEY)
     localStorage.removeItem(COMBOS_HISTORY_KEY)
     localStorage.removeItem(BADGES_KEY)
+    localStorage.removeItem(INVENTORY_KEY)
     localStorage.removeItem(STATS_STATUS_KEY)
     localStorage.removeItem(PERSON_KEY)
     localStorage.removeItem(CURRENT_BOARDS_KEY)
@@ -62,6 +66,7 @@ export default class Game {
     const discoveriesHistory = parseJson<CardKey[]>(localStorage.getItem(DISCOVERIES_HISTORY_KEY), [])
     const combosHistory = parseJson<ComboHistory[]>(localStorage.getItem(COMBOS_HISTORY_KEY), [])
     const currentBadges = parseJson<number[]>(localStorage.getItem(BADGES_KEY), [])
+    const currentInventory = parseJson<StoredInventory>(localStorage.getItem(INVENTORY_KEY), {})
     const currentBoards = parseJson<BoardsState>(localStorage.getItem(CURRENT_BOARDS_KEY), defaultSavedGameData.currentBoards)
     const currentStats = parseJson<StatsStatus>(localStorage.getItem(STATS_STATUS_KEY), {})
     const personKeyRaw = localStorage.getItem(PERSON_KEY)
@@ -75,6 +80,7 @@ export default class Game {
         combosHistory,
         currentBadges,
         currentStats,
+        currentInventory,
         personKey,
         currentBoards,
         suggestionsDisabled
@@ -102,6 +108,17 @@ export default class Game {
 
   static savePerson(personKey: CardKey): void {
     localStorage.setItem(PERSON_KEY, personKey)
+  }
+
+  static saveInventory(inventoryId: keyof StoredInventory, cardKey: CardKey): void {
+    const [, { currentInventory }] = Game.checkGameInProgress()
+    localStorage.setItem(
+      INVENTORY_KEY,
+      JSON.stringify({
+        ...currentInventory,
+        [inventoryId]: cardKey
+      })
+    )
   }
 
   static saveStat(id: StatId, amount: number): void {
@@ -167,13 +184,15 @@ export default class Game {
   static startGame(): void {
     Game.clearSavedGame()
     Stats.initiate()
+    Inventory.initiate()
     this.renderInitialCards(cardsData[0])
     setInitialIntervalsAndButtonsOnClick()
   }
 
   static resumeGame(): void {
-    const [, { currentBoards, currentStats, personKey }] = this.checkGameInProgress()
+    const [, { currentBoards, currentStats, personKey, currentInventory }] = this.checkGameInProgress()
     Stats.initiate(currentStats)
+    Inventory.initiate(currentInventory)
     const currentPerson = cardsData.find(card => card.isPerson && card.key === personKey) || cardsData[0]
     this.renderInitialCards(currentPerson, currentBoards)
     setInitialIntervalsAndButtonsOnClick()

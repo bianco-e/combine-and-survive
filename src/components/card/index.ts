@@ -16,6 +16,11 @@ function toHtmlElement(value: Element | null): HTMLElement | null {
   return value instanceof HTMLElement ? value : null
 }
 
+function translateCardName(cardKey: CardKey): string {
+  const translatedName = i18n.t(`cards.${cardKey.startsWith('person-') ? 'person' : cardKey}`)
+  return translatedName
+}
+
 export default class Card {
   static refreshTranslations(): void {
     const cardElements = document.querySelectorAll('[id^="card-"], [non-interactive-id^="card-"]')
@@ -26,7 +31,7 @@ export default class Card {
       const key = toCardKey(cardId.replace(/^card-/, ''))
       if (!key) return
 
-      const translatedName = i18n.t(`cards.${key}`)
+      const translatedName = translateCardName(key)
       const cardNameElement = cardElement.querySelector('p')
       if (cardNameElement instanceof HTMLElement) {
         cardNameElement.textContent = translatedName
@@ -86,7 +91,7 @@ export default class Card {
   }
 
   static create(
-    { key, image, className, isEquippable }: CardData,
+    { key, image, className, equipmentId }: CardData,
     boardId: string,
     cardConfig: CardConfig = { updateDiscoveries: true, isInteractive: true }
   ): void {
@@ -101,17 +106,18 @@ export default class Card {
       newCardElement.setAttribute('non-interactive-id', `card-${key}`)
       newCardElement.classList.add('non-interactive-card')
     }
-    const newCardName = document.createElement('p')
-    newCardName.innerText = i18n.t(`cards.${key}`)
-    newCardName.title = i18n.t(`cards.${key}`)
-    newCardName.setAttribute('draggable', 'false')
-    newCardElement.appendChild(newCardName)
+    const newCardNameElement = document.createElement('p')
+    const newCardName = translateCardName(key)
+    newCardNameElement.innerText = newCardName
+    newCardNameElement.title = newCardName
+    newCardNameElement.setAttribute('draggable', 'false')
+    newCardElement.appendChild(newCardNameElement)
     const newCardImg = document.createElement('img')
     newCardImg.setAttribute('src', image)
-    newCardImg.setAttribute('alt', i18n.t(`cards.${key}`))
+    newCardImg.setAttribute('alt', newCardName)
     newCardImg.setAttribute('draggable', 'false')
 
-    if (isEquippable) {
+    if (equipmentId) {
       renderEquippableIcon(newCardElement)
     }
     if (className) {
@@ -163,14 +169,10 @@ function updatePerson(newPerson: CardData): void {
   if (!personCardElement) return
 
   personCardElement.setAttribute('id', `card-${newPerson.key}`)
-  const personName = personCardElement.querySelector('p')
-  if (personName instanceof HTMLElement) {
-    personName.innerText = i18n.t(`cards.${newPerson.key}`)
-    personName.title = i18n.t(`cards.${newPerson.key}`)
-  }
+
   const personImage = personCardElement.querySelector('img')
   if (personImage instanceof HTMLImageElement) {
-    personImage.setAttribute('alt', i18n.t(`cards.${newPerson.key}`))
+    personImage.setAttribute('alt', translateCardName(newPerson.key))
     personImage.setAttribute('src', newPerson.image)
   }
   Game.savePerson(newPerson.key)

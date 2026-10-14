@@ -10,7 +10,6 @@ export enum CardKey {
   CAMPFIRE = 'campfire',
   SHARPEN_ROCK = 'sharpen-rock',
   AXE = 'axe',
-  AXEMAN = 'axeman',
   CLAY = 'clay',
   VESSEL = 'vessel',
   WATER = 'water',
@@ -61,7 +60,6 @@ export enum CardKey {
   COOKED_CHICKEN = 'cooked-chicken',
   EGGS = 'eggs',
   QUILL = 'quill',
-  DRESSED_AXEMAN = 'dressed-axeman',
   BRUSH = 'brush',
   FISH_SPINE = 'fish-spine',
   NEEDLE_THREAD = 'needle-thread',
@@ -77,7 +75,13 @@ export enum CardKey {
   PAPER = 'paper',
   NOTE = 'note',
   BOOK = 'book',
-  LYE = 'lye'
+  LYE = 'lye',
+  // person type keys
+  PERSON_WITH_TORCH = 'person-with-torch',
+  AXEMAN = 'person-axeman',
+  AXEMAN_WITH_TORCH = 'person-axeman-with-torch',
+  DRESSED_AXEMAN = 'person-dressed-axeman',
+  DRESSED_AXEMAN_WITH_TORCH = 'person-dressed-axeman-with-torch'
 }
 
 export interface CardData {
@@ -86,7 +90,7 @@ export interface CardData {
   isInitial?: boolean
   isPerson?: boolean
   isSource?: boolean
-  isEquippable?: boolean
+  equipmentId?: 'hand' | 'armor'
   className?: string
 }
 

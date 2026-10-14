@@ -55,13 +55,8 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.AXE,
-    isEquippable: true,
+    equipmentId: 'hand',
     image: '/images/axe.png'
-  },
-  {
-    key: CARD_KEY.AXEMAN,
-    image: '/images/person_axe.webp',
-    isPerson: true
   },
   {
     key: CARD_KEY.CLAY,
@@ -129,7 +124,7 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.CLOTHES,
-    isEquippable: true,
+    equipmentId: 'armor',
     image: '/images/clothes.png'
   },
   {
@@ -166,6 +161,7 @@ const cardsData: CardData[] = [
   },
   {
     key: CARD_KEY.TORCH,
+    equipmentId: 'hand',
     image: '/images/torch.png'
   },
   {
@@ -265,11 +261,6 @@ const cardsData: CardData[] = [
     image: '/images/quill.png'
   },
   {
-    key: CARD_KEY.DRESSED_AXEMAN,
-    image: '/images/person_axe_clothes.webp',
-    isPerson: true
-  },
-  {
     key: CARD_KEY.BRUSH,
     image: '/images/brush.png'
   },
@@ -333,6 +324,32 @@ const cardsData: CardData[] = [
   {
     key: CARD_KEY.LYE,
     image: '/images/lye.png'
+  },
+  // person type cards
+  {
+    key: CARD_KEY.PERSON_WITH_TORCH,
+    image: '/images/person_torch.png',
+    isPerson: true
+  },
+  {
+    key: CARD_KEY.AXEMAN,
+    image: '/images/person_axe.webp',
+    isPerson: true
+  },
+  {
+    key: CARD_KEY.AXEMAN_WITH_TORCH,
+    image: '/images/person_axe_torch.png',
+    isPerson: true
+  },
+  {
+    key: CARD_KEY.DRESSED_AXEMAN,
+    image: '/images/person_axe_clothes.webp',
+    isPerson: true
+  },
+  {
+    key: CARD_KEY.DRESSED_AXEMAN_WITH_TORCH,
+    image: '/images/person_axe_torch_clothes.png',
+    isPerson: true
   }
 ]
 

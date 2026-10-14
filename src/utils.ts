@@ -6,8 +6,9 @@ import i18n from './i18n'
 import { ANIMAL_INTERVAL_MS, HUNGER_INTERVAL_MS, LOW_HUNGER_WARNING, LOW_THIRST_WARNING, STAT_CHANGE_SM, THIRST_INTERVAL_MS } from './constants'
 import Modal from './components/modal'
 import { ToastType, type CardKey } from './types'
+import Inventory from './components/inventory';
 
-function getCardByKey(cardKey: CardKey) {
+export function getCardByKey(cardKey: CardKey) {
   return cardsData.find(card => card.key === cardKey) ?? null
 }
 
@@ -54,6 +55,17 @@ function setupDamageOverlay(): void {
   document.body.appendChild(damageOverlay)
 }
 
+export const addCardToInventory = (cardKey: CardKey) => {
+  const card = getCardByKey(cardKey)
+  if (!card?.equipmentId) return
+  if (card.equipmentId === 'armor') {
+    Inventory.equipArmor(cardKey)
+  }
+  if (card.equipmentId === 'hand') {
+    Inventory.equipHand(cardKey)
+  }
+}
+
 export const setInitialBoard = (): void => {
   const initialBoard = `
     <div id="board-left-top-container" class="board-buttons-container discoveries"></div>
@@ -74,7 +86,10 @@ export const setInitialBoard = (): void => {
     <div id="toasters-wrapper"></div>
     <dialog id="modal" class="modal"></dialog>
 
-    <div id="hud" class="hud-container"></div>
+    <div class="bottom-bar">
+      <div id="hud" class="hud-container"></div>
+      <div id="inventory" class="inventory"></div>
+    </div>
     <script src="./index.ts" type="module"></script>
   `
   document.body.innerHTML = initialBoard

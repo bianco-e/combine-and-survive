@@ -10,12 +10,12 @@
   --info-blue: navy;
 
   /* stats */
-  --health-red: #b52929;
-  --health-red-dark: #5a0202;
-  --thirst-blue: #3e84c3;
-  --thirst-blue-dark: #1f4e79;
-  --hunger-orange: #ff8c00;
-  --hunger-orange-dark: #b87000;
+  --health-red: #480000;
+  --health-red-light: #550000;
+  --thirst-blue: #1a3e61;
+  --thirst-blue-light: #1f4e79;
+  --hunger-orange: #743e00;
+  --hunger-orange-light: #804400;
 
   /* states */
   --success-green: #25ce25;

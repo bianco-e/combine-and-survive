@@ -3,19 +3,24 @@
 @import './toaster.css';
 @import './card.css';
 @import './hud-bar.css';
+@import './inventory.css';
 
-.hud-container {
+.bottom-bar {
   align-items: center;
-  background-color: var(--brown-dark);
-  color: var(--not-white);
-  border-top: 2px solid var(--brown-light);
   display: flex;
-  height: 48px;
-  justify-content: space-around;
+  justify-content: space-between;
   left: 0;
   position: fixed;
   bottom: 0;
+  padding: 0 180px;
   width: 100%;
+}
+
+.hud-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .content-wrapper {
@@ -110,8 +115,12 @@ h1 {
     padding: 0 22px 80px;
   }
 
+  .bottom-bar {
+    padding: 0 12px;
+  }
+
   .hud-container {
-    height: 40px;
+    gap: 2px;
   }
 
   div#discoveries-board {

@@ -1,0 +1,45 @@
+@import './root.css';
+
+.inventory {
+    background-image: url('/images/inventory/inventory-bg.jpg');
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+    box-shadow: inset 0 2px 24px rgba(0, 0, 0, 0.85);
+}
+
+.left-hand-slot-empty, .right-hand-slot-empty, .armor-slot-empty {
+    width: 120px;
+    height: 120px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.left-hand-slot-empty {
+    background-image: url('/images/inventory/left-hand-slot.png');
+}
+.armor-slot-empty {
+    background-image: url('/images/inventory/armor-slot.png');
+}
+.right-hand-slot-empty {
+    background-image: url('/images/inventory/right-hand-slot.png');
+}
+
+.slot-equipped {
+    width: auto;
+    height: auto;
+}
+
+@media (max-width: 729px) {
+    .inventory {
+        gap: 6px;
+        padding: 0 6px;
+    }
+
+    .left-hand-slot-empty, .right-hand-slot-empty, .armor-slot-empty  {
+        height: 70px;
+        width: 70px;
+    }
+}

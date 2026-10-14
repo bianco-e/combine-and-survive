@@ -21,33 +21,33 @@ ENJOY!
 
 ##### TODO:
 
-- Optimize card images
+- Optimize card images (all same light format)
 - Create css variables to manage sizes and colors
 
 ##### IDEAS:
 
+- Have a 'station' type board below sources board, where cards like Campfire, Loom, Furnace go. Cards that are not single items but "work stations" where things get done.
+- Combine more than 2 cards (think of a good UX-UI for the multi-card combination)
+- Hud bars go down progressively all the time instead of doing 5% every X seconds. Same proportion in time but progressively constantly.
 - Add natural phenomens like rain, wind, flood that affect the cards in the board
 - Add actions if specific cards are next to each other (Bull next to Sprout would eat it, Worm next to Apple would rotten it)
 - Make bull poop after certain seconds alive
-- Combine more than 2 cards (combine field on bottom bar)
-- Add person inventory to equip clothes/weapons
 - Decay: making "Raw Meat" turn into "Rotten Meat" if not used within a certain amount of clicks/time.
 - Tool Durability: Tools like the "Axe" or "Hammer" could break/disappear after 10 uses.
-- Hud bars go down progressively all the time instead of doing 5% every X seconds. Same proportion in time but progressively constantly.
-
-
 
 ##### 2 CARDS COMBOS TO ADD:
 
-- Rock + Stick = Hammer
-- Iron Nugget + Furnace = Iron Bar
-- Iron Bar + Hammer = Iron Blade
 - Glass + Wooden Planks = Window
+- Rock + Stick = Hammer
 - Iron Blade + Stick = Hoe
-
-
 
 ##### +2 CARDS COMBOS TO ADD:
 
 - Flour + Eggs + Apple = Apple Pie (consumes all)
+- Furnace + hammer + iron nugget = iron blade
+
+##### 2 CARDS COMBOS THAT SHOULD BE +2 CARDS
+
+- Loom -> Wooden plank + stick + cordage
+- Hut -> Adobe brick + Wooden plank + leaf + window
 
